@@ -10,7 +10,7 @@ public interface UserService {
      * @return
      * @throws Exception
      */
-    public String getVerifyHash(Integer sid, Integer userId) throws Exception;
+    String getVerifyHash(Integer sid, Integer userId) throws Exception;
 
     /**
      * 添加用户访问次数
@@ -19,7 +19,7 @@ public interface UserService {
      * @return
      * @throws Exception
      */
-    public int addUserCount(Integer userId) throws Exception;
+    int addUserCount(Integer userId) throws Exception;
 
     /**
      * 检查用户是否被禁
@@ -27,6 +27,6 @@ public interface UserService {
      * @param userId
      * @return
      */
-    public boolean getUserIsBanned(Integer userId);
+    boolean getUserIsBanned(Integer userId);
 
 }

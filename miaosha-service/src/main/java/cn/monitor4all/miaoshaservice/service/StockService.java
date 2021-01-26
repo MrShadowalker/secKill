@@ -74,6 +74,6 @@ public interface StockService {
      * @param stock
      * @return
      */
-    public int updateStockByOptimistic(Stock stock);
+    int updateStockByOptimistic(Stock stock);
 
 }
