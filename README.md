@@ -38,7 +38,7 @@
 
 [【秒杀系统】一：防止超卖](https://github.com/MrShadowalker/miaosha/blob/master/doc/%E9%98%B2%E6%AD%A2%E8%B6%85%E5%8D%96.md)
 
-[【秒杀系统】二：令牌桶限流](https://github.com/MrShadowalker/miaosha/blob/master/doc/%E4%BB%A4%E7%89%8C%E6%A1%B6%E9%99%90%E6%B5%81%20%2B%20%E8%B6%85%E5%8D%96%20plus.md)
+[【秒杀系统】二：令牌桶限流](https://github.com/MrShadowalker/miaosha/blob/master/doc/%E4%BB%A4%E7%89%8C%E6%A1%B6%E9%99%90%E6%B5%81.md)
 
 [【秒杀系统】三：抢购接口隐藏 + 单用户限制频率](https://github.com/MrShadowalker/miaosha/blob/master/doc/%E6%8A%A2%E8%B4%AD%E6%8E%A5%E5%8F%A3%E9%9A%90%E8%97%8F%20%2B%20%E5%8D%95%E7%94%A8%E6%88%B7%E9%99%90%E5%88%B6%E9%A2%91%E7%8E%87.md)
 
