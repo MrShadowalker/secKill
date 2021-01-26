@@ -43,24 +43,24 @@ import java.util.List;
 
 public class DbDialectTest extends BaseDbTest {
 
-    private static final String MYSQL_SCHEMA_NAME  = "srf";
+    private static final String MYSQL_SCHEMA_NAME = "srf";
     private static final String ORACLE_SCHEMA_NAME = "srf";
-    private static final String TABLE_NAME         = "columns";
+    private static final String TABLE_NAME = "columns";
     @SpringBeanByName
-    private DbDialectFactory    dbDialectFactory;
+    private DbDialectFactory dbDialectFactory;
     // private String[] allColumns = { "alias_name", "amount", "text_b",
     // "text_c", "curr_date",
     // "gmt_create", "gmt_modify", "id", "name" };
 
-    private String[]            pkColumns          = { "id", "name" };
-    private String[]            columns            = { "alias_name", "amount", "text_b", "text_c", "curr_date",
-            "gmt_create", "gmt_modify"            };
+    private String[] pkColumns = {"id", "name"};
+    private String[] columns = {"alias_name", "amount", "text_b", "text_c", "curr_date",
+            "gmt_create", "gmt_modify"};
 
-    private String[]            pkColumnValues     = { "1", "ljh" };
+    private String[] pkColumnValues = {"1", "ljh"};
 
     // [116,101,120,116,95,98]
-    private String[]            columnValues       = { "hello", "100.01", "text_b", "text_c", "2011-01-01",
-            "2011-01-01 11:11:11", "2011-01-01 11:11:11" };
+    private String[] columnValues = {"hello", "100.01", "text_b", "text_c", "2011-01-01",
+            "2011-01-01 11:11:11", "2011-01-01 11:11:11"};
 
     @Test(expectedExceptions = RuntimeException.class)
     public void test_mysql() {
@@ -71,9 +71,9 @@ public class DbDialectTest extends BaseDbTest {
         final SqlTemplate sqlTemplate = dbDialect.getSqlTemplate();
         final JdbcTemplate jdbcTemplate = dbDialect.getJdbcTemplate();
         final TransactionTemplate transactionTemplate = dbDialect.getTransactionTemplate();
-        final int[] pkColumnTypes = { Types.INTEGER, Types.VARCHAR };
-        final int[] columnTypes = { Types.CHAR, Types.DECIMAL, Types.BLOB, Types.CLOB, Types.DATE, Types.TIMESTAMP,
-                Types.TIMESTAMP };
+        final int[] pkColumnTypes = {Types.INTEGER, Types.VARCHAR};
+        final int[] columnTypes = {Types.CHAR, Types.DECIMAL, Types.BLOB, Types.CLOB, Types.DATE, Types.TIMESTAMP,
+                Types.TIMESTAMP};
         transactionTemplate.execute(new TransactionCallback() {
 
             public Object doInTransaction(TransactionStatus status) {
@@ -86,9 +86,9 @@ public class DbDialectTest extends BaseDbTest {
 
                     public Object doInPreparedStatement(PreparedStatement ps) throws SQLException, DataAccessException {
                         doPreparedStatement(ps,
-                            dbDialect,
-                            toTypes(columnTypes, pkColumnTypes),
-                            toValues(columnValues, pkColumnValues));
+                                dbDialect,
+                                toTypes(columnTypes, pkColumnTypes),
+                                toValues(columnValues, pkColumnValues));
                         return ps.executeUpdate();
                     }
 
@@ -101,9 +101,9 @@ public class DbDialectTest extends BaseDbTest {
 
                     public Object doInPreparedStatement(PreparedStatement ps) throws SQLException, DataAccessException {
                         doPreparedStatement(ps,
-                            dbDialect,
-                            toTypes(columnTypes, pkColumnTypes),
-                            toValues(columnValues, pkColumnValues));
+                                dbDialect,
+                                toTypes(columnTypes, pkColumnTypes),
+                                toValues(columnValues, pkColumnValues));
                         return ps.executeUpdate();
                     }
 
@@ -128,9 +128,9 @@ public class DbDialectTest extends BaseDbTest {
 
                     public Object doInPreparedStatement(PreparedStatement ps) throws SQLException, DataAccessException {
                         doPreparedStatement(ps,
-                            dbDialect,
-                            toTypes(columnTypes, pkColumnTypes),
-                            toValues(columnValues, pkColumnValues));
+                                dbDialect,
+                                toTypes(columnTypes, pkColumnTypes),
+                                toValues(columnValues, pkColumnValues));
                         return ps.executeUpdate();
                     }
 
@@ -151,9 +151,9 @@ public class DbDialectTest extends BaseDbTest {
         final SqlTemplate sqlTemplate = dbDialect.getSqlTemplate();
         final JdbcTemplate jdbcTemplate = dbDialect.getJdbcTemplate();
         final TransactionTemplate transactionTemplate = dbDialect.getTransactionTemplate();
-        final int[] pkColumnTypes = { Types.NUMERIC, Types.VARCHAR };
-        final int[] columnTypes = { Types.CHAR, Types.NUMERIC, Types.BLOB, Types.CLOB, Types.DATE, Types.DATE,
-                Types.DATE };
+        final int[] pkColumnTypes = {Types.NUMERIC, Types.VARCHAR};
+        final int[] columnTypes = {Types.CHAR, Types.NUMERIC, Types.BLOB, Types.CLOB, Types.DATE, Types.DATE,
+                Types.DATE};
         transactionTemplate.execute(new TransactionCallback() {
 
             public Object doInTransaction(TransactionStatus status) {
@@ -166,9 +166,9 @@ public class DbDialectTest extends BaseDbTest {
 
                     public Object doInPreparedStatement(PreparedStatement ps) throws SQLException, DataAccessException {
                         doPreparedStatement(ps,
-                            dbDialect,
-                            toTypes(columnTypes, pkColumnTypes),
-                            toValues(columnValues, pkColumnValues));
+                                dbDialect,
+                                toTypes(columnTypes, pkColumnTypes),
+                                toValues(columnValues, pkColumnValues));
                         return ps.executeUpdate();
                     }
 
@@ -181,9 +181,9 @@ public class DbDialectTest extends BaseDbTest {
 
                     public Object doInPreparedStatement(PreparedStatement ps) throws SQLException, DataAccessException {
                         doPreparedStatement(ps,
-                            dbDialect,
-                            toTypes(columnTypes, pkColumnTypes),
-                            toValues(columnValues, pkColumnValues));
+                                dbDialect,
+                                toTypes(columnTypes, pkColumnTypes),
+                                toValues(columnValues, pkColumnValues));
                         return ps.executeUpdate();
                     }
 
@@ -209,9 +209,9 @@ public class DbDialectTest extends BaseDbTest {
 
                     public Object doInPreparedStatement(PreparedStatement ps) throws SQLException, DataAccessException {
                         doPreparedStatement(ps,
-                            dbDialect,
-                            toTypes(columnTypes, pkColumnTypes),
-                            toValues(columnValues, pkColumnValues));
+                                dbDialect,
+                                toTypes(columnTypes, pkColumnTypes),
+                                toValues(columnValues, pkColumnValues));
                         return ps.executeUpdate();
                     }
 
@@ -252,9 +252,9 @@ public class DbDialectTest extends BaseDbTest {
             String sqlValue = columnValues[i];
             int sqlType = columnTypes[i];
             Object param = SqlUtils.stringToSqlValue(sqlValue,
-                sqlType,
-                SqlUtils.isTextType(sqlType),
-                dbDialect.isEmptyStringNulled());
+                    sqlType,
+                    SqlUtils.isTextType(sqlType),
+                    dbDialect.isEmptyStringNulled());
             switch (sqlType) {
                 case Types.CLOB:
                     if (lobCreator == null) {

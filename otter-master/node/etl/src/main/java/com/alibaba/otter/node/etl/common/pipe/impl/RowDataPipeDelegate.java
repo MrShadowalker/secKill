@@ -45,19 +45,19 @@ import com.alibaba.otter.shared.etl.model.EventData;
 
 /**
  * 管道操作相关工具类
- * 
+ *
  * @author jianghang 2011-10-17 下午04:02:35
  * @version 4.0.0
  */
 public class RowDataPipeDelegate {
 
-    private RowDataMemoryPipe   rowDataMemoryPipe;
-    private AttachmentHttpPipe  attachmentHttpPipe;
-    private RowDataHttpPipe     rowDataHttpPipe;
-    private RowDataRpcPipe      rowDataRpcPipe;
+    private RowDataMemoryPipe rowDataMemoryPipe;
+    private AttachmentHttpPipe attachmentHttpPipe;
+    private RowDataHttpPipe rowDataHttpPipe;
+    private RowDataRpcPipe rowDataRpcPipe;
     private ConfigClientService configClientService;
-    private ExecutorService     executorService;
-    private long                sizeThresold = 1024 * 128L; // 默认1MB
+    private ExecutorService executorService;
+    private long sizeThresold = 1024 * 128L; // 默认1MB
 
     /**
      * 将对应的数据传递到指定的Node id节点上

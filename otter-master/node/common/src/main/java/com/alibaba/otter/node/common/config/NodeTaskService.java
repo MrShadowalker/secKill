@@ -22,7 +22,7 @@ import com.alibaba.otter.node.common.config.model.NodeTask;
 
 /**
  * Node节点任务分发的服务类
- * 
+ *
  * @author jianghang
  */
 public interface NodeTaskService {

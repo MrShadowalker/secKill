@@ -32,9 +32,9 @@ import com.alibaba.otter.shared.common.model.config.pipeline.Pipeline;
  */
 public class RemoteUrlBuilder implements InitializingBean {
 
-    private int                 defaultDownloadPort = 8080;
+    private int defaultDownloadPort = 8080;
     private ConfigClientService configClientService;
-    private String              urlFormat;
+    private String urlFormat;
 
     public void afterPropertiesSet() throws Exception {
         Assert.notNull(configClientService);
@@ -50,8 +50,8 @@ public class RemoteUrlBuilder implements InitializingBean {
 
             if (StringUtils.isEmpty(ip)) {
                 throw new ArchiveException(String.format("pipelineId:%s useExternalIp by nid[%s] has no external ip",
-                    String.valueOf(pipelineId),
-                    String.valueOf(node.getId())));
+                        String.valueOf(pipelineId),
+                        String.valueOf(node.getId())));
             }
         }
 

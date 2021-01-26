@@ -45,7 +45,7 @@ public class OtterDownStreamHandlerIntergration extends BaseOtterTest {
     @SpringBeanByName
     private ConfigClientService configClientService;
 
-    public OtterDownStreamHandlerIntergration(){
+    public OtterDownStreamHandlerIntergration() {
         ZooKeeperClient client = new ZooKeeperClient();
         client.setCluster("127.0.0.1:2181");
     }
@@ -63,8 +63,8 @@ public class OtterDownStreamHandlerIntergration extends BaseOtterTest {
         handler.setDetectingIntervalInSeconds(1);
 
         ((AutowireCapableBeanFactory) TestedObject.getSpringBeanFactory()).autowireBeanProperties(handler,
-            AutowireCapableBeanFactory.AUTOWIRE_BY_NAME,
-            false);
+                AutowireCapableBeanFactory.AUTOWIRE_BY_NAME,
+                false);
 
         final CountDownLatch count = new CountDownLatch(1);
         ExecutorService executor = Executors.newFixedThreadPool(1);

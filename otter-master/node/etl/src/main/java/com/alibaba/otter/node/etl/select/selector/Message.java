@@ -20,15 +20,15 @@ import java.util.List;
 
 /**
  * 数据对象
- * 
+ *
  * @author jianghang 2012-7-31 下午02:43:08
  */
 public class Message<T> {
 
-    private Long    id;
+    private Long id;
     private List<T> datas;
 
-    public Message(Long id, List<T> datas){
+    public Message(Long id, List<T> datas) {
         this.id = id;
         this.datas = datas;
     }

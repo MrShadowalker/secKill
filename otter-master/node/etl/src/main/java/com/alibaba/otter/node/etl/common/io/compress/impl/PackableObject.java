@@ -35,9 +35,9 @@ public abstract class PackableObject {
     protected static final int CHOOSE_EXTENSION = 1;
 
     /* Type for archive choosing: Long */
-    protected static final int CHOOSE_NAME      = 2;
+    protected static final int CHOOSE_NAME = 2;
 
-    protected final Logger     logger           = LoggerFactory.getLogger(getClass());
+    protected final Logger logger = LoggerFactory.getLogger(getClass());
 
     /**
      * Header byte array for this archive.
@@ -80,8 +80,8 @@ public abstract class PackableObject {
      * Compares a file to a list of packables and identifies an object by
      * header. If no matching header is found, it identifies the file by file
      * extension. If identification was not successfull, null is returned
-     * 
-     * @param file the file to identify
+     *
+     * @param file      the file to identify
      * @param packables a list of packables
      * @return a matching packable object, or null
      * @throws IOException

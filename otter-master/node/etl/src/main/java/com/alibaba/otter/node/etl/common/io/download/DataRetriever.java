@@ -24,7 +24,7 @@ import com.alibaba.otter.node.etl.common.io.download.exception.DataRetrieveExcep
 
 /**
  * 数据下载接口
- * 
+ *
  * @author brave.taoy
  */
 public interface DataRetriever {

@@ -62,38 +62,38 @@ import com.google.protobuf.InvalidProtocolBufferException;
 
 /**
  * 基于canal embed实现数据获取方式
- * 
+ *
  * @author jianghang 2012-7-31 下午02:45:15
  * @version 4.1.0
  */
 public class CanalEmbedSelector implements OtterSelector {
 
-    private static final Logger     logger           = LoggerFactory.getLogger(CanalEmbedSelector.class);
-    private static final String     SEP              = SystemUtils.LINE_SEPARATOR;
-    private static final String     DATE_FORMAT      = "yyyy-MM-dd HH:mm:ss";
-    private static final int        maxEmptyTimes    = 10;
-    private int                     logSplitSize     = 50;
-    private boolean                 dump             = true;
-    private boolean                 dumpDetail       = true;
-    private Long                    pipelineId;
+    private static final Logger logger = LoggerFactory.getLogger(CanalEmbedSelector.class);
+    private static final String SEP = SystemUtils.LINE_SEPARATOR;
+    private static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+    private static final int maxEmptyTimes = 10;
+    private int logSplitSize = 50;
+    private boolean dump = true;
+    private boolean dumpDetail = true;
+    private Long pipelineId;
     private CanalServerWithEmbedded canalServer;
-    private ClientIdentity          clientIdentity;
-    private MessageParser           messageParser;
-    private ConfigClientService     configClientService;
-    private OtterDownStreamHandler  handler;
+    private ClientIdentity clientIdentity;
+    private MessageParser messageParser;
+    private ConfigClientService configClientService;
+    private OtterDownStreamHandler handler;
 
-    private String                  destination;
-    private String                  filter;
-    private int                     batchSize        = 10000;
-    private long                    batchTimeout     = -1L;
-    private boolean                 ddlSync          = true;
-    private boolean                 filterTableError = false;
+    private String destination;
+    private String filter;
+    private int batchSize = 10000;
+    private long batchTimeout = -1L;
+    private boolean ddlSync = true;
+    private boolean filterTableError = false;
 
-    private CanalConfigClient       canalConfigClient;
-    private volatile boolean        running          = false;                                            // 是否处于运行中
-    private volatile long           lastEntryTime    = 0;
+    private CanalConfigClient canalConfigClient;
+    private volatile boolean running = false;                                            // 是否处于运行中
+    private volatile long lastEntryTime = 0;
 
-    public CanalEmbedSelector(Long pipelineId){
+    public CanalEmbedSelector(Long pipelineId) {
         this.pipelineId = pipelineId;
         canalServer = new CanalServerWithEmbedded();
     }
@@ -114,7 +114,7 @@ public class CanalEmbedSelector implements OtterSelector {
         batchTimeout = pipeline.getParameters().getBatchTimeout();
         ddlSync = pipeline.getParameters().getDdlSync();
         final boolean syncFull = pipeline.getParameters().getSyncMode().isRow()
-                                 || pipeline.getParameters().isEnableRemedy();
+                || pipeline.getParameters().isEnableRemedy();
         // 暂时使用skip load代替
         filterTableError = pipeline.getParameters().getSkipSelectException();
         if (pipeline.getParameters().getDumpSelector() != null) {
@@ -148,9 +148,9 @@ public class CanalEmbedSelector implements OtterSelector {
                         HAMode haMode = parameters.getHaMode();
                         if (haMode.isMedia()) {
                             return new MediaHAController(parameters.getMediaGroup(),
-                                parameters.getDbUsername(),
-                                parameters.getDbPassword(),
-                                parameters.getDefaultDatabaseName());
+                                    parameters.getDbUsername(),
+                                    parameters.getDbPassword(),
+                                    parameters.getDefaultDatabaseName());
                         } else {
                             return super.initHaController();
                         }
@@ -368,7 +368,7 @@ public class CanalEmbedSelector implements OtterSelector {
         Date date = new Date(time);
         SimpleDateFormat format = new SimpleDateFormat(DATE_FORMAT);
         return entry.getHeader().getLogfileName() + ":" + entry.getHeader().getLogfileOffset() + ":"
-               + entry.getHeader().getExecuteTime() + "(" + format.format(date) + ")";
+                + entry.getHeader().getExecuteTime() + "(" + format.format(date) + ")";
     }
 
     // ================== setter / getter ==================

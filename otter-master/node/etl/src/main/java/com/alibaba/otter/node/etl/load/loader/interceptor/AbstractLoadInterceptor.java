@@ -22,7 +22,7 @@ import com.alibaba.otter.node.etl.common.db.dialect.DbDialect;
 
 /**
  * 提供接口的默认实现
- * 
+ *
  * @author jianghang 2011-11-9 下午06:28:14
  * @version 4.0.0
  */

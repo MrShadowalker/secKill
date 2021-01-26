@@ -20,7 +20,7 @@ import com.alibaba.otter.node.etl.common.db.dialect.AbstractSqlTemplate;
 
 /**
  * oracle生成模板
- * 
+ *
  * @author jianghang 2011-10-27 下午01:41:34
  * @version 4.0.0
  */
@@ -38,9 +38,9 @@ public class OracleSqlTemplate extends AbstractSqlTemplate {
         StringBuilder sql = new StringBuilder();
 
         sql.append("merge /*+ use_nl(a b)*/ into ")
-            .append(getFullName(schemaName, tableName))
-            .append(" ")
-            .append(aliasA);
+                .append(getFullName(schemaName, tableName))
+                .append(" ")
+                .append(aliasA);
         sql.append(" using (select ");
 
         int size = columnNames.length;
@@ -58,8 +58,8 @@ public class OracleSqlTemplate extends AbstractSqlTemplate {
         size = keyNames.length;
         for (int i = 0; i < size; i++) {
             sql.append(aliasA + "." + appendEscape(keyNames[i]))
-                .append("=")
-                .append(aliasB + "." + appendEscape(keyNames[i]));
+                    .append("=")
+                    .append(aliasB + "." + appendEscape(keyNames[i]));
             sql.append((i + 1 < size) ? " and " : "");
         }
 
@@ -68,8 +68,8 @@ public class OracleSqlTemplate extends AbstractSqlTemplate {
         size = columnNames.length;
         for (int i = 0; i < size; i++) {
             sql.append(aliasA + "." + appendEscape(columnNames[i]))
-                .append("=")
-                .append(aliasB + "." + appendEscape(columnNames[i]));
+                    .append("=")
+                    .append(aliasB + "." + appendEscape(columnNames[i]));
             sql.append((i + 1 < size) ? " , " : "");
         }
 

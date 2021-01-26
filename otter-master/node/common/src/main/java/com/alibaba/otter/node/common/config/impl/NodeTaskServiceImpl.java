@@ -45,20 +45,20 @@ import com.google.common.collect.Lists;
 
 /**
  * task节点对应的任务列表管理器
- * 
+ *
  * @author jianghang
  */
 public class NodeTaskServiceImpl implements NodeTaskService, InitializingBean {
 
-    private static final Logger         logger    = LoggerFactory.getLogger(NodeTaskService.class);
+    private static final Logger logger = LoggerFactory.getLogger(NodeTaskService.class);
 
-    private NodeCommmunicationClient    nodeCommmunicationClient;
+    private NodeCommmunicationClient nodeCommmunicationClient;
     private InternalConfigClientService configClientService;
-    private List<NodeTask>              allTasks  = Collections.synchronizedList(new ArrayList<NodeTask>());
-    private List<NodeTask>              incTasks  = Collections.synchronizedList(new ArrayList<NodeTask>());
-    private List<NodeTaskListener>      listeners = Collections.synchronizedList(new ArrayList<NodeTaskListener>());
+    private List<NodeTask> allTasks = Collections.synchronizedList(new ArrayList<NodeTask>());
+    private List<NodeTask> incTasks = Collections.synchronizedList(new ArrayList<NodeTask>());
+    private List<NodeTaskListener> listeners = Collections.synchronizedList(new ArrayList<NodeTaskListener>());
 
-    public NodeTaskServiceImpl(){
+    public NodeTaskServiceImpl() {
         CommunicationRegistry.regist(ConfigEventType.notifyChannel, this);
     }
 

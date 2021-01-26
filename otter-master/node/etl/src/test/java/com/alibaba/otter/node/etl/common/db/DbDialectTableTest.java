@@ -28,7 +28,7 @@ import com.alibaba.otter.shared.common.model.config.data.db.DbDataMedia;
 
 /**
  * 测试下table表的获取操作
- * 
+ *
  * @author jianghang 2012-4-20 下午04:56:43
  * @version 4.0.2
  */
@@ -48,7 +48,7 @@ public class DbDialectTableTest extends BaseDbTest {
         Column[] columns = table.getColumns();
         for (Column column : columns) {
             System.out.println("columnName = " + column.getName() + ",columnType = " + column.getTypeCode()
-                               + ",isPrimary = " + column.isPrimaryKey() + ",nullable = " + column.isRequired());
+                    + ",isPrimary = " + column.isPrimaryKey() + ",nullable = " + column.isRequired());
         }
 
     }
@@ -64,7 +64,7 @@ public class DbDialectTableTest extends BaseDbTest {
         Column[] columns = table.getColumns();
         for (Column column : columns) {
             System.out.println("columnName = " + column.getName() + ",columnType = " + column.getTypeCode()
-                               + ",isPrimary = " + column.isPrimaryKey() + ",nullable = " + column.isRequired());
+                    + ",isPrimary = " + column.isPrimaryKey() + ",nullable = " + column.isRequired());
         }
     }
 }

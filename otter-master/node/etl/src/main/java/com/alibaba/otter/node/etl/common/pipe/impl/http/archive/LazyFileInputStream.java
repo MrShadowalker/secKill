@@ -24,16 +24,16 @@ import java.io.InputStream;
 
 /**
  * 基于lazy实现的InputSteam
- * 
+ *
  * @author jianghang 2013-3-6 下午02:24:30
  * @version 4.1.7
  */
 public class LazyFileInputStream extends InputStream {
 
     private InputStream delegate;
-    private File        file;
+    private File file;
 
-    public LazyFileInputStream(File file){
+    public LazyFileInputStream(File file) {
         this.file = file;
     }
 

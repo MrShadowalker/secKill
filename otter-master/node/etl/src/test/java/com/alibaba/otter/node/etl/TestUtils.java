@@ -24,14 +24,14 @@ import org.springframework.util.ReflectionUtils;
 
 /**
  * 提供常见的测试方法
- * 
+ *
  * @author jianghang 2011-1-30 上午11:15:54
  */
 public class TestUtils {
 
     /**
      * 获取对应属性的值
-     * 
+     *
      * @param obj
      * @param fieldName
      * @return
@@ -44,7 +44,7 @@ public class TestUtils {
 
     /**
      * 设置对应参数的值
-     * 
+     *
      * @param target
      * @param methodName
      * @param args
@@ -60,7 +60,7 @@ public class TestUtils {
 
     /**
      * 调用方法，可以是一些私有方法
-     * 
+     *
      * @param target
      * @param methodName
      * @param args
@@ -98,7 +98,7 @@ public class TestUtils {
             long memUsedNow = memoryUsed();
             // break early if have no more finalization and get constant mem used
             if ((ManagementFactory.getMemoryMXBean().getObjectPendingFinalizationCount() == 0)
-                && (memUsedNow >= memUsedPrev)) {
+                    && (memUsedNow >= memUsedPrev)) {
                 break;
             } else {
                 memUsedPrev = memUsedNow;

@@ -35,14 +35,14 @@ import com.alibaba.otter.node.etl.common.io.compress.exception.CompressException
  */
 public abstract class AbstractCompressor extends PackableObject implements Compressor {
 
-    public AbstractCompressor(){
+    public AbstractCompressor() {
         super();
     }
 
     /**
      * Returns a String with the default file extension for this compressor. For example, a zip-files default file
      * extension would be "zip" (without leading dot).
-     * 
+     *
      * @return the default file extension
      */
     public abstract String getDefaultFileExtension();

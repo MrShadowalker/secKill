@@ -26,14 +26,14 @@ import com.alibaba.otter.shared.communication.core.impl.rmi.RmiCommunicationEndp
 
 /**
  * 基于Node节点的endpoint包装
- * 
+ *
  * @author jianghang 2011-10-18 下午02:28:25
  * @version 4.0.0
  */
 public class NodeCommunicationEndpoint implements InitializingBean, DisposableBean {
 
     private CommunicationEndpoint endpoint;
-    private ConfigClientService   configClientService;
+    private ConfigClientService configClientService;
 
     public void afterPropertiesSet() throws Exception {
         // String ip = config.currentNode().getIp();

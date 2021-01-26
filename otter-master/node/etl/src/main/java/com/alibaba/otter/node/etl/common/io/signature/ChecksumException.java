@@ -26,26 +26,26 @@ public class ChecksumException extends NestableRuntimeException {
 
     private static final long serialVersionUID = -7288830284122672209L;
 
-    private String            errorCode;
-    private String            errorDesc;
+    private String errorCode;
+    private String errorDesc;
 
-    public ChecksumException(String errorCode){
+    public ChecksumException(String errorCode) {
         super(errorCode);
     }
 
-    public ChecksumException(String errorCode, Throwable cause){
+    public ChecksumException(String errorCode, Throwable cause) {
         super(errorCode, cause);
     }
 
-    public ChecksumException(String errorCode, String errorDesc){
+    public ChecksumException(String errorCode, String errorDesc) {
         super(errorCode + ":" + errorDesc);
     }
 
-    public ChecksumException(String errorCode, String errorDesc, Throwable cause){
+    public ChecksumException(String errorCode, String errorDesc, Throwable cause) {
         super(errorCode + ":" + errorDesc, cause);
     }
 
-    public ChecksumException(Throwable cause){
+    public ChecksumException(Throwable cause) {
         super(cause);
     }
 

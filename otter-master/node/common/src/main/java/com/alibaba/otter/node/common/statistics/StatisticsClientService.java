@@ -24,7 +24,7 @@ import com.alibaba.otter.shared.common.model.statistics.throughput.ThroughputSta
 
 /**
  * 统计信息的本地service
- * 
+ *
  * @author jianghang
  */
 public interface StatisticsClientService {

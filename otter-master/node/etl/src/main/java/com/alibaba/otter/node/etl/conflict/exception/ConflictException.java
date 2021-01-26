@@ -26,26 +26,26 @@ public class ConflictException extends NestableRuntimeException {
 
     private static final long serialVersionUID = -7288830284122672209L;
 
-    private String            errorCode;
-    private String            errorDesc;
+    private String errorCode;
+    private String errorDesc;
 
-    public ConflictException(String errorCode){
+    public ConflictException(String errorCode) {
         super(errorCode);
     }
 
-    public ConflictException(String errorCode, Throwable cause){
+    public ConflictException(String errorCode, Throwable cause) {
         super(errorCode, cause);
     }
 
-    public ConflictException(String errorCode, String errorDesc){
+    public ConflictException(String errorCode, String errorDesc) {
         super(errorCode + ":" + errorDesc);
     }
 
-    public ConflictException(String errorCode, String errorDesc, Throwable cause){
+    public ConflictException(String errorCode, String errorDesc, Throwable cause) {
         super(errorCode + ":" + errorDesc, cause);
     }
 
-    public ConflictException(Throwable cause){
+    public ConflictException(Throwable cause) {
         super(cause);
     }
 

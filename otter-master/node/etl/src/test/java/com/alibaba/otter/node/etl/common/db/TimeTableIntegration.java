@@ -44,19 +44,19 @@ import com.alibaba.otter.shared.common.model.config.data.db.DbMediaSource;
 
 public class TimeTableIntegration extends BaseDbTest {
 
-    private static final String SCHEMA_NAME    = "otter2";
-    private static final String TABLE_NAME     = "test_time";
+    private static final String SCHEMA_NAME = "otter2";
+    private static final String TABLE_NAME = "test_time";
     @SpringBeanByName
-    private DbDialectFactory    dbDialectFactory;
+    private DbDialectFactory dbDialectFactory;
 
-    private String[]            pkColumns      = { "id" };
-    private String[]            columns        = { "DATETIME_VALUES", "TIMESTAMP_VALUES", "DATE_VALUES", "TIME_VALUES",
-            "YEAR4_VALUES", "YEAR2_VALUES"    };
+    private String[] pkColumns = {"id"};
+    private String[] columns = {"DATETIME_VALUES", "TIMESTAMP_VALUES", "DATE_VALUES", "TIME_VALUES",
+            "YEAR4_VALUES", "YEAR2_VALUES"};
 
-    private String[]            pkColumnValues = { "1" };
+    private String[] pkColumnValues = {"1"};
 
-    private String[]            columnValues   = { "0000-00-00 00:00:00.0", "0000-00-00 00:00:00.0", "0000-00-00",
-            "00:00:00", "1", "1"              };
+    private String[] columnValues = {"0000-00-00 00:00:00.0", "0000-00-00 00:00:00.0", "0000-00-00",
+            "00:00:00", "1", "1"};
 
     @Test
     public void test_mysql() {
@@ -78,9 +78,9 @@ public class TimeTableIntegration extends BaseDbTest {
         final SqlTemplate sqlTemplate = dbDialect.getSqlTemplate();
         final JdbcTemplate jdbcTemplate = dbDialect.getJdbcTemplate();
         final TransactionTemplate transactionTemplate = dbDialect.getTransactionTemplate();
-        final int[] pkColumnTypes = { Types.INTEGER };
-        final int[] columnTypes = { Types.TIMESTAMP, Types.TIMESTAMP, Types.DATE, Types.TIME, Types.INTEGER,
-                Types.INTEGER };
+        final int[] pkColumnTypes = {Types.INTEGER};
+        final int[] columnTypes = {Types.TIMESTAMP, Types.TIMESTAMP, Types.DATE, Types.TIME, Types.INTEGER,
+                Types.INTEGER};
         transactionTemplate.execute(new TransactionCallback() {
 
             public Object doInTransaction(TransactionStatus status) {
@@ -93,9 +93,9 @@ public class TimeTableIntegration extends BaseDbTest {
 
                     public Object doInPreparedStatement(PreparedStatement ps) throws SQLException, DataAccessException {
                         doPreparedStatement(ps,
-                            dbDialect,
-                            toTypes(columnTypes, pkColumnTypes),
-                            toValues(columnValues, pkColumnValues));
+                                dbDialect,
+                                toTypes(columnTypes, pkColumnTypes),
+                                toValues(columnValues, pkColumnValues));
                         return ps.executeUpdate();
                     }
 
@@ -138,9 +138,9 @@ public class TimeTableIntegration extends BaseDbTest {
             String sqlValue = columnValues[i];
             int sqlType = columnTypes[i];
             Object param = SqlUtils.stringToSqlValue(sqlValue,
-                sqlType,
-                SqlUtils.isTextType(sqlType),
-                dbDialect.isEmptyStringNulled());
+                    sqlType,
+                    SqlUtils.isTextType(sqlType),
+                    dbDialect.isEmptyStringNulled());
             switch (sqlType) {
                 case Types.CLOB:
                     if (lobCreator == null) {

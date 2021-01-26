@@ -31,19 +31,19 @@ import com.alibaba.otter.shared.common.utils.ByteUtils;
 
 /**
  * 加密算法的实现
- * 
+ *
  * @author jianghang 2011-10-9 下午05:31:00
  * @version 4.0.0
  */
 public class AESUtils {
 
     private static final String ENCRYPTION_ALGORITHM = "AES";
-    private static final int    KEY_SIZE             = 128;
-    private byte[]              secretKey;
+    private static final int KEY_SIZE = 128;
+    private byte[] secretKey;
 
     /**
      * 生成AES密钥
-     * 
+     *
      * @return Secret key
      * @throws AESException AES exception
      */
@@ -63,7 +63,7 @@ public class AESUtils {
 
     /**
      * 加密byte数据
-     * 
+     *
      * @param plainData
      * @return
      * @throws AESException
@@ -90,7 +90,7 @@ public class AESUtils {
 
     /**
      * 解密byte数据
-     * 
+     *
      * @param encrypted
      * @return
      * @throws AESException
@@ -116,7 +116,7 @@ public class AESUtils {
 
     /**
      * 获取生成的加密密钥
-     * 
+     *
      * @return
      */
     public String getSecretyKeyString() {

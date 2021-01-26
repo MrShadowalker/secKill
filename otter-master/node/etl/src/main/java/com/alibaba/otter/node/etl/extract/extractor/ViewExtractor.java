@@ -85,17 +85,17 @@ public class ViewExtractor extends AbstractExtractor<DbBatch> {
 
                 if (CollectionUtils.isEmpty(eventData.getKeys())) { // 无主键，报错
                     throw new ExtractException(
-                                               String.format("eventData after viewExtractor has no pks , pls check! identity:%s, new eventData:%s",
-                                                             dbBatch.getRowBatch().getIdentity().toString(),
-                                                             eventData.toString()));
+                            String.format("eventData after viewExtractor has no pks , pls check! identity:%s, new eventData:%s",
+                                    dbBatch.getRowBatch().getIdentity().toString(),
+                                    eventData.toString()));
                 }
 
                 // insert：可能view视图只有主键字段，针对无字段情况需要通过
                 // delete: eventData本身就没有字段信息，针对无字段情况需要通过
                 // update: 过滤后如果无字段(变更需要同步)和主键变更，则可以忽略之，避免sql语法错误
                 if (eventData.getEventType().isUpdate()
-                    && (CollectionUtils.isEmpty(eventData.getColumns()) || CollectionUtils.isEmpty(eventData.getUpdatedColumns()))
-                    && CollectionUtils.isEmpty(eventData.getOldKeys())) {
+                        && (CollectionUtils.isEmpty(eventData.getColumns()) || CollectionUtils.isEmpty(eventData.getUpdatedColumns()))
+                        && CollectionUtils.isEmpty(eventData.getOldKeys())) {
                     // 过滤之后无字段需要同步，并且不存在主键变更同步，则忽略该记录
                     removeDatas.add(eventData);
                 }

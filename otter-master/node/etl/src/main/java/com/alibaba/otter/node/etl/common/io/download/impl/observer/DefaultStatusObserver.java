@@ -28,7 +28,7 @@ public class DefaultStatusObserver extends StatusObserver {
 
     private Logger logger;
 
-    public DefaultStatusObserver(Logger logger){
+    public DefaultStatusObserver(Logger logger) {
         this.logger = logger;
     }
 

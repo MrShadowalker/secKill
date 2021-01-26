@@ -53,11 +53,11 @@ public class CanalFilterSupport {
         }
 
         String markTable = pipeline.getParameters().getSystemSchema() + "."
-                           + pipeline.getParameters().getSystemMarkTable();
+                + pipeline.getParameters().getSystemMarkTable();
         String bufferTable = pipeline.getParameters().getSystemSchema() + "."
-                             + pipeline.getParameters().getSystemBufferTable();
+                + pipeline.getParameters().getSystemBufferTable();
         String dualTable = pipeline.getParameters().getSystemSchema() + "."
-                           + pipeline.getParameters().getSystemDualTable();
+                + pipeline.getParameters().getSystemDualTable();
 
         if (!mediaNames.contains(markTable)) {
             result.append(",").append(markTable);

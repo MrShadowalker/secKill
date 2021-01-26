@@ -42,18 +42,18 @@ import com.alibaba.otter.shared.communication.model.statistics.ThroughputStatEve
 
 /**
  * 统计信息的本地客户端服务
- * 
+ *
  * @author jianghang
  */
 public class StatisticsClientServiceImpl implements StatisticsClientService, InitializingBean {
 
-    private static final Logger                logger                = LoggerFactory.getLogger(StatisticsClientServiceImpl.class);
-    private static final int                   DEFAULT_POOL          = 10;
+    private static final Logger logger = LoggerFactory.getLogger(StatisticsClientServiceImpl.class);
+    private static final int DEFAULT_POOL = 10;
     // 使用一个buffer队列，保证inc/desc/reset的发送操作为一个串行过程
-    private BlockingQueue<DelayCountEvent>     delayCountStatsBuffer = new LinkedBlockingQueue<DelayCountEvent>(
-                                                                                                                10 * 1000);
+    private BlockingQueue<DelayCountEvent> delayCountStatsBuffer = new LinkedBlockingQueue<DelayCountEvent>(
+            10 * 1000);
     private static ScheduledThreadPoolExecutor scheduler;
-    private NodeCommmunicationClient           nodeCommmunicationClient;
+    private NodeCommmunicationClient nodeCommmunicationClient;
 
     public void sendIncDelayCount(final DelayCount delayCount) {
         DelayCountEvent event = new DelayCountEvent();
@@ -120,7 +120,7 @@ public class StatisticsClientServiceImpl implements StatisticsClientService, Ini
     // ================= helper method ==============
     public void afterPropertiesSet() throws Exception {
         scheduler = new ScheduledThreadPoolExecutor(DEFAULT_POOL, new NamedThreadFactory("Otter-Statistics-Client"),
-                                                    new ThreadPoolExecutor.CallerRunsPolicy());
+                new ThreadPoolExecutor.CallerRunsPolicy());
         scheduler.submit(new Runnable() {
 
             public void run() {

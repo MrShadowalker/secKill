@@ -18,7 +18,7 @@ package com.alibaba.otter.node.etl.common.io.signature;
 
 /**
  * 提供基于checksum的签名方式
- * 
+ *
  * @author jianghang 2011-10-9 下午05:43:04
  * @version 4.0.0
  */

@@ -32,13 +32,13 @@ import com.alibaba.otter.shared.etl.model.EventData;
 
 /**
  * operator的调用工厂
- * 
+ *
  * @author jianghang 2011-10-31 下午03:20:16
  * @version 4.0.0
  */
 public class OperationInterceptorFactory extends AbstractLoadInterceptor<DbLoadContext, EventData> {
 
-    private DbDialectFactory  dbDialectFactory;
+    private DbDialectFactory dbDialectFactory;
     private LoadInterceptor[] mysqlInterceptors;
     private LoadInterceptor[] oracleInterceptors;
     private LoadInterceptor[] empty = new LoadInterceptor[0];
@@ -63,7 +63,7 @@ public class OperationInterceptorFactory extends AbstractLoadInterceptor<DbLoadC
         }
         DataMedia dataMedia = ConfigHelper.findDataMedia(context.getPipeline(), currentData.get(0).getTableId());
         DbDialect dbDialect = dbDialectFactory.getDbDialect(context.getIdentity().getPipelineId(),
-                                                            (DbMediaSource) dataMedia.getSource());
+                (DbMediaSource) dataMedia.getSource());
 
         if (dbDialect instanceof MysqlDialect) {
             return mysqlInterceptors;

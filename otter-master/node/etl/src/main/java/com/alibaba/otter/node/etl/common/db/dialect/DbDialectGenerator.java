@@ -30,36 +30,36 @@ import com.alibaba.otter.shared.common.model.config.data.DataMediaType;
  */
 public class DbDialectGenerator {
 
-    protected static final String ORACLE      = "oracle";
-    protected static final String MYSQL       = "mysql";
-    protected static final String TDDL_GROUP  = "TGroupDatabase";
+    protected static final String ORACLE = "oracle";
+    protected static final String MYSQL = "mysql";
+    protected static final String TDDL_GROUP = "TGroupDatabase";
     protected static final String TDDL_CLIENT = "TDDL";
 
-    protected LobHandler          defaultLobHandler;
-    protected LobHandler          oracleLobHandler;
+    protected LobHandler defaultLobHandler;
+    protected LobHandler oracleLobHandler;
 
     protected DbDialect generate(JdbcTemplate jdbcTemplate, String databaseName, String databaseNameVersion,
                                  int databaseMajorVersion, int databaseMinorVersion, DataMediaType dataMediaType) {
         DbDialect dialect = null;
 
         if (StringUtils.startsWithIgnoreCase(databaseName, ORACLE)) { // for
-                                                                      // oracle
+            // oracle
             dialect = new OracleDialect(jdbcTemplate,
-                oracleLobHandler,
-                databaseName,
-                databaseMajorVersion,
-                databaseMinorVersion);
+                    oracleLobHandler,
+                    databaseName,
+                    databaseMajorVersion,
+                    databaseMinorVersion);
         } else if (StringUtils.startsWithIgnoreCase(databaseName, MYSQL)) { // for
-                                                                            // mysql
+            // mysql
             dialect = new MysqlDialect(jdbcTemplate,
-                defaultLobHandler,
-                databaseName,
-                databaseNameVersion,
-                databaseMajorVersion,
-                databaseMinorVersion);
+                    defaultLobHandler,
+                    databaseName,
+                    databaseNameVersion,
+                    databaseMajorVersion,
+                    databaseMinorVersion);
         } else if (StringUtils.startsWithIgnoreCase(databaseName, TDDL_GROUP)) { // for
-                                                                                 // tddl
-                                                                                 // group
+            // tddl
+            // group
             throw new RuntimeException(databaseName + " type is not support!");
         } else if (StringUtils.startsWithIgnoreCase(databaseName, TDDL_CLIENT)) {
             throw new RuntimeException(databaseName + " type is not support!");

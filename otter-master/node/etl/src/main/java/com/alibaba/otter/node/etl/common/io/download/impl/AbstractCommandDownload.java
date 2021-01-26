@@ -33,17 +33,17 @@ import com.alibaba.otter.shared.common.utils.cmd.Exec;
 
 public abstract class AbstractCommandDownload extends Observable implements Download {
 
-    protected final Logger   logger = LoggerFactory.getLogger(getClass());
-    protected AtomicBoolean  aborted;
-    protected String         cmd;
-    protected AtomicBoolean  completed;
-    protected AtomicBoolean  paused;
+    protected final Logger logger = LoggerFactory.getLogger(getClass());
+    protected AtomicBoolean aborted;
+    protected String cmd;
+    protected AtomicBoolean completed;
+    protected AtomicBoolean paused;
     protected DownloadStatus status;
-    protected String         targetDir;
-    protected File           targetFile;
-    protected String         url;
+    protected String targetDir;
+    protected File targetFile;
+    protected String url;
 
-    public AbstractCommandDownload(String cmdPath, String url, String dir, String[] params){
+    public AbstractCommandDownload(String cmdPath, String url, String dir, String[] params) {
         this.url = url;
         // 下载文件名
         String fileName = url.substring(url.lastIndexOf("/") + 1).replace("%20", " ");
@@ -90,7 +90,7 @@ public abstract class AbstractCommandDownload extends Observable implements Down
         } catch (Exception ex) {
             aborted.set(true);
             notifyException(new DataRetrieveException((result != null) ? ex.getMessage() + SystemUtils.LINE_SEPARATOR
-                                                                         + result.toString() : ex.getMessage(), ex));
+                    + result.toString() : ex.getMessage(), ex));
         }
 
     }
@@ -131,7 +131,7 @@ public abstract class AbstractCommandDownload extends Observable implements Down
                 throw new DataRetrieveException(e);
             }
         } else {
-            return new byte[] { (byte) 0 };
+            return new byte[]{(byte) 0};
         }
     }
 

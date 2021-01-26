@@ -39,13 +39,13 @@ import com.alibaba.otter.shared.etl.model.EventType;
  * <pre>
  * 合并相同tableId的变更记录.
  * pk相同的多条变更数据合并后的结果是：
- * 1, I 
- * 2, U 
- * 3, D 
+ * 1, I
+ * 2, U
+ * 3, D
  * 如果有一条I，多条U，merge成I;
  * 如果有多条U，取最晚的那条;
  * </pre>
- * 
+ *
  * @author jianghang 2012-10-31 下午05:23:40
  * @version 4.1.2
  */
@@ -55,7 +55,7 @@ public class DbLoadMerger {
 
     /**
      * 将一批数据进行根据table+主键信息进行合并，保证一个表的一个pk记录只有一条结果
-     * 
+     *
      * @param eventDatas
      * @return
      */
@@ -87,7 +87,7 @@ public class DbLoadMerger {
     private static void mergeInsert(EventData eventData, Map<RowKey, EventData> result) {
         // insert无主键变更的处理
         RowKey rowKey = new RowKey(eventData.getTableId(), eventData.getSchemaName(), eventData.getTableName(),
-                                   eventData.getKeys());
+                eventData.getKeys());
         if (!result.containsKey(rowKey)) {
             result.put(rowKey, eventData);
         } else {
@@ -97,7 +97,7 @@ public class DbLoadMerger {
             if (oldEventData.getEventType() == EventType.DELETE) {
                 result.put(rowKey, eventData);
             } else if (oldEventData.getEventType() == EventType.UPDATE
-                       || oldEventData.getEventType() == EventType.INSERT) {
+                    || oldEventData.getEventType() == EventType.INSERT) {
                 // insert之前出现了update逻辑上不可能，唯一的可能性主要是Freedom的介入，人为的插入了一条Insert记录
                 // 不过freedom一般不建议Insert操作，只建议执行update/delete操作. update默认会走merge
                 // sql,不存在即插入
@@ -112,11 +112,11 @@ public class DbLoadMerger {
 
     private static void mergeUpdate(EventData eventData, Map<RowKey, EventData> result) {
         RowKey rowKey = new RowKey(eventData.getTableId(), eventData.getSchemaName(), eventData.getTableName(),
-                                   eventData.getKeys());
+                eventData.getKeys());
         if (!CollectionUtils.isEmpty(eventData.getOldKeys())) {// 存在主键变更
             // 需要解决(1->2 , 2->3)级联主键变更的问题
             RowKey oldKey = new RowKey(eventData.getTableId(), eventData.getSchemaName(), eventData.getTableName(),
-                                       eventData.getOldKeys());
+                    eventData.getOldKeys());
             if (!result.containsKey(oldKey)) {// 不需要级联
                 result.put(rowKey, eventData);
             } else {
@@ -154,9 +154,9 @@ public class DbLoadMerger {
                     EventData mergeEventData = replaceColumnValue(eventData, oldEventData);
                     result.put(rowKey, mergeEventData);
                 } else if (oldEventData.getEventType() == EventType.UPDATE) {// 可能存在
-                                                                             // 1->2
-                                                                             // ,
-                                                                             // 2update的问题
+                    // 1->2
+                    // ,
+                    // 2update的问题
 
                     // 如果上一条变更是update的，把上一条存在而这一条不存在的数据拷贝到这一条中
                     EventData mergeEventData = replaceColumnValue(eventData, oldEventData);
@@ -172,7 +172,7 @@ public class DbLoadMerger {
     private static void mergeDelete(EventData eventData, Map<RowKey, EventData> result) {
         // 只保留pks，把columns去掉. 以后针对数据仓库可以开放delete columns记录
         RowKey rowKey = new RowKey(eventData.getTableId(), eventData.getSchemaName(), eventData.getTableName(),
-                                   eventData.getKeys());
+                eventData.getKeys());
         if (!result.containsKey(rowKey)) {
             result.put(rowKey, eventData);
         } else {
@@ -185,7 +185,7 @@ public class DbLoadMerger {
 
                 result.remove(rowKey);// 删除老的对象
                 result.put(new RowKey(eventData.getTableId(), eventData.getSchemaName(), eventData.getTableName(),
-                                      eventData.getKeys()), eventData); // key发生变化，需要重新构造一个RowKey
+                        eventData.getKeys()), eventData); // key发生变化，需要重新构造一个RowKey
             } else {
                 eventData.getOldKeys().clear();// 清除oldKeys
                 result.put(rowKey, eventData);
@@ -196,7 +196,7 @@ public class DbLoadMerger {
 
     /**
      * 把old中的值存在而new中不存在的值合并到new中,并且把old中的变更前的主键保存到new中的变更前的主键.
-     * 
+     *
      * @param newEventData
      * @param oldEventData
      * @return
@@ -239,17 +239,17 @@ public class DbLoadMerger {
     public static class RowKey implements Serializable {
 
         private static final long serialVersionUID = -7369951798499581038L;
-        private Long              tableId;
-        private String            schemaName;                              // tableId代表统配符时，需要指定schemaName
-        private String            tableName;                               // tableId代表统配符时，需要指定tableName
+        private Long tableId;
+        private String schemaName;                              // tableId代表统配符时，需要指定schemaName
+        private String tableName;                               // tableId代表统配符时，需要指定tableName
 
-        public RowKey(Long tableId, String schemaName, String tableName, List<EventColumn> keys){
+        public RowKey(Long tableId, String schemaName, String tableName, List<EventColumn> keys) {
             this.schemaName = schemaName;
             this.tableName = tableName;
             this.keys = keys;
         }
 
-        public RowKey(List<EventColumn> keys){
+        public RowKey(List<EventColumn> keys) {
             this.keys = keys;
         }
 

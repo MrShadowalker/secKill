@@ -29,17 +29,17 @@ import org.springframework.jdbc.support.nativejdbc.NativeJdbcExtractor;
 
 /**
  * copy from otter3.0，根据不同的数据源自动选择对应的NativeJdbcExtractor
- * 
+ *
  * @author jianghang 2011-10-27 下午03:35:17
  * @version 4.0.0
  */
 public class AutomaticJdbcExtractor implements NativeJdbcExtractor {
 
-    private NativeJdbcExtractor              defaultJdbcExtractor;
+    private NativeJdbcExtractor defaultJdbcExtractor;
     private Map<String, NativeJdbcExtractor> extractors;
-    private NativeJdbcExtractor              jdbcExtractor;
+    private NativeJdbcExtractor jdbcExtractor;
 
-    public AutomaticJdbcExtractor(){
+    public AutomaticJdbcExtractor() {
     }
 
     public boolean isNativeConnectionNecessaryForNativeStatements() {

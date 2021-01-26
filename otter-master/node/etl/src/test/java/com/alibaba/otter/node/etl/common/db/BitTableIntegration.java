@@ -46,17 +46,17 @@ import com.alibaba.otter.shared.common.model.config.data.db.DbMediaSource;
 
 public class BitTableIntegration extends BaseDbTest {
 
-    private static final String SCHEMA_NAME    = "test";
-    private static final String TABLE_NAME     = "test_bit";
+    private static final String SCHEMA_NAME = "test";
+    private static final String TABLE_NAME = "test_bit";
     @SpringBeanByName
-    private DbDialectFactory    dbDialectFactory;
+    private DbDialectFactory dbDialectFactory;
 
-    private String[]            pkColumns      = { "id" };
-    private String[]            columns        = { "onebit_value", "bits_values" };
+    private String[] pkColumns = {"id"};
+    private String[] columns = {"onebit_value", "bits_values"};
 
-    private String[]            pkColumnValues = { "3" };
+    private String[] pkColumnValues = {"3"};
 
-    private String[]            columnValues   = { "1", "63" };
+    private String[] columnValues = {"1", "63"};
 
     @Test
     public void test_mysql() throws UnsupportedEncodingException {
@@ -78,8 +78,8 @@ public class BitTableIntegration extends BaseDbTest {
         final SqlTemplate sqlTemplate = dbDialect.getSqlTemplate();
         final JdbcTemplate jdbcTemplate = dbDialect.getJdbcTemplate();
         final TransactionTemplate transactionTemplate = dbDialect.getTransactionTemplate();
-        final int[] pkColumnTypes = { Types.INTEGER };
-        final int[] columnTypes = { Types.BIT, Types.BIT };
+        final int[] pkColumnTypes = {Types.INTEGER};
+        final int[] columnTypes = {Types.BIT, Types.BIT};
         transactionTemplate.execute(new TransactionCallback() {
 
             public Object doInTransaction(TransactionStatus status) {
@@ -92,9 +92,9 @@ public class BitTableIntegration extends BaseDbTest {
 
                     public Object doInPreparedStatement(PreparedStatement ps) throws SQLException, DataAccessException {
                         doPreparedStatement(ps,
-                            dbDialect,
-                            toTypes(columnTypes, pkColumnTypes),
-                            toValues(columnValues, pkColumnValues));
+                                dbDialect,
+                                toTypes(columnTypes, pkColumnTypes),
+                                toValues(columnValues, pkColumnValues));
                         return ps.executeUpdate();
                     }
 
@@ -137,9 +137,9 @@ public class BitTableIntegration extends BaseDbTest {
             String sqlValue = columnValues[i];
             int sqlType = columnTypes[i];
             Object param = SqlUtils.stringToSqlValue(sqlValue,
-                sqlType,
-                SqlUtils.isTextType(sqlType),
-                dbDialect.isEmptyStringNulled());
+                    sqlType,
+                    SqlUtils.isTextType(sqlType),
+                    dbDialect.isEmptyStringNulled());
             switch (sqlType) {
                 case Types.CLOB:
                     if (lobCreator == null) {

@@ -29,7 +29,7 @@ import com.alibaba.otter.shared.common.utils.NioUtils;
 
 /**
  * 从文件系统中获取数据
- * 
+ *
  * @author brave.taoy
  * @author jianghang 2011-10-10 下午06:14:46
  * @version 4.0.0
@@ -37,11 +37,11 @@ import com.alibaba.otter.shared.common.utils.NioUtils;
 public class FileRetriever implements DataRetriever {
 
     private static Logger logger = LoggerFactory.getLogger(FileRetriever.class);
-    private boolean       mAbort = false;
-    private long          mByteOffset;
-    private File          mFile;
+    private boolean mAbort = false;
+    private long mByteOffset;
+    private File mFile;
 
-    public FileRetriever(File pFile){
+    public FileRetriever(File pFile) {
         mFile = pFile;
     }
 

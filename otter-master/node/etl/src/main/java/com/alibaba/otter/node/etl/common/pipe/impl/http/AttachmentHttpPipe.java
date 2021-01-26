@@ -49,15 +49,15 @@ import com.alibaba.otter.shared.etl.model.Identity;
 
 /**
  * 基于文件附件的http协议的管道
- * 
+ *
  * @author jianghang 2011-10-17 下午03:11:44
  * @version 4.0.0
  */
 public class AttachmentHttpPipe extends AbstractHttpPipe<Object, HttpPipeKey> implements BeanFactoryAware {
 
-    private static final Logger logger  = LoggerFactory.getLogger(AttachmentHttpPipe.class);
-    private BeanFactory         beanFactory;
-    private boolean             encrypt = false;
+    private static final Logger logger = LoggerFactory.getLogger(AttachmentHttpPipe.class);
+    private BeanFactory beanFactory;
+    private boolean encrypt = false;
 
     @Override
     public HttpPipeKey put(Object data) throws PipeException {
@@ -133,7 +133,7 @@ public class AttachmentHttpPipe extends AbstractHttpPipe<Object, HttpPipeKey> im
     private File unpackFile(HttpPipeKey key) {
         Pipeline pipeline = configClientService.findPipeline(key.getIdentity().getPipelineId());
         DataRetriever dataRetriever = dataRetrieverFactory.createRetriever(pipeline.getParameters().getRetriever(),
-                                                                           key.getUrl(), downloadDir);
+                key.getUrl(), downloadDir);
         File archiveFile = null;
         try {
             dataRetriever.connect();
@@ -153,8 +153,8 @@ public class AttachmentHttpPipe extends AbstractHttpPipe<Object, HttpPipeKey> im
 
         // 去除末尾的.gzip后缀，做为解压目录
         String dir = StringUtils.removeEnd(archiveFile.getPath(),
-                                           FilenameUtils.EXTENSION_SEPARATOR_STR
-                                                   + FilenameUtils.getExtension(archiveFile.getPath()));
+                FilenameUtils.EXTENSION_SEPARATOR_STR
+                        + FilenameUtils.getExtension(archiveFile.getPath()));
         File unpackDir = new File(dir);
         // 开始解压
         getArchiveBean().unpack(archiveFile, unpackDir);
@@ -166,7 +166,7 @@ public class AttachmentHttpPipe extends AbstractHttpPipe<Object, HttpPipeKey> im
         Date now = new Date();
         String time = new SimpleDateFormat(DATE_FORMAT).format(now);
         return MessageFormat.format("{0}-{1}-{2}-{3}-{4}.gzip", prefix, time, String.valueOf(identity.getChannelId()),
-                                    String.valueOf(identity.getPipelineId()), String.valueOf(identity.getProcessId()));
+                String.valueOf(identity.getPipelineId()), String.valueOf(identity.getProcessId()));
     }
 
     private ArchiveBean getArchiveBean() {

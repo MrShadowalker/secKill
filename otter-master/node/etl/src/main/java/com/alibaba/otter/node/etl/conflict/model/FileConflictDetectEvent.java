@@ -21,16 +21,16 @@ import com.alibaba.otter.shared.etl.model.FileBatch;
 
 /**
  * 文件冲突检测事件
- * 
+ *
  * @author jianghang
  */
 public class FileConflictDetectEvent extends Event {
 
     private static final long serialVersionUID = 476657754177940448L;
 
-    private FileBatch         fileBatch;
+    private FileBatch fileBatch;
 
-    public FileConflictDetectEvent(){
+    public FileConflictDetectEvent() {
         super(ConflictEventType.fileConflictDetect);
     }
 

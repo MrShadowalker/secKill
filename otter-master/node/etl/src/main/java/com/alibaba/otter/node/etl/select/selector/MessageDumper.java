@@ -30,17 +30,17 @@ import com.alibaba.otter.shared.etl.model.EventData;
 
 /**
  * dump记录
- * 
+ *
  * @author jianghang 2011-11-9 下午03:52:26
  * @version 4.0.0
  */
 public class MessageDumper {
 
-    private static final String SEP                    = SystemUtils.LINE_SEPARATOR;
-    private static final String TIMESTAMP_FORMAT       = "yyyy-MM-dd HH:mm:ss:SSS";
-    private static String       context_format         = null;
-    private static String       eventData_format       = null;
-    private static int          event_default_capacity = 1024;                      // 预设值StringBuilder，减少扩容影响
+    private static final String SEP = SystemUtils.LINE_SEPARATOR;
+    private static final String TIMESTAMP_FORMAT = "yyyy-MM-dd HH:mm:ss:SSS";
+    private static String context_format = null;
+    private static String eventData_format = null;
+    private static int event_default_capacity = 1024;                      // 预设值StringBuilder，减少扩容影响
 
     static {
         context_format = "* Batch Id: [{0}] ,total : [{1}] , normal : [{2}] , filter :[{3}] , Time : {4}" + SEP;
@@ -67,7 +67,7 @@ public class MessageDumper {
         SimpleDateFormat format = new SimpleDateFormat(TIMESTAMP_FORMAT);
         int normal = message.getDatas().size();
         return MessageFormat.format(context_format, String.valueOf(message.getId()), total, normal, total - normal,
-                                    format.format(now), startPosition, endPosition);
+                format.format(now), startPosition, endPosition);
     }
 
     public static String dumpEventDatas(List<EventData> eventDatas) {
@@ -86,11 +86,11 @@ public class MessageDumper {
     public static String dumpEventData(EventData eventData) {
         boolean remedy = eventData.isRemedy();
         return MessageFormat.format(eventData_format, String.valueOf(eventData.getTableId()),
-                                    eventData.getSchemaName(), eventData.getTableName(),
-                                    eventData.getEventType().getValue(), String.valueOf(eventData.getExecuteTime()),
-                                    remedy, dumpEventColumn(eventData.getKeys()),
-                                    dumpEventColumn(eventData.getOldKeys()), dumpEventColumn(eventData.getColumns()),
-                                    "\t" + eventData.getSql());
+                eventData.getSchemaName(), eventData.getTableName(),
+                eventData.getEventType().getValue(), String.valueOf(eventData.getExecuteTime()),
+                remedy, dumpEventColumn(eventData.getKeys()),
+                dumpEventColumn(eventData.getOldKeys()), dumpEventColumn(eventData.getColumns()),
+                "\t" + eventData.getSql());
     }
 
     private static String dumpEventColumn(List<EventColumn> columns) {

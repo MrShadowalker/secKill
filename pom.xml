@@ -18,6 +18,7 @@
 
     <modules>
         <module>miaosha-dao</module>
+        <module>miaosha-job</module>
         <module>miaosha-service</module>
         <module>miaosha-web</module>
     </modules>

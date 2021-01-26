@@ -56,17 +56,17 @@ import com.google.common.collect.OtterMigrateMap;
 
 /**
  * 针对RowData的数据载入实现
- * 
+ *
  * @author jianghang 2011-10-27 上午11:15:48
  * @version 4.0.0
  */
 public class DataBatchLoader implements OtterLoader<DbBatch, List<LoadContext>>, BeanFactoryAware {
 
     private static final Logger logger = LoggerFactory.getLogger(DataBatchLoader.class);
-    private ExecutorService     executorService;
-    private BeanFactory         beanFactory;
+    private ExecutorService executorService;
+    private BeanFactory beanFactory;
     private ConfigClientService configClientService;
-    private LoadInterceptor     dbInterceptor;
+    private LoadInterceptor dbInterceptor;
 
     public List<LoadContext> load(DbBatch data) {
         final RowBatch rowBatch = data.getRowBatch();
@@ -173,7 +173,7 @@ public class DataBatchLoader implements OtterLoader<DbBatch, List<LoadContext>>,
                             String.valueOf(fileBatch.getIdentity().getPipelineId()));
 
                     FileLoadAction fileLoadAction = (FileLoadAction) beanFactory.getBean("fileLoadAction",
-                                                                                         FileLoadAction.class);
+                            FileLoadAction.class);
                     return fileLoadAction.load(fileBatch, rootDir, controller);
                 } finally {
                     MDC.remove(OtterConstants.splitPipelineLogFileKey);
@@ -194,7 +194,7 @@ public class DataBatchLoader implements OtterLoader<DbBatch, List<LoadContext>>,
                                 String.valueOf(rowBatch.getIdentity().getPipelineId()));
                         // dbLoadAction是一个pool池化对象
                         DbLoadAction dbLoadAction = (DbLoadAction) beanFactory.getBean("dbLoadAction",
-                                                                                       DbLoadAction.class);
+                                DbLoadAction.class);
                         return dbLoadAction.load(rowBatch, controller);
                     } finally {
                         MDC.remove(OtterConstants.splitPipelineLogFileKey);
@@ -221,7 +221,7 @@ public class DataBatchLoader implements OtterLoader<DbBatch, List<LoadContext>>,
         for (EventData eventData : rowBatch.getDatas()) {
             // 获取介质信息
             DataMedia media = ConfigHelper.findDataMedia(configClientService.findPipeline(identity.getPipelineId()),
-                                                         eventData.getTableId());
+                    eventData.getTableId());
             result.get(media.getSource()).merge(eventData); // 归类
         }
 

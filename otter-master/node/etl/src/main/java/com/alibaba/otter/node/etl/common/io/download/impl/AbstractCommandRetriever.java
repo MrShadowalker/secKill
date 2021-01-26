@@ -32,20 +32,20 @@ import com.alibaba.otter.shared.common.utils.NioUtils;
 
 /**
  * 基于命令行工具的下载
- * 
+ *
  * @author jianghang 2011-10-10 下午05:43:24
  * @version 4.0.0
  */
 public abstract class AbstractCommandRetriever implements DataRetriever {
 
-    protected final Logger            logger = LoggerFactory.getLogger(getClass());
+    protected final Logger logger = LoggerFactory.getLogger(getClass());
     protected AbstractCommandDownload download;
 
-    public AbstractCommandRetriever(String cmdPath, String url, String targetDir){
+    public AbstractCommandRetriever(String cmdPath, String url, String targetDir) {
         this.buildDownload(cmdPath, url, targetDir, null);
     }
 
-    public AbstractCommandRetriever(String cmdPath, String url, String targetDir, String[] params){
+    public AbstractCommandRetriever(String cmdPath, String url, String targetDir, String[] params) {
         this.buildDownload(cmdPath, url, targetDir, params);
     }
 

@@ -28,7 +28,7 @@ import org.springframework.jdbc.support.nativejdbc.NativeJdbcExtractor;
 
 /**
  * A class to lazily instantiate a native JDBC extractor.
- * <p />
+ * <p/>
  * We need to lazily instantiate it because otherwise Spring will construct it for us, and users might get class not
  * found errors (eg if they're not using Weblogic and Spring tries to load the WeblogicNativeJdbcExtractor, things get
  * ugly).
@@ -36,9 +36,9 @@ import org.springframework.jdbc.support.nativejdbc.NativeJdbcExtractor;
 public class LazyNativeJdbcExtractor implements NativeJdbcExtractor {
 
     private NativeJdbcExtractor delegatedExtractor;
-    private Class               extractorClass;
+    private Class extractorClass;
 
-    public LazyNativeJdbcExtractor(){
+    public LazyNativeJdbcExtractor() {
     }
 
     public void setExtractorClass(Class extractorClass) {
@@ -52,17 +52,17 @@ public class LazyNativeJdbcExtractor implements NativeJdbcExtractor {
             }
         } catch (IllegalAccessException e) {
             throw new NestableRuntimeException("Error occurred trying to instantiate a native extractor of type: "
-                                               + extractorClass, e);
+                    + extractorClass, e);
         } catch (InstantiationException e) {
             throw new NestableRuntimeException("Error occurred trying to instantiate a native extractor of type: "
-                                               + extractorClass, e);
+                    + extractorClass, e);
         }
 
         if (delegatedExtractor != null) {
             return delegatedExtractor;
         } else {
             throw new NestableRuntimeException("Error occurred trying to instantiate a native extractor of type: "
-                                               + extractorClass);
+                    + extractorClass);
         }
     }
 

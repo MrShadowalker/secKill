@@ -45,17 +45,17 @@ import com.alibaba.otter.shared.common.model.config.data.db.DbMediaSource;
 
 public class DbDialectIntegration extends BaseDbTest {
 
-    private static final String SCHEMA_NAME    = "test";
-    private static final String TABLE_NAME     = "ljh_demo";
+    private static final String SCHEMA_NAME = "test";
+    private static final String TABLE_NAME = "ljh_demo";
     @SpringBeanByName
-    private DbDialectFactory    dbDialectFactory;
+    private DbDialectFactory dbDialectFactory;
 
-    private String[]            pkColumns      = { "id" };
-    private String[]            columns        = { "name", "enum_value", "bigint_value", "int_value" };
+    private String[] pkColumns = {"id"};
+    private String[] columns = {"name", "enum_value", "bigint_value", "int_value"};
 
-    private String[]            pkColumnValues = { "10" };
+    private String[] pkColumnValues = {"10"};
 
-    private String[]            columnValues   = { "hello", "1", "9223372036854775808", "2147483648" };
+    private String[] columnValues = {"hello", "1", "9223372036854775808", "2147483648"};
 
     @Test(expectedExceptions = RuntimeException.class)
     public void test_mysql() {
@@ -77,8 +77,8 @@ public class DbDialectIntegration extends BaseDbTest {
         final SqlTemplate sqlTemplate = dbDialect.getSqlTemplate();
         final JdbcTemplate jdbcTemplate = dbDialect.getJdbcTemplate();
         final TransactionTemplate transactionTemplate = dbDialect.getTransactionTemplate();
-        final int[] pkColumnTypes = { Types.INTEGER };
-        final int[] columnTypes = { Types.VARCHAR, Types.INTEGER, Types.DECIMAL, Types.BIGINT };
+        final int[] pkColumnTypes = {Types.INTEGER};
+        final int[] columnTypes = {Types.VARCHAR, Types.INTEGER, Types.DECIMAL, Types.BIGINT};
         transactionTemplate.execute(new TransactionCallback() {
 
             public Object doInTransaction(TransactionStatus status) {
@@ -91,7 +91,7 @@ public class DbDialectIntegration extends BaseDbTest {
 
                     public Object doInPreparedStatement(PreparedStatement ps) throws SQLException, DataAccessException {
                         doPreparedStatement(ps, dbDialect, toTypes(columnTypes, pkColumnTypes),
-                                            toValues(columnValues, pkColumnValues));
+                                toValues(columnValues, pkColumnValues));
                         return ps.executeUpdate();
                     }
 
@@ -133,7 +133,7 @@ public class DbDialectIntegration extends BaseDbTest {
             String sqlValue = columnValues[i];
             int sqlType = columnTypes[i];
             Object param = SqlUtils.stringToSqlValue(sqlValue, sqlType, SqlUtils.isTextType(sqlType),
-                                                     dbDialect.isEmptyStringNulled());
+                    dbDialect.isEmptyStringNulled());
             switch (sqlType) {
                 case Types.CLOB:
                     if (lobCreator == null) {

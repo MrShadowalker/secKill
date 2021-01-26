@@ -27,13 +27,13 @@ import com.alibaba.otter.shared.etl.model.DbBatch;
 
 /**
  * otter extractor工厂处理
- * 
+ *
  * @author jianghang 2012-4-18 下午04:09:15
  * @version 4.0.2
  */
 public class OtterExtractorFactory implements BeanFactoryAware {
 
-    private List        dbBatchExtractor;
+    private List dbBatchExtractor;
     private BeanFactory beanFactory;
 
     public void extract(DbBatch dbBatch) {

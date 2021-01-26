@@ -25,7 +25,7 @@ import com.alibaba.otter.shared.common.model.config.parameter.SystemParameter.Re
 
 /**
  * DataRetriever工厂，选择合适的下载器
- * 
+ *
  * @author jianghang 2011-11-3 下午07:42:05
  * @version 4.0.0
  */

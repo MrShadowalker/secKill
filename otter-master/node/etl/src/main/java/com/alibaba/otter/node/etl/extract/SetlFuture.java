@@ -28,11 +28,11 @@ import com.alibaba.otter.shared.common.model.config.enums.StageType;
  */
 public class SetlFuture<V> extends FutureTask<V> {
 
-    private StageType         stageType;
-    private Long              processId;
+    private StageType stageType;
+    private Long processId;
     private Map<Long, Future> pendingFuture;
 
-    public SetlFuture(StageType stageType, Long processId, Map<Long, Future> pendingFuture, Runnable runnable){
+    public SetlFuture(StageType stageType, Long processId, Map<Long, Future> pendingFuture, Runnable runnable) {
         super(runnable, null);
         this.stageType = stageType;
         this.pendingFuture = pendingFuture;

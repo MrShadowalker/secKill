@@ -45,10 +45,10 @@ import com.alibaba.otter.shared.etl.model.Identity;
 
 public class RowDataMemoryPipe extends AbstractMemoryPipe<DbBatch, MemoryPipeKey> {
 
-    private static final Logger logger      = LoggerFactory.getLogger(RowDataMemoryPipe.class);
+    private static final Logger logger = LoggerFactory.getLogger(RowDataMemoryPipe.class);
     private static final String DATE_FORMAT = "yyyy-MM-dd-HH-mm-ss";
-    private int                 retry       = 3;
-    private String              downloadDir;
+    private int retry = 3;
+    private String downloadDir;
 
     public MemoryPipeKey put(DbBatch data) {
         MemoryPipeKey key = new MemoryPipeKey();
@@ -140,7 +140,7 @@ public class RowDataMemoryPipe extends AbstractMemoryPipe<DbBatch, MemoryPipeKey
         Date now = new Date();
         String time = new SimpleDateFormat(DATE_FORMAT).format(now);
         return MessageFormat.format("{0}-{1}-{2}-{3}-{4}", prefix, time, String.valueOf(identity.getChannelId()),
-                                    String.valueOf(identity.getPipelineId()), String.valueOf(identity.getProcessId()));
+                String.valueOf(identity.getPipelineId()), String.valueOf(identity.getProcessId()));
     }
 
     public void afterPropertiesSet() throws Exception {

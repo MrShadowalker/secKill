@@ -34,15 +34,15 @@ import com.alibaba.otter.shared.etl.model.FileBatch;
 
 /**
  * extract工作线程,负责桥接连接仲裁器
- * 
+ *
  * @author xiaoqing.zhouxq
  */
 public class ExtractTask extends GlobalTask {
 
-    private OtterExtractorFactory          otterExtractorFactory;
+    private OtterExtractorFactory otterExtractorFactory;
     private FileBatchConflictDetectService fileBatchConflictDetectService;
 
-    public ExtractTask(Long pipelineId){
+    public ExtractTask(Long pipelineId) {
         super(pipelineId);
     }
 
@@ -78,11 +78,11 @@ public class ExtractTask extends GlobalTask {
 
                             otterExtractorFactory.extract(dbBatch);// 重新装配一下数据
                             if (dbBatch.getFileBatch() != null
-                                && !CollectionUtils.isEmpty(dbBatch.getFileBatch().getFiles())
-                                && pipeline.getParameters().getFileDetect()) { // 判断一下是否有文件同步，并且需要进行文件对比
+                                    && !CollectionUtils.isEmpty(dbBatch.getFileBatch().getFiles())
+                                    && pipeline.getParameters().getFileDetect()) { // 判断一下是否有文件同步，并且需要进行文件对比
                                 // 对比一下中美图片是否有变化
                                 FileBatch fileBatch = fileBatchConflictDetectService.detect(dbBatch.getFileBatch(),
-                                                                                            nextNodeId);
+                                        nextNodeId);
                                 dbBatch.setFileBatch(fileBatch);
                             }
 
@@ -92,18 +92,18 @@ public class ExtractTask extends GlobalTask {
                             if (profiling) {
                                 Long profilingEndTime = System.currentTimeMillis();
                                 stageAggregationCollector.push(pipelineId,
-                                                               StageType.EXTRACT,
-                                                               new AggregationItem(profilingStartTime, profilingEndTime));
+                                        StageType.EXTRACT,
+                                        new AggregationItem(profilingStartTime, profilingEndTime));
                             }
                             arbitrateEventService.extractEvent().single(etlEventData);
                         } catch (Throwable e) {
                             if (!isInterrupt(e)) {
                                 logger.error(String.format("[%d] extractwork executor is error! data:%s", pipelineId,
-                                                           etlEventData), e);
+                                        etlEventData), e);
                                 sendRollbackTermin(pipelineId, e);
                             } else {
                                 logger.info(String.format("[%d] extractwork executor is interrrupt! data:%s",
-                                                          pipelineId, etlEventData), e);
+                                        pipelineId, etlEventData), e);
                             }
                         } finally {
                             Thread.currentThread().setName(currentName);
@@ -114,7 +114,7 @@ public class ExtractTask extends GlobalTask {
 
                 // 构造pending任务，可在关闭线程时退出任务
                 SetlFuture extractFuture = new SetlFuture(StageType.EXTRACT, etlEventData.getProcessId(),
-                                                          pendingFuture, task);
+                        pendingFuture, task);
                 executorService.execute(extractFuture);
             } catch (Throwable e) {
                 if (isInterrupt(e)) {

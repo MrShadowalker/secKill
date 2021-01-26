@@ -22,17 +22,17 @@ import com.alibaba.otter.shared.etl.model.Identity;
 
 /**
  * 数据转换过程中的上下文
- * 
+ *
  * @author jianghang 2011-10-27 下午05:12:53
  * @version 4.0.0
  */
 public class OtterTransformerContext {
 
-    private Identity      identity;
-    private Pipeline      pipeline;
+    private Identity identity;
+    private Pipeline pipeline;
     private DataMediaPair dataMediaPair;
 
-    public OtterTransformerContext(Identity identity, DataMediaPair dataMediaPair, Pipeline pipeline){
+    public OtterTransformerContext(Identity identity, DataMediaPair dataMediaPair, Pipeline pipeline) {
         this.identity = identity;
         this.dataMediaPair = dataMediaPair;
         this.pipeline = pipeline;

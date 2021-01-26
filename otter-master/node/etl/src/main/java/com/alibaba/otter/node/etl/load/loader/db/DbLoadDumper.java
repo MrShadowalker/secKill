@@ -29,17 +29,17 @@ import com.alibaba.otter.shared.etl.model.EventData;
 
 /**
  * dump记录
- * 
+ *
  * @author jianghang 2011-11-9 下午03:52:26
  * @version 4.0.0
  */
 public class DbLoadDumper {
 
-    private static final String SEP                    = SystemUtils.LINE_SEPARATOR;
+    private static final String SEP = SystemUtils.LINE_SEPARATOR;
 
-    private static String       context_format         = null;
-    private static String       eventData_format       = null;
-    private static int          event_default_capacity = 1024;                      // 预设值StringBuilder，减少扩容影响
+    private static String context_format = null;
+    private static String eventData_format = null;
+    private static int event_default_capacity = 1024;                      // 预设值StringBuilder，减少扩容影响
 
     static {
         context_format = SEP + "****************************************************" + SEP;
@@ -73,8 +73,8 @@ public class DbLoadDumper {
         int all = context.getPrepareDatas().size();
         boolean isInterrupt = (all != (failed + successed));
         return MessageFormat.format(context_format, context.getIdentity().toString(), all, successed, failed,
-                                    isInterrupt, dumpEventDatas(context.getProcessedDatas()),
-                                    dumpEventDatas(context.getFailedDatas()));
+                isInterrupt, dumpEventDatas(context.getProcessedDatas()),
+                dumpEventDatas(context.getFailedDatas()));
     }
 
     public static String dumpEventDatas(List<EventData> eventDatas) {
@@ -95,9 +95,9 @@ public class DbLoadDumper {
         String consistency = (eventData.getSyncConsistency() != null) ? eventData.getSyncConsistency().getValue() : "";
         String mode = (eventData.getSyncMode() != null) ? eventData.getSyncMode().getValue() : "";
         return MessageFormat.format(eventData_format, eventData.getPairId(), eventData.getTableId(), type,
-                                    String.valueOf(eventData.getExecuteTime()), consistency, mode,
-                                    dumpEventColumn(eventData.getKeys()), dumpEventColumn(eventData.getOldKeys()),
-                                    dumpEventColumn(eventData.getColumns()), "\t" + eventData.getSql());
+                String.valueOf(eventData.getExecuteTime()), consistency, mode,
+                dumpEventColumn(eventData.getKeys()), dumpEventColumn(eventData.getOldKeys()),
+                dumpEventColumn(eventData.getColumns()), "\t" + eventData.getSql());
     }
 
     private static String dumpEventColumn(List<EventColumn> columns) {

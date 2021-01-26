@@ -59,42 +59,42 @@ import de.schlichtherle.util.zip.ZipOutputStream;
 
 /**
  * 文档归档压缩/解压工具
- * 
+ *
  * <pre>
  * 优化思路：
  * 1. 针对网络服务文件，考虑使用多线程进行数据获取 (压缩效率 << 获取网络文件数据I/O latency)，提前获取网络文件
  * 2. 针对本地文件，直接进行数据流压缩
- * 
+ *
  * </pre>
- * 
+ *
  * @author jianghang 2011-10-11 下午04:44:07
  * @version 4.0.0
  */
 public class ArchiveBean implements InitializingBean, DisposableBean {
 
-    private static final int    DEFAULT_POOL_SIZE       = 5;
-    private static final String WORKER_NAME             = "AttachmentHttpPipe";
-    private int                 poolSize                = DEFAULT_POOL_SIZE;
-    private ExecutorService     executor;
-    private int                 retry                   = 3;
-    private boolean             useLocalFileMutliThread = true;
+    private static final int DEFAULT_POOL_SIZE = 5;
+    private static final String WORKER_NAME = "AttachmentHttpPipe";
+    private int poolSize = DEFAULT_POOL_SIZE;
+    private ExecutorService executor;
+    private int retry = 3;
+    private boolean useLocalFileMutliThread = true;
 
     public static class ArchiveEntry {
 
-        private String      name;
-        private File        localFile = null;
-        private InputStream stream    = null;
+        private String name;
+        private File localFile = null;
+        private InputStream stream = null;
 
-        public ArchiveEntry(String name){
+        public ArchiveEntry(String name) {
             this.name = name;
         }
 
-        public ArchiveEntry(String name, InputStream stream){
+        public ArchiveEntry(String name, InputStream stream) {
             this.name = name;
             this.stream = stream;
         }
 
-        public ArchiveEntry(String name, File localFile){
+        public ArchiveEntry(String name, File localFile) {
             this.name = name;
             this.localFile = localFile;
         }
@@ -153,7 +153,7 @@ public class ArchiveBean implements InitializingBean, DisposableBean {
         // 首先判断下对应的目标文件是否存在，如存在则执行删除
         if (true == targetArchiveFile.exists() && false == NioUtils.delete(targetArchiveFile, 3)) {
             throw new ArchiveException(String.format("[%s] exist and delete failed",
-                targetArchiveFile.getAbsolutePath()));
+                    targetArchiveFile.getAbsolutePath()));
         }
 
         boolean exist = false;
@@ -163,7 +163,7 @@ public class ArchiveBean implements InitializingBean, DisposableBean {
         ExecutorCompletionService completionService = new ExecutorCompletionService(executor, queue);
 
         final File targetDir = new File(targetArchiveFile.getParentFile(),
-            FilenameUtils.getBaseName(targetArchiveFile.getPath()));
+                FilenameUtils.getBaseName(targetArchiveFile.getPath()));
         try {
             // 创建一个临时目录
             FileUtils.forceMkdir(targetDir);
@@ -327,7 +327,7 @@ public class ArchiveBean implements InitializingBean, DisposableBean {
 
         private ArchiveEntry entry;
 
-        public DummyFuture(ArchiveEntry entry){
+        public DummyFuture(ArchiveEntry entry) {
             this.entry = entry;
         }
 
@@ -340,7 +340,7 @@ public class ArchiveBean implements InitializingBean, DisposableBean {
         }
 
         public ArchiveEntry get(long timeout, TimeUnit unit) throws InterruptedException, ExecutionException,
-                                                            TimeoutException {
+                TimeoutException {
             return entry;
         }
 
@@ -368,12 +368,12 @@ public class ArchiveBean implements InitializingBean, DisposableBean {
 
     public void afterPropertiesSet() throws Exception {
         executor = new ThreadPoolExecutor(poolSize,
-            poolSize,
-            0L,
-            TimeUnit.MILLISECONDS,
-            new ArrayBlockingQueue(poolSize * 4),
-            new NamedThreadFactory(WORKER_NAME),
-            new ThreadPoolExecutor.CallerRunsPolicy());
+                poolSize,
+                0L,
+                TimeUnit.MILLISECONDS,
+                new ArrayBlockingQueue(poolSize * 4),
+                new NamedThreadFactory(WORKER_NAME),
+                new ThreadPoolExecutor.CallerRunsPolicy());
     }
 
     public void destroy() throws Exception {

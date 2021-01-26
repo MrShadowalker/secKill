@@ -20,7 +20,7 @@ import com.alibaba.otter.shared.etl.model.FileData;
 
 /**
  * {@linkplain FileData}数据对象转化
- * 
+ *
  * @author jianghang 2011-10-27 下午06:31:15
  * @version 4.0.0
  */

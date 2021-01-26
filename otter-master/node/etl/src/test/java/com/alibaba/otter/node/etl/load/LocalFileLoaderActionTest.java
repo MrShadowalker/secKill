@@ -45,10 +45,10 @@ class LocalFileLoaderActionTest extends BaseDbTest {
 
     private static final String OTTERLOAD = "otterload";
 
-    private static final String tmp       = System.getProperty("java.io.tmpdir", "/tmp");
+    private static final String tmp = System.getProperty("java.io.tmpdir", "/tmp");
 
     @SpringBeanByName
-    private FileLoadAction      fileLoadAction;
+    private FileLoadAction fileLoadAction;
 
     @SpringBeanFrom
     @Mocked

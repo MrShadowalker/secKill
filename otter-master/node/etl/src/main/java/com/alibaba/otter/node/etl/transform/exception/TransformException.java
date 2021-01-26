@@ -26,26 +26,26 @@ public class TransformException extends NestableRuntimeException {
 
     private static final long serialVersionUID = -7288830284122672209L;
 
-    private String            errorCode;
-    private String            errorDesc;
+    private String errorCode;
+    private String errorDesc;
 
-    public TransformException(String errorCode){
+    public TransformException(String errorCode) {
         super(errorCode);
     }
 
-    public TransformException(String errorCode, Throwable cause){
+    public TransformException(String errorCode, Throwable cause) {
         super(errorCode, cause);
     }
 
-    public TransformException(String errorCode, String errorDesc){
+    public TransformException(String errorCode, String errorDesc) {
         super(errorCode + ":" + errorDesc);
     }
 
-    public TransformException(String errorCode, String errorDesc, Throwable cause){
+    public TransformException(String errorCode, String errorDesc, Throwable cause) {
         super(errorCode + ":" + errorDesc, cause);
     }
 
-    public TransformException(Throwable cause){
+    public TransformException(Throwable cause) {
         super(cause);
     }
 

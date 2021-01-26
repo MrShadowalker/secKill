@@ -45,26 +45,26 @@ import com.alibaba.otter.shared.etl.model.EventType;
 
 /**
  * 自由之门，允许手工触发数据订正，解析这些记录
- * 
+ *
  * <pre>
  * buffer表结构：
  *  id , table_id ,  type , pk_data , gmt_create , gmt_modified
- *  
+ *
  * pk_data针对多主键时，使用char(1)进行分隔
  * </pre>
- * 
+ *
  * @author jianghang 2012-4-25 下午04:41:33
  * @version 4.0.2
  */
 public class FreedomExtractor extends AbstractExtractor<DbBatch> {
 
-    private static final Logger logger    = LoggerFactory.getLogger(FreedomExtractor.class);
-    private static final char   PK_SPLIT  = (char) 1;
+    private static final Logger logger = LoggerFactory.getLogger(FreedomExtractor.class);
+    private static final char PK_SPLIT = (char) 1;
     // private static final String ID = "id";
-    private static final String TABLE_ID  = "table_id";
+    private static final String TABLE_ID = "table_id";
     private static final String FULL_NAME = "full_name";
-    private static final String TYPE      = "type";
-    private static final String PK_DATA   = "pk_data";
+    private static final String TYPE = "type";
+    private static final String PK_DATA = "pk_data";
 
     public void extract(DbBatch dbBatch) throws ExtractException {
         Assert.notNull(dbBatch);
@@ -80,7 +80,7 @@ public class FreedomExtractor extends AbstractExtractor<DbBatch> {
         Set<EventData> removeDatas = new HashSet<EventData>();// 使用set，提升remove时的查找速度
         for (EventData eventData : eventDatas) {
             if (StringUtils.equalsIgnoreCase(bufferSchema, eventData.getSchemaName())
-                && StringUtils.equalsIgnoreCase(bufferTable, eventData.getTableName())) {
+                    && StringUtils.equalsIgnoreCase(bufferTable, eventData.getTableName())) {
                 if (eventData.getEventType().isDdl()) {
                     continue;
                 }
@@ -114,14 +114,14 @@ public class FreedomExtractor extends AbstractExtractor<DbBatch> {
                         } else {
                             // 如果指定了tableId，需要按照tableId进行严格查找，如果没找到，那说明不需要进行同步
                             dataMedia = ConfigHelper.findDataMedia(pipeline,
-                                Long.valueOf(tableIdColumn.getColumnValue()));
+                                    Long.valueOf(tableIdColumn.getColumnValue()));
                         }
 
                         DbDialect dbDialect = dbDialectFactory.getDbDialect(pipeline.getId(),
-                            (DbMediaSource) dataMedia.getSource());
+                                (DbMediaSource) dataMedia.getSource());
                         // 考虑offer[1-128]的配置模式
                         if (!dataMedia.getNameMode().getMode().isSingle()
-                            || !dataMedia.getNamespaceMode().getMode().isSingle()) {
+                                || !dataMedia.getNamespaceMode().getMode().isSingle()) {
                             boolean hasError = true;
                             EventColumn fullNameColumn = getMatchColumn(eventData.getColumns(), FULL_NAME);
                             if (fullNameColumn != null) {
@@ -136,8 +136,8 @@ public class FreedomExtractor extends AbstractExtractor<DbBatch> {
                             if (hasError) {
                                 // 出现异常，需要记录一下
                                 logger.warn("dataMedia mode:{} , fullname:{} ",
-                                    dataMedia.getMode(),
-                                    fullNameColumn == null ? null : fullNameColumn.getColumnValue());
+                                        dataMedia.getMode(),
+                                        fullNameColumn == null ? null : fullNameColumn.getColumnValue());
                                 removeDatas.add(eventData);
                                 // 跳过这条记录
                                 continue;
@@ -152,7 +152,7 @@ public class FreedomExtractor extends AbstractExtractor<DbBatch> {
                         EventType eventType = EventType.valuesOf(typeColumn.getColumnValue());
                         eventData.setEventType(eventType);
                         if (eventType.isUpdate()) {// 如果是update强制修改为insert，这样可以在目标端执行merge
-                                                   // sql
+                            // sql
                             eventData.setEventType(EventType.INSERT);
                         } else if (eventType.isDdl()) {
                             dbDialect.reloadTable(eventData.getSchemaName(), eventData.getTableName());

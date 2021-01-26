@@ -23,7 +23,7 @@ import com.alibaba.otter.shared.common.model.config.pipeline.Pipeline;
 
 /**
  * 基于本地内存的config cache实现
- * 
+ *
  * @author jianghang
  */
 public interface ConfigClientService extends ArbitrateConfig {
@@ -40,7 +40,7 @@ public interface ConfigClientService extends ArbitrateConfig {
 
     /**
      * 根据channelId获取channel
-     * 
+     *
      * @param channelId
      * @return
      */
@@ -48,7 +48,7 @@ public interface ConfigClientService extends ArbitrateConfig {
 
     /**
      * 根据pipelineId获取pipeline
-     * 
+     *
      * @param pipelineId
      * @return
      */
@@ -56,7 +56,7 @@ public interface ConfigClientService extends ArbitrateConfig {
 
     /**
      * 根据pipelineId查询对应的Channel对象
-     * 
+     *
      * @param pipelineId
      * @return
      */
@@ -64,7 +64,7 @@ public interface ConfigClientService extends ArbitrateConfig {
 
     /**
      * 根据pipelineId查询相对的Pipeline对象
-     * 
+     *
      * @param pipelineId
      * @return
      */

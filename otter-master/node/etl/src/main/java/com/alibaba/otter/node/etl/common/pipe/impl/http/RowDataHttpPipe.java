@@ -56,7 +56,7 @@ import com.alibaba.otter.shared.etl.model.RowBatch;
 
 /**
  * 基于http下载的pipe实现
- * 
+ *
  * @author jianghang 2011-10-13 下午06:31:13
  * @version 4.0.0
  */
@@ -191,8 +191,8 @@ public class RowDataHttpPipe extends AbstractHttpPipe<DbBatch, HttpPipeKey> {
         String dataUrl = key.getUrl();
         Pipeline pipeline = configClientService.findPipeline(key.getIdentity().getPipelineId());
         DataRetriever dataRetriever = dataRetrieverFactory.createRetriever(pipeline.getParameters().getRetriever(),
-            dataUrl,
-            downloadDir);
+                dataUrl,
+                downloadDir);
         File archiveFile = null;
         try {
             dataRetriever.connect();
@@ -305,7 +305,7 @@ public class RowDataHttpPipe extends AbstractHttpPipe<DbBatch, HttpPipeKey> {
         column.setKey(columnProto.getIsPrimaryKey());
         column.setIndex(columnProto.getIndex());
         column.setUpdate(columnProto.getIsUpdate());// add by ljh
-                                                    // 2012-08-30，标记变更字段
+        // 2012-08-30，标记变更字段
         return column;
     }
 
@@ -320,7 +320,7 @@ public class RowDataHttpPipe extends AbstractHttpPipe<DbBatch, HttpPipeKey> {
             columnBuilder.setValue(keyColumn.getColumnValue());
         }
         columnBuilder.setIsUpdate(keyColumn.isUpdate());// add by ljh
-                                                        // 2012-08-30，标记变更字段
+        // 2012-08-30，标记变更字段
         return columnBuilder.build();
     }
 
@@ -329,11 +329,11 @@ public class RowDataHttpPipe extends AbstractHttpPipe<DbBatch, HttpPipeKey> {
         Date now = new Date();
         String time = new SimpleDateFormat(DATE_FORMAT).format(now);
         return MessageFormat.format("{0}-{1}-{2}-{3}-{4}.gzip",
-            prefix,
-            time,
-            String.valueOf(identity.getChannelId()),
-            String.valueOf(identity.getPipelineId()),
-            String.valueOf(identity.getProcessId()));
+                prefix,
+                time,
+                String.valueOf(identity.getChannelId()),
+                String.valueOf(identity.getPipelineId()),
+                String.valueOf(identity.getProcessId()));
     }
 
     // 构造proto对象

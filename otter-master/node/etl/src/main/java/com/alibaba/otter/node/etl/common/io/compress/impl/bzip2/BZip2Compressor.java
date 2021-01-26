@@ -28,7 +28,7 @@ import com.alibaba.otter.shared.common.utils.NioUtils;
 
 /**
  * Implementation of the Compressor Interface for BZip2.
- * 
+ *
  * @author brave.taoy
  * @author jianghang 2011-10-9 下午02:33:57
  * @version 4.0.0
@@ -36,15 +36,15 @@ import com.alibaba.otter.shared.common.utils.NioUtils;
 public class BZip2Compressor extends AbstractCompressor {
 
     /* Default file extension */
-    private static String       DEFAULT_FILE_EXTENSION = "bz2";
+    private static String DEFAULT_FILE_EXTENSION = "bz2";
 
     /* Header BZ as byte-Array */
-    private static final byte[] HEADER                 = new byte[] { (byte) 'B', (byte) 'Z', (byte) 'h' };
+    private static final byte[] HEADER = new byte[]{(byte) 'B', (byte) 'Z', (byte) 'h'};
 
     /* Name of this implementation */
-    private static final String NAME                   = "bz2";
+    private static final String NAME = "bz2";
 
-    public BZip2Compressor(){
+    public BZip2Compressor() {
         super();
     }
 

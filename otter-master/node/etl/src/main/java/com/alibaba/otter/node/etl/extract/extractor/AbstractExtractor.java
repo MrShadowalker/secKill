@@ -26,14 +26,14 @@ import com.alibaba.otter.shared.common.model.config.pipeline.Pipeline;
 
 /**
  * 单条记录处理的extractor
- * 
+ *
  * @author jianghang 2012-4-18 下午04:12:39
  * @version 4.0.2
  */
 public abstract class AbstractExtractor<P> implements OtterExtractor<P> {
 
     protected ConfigClientService configClientService;
-    protected DbDialectFactory    dbDialectFactory;
+    protected DbDialectFactory dbDialectFactory;
 
     protected DbDialect getDbDialect(Long pipelineId, Long tableId) {
         DataMedia dataMedia = ConfigHelper.findDataMedia(getPipeline(pipelineId), tableId);

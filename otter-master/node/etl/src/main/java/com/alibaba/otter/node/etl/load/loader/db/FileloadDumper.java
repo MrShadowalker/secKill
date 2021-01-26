@@ -29,18 +29,18 @@ import com.alibaba.otter.shared.etl.model.Identity;
 
 /**
  * dumper 记录
- * 
+ *
  * @author jianghang 2011-12-28 上午11:19:10
  * @version 4.0.0
  */
 public class FileloadDumper {
 
-    private static final String SEP              = SystemUtils.LINE_SEPARATOR;
+    private static final String SEP = SystemUtils.LINE_SEPARATOR;
 
     private static final String TIMESTAMP_FORMAT = "yyyy-MM-dd HH:mm:ss:SSS";
-    private static String       context_format   = null;
-    private static String       miss_format      = null;
-    private static String       filter_format    = null;
+    private static String context_format = null;
+    private static String miss_format = null;
+    private static String filter_format = null;
 
     static {
         context_format = SEP + "****************************************************" + SEP;
@@ -78,8 +78,8 @@ public class FileloadDumper {
         SimpleDateFormat format = new SimpleDateFormat(TIMESTAMP_FORMAT);
 
         return MessageFormat.format(context_format, status, format.format(now), context.getIdentity().toString(), all,
-                                    successed, failed, isInterrupt, dumpFileDatas(context.getProcessedDatas()),
-                                    dumpFileDatas(context.getFailedDatas()));
+                successed, failed, isInterrupt, dumpFileDatas(context.getProcessedDatas()),
+                dumpFileDatas(context.getFailedDatas()));
     }
 
     public static String dumpFileDatas(List<FileData> fileDatas) {
@@ -104,6 +104,6 @@ public class FileloadDumper {
             }
         }
         return MessageFormat.format(filter_format, identity.toString(), input, output, fileDatas.size(),
-                                    builder.toString());
+                builder.toString());
     }
 }

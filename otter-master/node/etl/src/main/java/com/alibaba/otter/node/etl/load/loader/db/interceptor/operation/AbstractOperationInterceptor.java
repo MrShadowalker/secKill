@@ -50,24 +50,24 @@ import com.alibaba.otter.shared.etl.model.Identity;
  */
 public abstract class AbstractOperationInterceptor extends AbstractLoadInterceptor<DbLoadContext, EventData> {
 
-    protected final Logger         logger              = LoggerFactory.getLogger(getClass());
-    protected static final int     GLOBAL_THREAD_COUNT = 1000;
-    protected static final int     INNER_THREAD_COUNT  = 300;
-    protected static final String  checkDataSql        = "SELECT COUNT(*) FROM {0} WHERE id BETWEEN 0 AND {1}";
-    protected static final String  deleteDataSql       = "DELETE FROM {0}";
+    protected final Logger logger = LoggerFactory.getLogger(getClass());
+    protected static final int GLOBAL_THREAD_COUNT = 1000;
+    protected static final int INNER_THREAD_COUNT = 300;
+    protected static final String checkDataSql = "SELECT COUNT(*) FROM {0} WHERE id BETWEEN 0 AND {1}";
+    protected static final String deleteDataSql = "DELETE FROM {0}";
 
-    protected String               updateSql;
-    protected String               updateInfoSql;
-    protected String               clearSql            = "UPDATE {0} SET {1} = 0 WHERE id = ? and {1} = ?";
-    protected String               clearInfoSql        = "UPDATE {0} SET {1} = 0 , {2} = null WHERE id = ? and {1} = ? and {2} = ?";
-    protected int                  innerIdCount        = INNER_THREAD_COUNT;
-    protected int                  globalIdCount       = GLOBAL_THREAD_COUNT;
-    protected ConfigClientService  configClientService;
-    protected Set<JdbcTemplate>    tableCheckStatus    = Collections.synchronizedSet(new HashSet<JdbcTemplate>());
-    protected AtomicInteger        THREAD_COUNTER      = new AtomicInteger(0);
-    protected ThreadLocal<Integer> threadLocal         = new ThreadLocal<Integer>();
+    protected String updateSql;
+    protected String updateInfoSql;
+    protected String clearSql = "UPDATE {0} SET {1} = 0 WHERE id = ? and {1} = ?";
+    protected String clearInfoSql = "UPDATE {0} SET {1} = 0 , {2} = null WHERE id = ? and {1} = ? and {2} = ?";
+    protected int innerIdCount = INNER_THREAD_COUNT;
+    protected int globalIdCount = GLOBAL_THREAD_COUNT;
+    protected ConfigClientService configClientService;
+    protected Set<JdbcTemplate> tableCheckStatus = Collections.synchronizedSet(new HashSet<JdbcTemplate>());
+    protected AtomicInteger THREAD_COUNTER = new AtomicInteger(0);
+    protected ThreadLocal<Integer> threadLocal = new ThreadLocal<Integer>();
 
-    protected AbstractOperationInterceptor(String updateSql, String updateInfoSql){
+    protected AbstractOperationInterceptor(String updateSql, String updateInfoSql) {
         this.updateSql = updateSql;
         this.updateInfoSql = updateInfoSql;
     }
@@ -85,7 +85,7 @@ public abstract class AbstractOperationInterceptor extends AbstractLoadIntercept
 
                 public Object doInTransaction(TransactionStatus status) {
                     jdbcTemplate.execute(MessageFormat.format(deleteDataSql, markTableName));
-                    String batchSql = MessageFormat.format(updateSql, new Object[] { markTableName, markTableColumn });
+                    String batchSql = MessageFormat.format(updateSql, new Object[]{markTableName, markTableColumn});
                     jdbcTemplate.batchUpdate(batchSql, new BatchPreparedStatementSetter() {
 
                         public void setValues(PreparedStatement ps, int idx) throws SQLException {
@@ -141,7 +141,7 @@ public abstract class AbstractOperationInterceptor extends AbstractLoadIntercept
         Channel channel = context.getChannel();
         // 获取dbDialect
         String markTableName = context.getPipeline().getParameters().getSystemSchema() + "."
-                               + context.getPipeline().getParameters().getSystemMarkTable();
+                + context.getPipeline().getParameters().getSystemMarkTable();
         String markTableColumn = context.getPipeline().getParameters().getSystemMarkTableColumn();
         synchronized (dialect.getJdbcTemplate()) {
             if (tableCheckStatus.contains(dialect.getJdbcTemplate()) == false) {
@@ -154,17 +154,17 @@ public abstract class AbstractOperationInterceptor extends AbstractLoadIntercept
         if (needInfo) {
             String infoColumn = context.getPipeline().getParameters().getSystemMarkTableInfo();
             String info = context.getPipeline().getParameters().getChannelInfo();// 记录一下channelInfo
-            String esql = MessageFormat.format(sql, new Object[] { markTableName, markTableColumn, infoColumn });
+            String esql = MessageFormat.format(sql, new Object[]{markTableName, markTableColumn, infoColumn});
             if (hint != null) {
                 esql = hint + esql;
             }
-            affectedCount = dialect.getJdbcTemplate().update(esql, new Object[] { threadId, channel.getId(), info });
+            affectedCount = dialect.getJdbcTemplate().update(esql, new Object[]{threadId, channel.getId(), info});
         } else {
-            String esql = MessageFormat.format(sql, new Object[] { markTableName, markTableColumn });
+            String esql = MessageFormat.format(sql, new Object[]{markTableName, markTableColumn});
             if (hint != null) {
                 esql = hint + esql;
             }
-            affectedCount = dialect.getJdbcTemplate().update(esql, new Object[] { threadId, channel.getId() });
+            affectedCount = dialect.getJdbcTemplate().update(esql, new Object[]{threadId, channel.getId()});
         }
 
         if (affectedCount <= 0) {

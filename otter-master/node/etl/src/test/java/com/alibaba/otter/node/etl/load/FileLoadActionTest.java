@@ -50,13 +50,13 @@ import com.alibaba.otter.shared.etl.model.Identity;
  */
 public class FileLoadActionTest extends BaseDbTest {
 
-    private static final int    NUMBER_OF_FILE_DATA_COPIES = 5;
-    private static final long   TABLE_ID                   = 1L;
-    private static final File   ROOT_DIR                   = new File(System.getProperty("java.io.tmpdir")
-                                                                      + "/file_load_action_test");
+    private static final int NUMBER_OF_FILE_DATA_COPIES = 5;
+    private static final long TABLE_ID = 1L;
+    private static final File ROOT_DIR = new File(System.getProperty("java.io.tmpdir")
+            + "/file_load_action_test");
 
     @SpringBeanByName
-    private FileLoadAction      fileLoadAction;
+    private FileLoadAction fileLoadAction;
 
     @SpringBeanByName
     @Mocked(realClassName = "com.alibaba.otter.node.common.config.impl.ConfigClientServiceImpl")
@@ -156,13 +156,13 @@ public class FileLoadActionTest extends BaseDbTest {
     }
 
     protected List<FileData> buildFileDatas(String namespace, EventType eventType, int start, int count, boolean create)
-                                                                                                                        throws IOException {
+            throws IOException {
         List<FileData> files = new ArrayList<FileData>();
 
         for (int i = start; i < count; i++) {
             FileData fileData = new FileData();
             fileData.setNameSpace(namespace); // namespace is null means file is
-                                              // local file
+            // local file
             fileData.setEventType(eventType);
             fileData.setPairId(i % NUMBER_OF_FILE_DATA_COPIES);
             fileData.setPath(ROOT_DIR.getAbsolutePath() + "/target/" + eventType.getValue() + i);

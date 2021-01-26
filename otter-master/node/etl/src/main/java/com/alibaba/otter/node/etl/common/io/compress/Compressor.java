@@ -29,7 +29,7 @@ public interface Compressor {
 
     /**
      * Compresses this file and returns an InputStream to the compressed File
-     * 
+     *
      * @param input File to compress
      * @return InputStream of the compressed file
      * @throws CompressException if the Compressor reports an error
@@ -38,7 +38,7 @@ public interface Compressor {
 
     /**
      * Compresses this InputStream and returns an InputStream to the compressed file
-     * 
+     *
      * @param input Stream to compress
      * @return Stream to the compressed file
      * @throws CompressException if the Compressor reports an error
@@ -47,7 +47,7 @@ public interface Compressor {
 
     /**
      * Compresses this bytes and returns an bytes
-     * 
+     *
      * @param data
      * @return
      * @throws CompressException
@@ -56,7 +56,7 @@ public interface Compressor {
 
     /**
      * Compresses the file input and creates a file in the same directory with the default file extension in its name.
-     * 
+     *
      * @param input the file to compress
      * @throws CompressException if the Compressor reports an error
      */
@@ -64,8 +64,8 @@ public interface Compressor {
 
     /**
      * Creates the file "output" with the compressed content of file "input"
-     * 
-     * @param input the file to compress
+     *
+     * @param input  the file to compress
      * @param output the file to create
      * @throws CompressException if the Compressor reports an error
      */
@@ -74,8 +74,8 @@ public interface Compressor {
     /**
      * Compresses the input stream and writes the compressed bytes to the output stream. This method must be implemented
      * by all new compressortypes.
-     * 
-     * @param input InputStream to compress to
+     *
+     * @param input  InputStream to compress to
      * @param output OutputStream to which the byte shall be written
      * @throws CompressException if the Compressor reports an error
      */
@@ -83,7 +83,7 @@ public interface Compressor {
 
     /**
      * Decompresses a file and returns an InputStream
-     * 
+     *
      * @param input file to decompress
      * @return the decompressed file as an inputstream
      */
@@ -91,7 +91,7 @@ public interface Compressor {
 
     /**
      * Decompresses a file and returns an InputStream
-     * 
+     *
      * @param input inputstream to decompress
      * @return the decompressed InputStream
      */
@@ -99,7 +99,7 @@ public interface Compressor {
 
     /**
      * Decompresses this bytes and returns an bytes
-     * 
+     *
      * @param data
      * @return
      * @throws CompressException
@@ -108,8 +108,8 @@ public interface Compressor {
 
     /**
      * Decompresses this file and writes the decompressed byte to the output file
-     * 
-     * @param input File to decompress
+     *
+     * @param input  File to decompress
      * @param output File to write the decompressed bytes to
      * @throws CompressException if the Compressor reports an error
      */
@@ -117,8 +117,8 @@ public interface Compressor {
 
     /**
      * Decompresses this file and writes the decompressed file to the output-stream
-     * 
-     * @param input Stream to decompress
+     *
+     * @param input  Stream to decompress
      * @param output Stream to write the decompressed bytes to
      * @throws CompressException if the Compressor reports an error
      */

@@ -47,7 +47,7 @@ import com.alibaba.otter.shared.etl.model.RowBatch;
 
 public class DbLoadActionTest extends BaseDbTest {
 
-    private DbLoadAction        dbLoadAction;
+    private DbLoadAction dbLoadAction;
 
     @SpringBeanFrom
     @Mocked

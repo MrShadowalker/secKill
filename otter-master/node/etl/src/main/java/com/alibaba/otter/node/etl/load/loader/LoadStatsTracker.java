@@ -27,7 +27,7 @@ import com.google.common.collect.OtterMigrateMap;
 
 /**
  * 统计跟踪器
- * 
+ *
  * @author jianghang 2011-11-18 上午11:15:10
  * @version 4.0.0
  */
@@ -35,7 +35,7 @@ public class LoadStatsTracker {
 
     private Map<Identity, LoadThroughput> throughputs;
 
-    public LoadStatsTracker(){
+    public LoadStatsTracker() {
         throughputs = OtterMigrateMap.makeComputingMap(new Function<Identity, LoadThroughput>() {
 
             public LoadThroughput apply(Identity identity) {
@@ -54,11 +54,11 @@ public class LoadStatsTracker {
 
     public static class LoadThroughput {
 
-        private Identity               identity;
-        private Long                   startTime;
+        private Identity identity;
+        private Long startTime;
         private Map<Long, LoadCounter> counters;
 
-        public LoadThroughput(Identity identity){
+        public LoadThroughput(Identity identity) {
             counters = MigrateMap.makeComputingMap(new Function<Long, LoadCounter>() {
 
                 public LoadCounter apply(Long pairId) {
@@ -95,18 +95,18 @@ public class LoadStatsTracker {
 
     public static class LoadCounter {
 
-        private Long       pairId;
-        private AtomicLong fileSize    = new AtomicLong(0); // 文件大小
-        private AtomicLong fileCount   = new AtomicLong(0); // 文件数量
-        private AtomicLong rowSize     = new AtomicLong(0);
-        private AtomicLong rowCount    = new AtomicLong(0);
-        private AtomicLong mqCount     = new AtomicLong(0);
-        private AtomicLong mqSize      = new AtomicLong(0);
+        private Long pairId;
+        private AtomicLong fileSize = new AtomicLong(0); // 文件大小
+        private AtomicLong fileCount = new AtomicLong(0); // 文件数量
+        private AtomicLong rowSize = new AtomicLong(0);
+        private AtomicLong rowCount = new AtomicLong(0);
+        private AtomicLong mqCount = new AtomicLong(0);
+        private AtomicLong mqSize = new AtomicLong(0);
         private AtomicLong deleteCount = new AtomicLong(0);
         private AtomicLong updateCount = new AtomicLong(0);
         private AtomicLong insertCount = new AtomicLong(0);
 
-        public LoadCounter(Long pairId){
+        public LoadCounter(Long pairId) {
             this.pairId = pairId;
         }
 

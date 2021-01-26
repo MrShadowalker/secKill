@@ -46,7 +46,7 @@ public class ArchiveBeanIntegration extends BaseOtterTest {
         }
 
         File file = new File("/tmp/otter/test");
-        Collection<File> allFiles = FileUtils.listFiles(file, new String[] { "jpg" }, true);
+        Collection<File> allFiles = FileUtils.listFiles(file, new String[]{"jpg"}, true);
 
         List<FileData> fileDatas = new ArrayList<FileData>();
         for (File files : allFiles) {

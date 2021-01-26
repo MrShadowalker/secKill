@@ -26,13 +26,13 @@ import com.alibaba.otter.shared.etl.model.DbBatch;
 
 /**
  * 基于rpc调用实现rowData的数据传递
- * 
+ *
  * @author jianghang 2011-10-18 下午02:56:47
  * @version 4.0.0
  */
 public class RowDataRpcPipe extends AbstractRpcPipe<DbBatch, RpcPipeKey> {
 
-    private ConfigClientService      configClientService;
+    private ConfigClientService configClientService;
     private NodeCommmunicationClient nodeCommmunicationClient;
 
     // 基于rowData rpc的eventType
@@ -40,7 +40,7 @@ public class RowDataRpcPipe extends AbstractRpcPipe<DbBatch, RpcPipeKey> {
         get
     }
 
-    public RowDataRpcPipe(){
+    public RowDataRpcPipe() {
         // 注册一下事件处理
         CommunicationRegistry.regist(RowDataRpc.get, this);
     }

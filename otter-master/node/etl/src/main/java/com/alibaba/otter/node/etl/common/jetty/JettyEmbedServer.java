@@ -31,17 +31,17 @@ import com.alibaba.otter.node.common.config.ConfigClientService;
 
 /**
  * jetty的嵌入式启动入口
- * 
+ *
  * @author jianghang 2011-10-18 下午01:58:33
  * @version 4.0.0
  */
 public class JettyEmbedServer implements InitializingBean, DisposableBean {
 
     private static final String DEFAULT_CONFIG = "jetty/jetty.xml";
-    private static final Logger logger         = LoggerFactory.getLogger(JettyEmbedServer.class);
-    private Server              server;
-    private String              config         = DEFAULT_CONFIG;
-    private String              htdocsDir;
+    private static final Logger logger = LoggerFactory.getLogger(JettyEmbedServer.class);
+    private Server server;
+    private String config = DEFAULT_CONFIG;
+    private String htdocsDir;
     private ConfigClientService configClientService;
 
     public void afterPropertiesSet() throws Exception {

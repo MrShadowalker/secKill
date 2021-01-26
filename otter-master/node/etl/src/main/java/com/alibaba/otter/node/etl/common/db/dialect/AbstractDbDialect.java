@@ -49,18 +49,18 @@ import com.google.common.collect.OtterMigrateMap;
  */
 public abstract class AbstractDbDialect implements DbDialect {
 
-    protected static final Logger      logger = LoggerFactory.getLogger(AbstractDbDialect.class);
-    protected int                      databaseMajorVersion;
-    protected int                      databaseMinorVersion;
-    protected String                   databaseName;
-    protected DataSourceService        dataSourceService;
-    protected SqlTemplate              sqlTemplate;
-    protected JdbcTemplate             jdbcTemplate;
-    protected TransactionTemplate      transactionTemplate;
-    protected LobHandler               lobHandler;
+    protected static final Logger logger = LoggerFactory.getLogger(AbstractDbDialect.class);
+    protected int databaseMajorVersion;
+    protected int databaseMinorVersion;
+    protected String databaseName;
+    protected DataSourceService dataSourceService;
+    protected SqlTemplate sqlTemplate;
+    protected JdbcTemplate jdbcTemplate;
+    protected TransactionTemplate transactionTemplate;
+    protected LobHandler lobHandler;
     protected Map<List<String>, Table> tables;
 
-    public AbstractDbDialect(final JdbcTemplate jdbcTemplate, LobHandler lobHandler){
+    public AbstractDbDialect(final JdbcTemplate jdbcTemplate, LobHandler lobHandler) {
         this.jdbcTemplate = jdbcTemplate;
         this.lobHandler = lobHandler;
         // 初始化transction
@@ -85,7 +85,7 @@ public abstract class AbstractDbDialect implements DbDialect {
     }
 
     public AbstractDbDialect(JdbcTemplate jdbcTemplate, LobHandler lobHandler, String name, int majorVersion,
-                             int minorVersion){
+                             int minorVersion) {
         this.jdbcTemplate = jdbcTemplate;
         this.lobHandler = lobHandler;
         // 初始化transction
@@ -180,13 +180,13 @@ public abstract class AbstractDbDialect implements DbDialect {
                     afterFindTable(table, jdbcTemplate, names.get(0), names.get(0), names.get(1));
                     if (table == null) {
                         throw new NestableRuntimeException("no found table [" + names.get(0) + "." + names.get(1)
-                                                           + "] , pls check");
+                                + "] , pls check");
                     } else {
                         return table;
                     }
                 } catch (Exception e) {
                     throw new NestableRuntimeException("find table [" + names.get(0) + "." + names.get(1) + "] error",
-                        e);
+                            e);
                 }
             }
         });

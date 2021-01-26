@@ -26,7 +26,7 @@ import com.alibaba.otter.node.etl.common.io.signature.ChecksumUtils;
 
 /**
  * 数据对象间转换的工具类
- * 
+ *
  * @author jianghang 2011-10-13 下午07:37:46
  * @version 4.0.0
  */

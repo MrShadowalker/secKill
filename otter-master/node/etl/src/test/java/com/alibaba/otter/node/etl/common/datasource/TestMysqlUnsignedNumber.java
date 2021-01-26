@@ -26,7 +26,7 @@ import java.util.Properties;
 
 /**
  * 类TestMysqlUnsignedInt.java的实现描述
- * 
+ *
  * @author xiaoqing.zhouxq 2011-12-23 上午10:03:37
  */
 public class TestMysqlUnsignedNumber {

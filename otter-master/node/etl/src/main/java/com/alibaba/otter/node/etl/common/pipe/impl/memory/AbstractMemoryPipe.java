@@ -27,13 +27,13 @@ import com.google.common.collect.OtterMigrateMap;
 
 /**
  * 基于内存版本的pipe实现
- * 
+ *
  * @author jianghang 2011-10-13 下午05:36:33
  * @version 4.0.0
  */
 public abstract class AbstractMemoryPipe<T, KEY extends MemoryPipeKey> implements Pipe<T, KEY>, InitializingBean {
 
-    protected Long                        timeout = 60 * 1000L; // 对应的超时时间,1分钟
+    protected Long timeout = 60 * 1000L; // 对应的超时时间,1分钟
 
     protected Map<MemoryPipeKey, DbBatch> cache;
 

@@ -24,7 +24,7 @@ public class DefaultProgressObserver extends ProgressObserver {
 
     private Logger logger;
 
-    public DefaultProgressObserver(Logger logger){
+    public DefaultProgressObserver(Logger logger) {
         this.logger = logger;
     }
 

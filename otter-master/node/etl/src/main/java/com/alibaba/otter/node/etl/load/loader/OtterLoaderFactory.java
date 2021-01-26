@@ -35,14 +35,14 @@ import com.alibaba.otter.shared.etl.model.Identity;
 
 /**
  * loader执行工厂，可根据不同的数据load进行路由到指定的{@linkplain OtterLoader}进行处理
- * 
+ *
  * @author simon 2012-7-3 下午4:16:58
  * @version 4.1.0
  */
 public class OtterLoaderFactory {
 
-    private DataBatchLoader         dataBatchLoader;
-    private LoadStatsTracker        loadStatsTracker;
+    private DataBatchLoader dataBatchLoader;
+    private LoadStatsTracker loadStatsTracker;
     private StatisticsClientService statisticsClientService;
 
     public List<LoadContext> load(DbBatch dbBatch) {
@@ -83,7 +83,7 @@ public class OtterLoaderFactory {
             stat.setEndTime(endTime);
             // 5项中有一项不为空才通知
             if (!(stat.getFileCount().equals(0L) && stat.getFileSize().equals(0L) && stat.getInsertCount().equals(0L)
-                  && stat.getDeleteCount().equals(0L) && stat.getUpdateCount().equals(0L))) {
+                    && stat.getDeleteCount().equals(0L) && stat.getUpdateCount().equals(0L))) {
                 tableStats.add(stat);
             }
 

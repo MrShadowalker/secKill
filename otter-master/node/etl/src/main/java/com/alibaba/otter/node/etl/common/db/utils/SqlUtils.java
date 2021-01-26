@@ -35,11 +35,11 @@ import org.apache.commons.lang.StringUtils;
  */
 public class SqlUtils {
 
-    public static final String                  REQUIRED_FIELD_NULL_SUBSTITUTE = " ";
-    public static final String                  SQLDATE_FORMAT                 = "yyyy-MM-dd";
-    public static final String                  TIMESTAMP_FORMAT               = "yyyy-MM-dd HH:mm:ss";
-    private static final Map<Integer, Class<?>> sqlTypeToJavaTypeMap           = new HashMap<Integer, Class<?>>();
-    private static final ConvertUtilsBean       convertUtilsBean               = new ConvertUtilsBean();
+    public static final String REQUIRED_FIELD_NULL_SUBSTITUTE = " ";
+    public static final String SQLDATE_FORMAT = "yyyy-MM-dd";
+    public static final String TIMESTAMP_FORMAT = "yyyy-MM-dd HH:mm:ss";
+    private static final Map<Integer, Class<?>> sqlTypeToJavaTypeMap = new HashMap<Integer, Class<?>>();
+    private static final ConvertUtilsBean convertUtilsBean = new ConvertUtilsBean();
 
     static {
         // regist Converter
@@ -102,7 +102,7 @@ public class SqlUtils {
 
     /**
      * 将指定java.sql.Types的ResultSet value转换成相应的String
-     * 
+     *
      * @param rs
      * @param index
      * @param sqlType
@@ -120,7 +120,7 @@ public class SqlUtils {
 
     /**
      * sqlValueToString方法的逆向过程
-     * 
+     *
      * @param value
      * @param sqlType
      * @param isTextRequired
@@ -192,9 +192,9 @@ public class SqlUtils {
      * Note that the returned value may not be assignable to the specified
      * required type, in case of an unknown type. Calling code needs to deal
      * with this case appropriately, e.g. throwing a corresponding exception.
-     * 
-     * @param rs is the ResultSet holding the data
-     * @param index is the column index
+     *
+     * @param rs           is the ResultSet holding the data
+     * @param index        is the column index
      * @param requiredType the required value type (may be <code>null</code>)
      * @return the value object
      * @throws SQLException if thrown by the JDBC API
@@ -229,7 +229,7 @@ public class SqlUtils {
             value = new Float(rs.getFloat(index));
             wasNullCheck = true;
         } else if (double.class.equals(requiredType) || Double.class.equals(requiredType)
-                   || Number.class.equals(requiredType)) {
+                || Number.class.equals(requiredType)) {
             value = new Double(rs.getDouble(index));
             wasNullCheck = true;
         } else if (java.sql.Time.class.equals(requiredType)) {
@@ -298,8 +298,8 @@ public class SqlUtils {
      * TIMESTAMP datatype and a <code>java.sql.Date</code> for DATE columns
      * leaving out the time portion: These columns will explicitly be extracted
      * as standard <code>java.sql.Timestamp</code> object.
-     * 
-     * @param rs is the ResultSet holding the data
+     *
+     * @param rs    is the ResultSet holding the data
      * @param index is the column index
      * @return the value object
      * @throws SQLException if thrown by the JDBC API
@@ -321,15 +321,15 @@ public class SqlUtils {
      */
     public static boolean isNumeric(int sqlType) {
         return (Types.BIT == sqlType) || (Types.BIGINT == sqlType) || (Types.DECIMAL == sqlType)
-               || (Types.DOUBLE == sqlType) || (Types.FLOAT == sqlType) || (Types.INTEGER == sqlType)
-               || (Types.NUMERIC == sqlType) || (Types.REAL == sqlType) || (Types.SMALLINT == sqlType)
-               || (Types.TINYINT == sqlType);
+                || (Types.DOUBLE == sqlType) || (Types.FLOAT == sqlType) || (Types.INTEGER == sqlType)
+                || (Types.NUMERIC == sqlType) || (Types.REAL == sqlType) || (Types.SMALLINT == sqlType)
+                || (Types.TINYINT == sqlType);
     }
 
     public static boolean isTextType(int sqlType) {
         if (sqlType == Types.CHAR || sqlType == Types.VARCHAR || sqlType == Types.CLOB || sqlType == Types.LONGVARCHAR
-            || sqlType == Types.NCHAR || sqlType == Types.NVARCHAR || sqlType == Types.NCLOB
-            || sqlType == Types.LONGNVARCHAR) {
+                || sqlType == Types.NCHAR || sqlType == Types.NVARCHAR || sqlType == Types.NCLOB
+                || sqlType == Types.LONGNVARCHAR) {
             return true;
         } else {
             return false;

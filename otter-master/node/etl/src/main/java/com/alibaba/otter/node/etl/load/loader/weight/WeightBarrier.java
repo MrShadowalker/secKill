@@ -23,42 +23,42 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * 构建基于weight的barrier控制
- * 
+ *
  * <pre>
  * 场景：
  *   多个loader模块会进行并行加载，但每个loader的加载数据的进度统一受到weight的调度，只有当前的weight的所有数据都完成后，不同loader中的下一个weight才允许开始
- * 
+ *
  * 实现：
  * 1. 使用AQS构建了一个基于weight的barrier处理，使用一个state进行控制(代表当前运行<state以下的weight运行)，
  * 2. 多个任务之间通过single(weight)进行协调控制
  * </pre>
- * 
+ *
  * @author jianghang 2011-11-1 上午11:24:56
  * @version 4.0.0
  */
 public class WeightBarrier {
 
-    private ReentrantLock lock      = new ReentrantLock();
-    private Condition     condition = lock.newCondition();
+    private ReentrantLock lock = new ReentrantLock();
+    private Condition condition = lock.newCondition();
     private volatile long threshold;
 
-    public WeightBarrier(){
+    public WeightBarrier() {
         this(Long.MAX_VALUE);
     }
 
-    public WeightBarrier(long weight){
+    public WeightBarrier(long weight) {
         this.threshold = weight;
     }
 
     /**
      * 阻塞等待weight允许执行
-     * 
+     *
      * <pre>
      * 阻塞返回条件：
      *  1. 中断事件
      *  2. 其他线程single()的weight > 当前阻塞等待的weight
      * </pre>
-     * 
+     *
      * @throws InterruptedException
      */
     public void await(long weight) throws InterruptedException {
@@ -74,14 +74,14 @@ public class WeightBarrier {
 
     /**
      * 阻塞等待当前的weight处理,允许设置超时时间
-     * 
+     *
      * <pre>
      * 阻塞返回条件：
      *  1. 中断事件
      *  2. 其他线程single()的weight > 当前阻塞等待的weight
      *  3. 超时
      * </pre>
-     * 
+     *
      * @param timeout
      * @param unit
      * @throws InterruptedException
@@ -100,7 +100,7 @@ public class WeightBarrier {
 
     /**
      * 重新设置weight信息
-     * 
+     *
      * @throws InterruptedException
      */
     public void single(long weight) throws InterruptedException {

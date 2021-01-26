@@ -26,20 +26,20 @@ import com.google.common.collect.OtterMigrateMap;
 
 /**
  * 统计每个stage的运行信息
- * 
+ *
  * @author jianghang 2012-5-29 下午02:32:08
  * @version 4.0.2
  */
 public class StageAggregationCollector {
 
     private Map<Long, Map<StageType, StageAggregation>> collector;
-    private AtomicBoolean                               profiling = new AtomicBoolean(true);
+    private AtomicBoolean profiling = new AtomicBoolean(true);
 
-    public StageAggregationCollector(){
+    public StageAggregationCollector() {
         this(1024);
     }
 
-    public StageAggregationCollector(final int bufferSize){
+    public StageAggregationCollector(final int bufferSize) {
         collector = OtterMigrateMap.makeComputingMap(new Function<Long, Map<StageType, StageAggregation>>() {
 
             public Map<StageType, StageAggregation> apply(Long input) {

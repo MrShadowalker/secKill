@@ -25,14 +25,14 @@ import com.alibaba.otter.shared.common.model.config.ConfigException;
 
 /**
  * Comment of OtterServiceLocator
- * 
+ *
  * @author xiaoqing.zhouxq
  * @author zebin.xuzb 重写 customizeBeanFactory，防止重复id
  */
 public class OtterContextLocator {
 
-    private static ClassPathXmlApplicationContext context       = null;
-    private static RuntimeException               initException = null;
+    private static ClassPathXmlApplicationContext context = null;
+    private static RuntimeException initException = null;
 
     static {
         try {
@@ -75,8 +75,8 @@ public class OtterContextLocator {
     public static void autowire(Object obj) {
         // 重新注入一下对象
         context.getAutowireCapableBeanFactory().autowireBeanProperties(obj,
-                                                                       AutowireCapableBeanFactory.AUTOWIRE_BY_NAME,
-                                                                       false);
+                AutowireCapableBeanFactory.AUTOWIRE_BY_NAME,
+                false);
     }
 
 }

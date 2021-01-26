@@ -26,17 +26,17 @@ import com.alibaba.otter.shared.etl.model.EventData;
 
 /**
  * 数据库load处理上下文
- * 
+ *
  * @author jianghang 2011-11-1 上午11:22:45
  * @version 4.0.0
  */
 public class DbLoadContext extends AbstractLoadContext<EventData> {
 
     private static final long serialVersionUID = -4851977997313104740L;
-    private List<EventData>   lastProcessedDatas;                      // 上一轮的已录入的记录，可能会有多次失败需要合并多次已录入的数据
-    private DataMediaSource   dataMediaSource;
+    private List<EventData> lastProcessedDatas;                      // 上一轮的已录入的记录，可能会有多次失败需要合并多次已录入的数据
+    private DataMediaSource dataMediaSource;
 
-    public DbLoadContext(){
+    public DbLoadContext() {
         lastProcessedDatas = Collections.synchronizedList(new LinkedList<EventData>());
         prepareDatas = Collections.synchronizedList(new LinkedList<EventData>());
         processedDatas = Collections.synchronizedList(new LinkedList<EventData>());

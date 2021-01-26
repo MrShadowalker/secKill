@@ -25,7 +25,7 @@ import com.google.common.collect.Lists;
 
 /**
  * buckets的集合操作对象
- * 
+ *
  * @author jianghang 2011-11-1 上午07:37:05
  * @version 4.0.0
  */
@@ -96,20 +96,20 @@ public class WeightBuckets<T> {
 
 /**
  * 相同weight的item集合对象
- * 
+ *
+ * @param <T>
  * @author jianghang 2011-11-1 上午11:09:58
  * @version 4.0.0
- * @param <T>
  */
 class WeightBucket<T> implements Comparable<WeightBucket> {
 
-    private long          weight = -1;
+    private long weight = -1;
     private LinkedList<T> bucket = new LinkedList<T>();
 
-    public WeightBucket(){
+    public WeightBucket() {
     }
 
-    public WeightBucket(long weight){
+    public WeightBucket(long weight) {
         this.weight = weight;
     }
 

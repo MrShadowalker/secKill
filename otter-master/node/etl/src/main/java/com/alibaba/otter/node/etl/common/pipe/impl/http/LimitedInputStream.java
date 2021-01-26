@@ -6,7 +6,7 @@ import java.io.InputStream;
 
 /**
  * copy from google protobuf，支持带limit限制读取数量的功能，将stream可用于流式读取
- * 
+ *
  * @author jianghang 2013-8-29 下午3:34:32
  * @since 4.2.1
  */
@@ -14,7 +14,7 @@ public class LimitedInputStream extends FilterInputStream {
 
     private int limit;
 
-    public LimitedInputStream(InputStream in, int limit){
+    public LimitedInputStream(InputStream in, int limit) {
         super(in);
         this.limit = limit;
     }

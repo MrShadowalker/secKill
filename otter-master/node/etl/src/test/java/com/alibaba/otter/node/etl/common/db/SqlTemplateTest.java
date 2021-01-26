@@ -26,11 +26,11 @@ import com.alibaba.otter.node.etl.common.db.dialect.oracle.OracleSqlTemplate;
 public class SqlTemplateTest extends BaseDbTest {
 
     private static final String SCHEMA_NAME = "srf";
-    private static final String TABLE_NAME  = "columns";
+    private static final String TABLE_NAME = "columns";
 
-    private String[]            pkColumns   = { "id", "name" };
-    private String[]            columns     = { "alias_name", "amount", "text_b", "text_c", "curr_date", "gmt_create",
-            "gmt_modify"                   };
+    private String[] pkColumns = {"id", "name"};
+    private String[] columns = {"alias_name", "amount", "text_b", "text_c", "curr_date", "gmt_create",
+            "gmt_modify"};
 
     @Test
     public void test_mysql() {

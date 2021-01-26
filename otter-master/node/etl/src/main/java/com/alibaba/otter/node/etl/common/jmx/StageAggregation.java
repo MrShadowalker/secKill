@@ -20,21 +20,21 @@ import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * 统计每个stage的运行信息
- * 
+ *
  * @author jianghang 2012-5-29 下午02:32:08
  * @version 4.0.2
  */
 public class StageAggregation {
 
     private static final String HISTOGRAM_FORMAT = "{total:%s,count:%s,maximum:%s,minimum:%s,average:%s,tps:%s,tpm:%s}";
-    private static final Long   ONE_SECOND       = 1000L;
-    private static final Long   ONE_MINUTE       = 60 * 1000L;
-    private int                 bufferSize       = 1 * 1024;
-    private int                 indexMask;
-    private AggregationItem[]   table;
-    private AtomicLong          sequence         = new AtomicLong(-1);
+    private static final Long ONE_SECOND = 1000L;
+    private static final Long ONE_MINUTE = 60 * 1000L;
+    private int bufferSize = 1 * 1024;
+    private int indexMask;
+    private AggregationItem[] table;
+    private AtomicLong sequence = new AtomicLong(-1);
 
-    public StageAggregation(int bufferSize){
+    public StageAggregation(int bufferSize) {
         if (Integer.bitCount(bufferSize) != 1) {
             throw new IllegalArgumentException("bufferSize must be a power of 2");
         }
@@ -134,7 +134,7 @@ public class StageAggregation {
             min = 0L;
         }
 
-        return String.format(HISTOGRAM_FORMAT, new Object[] { sequence.get() + 1, items, max, min, avg, tps, tpm });
+        return String.format(HISTOGRAM_FORMAT, new Object[]{sequence.get() + 1, items, max, min, avg, tps, tpm});
     }
 
     private int getIndex(long sequcnce) {
@@ -148,14 +148,14 @@ public class StageAggregation {
         private Long number;   // 一次请求的处理数量
         private Long size;     // 一次请求的处理大小
 
-        public AggregationItem(Long startTime, Long endTime, Long number, Long size){
+        public AggregationItem(Long startTime, Long endTime, Long number, Long size) {
             this.startTime = startTime;
             this.endTime = endTime;
             this.number = number;
             this.size = size;
         }
 
-        public AggregationItem(Long startTime, Long endTime){
+        public AggregationItem(Long startTime, Long endTime) {
             this.startTime = startTime;
             this.endTime = endTime;
         }

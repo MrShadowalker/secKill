@@ -24,13 +24,13 @@ import com.alibaba.otter.shared.arbitrate.model.TerminEventData.TerminType;
 
 /**
  * 基于otter manager的报警机制实现
- * 
+ *
  * @author jianghang 2012-8-23 上午10:59:58
  * @version 4.1.0
  */
 public class OtterAlarmHandler extends AbstractCanalLifeCycle implements CanalAlarmHandler {
 
-    private Long                  pipelineId;
+    private Long pipelineId;
     private ArbitrateEventService arbitrateEventService;
 
     public void sendAlarm(String destination, String msg) {

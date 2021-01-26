@@ -42,28 +42,28 @@ import com.alibaba.otter.shared.common.model.config.pipeline.Pipeline;
 
 /**
  * mainstem,select,extract,transform,load parent Thread.
- * 
+ *
  * @author xiaoqing.zhouxq 2011-8-23 上午10:38:14
  */
 public abstract class GlobalTask extends Thread {
 
-    protected final Logger              logger  = LoggerFactory.getLogger(this.getClass());
-    protected volatile boolean          running = true;
-    protected Pipeline                  pipeline;
-    protected Long                      pipelineId;
-    protected ArbitrateEventService     arbitrateEventService;
-    protected RowDataPipeDelegate       rowDataPipeDelegate;
-    protected ExecutorService           executorService;
-    protected ConfigClientService       configClientService;
+    protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+    protected volatile boolean running = true;
+    protected Pipeline pipeline;
+    protected Long pipelineId;
+    protected ArbitrateEventService arbitrateEventService;
+    protected RowDataPipeDelegate rowDataPipeDelegate;
+    protected ExecutorService executorService;
+    protected ConfigClientService configClientService;
     protected StageAggregationCollector stageAggregationCollector;
-    protected Map<Long, Future>         pendingFuture;
+    protected Map<Long, Future> pendingFuture;
 
-    public GlobalTask(Pipeline pipeline){
+    public GlobalTask(Pipeline pipeline) {
         this(pipeline.getId());
         this.pipeline = pipeline;
     }
 
-    public GlobalTask(Long pipelineId){
+    public GlobalTask(Long pipelineId) {
         this.pipelineId = pipelineId;
         setName(createTaskName(pipelineId, ClassUtils.getShortClassName(this.getClass())));
         pendingFuture = new HashMap<Long, Future>();

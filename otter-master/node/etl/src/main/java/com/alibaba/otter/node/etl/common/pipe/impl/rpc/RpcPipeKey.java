@@ -21,18 +21,18 @@ import com.alibaba.otter.shared.etl.model.Identity;
 
 /**
  * 基于rpc调用的pipe key
- * 
+ *
  * @author jianghang 2011-10-17 下午01:26:06
  * @version 4.0.0
  */
 public class RpcPipeKey extends PipeKey {
 
     private static final long serialVersionUID = -9092948280957762259L;
-    private Long              nid;                                     // 目标机器的唯一标示id
-    private Identity          identity;
-    private Long              time;
+    private Long nid;                                     // 目标机器的唯一标示id
+    private Identity identity;
+    private Long time;
 
-    public RpcPipeKey(){
+    public RpcPipeKey() {
         this.time = System.currentTimeMillis();// 随机生成一个值
     }
 

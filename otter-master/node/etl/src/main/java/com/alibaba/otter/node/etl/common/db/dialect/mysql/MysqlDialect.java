@@ -33,22 +33,22 @@ import com.google.common.collect.OtterMigrateMap;
 
 /**
  * 基于mysql的一些特殊处理定义
- * 
+ *
  * @author jianghang 2011-10-27 下午01:46:57
  * @version 4.0.0
  */
 public class MysqlDialect extends AbstractDbDialect {
 
-    private boolean                   isDRDS = false;
+    private boolean isDRDS = false;
     private Map<List<String>, String> shardColumns;
 
-    public MysqlDialect(JdbcTemplate jdbcTemplate, LobHandler lobHandler){
+    public MysqlDialect(JdbcTemplate jdbcTemplate, LobHandler lobHandler) {
         super(jdbcTemplate, lobHandler);
         sqlTemplate = new MysqlSqlTemplate();
     }
 
     public MysqlDialect(JdbcTemplate jdbcTemplate, LobHandler lobHandler, String name, String databaseVersion,
-                        int majorVersion, int minorVersion){
+                        int majorVersion, int minorVersion) {
         super(jdbcTemplate, lobHandler, name, majorVersion, minorVersion);
         sqlTemplate = new MysqlSqlTemplate();
 
@@ -72,7 +72,7 @@ public class MysqlDialect extends AbstractDbDialect {
                     }
                 } catch (Exception e) {
                     throw new NestableRuntimeException("find table [" + names.get(0) + "." + names.get(1) + "] error",
-                        e);
+                            e);
                 }
             }
         });

@@ -23,7 +23,7 @@ public class FileLoadContext extends AbstractLoadContext<FileData> {
 
     private static final long serialVersionUID = -6115201462901866481L;
 
-    public FileLoadContext(){
+    public FileLoadContext() {
         super();
     }
 

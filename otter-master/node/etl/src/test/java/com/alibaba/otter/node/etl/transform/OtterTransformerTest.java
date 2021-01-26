@@ -49,7 +49,7 @@ class OtterTransformerTest extends BaseDbTest {
 
     @SpringBeanFrom
     @Mocked
-    private ConfigClientService     configClientService;
+    private ConfigClientService configClientService;
 
     @SpringBeanByName
     private OtterTransformerFactory otterTransformFactory;

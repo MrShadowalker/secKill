@@ -36,19 +36,19 @@ import com.alibaba.otter.shared.etl.model.RowBatch;
 
 /**
  * 数据对象转化工厂
- * 
+ *
  * @author jianghang 2011-10-27 下午06:29:02
  * @version 4.0.0
  */
 public class OtterTransformerFactory {
 
     private ConfigClientService configClientService;
-    private RowDataTransformer  rowDataTransformer;
+    private RowDataTransformer rowDataTransformer;
     private FileDataTransformer fileDataTransformer;
 
     /**
      * 将一种源数据进行转化，最后得到的结果会根据DataMediaPair中定义的目标对象生成不同的数据对象 <br/>
-     * 
+     *
      * <pre>
      * 返回对象格式：Map
      * key : Class对象，代表生成的目标数据对象
@@ -109,7 +109,7 @@ public class OtterTransformerFactory {
                 }
 
                 Object item = fileDataTransformer.transform(fileData, new OtterTransformerContext(identity, pair,
-                                                                                                  pipeline));
+                        pipeline));
                 if (item == null) {
                     continue;
                 }
@@ -167,7 +167,7 @@ public class OtterTransformerFactory {
         }
 
         throw new TransformException("no support translate for source " + sourceDataMedia.toString() + " to target "
-                                     + targetDataMedia);
+                + targetDataMedia);
     }
 
     private Identity translateIdentity(Identity identity) {

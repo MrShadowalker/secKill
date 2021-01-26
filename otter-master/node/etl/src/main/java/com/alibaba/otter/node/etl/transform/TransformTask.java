@@ -38,7 +38,7 @@ import com.alibaba.otter.shared.etl.model.RowBatch;
 
 /**
  * transform工作线程,负责桥接连接仲裁器,Config,translate
- * 
+ *
  * @author jianghang 2011-10-11 下午04:14:11
  * @version 4.0.0
  */
@@ -46,7 +46,7 @@ public class TransformTask extends GlobalTask {
 
     private OtterTransformerFactory otterTransformerFactory;
 
-    public TransformTask(Long pipelineId){
+    public TransformTask(Long pipelineId) {
         super(pipelineId);
     }
 
@@ -99,19 +99,19 @@ public class TransformTask extends GlobalTask {
                             if (profiling) {
                                 Long profilingEndTime = System.currentTimeMillis();
                                 stageAggregationCollector.push(pipelineId,
-                                                               StageType.TRANSFORM,
-                                                               new AggregationItem(profilingStartTime, profilingEndTime));
+                                        StageType.TRANSFORM,
+                                        new AggregationItem(profilingStartTime, profilingEndTime));
                             }
                             // 处理完成后通知single已完成
                             arbitrateEventService.transformEvent().single(etlEventData);
                         } catch (Throwable e) {
                             if (!isInterrupt(e)) {
                                 logger.error(String.format("[%s] transformWork executor is error! data:%s", pipelineId,
-                                                           etlEventData), e);
+                                        etlEventData), e);
                                 sendRollbackTermin(pipelineId, e);
                             } else {
                                 logger.info(String.format("[%s] transformWork executor is interrrupt! data:%s",
-                                                          pipelineId, etlEventData), e);
+                                        pipelineId, etlEventData), e);
                             }
                         } finally {
                             Thread.currentThread().setName(currentName);
@@ -122,7 +122,7 @@ public class TransformTask extends GlobalTask {
 
                 // 构造pending任务，可在关闭线程时退出任务
                 SetlFuture extractFuture = new SetlFuture(StageType.TRANSFORM, etlEventData.getProcessId(),
-                                                          pendingFuture, task);
+                        pendingFuture, task);
                 executorService.execute(extractFuture);
 
             } catch (Throwable e) {

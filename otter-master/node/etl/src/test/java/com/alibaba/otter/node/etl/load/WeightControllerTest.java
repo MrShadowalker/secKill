@@ -63,12 +63,12 @@ class WeightWorkerTest extends Thread {
         return id;
     }
 
-    private List<Long>       weights;
+    private List<Long> weights;
     private WeightController controller;
-    private CountDownLatch   latch;
-    private int              id;
+    private CountDownLatch latch;
+    private int id;
 
-    public WeightWorkerTest(int id, int[] weights, WeightController controller, CountDownLatch latch){
+    public WeightWorkerTest(int id, int[] weights, WeightController controller, CountDownLatch latch) {
         this.id = id;
         this.controller = controller;
         this.weights = new ArrayList<Long>();

@@ -28,7 +28,7 @@ import com.alibaba.otter.common.push.supplier.DatasourceInfo;
  */
 public abstract class AuthenticationInfoUtils {
 
-    private AuthenticationInfoUtils(){
+    private AuthenticationInfoUtils() {
     }
 
     public static AuthenticationInfo createFrom(DatasourceInfo datasourceInfo) {

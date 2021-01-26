@@ -24,7 +24,7 @@ import com.alibaba.otter.shared.common.utils.OtterToStringStyle;
 
 /**
  * pipe中数据的唯一标示
- * 
+ *
  * @author jianghang 2011-10-13 下午05:26:32
  * @version 4.0.0
  */
@@ -32,7 +32,7 @@ public class PipeKey implements Serializable {
 
     private static final long serialVersionUID = 1543055219365681976L;
 
-    private PipeDataType      dataType;                               // 数据对象类型
+    private PipeDataType dataType;                               // 数据对象类型
 
     public PipeDataType getDataType() {
         return dataType;

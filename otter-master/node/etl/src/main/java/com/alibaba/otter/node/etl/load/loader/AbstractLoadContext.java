@@ -27,21 +27,21 @@ import com.alibaba.otter.shared.etl.model.Identity;
 
 /**
  * 类LoadContext.java的实现描述：TODO 类实现描述
- * 
+ *
  * @author simon 2012-7-3 下午2:22:51
  * @version 4.1.0
  */
 public abstract class AbstractLoadContext<T> implements LoadContext, Serializable {
 
     private static final long serialVersionUID = -2052280419851872736L;
-    private Identity          identity;
-    private Channel           channel;
-    private Pipeline          pipeline;
-    protected List<T>         prepareDatas;                            // 准备处理的数据
-    protected List<T>         processedDatas;                          // 已处理完成的数据
-    protected List<T>         failedDatas;
+    private Identity identity;
+    private Channel channel;
+    private Pipeline pipeline;
+    protected List<T> prepareDatas;                            // 准备处理的数据
+    protected List<T> processedDatas;                          // 已处理完成的数据
+    protected List<T> failedDatas;
 
-    public AbstractLoadContext(){
+    public AbstractLoadContext() {
         this.prepareDatas = Collections.synchronizedList(new LinkedList<T>());
         this.processedDatas = Collections.synchronizedList(new LinkedList<T>());
         this.failedDatas = Collections.synchronizedList(new LinkedList<T>());

@@ -39,7 +39,7 @@ import com.alibaba.otter.shared.etl.model.EventData;
 
 /**
  * 变更的主键+变更的字段 会和group进行交集处理，发现有交集后会确保当前group的所有字段都可以得到同步
- * 
+ *
  * @author simon 2012-4-26 下午5:04:51
  */
 public class GroupExtractor extends AbstractExtractor<DbBatch> {

@@ -35,26 +35,26 @@ import com.google.common.collect.MapMaker;
 
 public class DbLoadMergerTest extends BaseDbTest {
 
-    private static final int      COLUMN_TYPE    = 1;
+    private static final int COLUMN_TYPE = 1;
 
-    private static final long     TABLE_ID       = 10;
+    private static final long TABLE_ID = 10;
 
-    private static final String   SCHEMA_NAME    = "test";
+    private static final String SCHEMA_NAME = "test";
 
-    private static final String   TABLE_NAME     = "test";
+    private static final String TABLE_NAME = "test";
 
-    private static final String   KEY_NAME       = "id";
+    private static final String KEY_NAME = "id";
 
-    private static final String   KEY_VALUE      = "100";
+    private static final String KEY_VALUE = "100";
 
-    private static final String   KEY_VALUE_NEW1 = "1001";
-    private static final String   KEY_VALUE_NEW2 = "1002";
-    private static final String   KEY_VALUE_NEW3 = "1003";
-    private static final String   KEY_VALUE_NEW4 = "1004";
+    private static final String KEY_VALUE_NEW1 = "1001";
+    private static final String KEY_VALUE_NEW2 = "1002";
+    private static final String KEY_VALUE_NEW3 = "1003";
+    private static final String KEY_VALUE_NEW4 = "1004";
 
-    private static final String[] COLUMN_NAMES1  = { "name", "password" };
+    private static final String[] COLUMN_NAMES1 = {"name", "password"};
 
-    private static final String[] COLUMN_NAMES2  = { "name", "age" };
+    private static final String[] COLUMN_NAMES2 = {"name", "age"};
 
     /**
      * 测试insert+update

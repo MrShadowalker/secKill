@@ -27,7 +27,7 @@ public enum DownloadStatus {
 
     private String title;
 
-    DownloadStatus(String title){
+    DownloadStatus(String title) {
         this.title = title;
     }
 

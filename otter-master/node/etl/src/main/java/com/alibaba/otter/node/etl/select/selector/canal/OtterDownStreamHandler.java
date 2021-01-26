@@ -42,28 +42,28 @@ import com.alibaba.otter.shared.common.utils.thread.NamedThreadFactory;
 
 /**
  * 在{@linkplain CanalEventSink}消费数据之前，更新到对应的store中
- * 
+ *
  * @author jianghang 2012-7-31 下午03:27:18
  * @version 4.1.0
  */
 public class OtterDownStreamHandler extends AbstractCanalEventDownStreamHandler<List<Event>> {
 
-    private static final Logger      logger                   = LoggerFactory.getLogger(OtterDownStreamHandler.class);
-    private static final String      DETECTING_FAILED_MESSAGE = "pid:%s canal elapsed %s seconds no data";
-    private Long                     pipelineId;
-    private ArbitrateEventService    arbitrateEventService;
+    private static final Logger logger = LoggerFactory.getLogger(OtterDownStreamHandler.class);
+    private static final String DETECTING_FAILED_MESSAGE = "pid:%s canal elapsed %s seconds no data";
+    private Long pipelineId;
+    private ArbitrateEventService arbitrateEventService;
     // 心跳检查控制mainstem信号
-    private ScheduledExecutorService scheduler                = null;
-    private ScheduledFuture          future                   = null;
-    private AtomicBoolean            working                  = new AtomicBoolean(false);
-    private Integer                  detectingIntervalInSeconds;                                                      // 心跳包发送时间
-    private volatile Long            lastEventExecuteTime     = 0L;
+    private ScheduledExecutorService scheduler = null;
+    private ScheduledFuture future = null;
+    private AtomicBoolean working = new AtomicBoolean(false);
+    private Integer detectingIntervalInSeconds;                                                      // 心跳包发送时间
+    private volatile Long lastEventExecuteTime = 0L;
     // detecting临时数据
-    private int                      detectingThresoldCount   = 10;
-    private int                      detectingExpCount        = 1;                                                    // 增常趋势
-    private AtomicLong               detectingFailedCount     = new AtomicLong(0);                                    // 检测失败的次数
-    private AtomicLong               detectingSuccessedCount  = new AtomicLong(0);
-    private ReentrantLock            lock                     = new ReentrantLock();                                  // 检测成功的次数
+    private int detectingThresoldCount = 10;
+    private int detectingExpCount = 1;                                                    // 增常趋势
+    private AtomicLong detectingFailedCount = new AtomicLong(0);                                    // 检测失败的次数
+    private AtomicLong detectingSuccessedCount = new AtomicLong(0);
+    private ReentrantLock lock = new ReentrantLock();                                  // 检测成功的次数
 
     public void stop() {
         try {
@@ -181,8 +181,8 @@ public class OtterDownStreamHandler extends AbstractCanalEventDownStreamHandler<
             errorEventData.setType(TerminType.WARNING);
             errorEventData.setCode("mainstem");
             errorEventData.setDesc(String.format(DETECTING_FAILED_MESSAGE,
-                pipelineId,
-                String.valueOf(detectingIntervalInSeconds * failedCount)));
+                    pipelineId,
+                    String.valueOf(detectingIntervalInSeconds * failedCount)));
             arbitrateEventService.terminEvent().single(errorEventData);
         }
     }

@@ -55,10 +55,10 @@ public class HttpPipeIntegration extends BaseOtterTest {
     private static final String tmp = System.getProperty("java.io.tmpdir", "/tmp");
 
     @SpringBeanByName
-    private AttachmentHttpPipe  attachmentHttpPipe;
+    private AttachmentHttpPipe attachmentHttpPipe;
 
     @SpringBeanByName
-    private RowDataHttpPipe     rowDataHttpPipe;
+    private RowDataHttpPipe rowDataHttpPipe;
 
     @SpringBeanFrom
     @Mocked

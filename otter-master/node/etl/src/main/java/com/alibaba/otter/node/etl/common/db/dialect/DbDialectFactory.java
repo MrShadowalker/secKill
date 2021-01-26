@@ -45,69 +45,69 @@ import com.google.common.collect.OtterMigrateMap.OtterRemovalListener;
  */
 public class DbDialectFactory implements DisposableBean {
 
-    private static final Logger                      logger = LoggerFactory.getLogger(DbDialectFactory.class);
-    private DataSourceService                        dataSourceService;
-    private DbDialectGenerator                       dbDialectGenerator;
+    private static final Logger logger = LoggerFactory.getLogger(DbDialectFactory.class);
+    private DataSourceService dataSourceService;
+    private DbDialectGenerator dbDialectGenerator;
 
     // 第一层pipelineId , 第二层DbMediaSource id
     private Map<Long, Map<DbMediaSource, DbDialect>> dialects;
 
-    public DbDialectFactory(){
+    public DbDialectFactory() {
         dialects = OtterMigrateMap.makeSoftValueComputingMapWithRemoveListenr(new Function<Long, Map<DbMediaSource, DbDialect>>() {
 
-            public Map<DbMediaSource, DbDialect> apply(final Long pipelineId) {
-                // 构建第二层map
-                return MigrateMap.makeComputingMap(new Function<DbMediaSource, DbDialect>() {
+                                                                                  public Map<DbMediaSource, DbDialect> apply(final Long pipelineId) {
+                                                                                      // 构建第二层map
+                                                                                      return MigrateMap.makeComputingMap(new Function<DbMediaSource, DbDialect>() {
 
-                    public DbDialect apply(final DbMediaSource source) {
-                        DataSource dataSource = dataSourceService.getDataSource(pipelineId, source);
-                        final JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-                        return (DbDialect) jdbcTemplate.execute(new ConnectionCallback() {
+                                                                                          public DbDialect apply(final DbMediaSource source) {
+                                                                                              DataSource dataSource = dataSourceService.getDataSource(pipelineId, source);
+                                                                                              final JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+                                                                                              return (DbDialect) jdbcTemplate.execute(new ConnectionCallback() {
 
-                            public Object doInConnection(Connection c) throws SQLException, DataAccessException {
-                                DatabaseMetaData meta = c.getMetaData();
-                                String databaseName = meta.getDatabaseProductName();
-                                String databaseVersion = meta.getDatabaseProductVersion();
-                                int databaseMajorVersion = meta.getDatabaseMajorVersion();
-                                int databaseMinorVersion = meta.getDatabaseMinorVersion();
-                                DbDialect dialect = dbDialectGenerator.generate(jdbcTemplate,
-                                    databaseName,
-                                    databaseVersion,
-                                    databaseMajorVersion,
-                                    databaseMinorVersion,
-                                    source.getType());
-                                if (dialect == null) {
-                                    throw new UnsupportedOperationException("no dialect for" + databaseName);
-                                }
+                                                                                                  public Object doInConnection(Connection c) throws SQLException, DataAccessException {
+                                                                                                      DatabaseMetaData meta = c.getMetaData();
+                                                                                                      String databaseName = meta.getDatabaseProductName();
+                                                                                                      String databaseVersion = meta.getDatabaseProductVersion();
+                                                                                                      int databaseMajorVersion = meta.getDatabaseMajorVersion();
+                                                                                                      int databaseMinorVersion = meta.getDatabaseMinorVersion();
+                                                                                                      DbDialect dialect = dbDialectGenerator.generate(jdbcTemplate,
+                                                                                                              databaseName,
+                                                                                                              databaseVersion,
+                                                                                                              databaseMajorVersion,
+                                                                                                              databaseMinorVersion,
+                                                                                                              source.getType());
+                                                                                                      if (dialect == null) {
+                                                                                                          throw new UnsupportedOperationException("no dialect for" + databaseName);
+                                                                                                      }
 
-                                if (logger.isInfoEnabled()) {
-                                    logger.info(String.format("--- DATABASE: %s, SCHEMA: %s ---",
-                                        databaseName,
-                                        (dialect.getDefaultSchema() == null) ? dialect.getDefaultCatalog() : dialect.getDefaultSchema()));
-                                }
+                                                                                                      if (logger.isInfoEnabled()) {
+                                                                                                          logger.info(String.format("--- DATABASE: %s, SCHEMA: %s ---",
+                                                                                                                  databaseName,
+                                                                                                                  (dialect.getDefaultSchema() == null) ? dialect.getDefaultCatalog() : dialect.getDefaultSchema()));
+                                                                                                      }
 
-                                return dialect;
-                            }
-                        });
+                                                                                                      return dialect;
+                                                                                                  }
+                                                                                              });
 
+                                                                                          }
+                                                                                      });
+                                                                                  }
+                                                                              },
+                new OtterRemovalListener<Long, Map<DbMediaSource, DbDialect>>() {
+
+                    @Override
+                    public void onRemoval(Long pipelineId, Map<DbMediaSource, DbDialect> dialect) {
+                        if (dialect == null) {
+                            return;
+                        }
+
+                        for (DbDialect dbDialect : dialect.values()) {
+                            dbDialect.destory();
+                        }
                     }
+
                 });
-            }
-        },
-            new OtterRemovalListener<Long, Map<DbMediaSource, DbDialect>>() {
-
-                @Override
-                public void onRemoval(Long pipelineId, Map<DbMediaSource, DbDialect> dialect) {
-                    if (dialect == null) {
-                        return;
-                    }
-
-                    for (DbDialect dbDialect : dialect.values()) {
-                        dbDialect.destory();
-                    }
-                }
-
-            });
 
     }
 

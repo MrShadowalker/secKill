@@ -21,7 +21,7 @@ import com.alibaba.otter.shared.common.model.config.channel.Channel;
 
 /**
  * 内部config service
- * 
+ *
  * @author jianghang
  */
 public interface InternalConfigClientService extends ConfigClientService {

@@ -19,7 +19,7 @@ import com.alibaba.druid.sql.dialect.mysql.visitor.MySqlOutputVisitor;
 
 /**
  * 解析一下DDL的完整语法
- * 
+ *
  * @author agapple 2017年4月6日 下午1:07:53
  * @since 4.2.14
  */
@@ -32,23 +32,23 @@ public class DdlUtils {
 
         StringBuilder out = new StringBuilder();
         OtterMyqlOutputVisitor visitor = new OtterMyqlOutputVisitor(out,
-            sourceSchema,
-            sourceTable,
-            targetSchema,
-            targetTable);
+                sourceSchema,
+                sourceTable,
+                targetSchema,
+                targetTable);
         stmt.accept(visitor);
         return out.toString();
     }
 
     public static class OtterMyqlOutputVisitor extends MySqlOutputVisitor {
 
-        private String              targetSchema;
-        private String              targetTable;
-        private String              sourceSchema;
-        private String              sourceTable;
+        private String targetSchema;
+        private String targetTable;
+        private String sourceSchema;
+        private String sourceTable;
 
         public OtterMyqlOutputVisitor(Appendable appender, String sourceSchema, String sourceTable,
-                                      String targetSchema, String targetTable){
+                                      String targetSchema, String targetTable) {
             super(appender);
             this.sourceSchema = sourceSchema;
             this.sourceTable = sourceTable;
@@ -62,7 +62,7 @@ public class DdlUtils {
                 String oldSchem = unescapeName(owner.getName());
                 String oldTable = unescapeName(((SQLPropertyExpr) sqlName).getName());
                 if ((sourceSchema == null || oldSchem.equalsIgnoreCase(sourceSchema))
-                    && (sourceTable == null || oldTable.equalsIgnoreCase(sourceTable))) { // rename需要匹配表名
+                        && (sourceTable == null || oldTable.equalsIgnoreCase(sourceTable))) { // rename需要匹配表名
                     owner.setName("`" + targetSchema + "`");
                     ((SQLPropertyExpr) sqlName).setName("`" + targetTable + "`");
                 }

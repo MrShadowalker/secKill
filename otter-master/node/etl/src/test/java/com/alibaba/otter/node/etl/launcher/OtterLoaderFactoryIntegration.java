@@ -33,7 +33,7 @@ import com.alibaba.otter.shared.etl.model.RowBatch;
 public class OtterLoaderFactoryIntegration extends BaseDbTest {
 
     @SpringBeanByName
-    private ExecutorService    executorService;
+    private ExecutorService executorService;
 
     @SpringBeanByName
     private OtterLoaderFactory otterLoaderFactory;

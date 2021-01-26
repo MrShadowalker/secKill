@@ -48,13 +48,13 @@ import com.alibaba.otter.shared.etl.model.RowBatch;
 public class DatabaseExtractorTest extends BaseDbTest {
 
     @SpringBeanByName
-    private DatabaseExtractor   databaseExtractor;
+    private DatabaseExtractor databaseExtractor;
 
     @SpringBeanFrom
     @Mocked
     private ConfigClientService configClientService;
 
-    private Identity            identity = null;
+    private Identity identity = null;
 
     @BeforeMethod
     public void setUp() {

@@ -31,13 +31,13 @@ import com.alibaba.otter.shared.common.model.config.node.Node;
 
 /**
  * 扩展实现spring的jmx connector
- * 
+ *
  * @author jianghang 2012-7-30 下午12:50:05
  */
 public class JmxConnectorServerFactoryBean extends ConnectorServerFactoryBean {
 
-    private String              SERVER_URL           = "service:jmx:rmi://127.0.0.1:{0}/jndi/rmi://127.0.0.1:{0}/mbean";
-    private boolean             alwaysCreateRegistry = false;
+    private String SERVER_URL = "service:jmx:rmi://127.0.0.1:{0}/jndi/rmi://127.0.0.1:{0}/mbean";
+    private boolean alwaysCreateRegistry = false;
     private ConfigClientService configClientService;
 
     public void afterPropertiesSet() throws JMException, IOException {

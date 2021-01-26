@@ -47,27 +47,28 @@ import com.google.common.collect.Sets;
 
 /**
  * 基于http下载的pipe实现
- * 
+ *
  * @author jianghang 2011-10-13 下午06:31:13
  * @version 4.0.0
  */
 public abstract class AbstractHttpPipe<T, KEY extends HttpPipeKey> implements Pipe<T, KEY>, InitializingBean {
 
-    protected static final Long               DEFAULT_PERIOD = 60 * 1000L;
-    protected static final String             UTF_8          = "UTF-8";
-    protected static final String             DATE_FORMAT    = "yyyy-MM-dd-HH-mm-ss";
-    protected static ScheduledExecutorService schedulor      = Executors.newScheduledThreadPool(1,
-                                                                                                new NamedThreadFactory(
-                                                                                                                       "HttpPipe-Cleaner")); ;
-    protected Logger                          logger         = LoggerFactory.getLogger(this.getClass());
-    protected JettyEmbedServer                jettyEmbedServer;                                                                             // 注入对象，确保server已经启动
-    protected Long                            period         = DEFAULT_PERIOD;
-    protected ConfigClientService             configClientService;
-    protected Long                            timeout        = 24 * 60 * 60 * 1000L;                                                        // 对应的超时时间,24小时
-    protected String                          htdocsDir;                                                                                    // http服务下载路径
-    protected String                          downloadDir;                                                                                  // 下载完成后目标路径
-    protected RemoteUrlBuilder                remoteUrlBuilder;
-    protected DataRetrieverFactory            dataRetrieverFactory;
+    protected static final Long DEFAULT_PERIOD = 60 * 1000L;
+    protected static final String UTF_8 = "UTF-8";
+    protected static final String DATE_FORMAT = "yyyy-MM-dd-HH-mm-ss";
+    protected static ScheduledExecutorService schedulor = Executors.newScheduledThreadPool(1,
+            new NamedThreadFactory(
+                    "HttpPipe-Cleaner"));
+    ;
+    protected Logger logger = LoggerFactory.getLogger(this.getClass());
+    protected JettyEmbedServer jettyEmbedServer;                                                                             // 注入对象，确保server已经启动
+    protected Long period = DEFAULT_PERIOD;
+    protected ConfigClientService configClientService;
+    protected Long timeout = 24 * 60 * 60 * 1000L;                                                        // 对应的超时时间,24小时
+    protected String htdocsDir;                                                                                    // http服务下载路径
+    protected String downloadDir;                                                                                  // 下载完成后目标路径
+    protected RemoteUrlBuilder remoteUrlBuilder;
+    protected DataRetrieverFactory dataRetrieverFactory;
 
     public void afterPropertiesSet() throws Exception {
         Assert.notNull(remoteUrlBuilder);

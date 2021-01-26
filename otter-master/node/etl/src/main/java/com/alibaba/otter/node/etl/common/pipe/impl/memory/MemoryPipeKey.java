@@ -21,7 +21,7 @@ import com.alibaba.otter.shared.etl.model.Identity;
 
 /**
  * 基于内存的pipekey实现
- * 
+ *
  * @author jianghang 2011-10-13 下午05:32:04
  * @version 4.0.0
  */
@@ -29,10 +29,10 @@ public class MemoryPipeKey extends PipeKey {
 
     private static final long serialVersionUID = -7478539581294846644L;
 
-    private Identity          identity;
-    private Long              time;
+    private Identity identity;
+    private Long time;
 
-    public MemoryPipeKey(){
+    public MemoryPipeKey() {
         this.time = System.currentTimeMillis();// 随机生成一个值
     }
 

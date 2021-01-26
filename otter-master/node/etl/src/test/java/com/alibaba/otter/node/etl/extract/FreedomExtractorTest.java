@@ -45,13 +45,13 @@ import com.alibaba.otter.shared.etl.model.RowBatch;
 class FreedomExtractorTest extends BaseDbTest {
 
     @SpringBeanByName
-    private FreedomExtractor    freedomExtractor;
+    private FreedomExtractor freedomExtractor;
 
     @SpringBeanFrom
     @Mocked
     private ConfigClientService configClientService;
 
-    private Identity            identity = null;
+    private Identity identity = null;
 
     @BeforeMethod
     public void setUp() {

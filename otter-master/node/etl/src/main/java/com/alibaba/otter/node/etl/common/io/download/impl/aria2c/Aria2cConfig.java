@@ -21,8 +21,8 @@ package com.alibaba.otter.node.etl.common.io.download.impl.aria2c;
  */
 public interface Aria2cConfig {
 
-    public static final String[] ARIA2C_PARAM = new String[] {
-                                              // 不加载配置文件
+    public static final String[] ARIA2C_PARAM = new String[]{
+            // 不加载配置文件
             "--no-conf",
 
             // 每个url下载线程数 1-16
@@ -56,5 +56,5 @@ public interface Aria2cConfig {
             "--enable-http-keep-alive=true",
 
             // 日志级别
-            "--log-level=warn",              };
+            "--log-level=warn",};
 }

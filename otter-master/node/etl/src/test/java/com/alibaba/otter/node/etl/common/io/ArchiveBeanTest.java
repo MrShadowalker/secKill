@@ -33,7 +33,7 @@ import com.alibaba.otter.shared.etl.model.FileData;
 
 /**
  * 测试下压缩和解压缩
- * 
+ *
  * @author jianghang 2011-10-11 下午05:58:53
  * @version 4.0.0
  */

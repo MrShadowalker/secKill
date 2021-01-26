@@ -20,7 +20,7 @@ import com.alibaba.otter.node.etl.common.db.dialect.AbstractSqlTemplate;
 
 /**
  * mysql sql生成模板
- * 
+ *
  * @author jianghang 2011-10-27 下午01:41:20
  * @version 4.0.0
  */
@@ -55,14 +55,14 @@ public class MysqlSqlTemplate extends AbstractSqlTemplate {
         size = columnNames.length;
         for (int i = 0; i < size; i++) {
             // 如果是DRDS数据库, 并且存在拆分键 且 等于当前循环列, 跳过
-            if(!includePks && shardColumn != null && columnNames[i].equals(shardColumn)){
+            if (!includePks && shardColumn != null && columnNames[i].equals(shardColumn)) {
                 continue;
             }
 
             sql.append(appendEscape(columnNames[i]))
-                .append("=values(")
-                .append(appendEscape(columnNames[i]))
-                .append(")");
+                    .append("=values(")
+                    .append(appendEscape(columnNames[i]))
+                    .append(")");
             if (includePks) {
                 sql.append(" , ");
             } else {

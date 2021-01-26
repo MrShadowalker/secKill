@@ -24,12 +24,12 @@ import com.alibaba.otter.shared.etl.model.EventType;
 
 /**
  * 将同一个weight下的EventData进行数据归类,按表和insert/update/delete类型进行分类
- * 
+ *
  * <pre>
  * 归类用途：对insert语句进行batch优化
  * 1. mysql索引的限制，需要避免insert并发执行
  * </pre>
- * 
+ *
  * @author jianghang 2011-11-9 下午04:28:35
  * @version 4.0.0
  */
@@ -37,11 +37,11 @@ public class DbLoadData {
 
     private List<TableLoadData> tables = new ArrayList<TableLoadData>();
 
-    public DbLoadData(){
+    public DbLoadData() {
         // nothing
     }
 
-    public DbLoadData(List<EventData> datas){
+    public DbLoadData(List<EventData> datas) {
         for (EventData data : datas) {
             merge(data);
         }
@@ -81,12 +81,12 @@ public class DbLoadData {
      */
     public static class TableLoadData {
 
-        private Long            tableId;
-        private List<EventData> insertDatas  = new ArrayList<EventData>();
+        private Long tableId;
+        private List<EventData> insertDatas = new ArrayList<EventData>();
         private List<EventData> upadateDatas = new ArrayList<EventData>();
-        private List<EventData> deleteDatas  = new ArrayList<EventData>();
+        private List<EventData> deleteDatas = new ArrayList<EventData>();
 
-        public TableLoadData(Long tableId){
+        public TableLoadData(Long tableId) {
             this.tableId = tableId;
         }
 

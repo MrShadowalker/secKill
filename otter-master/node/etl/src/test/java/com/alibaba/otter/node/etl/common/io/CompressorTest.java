@@ -33,13 +33,13 @@ import com.alibaba.otter.shared.common.utils.NioUtils;
 
 /**
  * 数据压缩测试类
- * 
+ *
  * @author jianghang 2011-10-10 上午09:06:32
  * @version 4.0.0
  */
 public class CompressorTest extends BaseOtterTest {
 
-    private static Compressor[] comps = new Compressor[] { new GzipCompressor(), new BZip2Compressor() };
+    private static Compressor[] comps = new Compressor[]{new GzipCompressor(), new BZip2Compressor()};
 
     @Test
     public void test_stream() {

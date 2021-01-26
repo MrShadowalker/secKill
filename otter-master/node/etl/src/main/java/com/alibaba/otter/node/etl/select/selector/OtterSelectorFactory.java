@@ -21,7 +21,7 @@ import com.alibaba.otter.node.etl.select.selector.canal.CanalEmbedSelector;
 
 /**
  * 获取对应的selector
- * 
+ *
  * @author jianghang 2012-8-1 上午10:25:06
  * @version 4.1.0
  */

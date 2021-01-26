@@ -41,23 +41,23 @@ import com.google.common.collect.OtterMigrateMap;
 
 /**
  * task节点对应的config对象管理服务
- * 
+ *
  * @author jianghang
  */
 public class ConfigClientServiceImpl implements InternalConfigClientService, ArbitrateConfig, InitializingBean {
 
-    private static final String                NID_NAME       = "nid";
-    private static final Long                  DEFAULT_PERIOD = 60 * 1000L;
-    private static final Logger                logger         = LoggerFactory.getLogger(ConfigClientService.class);
+    private static final String NID_NAME = "nid";
+    private static final Long DEFAULT_PERIOD = 60 * 1000L;
+    private static final Logger logger = LoggerFactory.getLogger(ConfigClientService.class);
 
-    private Long                               timeout        = DEFAULT_PERIOD;
-    private Long                               nid;
-    private NodeCommmunicationClient           nodeCommmunicationClient;
+    private Long timeout = DEFAULT_PERIOD;
+    private Long nid;
+    private NodeCommmunicationClient nodeCommmunicationClient;
     private RefreshMemoryMirror<Long, Channel> channelCache;
-    private Map<Long, Long>                    channelMapping;                                                     // 将pipelineId映射为channelId
-    private RefreshMemoryMirror<Long, Node>    nodeCache;
+    private Map<Long, Long> channelMapping;                                                     // 将pipelineId映射为channelId
+    private RefreshMemoryMirror<Long, Node> nodeCache;
 
-    public ConfigClientServiceImpl(){
+    public ConfigClientServiceImpl() {
         // 注册一下事件处理
         ArbitrateConfigRegistry.regist(this);
     }
@@ -66,7 +66,7 @@ public class ConfigClientServiceImpl implements InternalConfigClientService, Arb
         Node node = nodeCache.get(nid);
         if (node == null) {
             throw new ConfigException("nid:" + nid + " in manager[" + nodeCommmunicationClient.getManagerAddress()
-                                      + "]is not found!");
+                    + "]is not found!");
         }
 
         return node;

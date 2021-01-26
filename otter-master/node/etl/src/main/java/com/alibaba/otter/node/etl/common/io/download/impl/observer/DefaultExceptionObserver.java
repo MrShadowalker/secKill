@@ -27,7 +27,7 @@ public class DefaultExceptionObserver extends ExceptionObserver {
 
     private Logger logger;
 
-    public DefaultExceptionObserver(Logger logger){
+    public DefaultExceptionObserver(Logger logger) {
         this.logger = logger;
     }
 

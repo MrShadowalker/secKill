@@ -18,7 +18,7 @@ package com.alibaba.otter.node.etl.common.db.dialect;
 
 /**
  * sql构造模板操作
- * 
+ *
  * @author jianghang 2011-10-27 下午01:31:15
  * @version 4.0.0
  */

@@ -23,7 +23,7 @@ import org.springframework.transaction.support.TransactionTemplate;
 
 /**
  * 数据库方言定义接口
- * 
+ *
  * @author jianghang 2011-10-27 上午11:24:15
  * @version 4.0.0
  */

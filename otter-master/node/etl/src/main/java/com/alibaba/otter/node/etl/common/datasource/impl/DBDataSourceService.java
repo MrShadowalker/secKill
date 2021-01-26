@@ -41,33 +41,33 @@ import com.google.common.collect.OtterMigrateMap;
 
 /**
  * Comment of DataSourceServiceImpl
- * 
+ *
  * @author xiaoqing.zhouxq
  * @author zebinxu, add {@link DataSourceHanlder}
  */
 public class DBDataSourceService implements DataSourceService, DisposableBean {
 
-    private static final Logger                       logger                        = LoggerFactory.getLogger(DBDataSourceService.class);
+    private static final Logger logger = LoggerFactory.getLogger(DBDataSourceService.class);
 
-    private List<DataSourceHanlder>                   dataSourceHandlers;
+    private List<DataSourceHanlder> dataSourceHandlers;
 
-    private int                                       maxWait                       = 60 * 1000;
+    private int maxWait = 60 * 1000;
 
-    private int                                       minIdle                       = 0;
+    private int minIdle = 0;
 
-    private int                                       initialSize                   = 0;
+    private int initialSize = 0;
 
-    private int                                       maxActive                     = 32;
+    private int maxActive = 32;
 
-    private int                                       maxIdle                       = 32;
+    private int maxIdle = 32;
 
-    private int                                       numTestsPerEvictionRun        = -1;
+    private int numTestsPerEvictionRun = -1;
 
-    private int                                       timeBetweenEvictionRunsMillis = 60 * 1000;
+    private int timeBetweenEvictionRunsMillis = 60 * 1000;
 
-    private int                                       removeAbandonedTimeout        = 5 * 60;
+    private int removeAbandonedTimeout = 5 * 60;
 
-    private int                                       minEvictableIdleTimeMillis    = 5 * 60 * 1000;
+    private int minEvictableIdleTimeMillis = 5 * 60 * 1000;
 
     /**
      * 一个pipeline下面有一组DataSource.<br>
@@ -76,7 +76,7 @@ public class DBDataSourceService implements DataSourceService, DisposableBean {
      */
     private Map<Long, Map<DbMediaSource, DataSource>> dataSources;
 
-    public DBDataSourceService(){
+    public DBDataSourceService() {
         // 构建第一层map
         dataSources = OtterMigrateMap.makeComputingMap(new Function<Long, Map<DbMediaSource, DataSource>>() {
 
@@ -93,11 +93,11 @@ public class DBDataSourceService implements DataSourceService, DisposableBean {
                         }
 
                         return createDataSource(dbMediaSource.getUrl(),
-                            dbMediaSource.getUsername(),
-                            dbMediaSource.getPassword(),
-                            dbMediaSource.getDriver(),
-                            dbMediaSource.getType(),
-                            dbMediaSource.getEncode());
+                                dbMediaSource.getUsername(),
+                                dbMediaSource.getPassword(),
+                                dbMediaSource.getDriver(),
+                                dbMediaSource.getType(),
+                                dbMediaSource.getEncode());
                     }
 
                 });

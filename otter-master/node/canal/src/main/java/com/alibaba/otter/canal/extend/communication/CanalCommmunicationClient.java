@@ -31,15 +31,15 @@ import com.alibaba.otter.shared.communication.core.model.Event;
 
 /**
  * 封装了基于communication通讯的工具
- * 
+ *
  * @author jianghang 2011-10-18 下午02:18:04
  * @version 4.0.0
  */
 public class CanalCommmunicationClient implements DisposableBean {
 
     private CommunicationClient delegate;
-    private List<String>        managerAddress;
-    private volatile int        index = 0;
+    private List<String> managerAddress;
+    private volatile int index = 0;
 
     /**
      * 指定manager，进行event调用
@@ -64,7 +64,7 @@ public class CanalCommmunicationClient implements DisposableBean {
 
     /**
      * 指定manager，进行event调用
-     * 
+     *
      * <pre>
      * 注意：该方法为异步调用
      * </pre>

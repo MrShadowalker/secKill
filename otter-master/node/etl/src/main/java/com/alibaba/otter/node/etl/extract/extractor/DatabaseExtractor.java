@@ -66,7 +66,7 @@ import com.alibaba.otter.shared.etl.model.EventData;
 
 /**
  * 基于数据库的反查 , 使用多线程技术进行加速处理 {@linkplain DatabaseExtractWorker}
- * 
+ *
  * <pre>
  * 说明：
  *  1. 数据反查的总时间 = ( 数据记录数 / (poolsize + 1) ) * 每条记录查询的时间
@@ -74,19 +74,19 @@ import com.alibaba.otter.shared.etl.model.EventData;
  *  3. 编写{@linkplain DatabaseExtractWorker}代码时需注意，在适合的地方响应Thread.currentThread().isInterrupted(),在dbcp连接池和driver代码中是有支持
  *  4. 反查数据库，只会反查update=true的字段，按需反查，因为通过反查之后字段都会变为update=true，不必要的字段会进行数据同步 (modify by ljh at 2012-11-04)
  * </pre>
- * 
+ *
  * @author jianghang 2012-4-18 下午04:53:15
  * @version 4.0.2
  */
 public class DatabaseExtractor extends AbstractExtractor<DbBatch> implements InitializingBean, DisposableBean {
 
-    private static final String WORKER_NAME        = "DataBaseExtractor";
+    private static final String WORKER_NAME = "DataBaseExtractor";
     private static final String WORKER_NAME_FORMAT = "pipelineId = %s , pipelineName = %s , " + WORKER_NAME;
-    private static final Logger logger             = LoggerFactory.getLogger(DatabaseExtractor.class);
-    private static final int    DEFAULT_POOL_SIZE  = 5;
-    private static final int    retryTimes         = 3;
-    private int                 poolSize           = DEFAULT_POOL_SIZE;
-    private ExecutorService     executor;
+    private static final Logger logger = LoggerFactory.getLogger(DatabaseExtractor.class);
+    private static final int DEFAULT_POOL_SIZE = 5;
+    private static final int retryTimes = 3;
+    private int poolSize = DEFAULT_POOL_SIZE;
+    private ExecutorService executor;
 
     @Override
     public void extract(DbBatch dbBatch) throws ExtractException {
@@ -114,7 +114,7 @@ public class DatabaseExtractor extends AbstractExtractor<DbBatch> implements Ini
             DataItem item = new DataItem(eventData);
             // 针对row模式，需要去检查一下当前是否已经包含row记录的所有字段，如果发现字段不足，则执行一次数据库查询
             boolean flag = mustDb
-                           || (eventData.getSyncConsistency() != null && eventData.getSyncConsistency().isMedia());
+                    || (eventData.getSyncConsistency() != null && eventData.getSyncConsistency().isMedia());
 
             // 增加一种case, 针对oracle erosa有时侯结果记录只有主键，没有变更字段，需要做一次反查
             if (!flag && CollectionUtils.isEmpty(eventData.getUpdatedColumns())) {
@@ -221,12 +221,12 @@ public class DatabaseExtractor extends AbstractExtractor<DbBatch> implements Ini
 
     public void afterPropertiesSet() throws Exception {
         executor = new ThreadPoolExecutor(poolSize,
-            poolSize,
-            0L,
-            TimeUnit.MILLISECONDS,
-            new ArrayBlockingQueue(poolSize * 4),
-            new NamedThreadFactory(WORKER_NAME),
-            new ThreadPoolExecutor.CallerRunsPolicy());
+                poolSize,
+                0L,
+                TimeUnit.MILLISECONDS,
+                new ArrayBlockingQueue(poolSize * 4),
+                new NamedThreadFactory(WORKER_NAME),
+                new ThreadPoolExecutor.CallerRunsPolicy());
     }
 
     public void destroy() throws Exception {
@@ -237,9 +237,9 @@ public class DatabaseExtractor extends AbstractExtractor<DbBatch> implements Ini
     class DataItem {
 
         private EventData eventData;
-        private boolean   filter = false;
+        private boolean filter = false;
 
-        public DataItem(EventData eventData){
+        public DataItem(EventData eventData) {
             this.eventData = eventData;
         }
 
@@ -263,19 +263,20 @@ public class DatabaseExtractor extends AbstractExtractor<DbBatch> implements Ini
 
     /**
      * 反查数据异步处理单元，反查速度由主方法进行控制
-     * 
+     *
      * @author jianghang 2012-4-19 下午05:14:18
      * @version 4.0.2
      */
     class DatabaseExtractWorker implements Runnable {
 
-        private final int    event_default_capacity = 1024;                      // 预设值StringBuilder，减少扩容影响
-        private String       eventData_format       = null;
-        private final String SEP                    = SystemUtils.LINE_SEPARATOR;
+        private final int event_default_capacity = 1024;                      // 预设值StringBuilder，减少扩容影响
+        private String eventData_format = null;
+        private final String SEP = SystemUtils.LINE_SEPARATOR;
 
-        private Pipeline     pipeline;
-        private DataItem     item;
-        private EventData    eventData;
+        private Pipeline pipeline;
+        private DataItem item;
+        private EventData eventData;
+
         {
             eventData_format = "-----------------" + SEP;
             eventData_format += "- PairId: {0} , TableId: {1} " + SEP;
@@ -288,7 +289,7 @@ public class DatabaseExtractor extends AbstractExtractor<DbBatch> implements Ini
             eventData_format += "---END" + SEP;
         }
 
-        public DatabaseExtractWorker(Pipeline pipeline, DataItem item){
+        public DatabaseExtractWorker(Pipeline pipeline, DataItem item) {
             this.pipeline = pipeline;
             this.item = item;
             this.eventData = item.getEventData();
@@ -301,7 +302,7 @@ public class DatabaseExtractor extends AbstractExtractor<DbBatch> implements Ini
                 // 获取数据表信息
                 DataMedia dataMedia = ConfigHelper.findDataMedia(pipeline, eventData.getTableId());
                 DbDialect dbDialect = dbDialectFactory.getDbDialect(pipeline.getId(),
-                    (DbMediaSource) dataMedia.getSource());
+                        (DbMediaSource) dataMedia.getSource());
                 Table table = dbDialect.findTable(eventData.getSchemaName(), eventData.getTableName());
                 TableData keyTableData = buildTableData(table, eventData.getKeys());
 
@@ -311,11 +312,11 @@ public class DatabaseExtractor extends AbstractExtractor<DbBatch> implements Ini
                 }
 
                 boolean needAll = pipeline.getParameters().getSyncMode().isRow()
-                                  || (eventData.getSyncMode() != null && eventData.getSyncMode().isRow());
+                        || (eventData.getSyncMode() != null && eventData.getSyncMode().isRow());
 
                 // 增加一种case, 针对oracle erosa有时侯结果记录只有主键，没有变更字段，需要做一次反查，获取所有字段
                 needAll |= CollectionUtils.isEmpty(eventData.getUpdatedColumns())
-                           && dataMedia.getSource().getType().isOracle();
+                        && dataMedia.getSource().getType().isOracle();
 
                 List<DataMediaPair> mediaParis = ConfigHelper.findDataMediaPairByMediaId(pipeline, dataMedia.getId());
                 List<String> viewColumnNames = buildMaxColumnsFromColumnPairs(mediaParis, eventData.getKeys());
@@ -333,18 +334,18 @@ public class DatabaseExtractor extends AbstractExtractor<DbBatch> implements Ini
                 // modified by ljh at 2012-11-04
                 // 反查数据时只反查带update=true标识的数据，因为update=false的记录可能只是进行filter需要用到的数据，不需要反查
                 TableData columnTableData = buildTableData(table,
-                    eventData.getUpdatedColumns(),
-                    needAll,
-                    viewColumnNames);
+                        eventData.getUpdatedColumns(),
+                        needAll,
+                        viewColumnNames);
 
                 if (columnTableData.columnNames.length == 0) {
                     // 全主键，不需要进行反查
                 } else {
                     List<String> newColumnValues = select(dbDialect,
-                        eventData.getSchemaName(),
-                        eventData.getTableName(),
-                        keyTableData,
-                        columnTableData);
+                            eventData.getSchemaName(),
+                            eventData.getTableName(),
+                            keyTableData,
+                            columnTableData);
 
                     if (newColumnValues == null) {
                         // miss from db
@@ -424,7 +425,7 @@ public class DatabaseExtractor extends AbstractExtractor<DbBatch> implements Ini
                     // 1. 如果有一个没有视图定义，说明需要所有字段
                     // 2. 如果有一个表存在exclude模式，简单处理，直接反查所有字段，到后面进行过滤
                     return new ArrayList<String>(); // 返回空集合，代表没有view
-                                                    // filter，需要所有字段
+                    // filter，需要所有字段
                 } else {
                     for (ColumnPair columnPair : columnPairs) {
                         String columnName = columnPair.getSourceColumn().getName();
@@ -441,9 +442,9 @@ public class DatabaseExtractor extends AbstractExtractor<DbBatch> implements Ini
         private List<String> select(DbDialect dbDialect, String schemaName, String tableName, TableData keyTableData,
                                     TableData columnTableData) throws InterruptedException {
             String selectSql = dbDialect.getSqlTemplate().getSelectSql(schemaName,
-                tableName,
-                keyTableData.columnNames,
-                columnTableData.columnNames);
+                    tableName,
+                    keyTableData.columnNames,
+                    columnTableData.columnNames);
             Exception exception = null;
             for (int i = 0; i < retryTimes; i++) {
                 if (Thread.currentThread().isInterrupted()) {
@@ -452,12 +453,12 @@ public class DatabaseExtractor extends AbstractExtractor<DbBatch> implements Ini
 
                 try {
                     List<List<String>> result = dbDialect.getJdbcTemplate().query(selectSql,
-                        keyTableData.columnValues,
-                        keyTableData.columnTypes,
-                        new RowDataMapper(columnTableData.columnTypes));
+                            keyTableData.columnValues,
+                            keyTableData.columnTypes,
+                            new RowDataMapper(columnTableData.columnTypes));
                     if (CollectionUtils.isEmpty(result)) {
-                        logger.warn("the mediaName = {}.{} not has rowdate in db \n {}", new Object[] { schemaName,
-                                tableName, dumpEventData(eventData, selectSql) });
+                        logger.warn("the mediaName = {}.{} not has rowdate in db \n {}", new Object[]{schemaName,
+                                tableName, dumpEventData(eventData, selectSql)});
                         return null;
                     } else {
                         return result.get(0);
@@ -537,9 +538,9 @@ public class DatabaseExtractor extends AbstractExtractor<DbBatch> implements Ini
                         data.columnNames[i] = tableColumn.getName();
                         data.columnTypes[i] = tableColumn.getTypeCode();
                         data.columnValues[i] = SqlUtils.stringToSqlValue(keyColumn.getColumnValue(),
-                            tableColumn.getTypeCode(),
-                            tableColumn.isRequired(),
-                            false);
+                                tableColumn.getTypeCode(),
+                                tableColumn.isRequired(),
+                                false);
 
                         i++;
                         break;
@@ -550,7 +551,7 @@ public class DatabaseExtractor extends AbstractExtractor<DbBatch> implements Ini
 
             if (i != keys.size()) {
                 throw new ExtractException("keys is not found in table " + table.toString() + " keys : "
-                                           + dumpEventColumn(keys));
+                        + dumpEventColumn(keys));
             }
             return data;
         }
@@ -622,7 +623,7 @@ public class DatabaseExtractor extends AbstractExtractor<DbBatch> implements Ini
 
                 if (i != columns.size()) {
                     throw new ExtractException("columns is not found in table " + table.toString() + " columns : "
-                                               + dumpEventColumn(columns));
+                            + dumpEventColumn(columns));
                 }
             }
 
@@ -631,10 +632,10 @@ public class DatabaseExtractor extends AbstractExtractor<DbBatch> implements Ini
 
         private String dumpEventData(EventData eventData, String selectSql) {
             return MessageFormat.format(eventData_format,
-                eventData.getPairId(),
-                eventData.getTableId(),
-                dumpEventColumn(eventData.getKeys()),
-                "\t" + selectSql);
+                    eventData.getPairId(),
+                    eventData.getTableId(),
+                    dumpEventColumn(eventData.getKeys()),
+                    "\t" + selectSql);
         }
 
         private String dumpEventColumn(List<EventColumn> columns) {
@@ -657,9 +658,9 @@ public class DatabaseExtractor extends AbstractExtractor<DbBatch> implements Ini
      */
     class TableData {
 
-        int[]    indexs;
+        int[] indexs;
         String[] columnNames;
-        int[]    columnTypes;
+        int[] columnTypes;
         Object[] columnValues;
     }
 
@@ -670,7 +671,7 @@ public class DatabaseExtractor extends AbstractExtractor<DbBatch> implements Ini
 
         private int[] columnTypes;
 
-        public RowDataMapper(int[] columnTypes){
+        public RowDataMapper(int[] columnTypes) {
             this.columnTypes = columnTypes;
         }
 

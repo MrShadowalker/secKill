@@ -48,17 +48,17 @@ import com.alibaba.otter.shared.etl.model.RowBatch;
 
 /**
  * 基于rowBatch数据，返回对应的关联文件
- * 
+ *
  * @author jianghang 2012-4-18 下午04:52:00
  * @version 4.0.2
  */
 public class FileExtractor extends AbstractExtractor<DbBatch> {
 
-    private static final Logger    logger = LoggerFactory.getLogger(ExecutorTemplate.class);
-    private ExtensionFactory       extensionFactory;
+    private static final Logger logger = LoggerFactory.getLogger(ExecutorTemplate.class);
+    private ExtensionFactory extensionFactory;
 
     private RemoteDirectoryFetcher arandaRemoteDirectoryFetcher;
-    private int                    retry  = 3;
+    private int retry = 3;
     private ExecutorTemplateGetter executorTemplateGetter;
 
     public void extract(DbBatch dbBatch) throws ExtractException {
@@ -75,7 +75,7 @@ public class FileExtractor extends AbstractExtractor<DbBatch> {
 
     /**
      * 返回这批变更数据对应的FileInfo.
-     * 
+     *
      * @param rowBatch
      * @return
      */
@@ -90,17 +90,17 @@ public class FileExtractor extends AbstractExtractor<DbBatch> {
             }
 
             List<DataMediaPair> dataMediaPairs = ConfigHelper.findDataMediaPairByMediaId(pipeline,
-                                                                                         eventData.getTableId());
+                    eventData.getTableId());
             if (dataMediaPairs == null) {
                 throw new ExtractException("ERROR ## the dataMediaId = " + eventData.getTableId()
-                                           + " dataMediaPair is null,please check");
+                        + " dataMediaPair is null,please check");
             }
 
             for (DataMediaPair dataMediaPair : dataMediaPairs) {
                 if (dataMediaPair.getResolverData() == null
-                    || dataMediaPair.getResolverData().getExtensionDataType() == null
-                    || (dataMediaPair.getResolverData().getExtensionDataType().isClazz() && StringUtils.isBlank(dataMediaPair.getResolverData().getClazzPath()))
-                    || (dataMediaPair.getResolverData().getExtensionDataType().isSource() && StringUtils.isBlank(dataMediaPair.getResolverData().getSourceText()))) {
+                        || dataMediaPair.getResolverData().getExtensionDataType() == null
+                        || (dataMediaPair.getResolverData().getExtensionDataType().isClazz() && StringUtils.isBlank(dataMediaPair.getResolverData().getClazzPath()))
+                        || (dataMediaPair.getResolverData().getExtensionDataType().isSource() && StringUtils.isBlank(dataMediaPair.getResolverData().getSourceText()))) {
                     continue;
                 }
 
@@ -114,9 +114,9 @@ public class FileExtractor extends AbstractExtractor<DbBatch> {
 
                 if (fileResolver == null) {
                     throw new ExtractException("ERROR ## the dataMediaId = " + eventData.getTableId()
-                                               + " the fileResolver className  = "
-                                               + dataMediaPair.getResolverData().getClazzPath()
-                                               + " is null ,please check the class");
+                            + " the fileResolver className  = "
+                            + dataMediaPair.getResolverData().getClazzPath()
+                            + " is null ,please check the class");
                 }
 
                 if (fileResolver instanceof RemoteDirectoryFetcherAware) {
@@ -125,7 +125,7 @@ public class FileExtractor extends AbstractExtractor<DbBatch> {
                 }
 
                 List<FileData> singleRowFileDatas = getSingleRowFileInfos(dataMediaPair.getId(), fileResolver,
-                                                                          eventData);
+                        eventData);
                 // 做一下去重处理
                 for (FileData data : singleRowFileDatas) {
                     if (!fileDatas.contains(data)) {
@@ -213,7 +213,7 @@ public class FileExtractor extends AbstractExtractor<DbBatch> {
 
                         if (count >= retry) {
                             logger.warn(String.format("FileDetectCollector is error! collect failed[%s]",
-                                                      fileData.getNameSpace() + "/" + fileData.getPath()), exception);
+                                    fileData.getNameSpace() + "/" + fileData.getPath()), exception);
                         }
                     }
                 });
@@ -224,7 +224,7 @@ public class FileExtractor extends AbstractExtractor<DbBatch> {
             // 等待所有都处理完成
             executorTemplate.waitForResult();
             logger.info("end pipelinep[{}] waitFor FileData cost : {} ms ", pipeline.getId(),
-                        (System.currentTimeMillis() - start));
+                    (System.currentTimeMillis() - start));
         } finally {
             if (executorTemplate != null) {
                 executorTemplateGetter.release(executorTemplate);

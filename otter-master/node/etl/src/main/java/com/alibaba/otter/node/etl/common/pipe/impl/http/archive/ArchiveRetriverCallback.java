@@ -20,7 +20,7 @@ import java.io.InputStream;
 
 /**
  * archive数据提取的callback接口
- * 
+ *
  * @author jianghang 2011-10-11 下午04:49:05
  * @version 4.0.0
  */

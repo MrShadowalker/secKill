@@ -41,16 +41,16 @@ import com.alibaba.otter.shared.etl.model.Identity;
 
 public class FileBatchConflictDetectServiceIntegration extends BaseOtterTest {
 
-    private static final String            OTTERLOAD = "otterload";
+    private static final String OTTERLOAD = "otterload";
 
-    private static final String            tmp       = System.getProperty("java.io.tmpdir", "/tmp");
+    private static final String tmp = System.getProperty("java.io.tmpdir", "/tmp");
 
     @SpringBeanByName
     private FileBatchConflictDetectService fileBatchConflictDetectService;
 
     @SpringBeanFrom
     @Mocked
-    private ConfigClientService            configClientService;
+    private ConfigClientService configClientService;
 
     @BeforeClass
     public void initial() {

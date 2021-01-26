@@ -30,7 +30,7 @@ import com.alibaba.otter.shared.common.utils.meta.DdlUtils;
 
 /**
  * 类TestAbstractDbDialect.java的实现描述：TODO 类实现描述
- * 
+ *
  * @author xiaoqing.zhouxq 2011-12-9 下午3:03:55
  */
 public class AbstractDbDialectTest {
@@ -38,15 +38,15 @@ public class AbstractDbDialectTest {
     @Test
     public void testFindTable() throws Exception {
         DataSource dataSource = createDataSource("jdbc:oracle:thin:@127.0.0.1:1521:OINTEST", "otter1", "jonathan",
-                                                 "oracle.jdbc.OracleDriver", DataMediaType.ORACLE, "utf-8");
+                "oracle.jdbc.OracleDriver", DataMediaType.ORACLE, "utf-8");
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
         Table table = DdlUtils.findTable(jdbcTemplate, "otter1".toUpperCase(), "otter1".toUpperCase(),
-                                         "wytable3".toUpperCase());
+                "wytable3".toUpperCase());
         System.out.println("the tablename = " + table.getSchema() + "." + table.getName());
         Column[] columns = table.getColumns();
         for (Column column : columns) {
             System.out.println("columnName = " + column.getName() + ",columnType = " + column.getTypeCode()
-                               + ",isPrimary = " + column.isPrimaryKey() + ",nullable = " + column.isRequired());
+                    + ",isPrimary = " + column.isPrimaryKey() + ",nullable = " + column.isRequired());
         }
 
     }

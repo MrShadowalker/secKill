@@ -45,13 +45,13 @@ import com.alibaba.otter.shared.etl.model.RowBatch;
 
 /**
  * 调用{@linkplain EventProcessor}，进行业务数据处理
- * 
+ *
  * @author jianghang 2012-7-23 下午03:11:19
  */
 public class ProcessorExtractor extends AbstractExtractor<DbBatch> {
 
-    private ExtensionFactory       extensionFactory;
-    private DataSourceService      dataSourceService;
+    private ExtensionFactory extensionFactory;
+    private DataSourceService dataSourceService;
     private ExecutorTemplateGetter executorTemplateGetter;
 
     public void extract(DbBatch param) throws ExtractException {
@@ -67,10 +67,10 @@ public class ProcessorExtractor extends AbstractExtractor<DbBatch> {
             executorTemplate.adjustPoolSize(pipeline.getParameters().getExtractPoolSize());
             for (final EventData eventData : eventDatas) {
                 List<DataMediaPair> dataMediaPairs = ConfigHelper.findDataMediaPairByMediaId(pipeline,
-                    eventData.getTableId());
+                        eventData.getTableId());
                 if (dataMediaPairs == null) {
                     throw new ExtractException("ERROR ## the dataMediaId = " + eventData.getTableId()
-                                               + " dataMediaPair is null,please check");
+                            + " dataMediaPair is null,please check");
                 }
 
                 for (DataMediaPair dataMediaPair : dataMediaPairs) {
@@ -79,7 +79,7 @@ public class ProcessorExtractor extends AbstractExtractor<DbBatch> {
                     }
 
                     final EventProcessor eventProcessor = extensionFactory.getExtension(EventProcessor.class,
-                        dataMediaPair.getFilterData());
+                            dataMediaPair.getFilterData());
                     if (eventProcessor instanceof DataSourceFetcherAware) {
                         ((DataSourceFetcherAware) eventProcessor).setDataSourceFetcher(new DataSourceFetcher() {
 

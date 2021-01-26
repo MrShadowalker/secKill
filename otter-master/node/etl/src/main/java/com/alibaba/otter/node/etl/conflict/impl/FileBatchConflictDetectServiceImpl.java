@@ -43,19 +43,19 @@ import com.alibaba.otter.shared.etl.model.FileData;
 
 /**
  * 提供文件的冲突检测服务
- * 
+ *
  * @author jianghang 2011-11-10 上午09:41:20
  * @version 4.0.0
  */
 public class FileBatchConflictDetectServiceImpl implements FileBatchConflictDetectService {
 
-    private static final Logger      logger = LoggerFactory.getLogger(FileBatchConflictDetectServiceImpl.class);
-    private int                      retry  = 3;
-    private ConfigClientService      configClientService;
+    private static final Logger logger = LoggerFactory.getLogger(FileBatchConflictDetectServiceImpl.class);
+    private int retry = 3;
+    private ConfigClientService configClientService;
     private NodeCommmunicationClient nodeCommmunicationClient;
-    private ExecutorTemplateGetter   executorTemplateGetter;
+    private ExecutorTemplateGetter executorTemplateGetter;
 
-    public FileBatchConflictDetectServiceImpl(){
+    public FileBatchConflictDetectServiceImpl() {
         // 将自己注册为远程事件处理
         CommunicationRegistry.regist(ConflictEventType.fileConflictDetect, this);
     }
@@ -154,7 +154,7 @@ public class FileBatchConflictDetectServiceImpl implements FileBatchConflictDete
 
             if (pipeline.getParameters().getDumpEvent() && logger.isInfoEnabled()) {
                 logger.info(FileloadDumper.dumpFilterFileDatas(fileBatch.getIdentity(), fileBatch.getFiles().size(),
-                                                               result.size(), filter));
+                        result.size(), filter));
             }
 
             // 构造返回结果

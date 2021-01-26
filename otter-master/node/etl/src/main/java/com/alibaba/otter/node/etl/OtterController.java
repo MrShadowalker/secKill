@@ -59,31 +59,31 @@ import com.google.common.collect.OtterMigrateMap;
 
 /**
  * 管理和维护对应node机器内的S.E.T.L任务，实时接收manager推送的NodeTask调度信息，可查看 {@linkplain NodeTaskService}
- * 
+ *
  * @author jianghang 2012-4-21 下午04:48:12
  * @version 4.0.2
  */
 public class OtterController implements NodeTaskListener, OtterControllerMBean {
 
-    private static final Logger                   logger      = LoggerFactory.getLogger(OtterController.class);
+    private static final Logger logger = LoggerFactory.getLogger(OtterController.class);
 
     // 第一层为pipelineId，第二层为S.E.T.L模块
     private Map<Long, Map<StageType, GlobalTask>> controllers = OtterMigrateMap.makeComputingMap(new Function<Long, Map<StageType, GlobalTask>>() {
 
-                                                                  public Map<StageType, GlobalTask> apply(Long pipelineId) {
-                                                                      return new MapMaker().makeMap();
-                                                                  }
-                                                              });
-    private ConfigClientService                   configClientService;
-    private ArbitrateManageService                arbitrateManageService;
-    private NodeTaskService                       nodeTaskService;
+        public Map<StageType, GlobalTask> apply(Long pipelineId) {
+            return new MapMaker().makeMap();
+        }
+    });
+    private ConfigClientService configClientService;
+    private ArbitrateManageService arbitrateManageService;
+    private NodeTaskService nodeTaskService;
     // 各种资源管理
-    private DataSourceService                     dataSourceService;                                           // 连接池资源
-    private DbDialectFactory                      dbDialectFactory;                                            // 数据库信息资源
-    private ArbitrateEventService                 arbitrateEventService;                                       // 仲裁器资源
-    private ExecutorService                       executorService;
+    private DataSourceService dataSourceService;                                           // 连接池资源
+    private DbDialectFactory dbDialectFactory;                                            // 数据库信息资源
+    private ArbitrateEventService arbitrateEventService;                                       // 仲裁器资源
+    private ExecutorService executorService;
 
-    private StageAggregationCollector             stageAggregationCollector;
+    private StageAggregationCollector stageAggregationCollector;
 
     public void start() throws Throwable {
         // 初始化节点
@@ -142,7 +142,7 @@ public class OtterController implements NodeTaskListener, OtterControllerMBean {
                 Map<StageType, GlobalTask> tasks = controllers.remove(pipelineId);
                 if (tasks != null) {
                     logger.info("INFO ## shutdown this pipeline sync ,the pipelineId = {} and tasks = {}", pipelineId,
-                                tasks.keySet());
+                            tasks.keySet());
                     stopPipeline(pipelineId, tasks);
                 } else {
                     logger.info("INFO ## this pipeline id = {} is not start sync", pipelineId);
@@ -260,8 +260,8 @@ public class OtterController implements NodeTaskListener, OtterControllerMBean {
         int nodePort = node.getPort().intValue();
         if (!AddressUtils.isHostIp(nodeIp)) {
             throw new IllegalArgumentException(
-                                               String.format("node[%s] ip[%s] port[%s] , but your host ip[%s] is not matched!",
-                                                             nid, nodeIp, nodePort, hostIp));
+                    String.format("node[%s] ip[%s] port[%s] , but your host ip[%s] is not matched!",
+                            nid, nodeIp, nodePort, hostIp));
         }
     }
 

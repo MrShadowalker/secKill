@@ -20,7 +20,7 @@ import java.util.List;
 
 /**
  * otter同步数据获取
- * 
+ *
  * @author jianghang 2012-7-31 下午02:30:33
  */
 public interface OtterSelector<T> {
