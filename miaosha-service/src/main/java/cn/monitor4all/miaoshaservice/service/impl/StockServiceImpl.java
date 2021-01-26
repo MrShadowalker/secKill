@@ -1,8 +1,9 @@
-package cn.monitor4all.miaoshaservice.service;
+package cn.monitor4all.miaoshaservice.service.impl;
 
 import cn.monitor4all.miaoshadao.dao.Stock;
 import cn.monitor4all.miaoshadao.mapper.StockMapper;
 import cn.monitor4all.miaoshadao.utils.CacheKey;
+import cn.monitor4all.miaoshaservice.service.StockService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
