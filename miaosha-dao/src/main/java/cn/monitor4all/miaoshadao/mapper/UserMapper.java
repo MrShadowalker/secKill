@@ -3,6 +3,7 @@ package cn.monitor4all.miaoshadao.mapper;
 import cn.monitor4all.miaoshadao.dao.User;
 
 public interface UserMapper {
+
     int deleteByPrimaryKey(Long id);
 
     int insert(User record);

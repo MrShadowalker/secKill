@@ -2,10 +2,17 @@ package cn.monitor4all.miaoshadao.dao;
 
 import lombok.Data;
 
+/**
+ * 用户实体类
+ *
+ * @author Shadowalker
+ */
 @Data
 public class User {
+
     private Long id;
 
+    // 用户姓名
     private String userName;
 
     public User(Long id, String userName) {
