@@ -5,8 +5,7 @@ import cn.monitor4all.miaoshaservice.service.StockService;
 import cn.monitor4all.miaoshaservice.service.UserService;
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.util.concurrent.RateLimiter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,10 +16,9 @@ import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+@Slf4j
 @Controller
 public class OrderController {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(OrderController.class);
 
     @Autowired
     private OrderService orderService;
@@ -55,9 +53,9 @@ public class OrderController {
         int id = 0;
         try {
             id = orderService.createWrongOrder(sid);
-            LOGGER.info("创建订单id: [{}]", id);
+            log.info("创建订单id: [{}]", id);
         } catch (Exception e) {
-            LOGGER.error("Exception", e);
+            log.error("Exception", e);
         }
         return String.valueOf(id);
     }
@@ -72,18 +70,18 @@ public class OrderController {
     @ResponseBody
     public String createOptimisticOrder(@PathVariable int sid) {
         // 1. 阻塞式获取令牌
-        LOGGER.info("等待时间" + rateLimiter.acquire());
+        log.info("等待时间" + rateLimiter.acquire());
         // 2. 非阻塞式获取令牌
         //        if (!rateLimiter.tryAcquire(1000, TimeUnit.MILLISECONDS)) {
-        //            LOGGER.warn("你被限流了，真不幸，直接返回失败");
+        //            log.warn("你被限流了，真不幸，直接返回失败");
         //            return "你被限流了，真不幸，直接返回失败";
         //        }
         int id;
         try {
             id = orderService.createOptimisticOrder(sid);
-            LOGGER.info("购买成功，剩余库存为: [{}]", id);
+            log.info("购买成功，剩余库存为: [{}]", id);
         } catch (Exception e) {
-            LOGGER.error("购买失败：[{}]", e.getMessage());
+            log.error("购买失败：[{}]", e.getMessage());
             return "购买失败，库存不足";
         }
         return String.format("购买成功，剩余库存为：%d", id);
@@ -101,9 +99,9 @@ public class OrderController {
         int id;
         try {
             id = orderService.createPessimisticOrder(sid);
-            LOGGER.info("购买成功，剩余库存为: [{}]", id);
+            log.info("购买成功，剩余库存为: [{}]", id);
         } catch (Exception e) {
-            LOGGER.error("购买失败：[{}]", e.getMessage());
+            log.error("购买失败：[{}]", e.getMessage());
             return "购买失败，库存不足";
         }
         return String.format("购买成功，剩余库存为：%d", id);
@@ -122,7 +120,7 @@ public class OrderController {
         try {
             hash = userService.getVerifyHash(sid, userId);
         } catch (Exception e) {
-            LOGGER.error("获取验证hash失败，原因：[{}]", e.getMessage());
+            log.error("获取验证hash失败，原因：[{}]", e.getMessage());
             return "获取验证hash失败";
         }
         return String.format("请求抢购验证hash值为：%s", hash);
@@ -142,9 +140,9 @@ public class OrderController {
         int stockLeft;
         try {
             stockLeft = orderService.createVerifiedOrder(sid, userId, verifyHash);
-            LOGGER.info("购买成功，剩余库存为: [{}]", stockLeft);
+            log.info("购买成功，剩余库存为: [{}]", stockLeft);
         } catch (Exception e) {
-            LOGGER.error("购买失败：[{}]", e.getMessage());
+            log.error("购买失败：[{}]", e.getMessage());
             return e.getMessage();
         }
         return String.format("购买成功，剩余库存为：%d", stockLeft);
@@ -164,15 +162,15 @@ public class OrderController {
         int stockLeft;
         try {
             int count = userService.addUserCount(userId);
-            LOGGER.info("用户截至该次的访问次数为: [{}]", count);
+            log.info("用户截至该次的访问次数为: [{}]", count);
             boolean isBanned = userService.getUserIsBanned(userId);
             if (isBanned) {
                 return "购买失败，超过频率限制";
             }
             stockLeft = orderService.createVerifiedOrder(sid, userId, verifyHash);
-            LOGGER.info("购买成功，剩余库存为: [{}]", stockLeft);
+            log.info("购买成功，剩余库存为: [{}]", stockLeft);
         } catch (Exception e) {
-            LOGGER.error("购买失败：[{}]", e.getMessage());
+            log.error("购买失败：[{}]", e.getMessage());
             return e.getMessage();
         }
         return String.format("购买成功，剩余库存为：%d", stockLeft);
@@ -194,10 +192,10 @@ public class OrderController {
             // 完成扣库存下单事务
             orderService.createPessimisticOrder(sid);
         } catch (Exception e) {
-            LOGGER.error("购买失败：[{}]", e.getMessage());
+            log.error("购买失败：[{}]", e.getMessage());
             return "购买失败，库存不足";
         }
-        LOGGER.info("购买成功，剩余库存为: [{}]", count);
+        log.info("购买成功，剩余库存为: [{}]", count);
         return String.format("购买成功，剩余库存为：%d", count);
     }
 
@@ -217,10 +215,10 @@ public class OrderController {
             // 删除库存缓存
             stockService.delStockCountCache(sid);
         } catch (Exception e) {
-            LOGGER.error("购买失败：[{}]", e.getMessage());
+            log.error("购买失败：[{}]", e.getMessage());
             return "购买失败，库存不足";
         }
-        LOGGER.info("购买成功，剩余库存为: [{}]", count);
+        log.info("购买成功，剩余库存为: [{}]", count);
         return String.format("购买成功，剩余库存为：%d", count);
     }
 
@@ -239,14 +237,14 @@ public class OrderController {
             stockService.delStockCountCache(sid);
             // 完成扣库存下单事务
             count = orderService.createPessimisticOrder(sid);
-            LOGGER.info("完成下单事务");
+            log.info("完成下单事务");
             // 延时指定时间后再次删除缓存
             cachedThreadPool.execute(new delCacheByThread(sid));
         } catch (Exception e) {
-            LOGGER.error("购买失败：[{}]", e.getMessage());
+            log.error("购买失败：[{}]", e.getMessage());
             return "购买失败，库存不足";
         }
-        LOGGER.info("购买成功，剩余库存为: [{}]", count);
+        log.info("购买成功，剩余库存为: [{}]", count);
         return String.format("购买成功，剩余库存为：%d", count);
     }
 
@@ -263,7 +261,7 @@ public class OrderController {
         try {
             // 完成扣库存下单事务
             count = orderService.createPessimisticOrder(sid);
-            LOGGER.info("完成下单事务");
+            log.info("完成下单事务");
             // 删除库存缓存
             stockService.delStockCountCache(sid);
             // 延时指定时间后再次删除缓存
@@ -272,10 +270,10 @@ public class OrderController {
             sendToDelCache(String.valueOf(sid));
 
         } catch (Exception e) {
-            LOGGER.error("购买失败：[{}]", e.getMessage());
+            log.error("购买失败：[{}]", e.getMessage());
             return "购买失败，库存不足";
         }
-        LOGGER.info("购买成功，剩余库存为: [{}]", count);
+        log.info("购买成功，剩余库存为: [{}]", count);
         return "购买成功";
     }
 
@@ -298,14 +296,14 @@ public class OrderController {
 
             // 有库存，则将用户id和商品id封装为消息体传给消息队列处理
             // 注意这里的有库存和已经下单都是缓存中的结论，存在不可靠性，在消息队列中会查表再次验证
-            LOGGER.info("有库存：[{}]", count);
+            log.info("有库存：[{}]", count);
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("sid", sid);
             jsonObject.put("userId", userId);
             sendToOrderQueue(jsonObject.toJSONString());
             return "秒杀请求提交成功";
         } catch (Exception e) {
-            LOGGER.error("下单接口：异步处理订单异常：", e);
+            log.error("下单接口：异步处理订单异常：", e);
             return "秒杀请求失败，服务器正忙.....";
         }
     }
@@ -324,11 +322,11 @@ public class OrderController {
             // 检查缓存中该用户是否已经下单过
             Boolean hasOrder = orderService.checkUserOrderInfoInCache(sid, userId);
             if (hasOrder != null && hasOrder) {
-                LOGGER.info("该用户已经抢购过");
+                log.info("该用户已经抢购过");
                 return "你已经抢购过了，不要太贪心.....";
             }
             // 没有下单过，检查缓存中商品是否还有库存
-            LOGGER.info("没有抢购过，检查缓存中商品是否还有库存");
+            log.info("没有抢购过，检查缓存中商品是否还有库存");
             Integer count = stockService.getStockCount(sid);
             if (count == 0) {
                 return "秒杀请求失败，库存不足.....";
@@ -336,14 +334,14 @@ public class OrderController {
 
             // 有库存，则将用户id和商品id封装为消息体传给消息队列处理
             // 注意这里的有库存和已经下单都是缓存中的结论，存在不可靠性，在消息队列中会查表再次验证
-            LOGGER.info("有库存：[{}]", count);
+            log.info("有库存：[{}]", count);
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("sid", sid);
             jsonObject.put("userId", userId);
             sendToOrderQueue(jsonObject.toJSONString());
             return "秒杀请求提交成功";
         } catch (Exception e) {
-            LOGGER.error("下单接口：异步处理订单异常：", e);
+            log.error("下单接口：异步处理订单异常：", e);
             return "秒杀请求失败，服务器正忙.....";
         }
     }
@@ -365,7 +363,7 @@ public class OrderController {
                 return "恭喜您，已经抢购成功！";
             }
         } catch (Exception e) {
-            LOGGER.error("检查订单异常：", e);
+            log.error("检查订单异常：", e);
         }
         return "很抱歉，你的订单尚未生成，继续排队。";
     }
@@ -383,12 +381,12 @@ public class OrderController {
 
         public void run() {
             try {
-                LOGGER.info("异步执行缓存再删除，商品id：[{}]， 首先休眠：[{}] 毫秒", sid, DELAY_MILLSECONDS);
+                log.info("异步执行缓存再删除，商品id：[{}]， 首先休眠：[{}] 毫秒", sid, DELAY_MILLSECONDS);
                 Thread.sleep(DELAY_MILLSECONDS);
                 stockService.delStockCountCache(sid);
-                LOGGER.info("再次删除商品id：[{}] 缓存", sid);
+                log.info("再次删除商品id：[{}] 缓存", sid);
             } catch (Exception e) {
-                LOGGER.error("delCacheByThread执行出错", e);
+                log.error("delCacheByThread执行出错", e);
             }
         }
     }
@@ -400,7 +398,7 @@ public class OrderController {
      * @param message
      */
     private void sendToDelCache(String message) {
-        LOGGER.info("这就去通知消息队列开始重试删除缓存：[{}]", message);
+        log.info("这就去通知消息队列开始重试删除缓存：[{}]", message);
         this.rabbitTemplate.convertAndSend("delCache", message);
     }
 
@@ -410,7 +408,7 @@ public class OrderController {
      * @param message
      */
     private void sendToOrderQueue(String message) {
-        LOGGER.info("这就去通知消息队列开始下单：[{}]", message);
+        log.info("这就去通知消息队列开始下单：[{}]", message);
         this.rabbitTemplate.convertAndSend("orderQueue", message);
     }
 

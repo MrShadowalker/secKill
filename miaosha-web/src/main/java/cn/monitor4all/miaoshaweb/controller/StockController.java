@@ -1,18 +1,16 @@
 package cn.monitor4all.miaoshaweb.controller;
 
 import cn.monitor4all.miaoshaservice.service.StockService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+@Slf4j
 @Controller
 public class StockController {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(OrderController.class);
 
     @Autowired
     private StockService stockService;
@@ -30,10 +28,10 @@ public class StockController {
         try {
             count = stockService.getStockCountByDB(sid);
         } catch (Exception e) {
-            LOGGER.error("查询库存失败：[{}]", e.getMessage());
+            log.error("查询库存失败：[{}]", e.getMessage());
             return "查询库存失败";
         }
-        LOGGER.info("商品Id: [{}] 剩余库存为: [{}]", sid, count);
+        log.info("商品Id: [{}] 剩余库存为: [{}]", sid, count);
         return String.format("商品Id: %d 剩余库存为：%d", sid, count);
     }
 
@@ -52,10 +50,10 @@ public class StockController {
         try {
             count = stockService.getStockCount(sid);
         } catch (Exception e) {
-            LOGGER.error("查询库存失败：[{}]", e.getMessage());
+            log.error("查询库存失败：[{}]", e.getMessage());
             return "查询库存失败";
         }
-        LOGGER.info("商品Id: [{}] 剩余库存为: [{}]", sid, count);
+        log.info("商品Id: [{}] 剩余库存为: [{}]", sid, count);
         return String.format("商品Id: %d 剩余库存为：%d", sid, count);
     }
 
