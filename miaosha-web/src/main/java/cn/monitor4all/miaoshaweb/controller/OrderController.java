@@ -132,7 +132,7 @@ public class OrderController {
      * @param sid
      * @return
      */
-    @RequestMapping(value = "/createOrderWithVerifiedUrl", method = {RequestMethod.GET})
+    @GetMapping(value = "/createOrderWithVerifiedUrl")
     @ResponseBody
     public String createOrderWithVerifiedUrl(@RequestParam(value = "sid") Integer sid,
                                              @RequestParam(value = "userId") Integer userId,
@@ -154,7 +154,7 @@ public class OrderController {
      * @param sid
      * @return
      */
-    @RequestMapping(value = "/createOrderWithVerifiedUrlAndLimit", method = {RequestMethod.GET})
+    @GetMapping(value = "/createOrderWithVerifiedUrlAndLimit")
     @ResponseBody
     public String createOrderWithVerifiedUrlAndLimit(@RequestParam(value = "sid") Integer sid,
                                                      @RequestParam(value = "userId") Integer userId,
@@ -283,7 +283,7 @@ public class OrderController {
      * @param sid
      * @return
      */
-    @RequestMapping(value = "/createOrderWithMq", method = {RequestMethod.GET})
+    @GetMapping(value = "/createOrderWithMq")
     @ResponseBody
     public String createOrderWithMq(@RequestParam(value = "sid") Integer sid,
                                     @RequestParam(value = "userId") Integer userId) {
@@ -314,7 +314,7 @@ public class OrderController {
      * @param sid
      * @return
      */
-    @RequestMapping(value = "/createUserOrderWithMq", method = {RequestMethod.GET})
+    @GetMapping(value = "/createUserOrderWithMq")
     @ResponseBody
     public String createUserOrderWithMq(@RequestParam(value = "sid") Integer sid,
                                         @RequestParam(value = "userId") Integer userId) {
@@ -352,7 +352,7 @@ public class OrderController {
      * @param sid
      * @return
      */
-    @RequestMapping(value = "/checkOrderByUserIdInCache", method = {RequestMethod.GET})
+    @GetMapping(value = "/checkOrderByUserIdInCache")
     @ResponseBody
     public String checkOrderByUserIdInCache(@RequestParam(value = "sid") Integer sid,
                                             @RequestParam(value = "userId") Integer userId) {
