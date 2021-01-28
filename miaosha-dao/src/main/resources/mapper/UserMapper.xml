@@ -11,22 +11,22 @@
         id, user_name
     </sql>
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
-        select
+        SELECT
         <include refid="Base_Column_List"/>
-        from user
-        where id = #{id,jdbcType=BIGINT}
+        FROM user
+        WHERE id = #{id,jdbcType=BIGINT}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-        delete
-        from user
-        where id = #{id,jdbcType=BIGINT}
+        DELETE
+        FROM user
+        WHERE id = #{id,jdbcType=BIGINT}
     </delete>
     <insert id="insert" parameterType="cn.monitor4all.miaoshadao.dao.User">
-        insert into user (id, user_name)
-        values (#{id,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR})
+        INSERT INTO user (id, user_name)
+        VALUES (#{id,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR})
     </insert>
     <insert id="insertSelective" parameterType="cn.monitor4all.miaoshadao.dao.User">
-        insert into user
+        INSERT INTO user
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
                 id,
@@ -45,17 +45,17 @@
         </trim>
     </insert>
     <update id="updateByPrimaryKeySelective" parameterType="cn.monitor4all.miaoshadao.dao.User">
-        update user
+        UPDATE user
         <set>
             <if test="userName != null">
                 user_name = #{userName,jdbcType=VARCHAR},
             </if>
         </set>
-        where id = #{id,jdbcType=BIGINT}
+        WHERE id = #{id,jdbcType=BIGINT}
     </update>
     <update id="updateByPrimaryKey" parameterType="cn.monitor4all.miaoshadao.dao.User">
-        update user
-        set user_name = #{userName,jdbcType=VARCHAR}
-        where id = #{id,jdbcType=BIGINT}
+        UPDATE user
+        SET user_name = #{userName,jdbcType=VARCHAR}
+        WHERE id = #{id,jdbcType=BIGINT}
     </update>
 </mapper>

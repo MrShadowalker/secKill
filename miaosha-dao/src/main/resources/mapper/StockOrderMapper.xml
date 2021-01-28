@@ -14,23 +14,23 @@
     </sql>
 
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
-        select
+        SELECT
         <include refid="Base_Column_List"/>
-        from stock_order
-        where id = #{id,jdbcType=INTEGER}
+        FROM stock_order
+        WHERE id = #{id,jdbcType=INTEGER}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-        delete
-        from stock_order
-        where id = #{id,jdbcType=INTEGER}
+        DELETE
+        FROM stock_order
+        WHERE id = #{id,jdbcType=INTEGER}
     </delete>
     <insert id="insert" parameterType="cn.monitor4all.miaoshadao.dao.StockOrder">
-        insert into stock_order (id, sid, name, user_id, create_time)
-        values (#{id,jdbcType=INTEGER}, #{sid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},
+        INSERT into stock_order (id, sid, name, user_id, create_time)
+        VALUES (#{id,jdbcType=INTEGER}, #{sid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},
                 #{createTime,jdbcType=TIMESTAMP})
     </insert>
     <insert id="insertSelective" parameterType="cn.monitor4all.miaoshadao.dao.StockOrder">
-        insert into stock_order
+        INSERT INTO stock_order
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
                 id,
@@ -67,7 +67,7 @@
         </trim>
     </insert>
     <update id="updateByPrimaryKeySelective" parameterType="cn.monitor4all.miaoshadao.dao.StockOrder">
-        update stock_order
+        UPDATE stock_order
         <set>
             <if test="sid != null">
                 sid = #{sid,jdbcType=INTEGER},
@@ -82,14 +82,14 @@
                 create_time = #{createTime,jdbcType=TIMESTAMP},
             </if>
         </set>
-        where id = #{id,jdbcType=INTEGER}
+        WHERE id = #{id,jdbcType=INTEGER}
     </update>
     <update id="updateByPrimaryKey" parameterType="cn.monitor4all.miaoshadao.dao.StockOrder">
-        update stock_order
+        UPDATE stock_order
         set sid         = #{sid,jdbcType=INTEGER},
             name        = #{name,jdbcType=VARCHAR},
             user_id     = #{userId,jdbcType=INTEGER},
             create_time = #{createTime,jdbcType=TIMESTAMP}
-        where id = #{id,jdbcType=INTEGER}
+        WHERE id = #{id,jdbcType=INTEGER}
     </update>
 </mapper>
