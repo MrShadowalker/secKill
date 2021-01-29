@@ -18,6 +18,9 @@ target/
 *.iws
 *.iml
 *.ipr
+*.icloud
+*.tar.gz
+*.zip
 
 ### NetBeans ###
 /nbproject/private/
