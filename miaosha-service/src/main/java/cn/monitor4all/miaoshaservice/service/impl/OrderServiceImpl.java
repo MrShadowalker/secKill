@@ -33,25 +33,25 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public int createWrongOrder(int sid) {
-        //校验库存
+        // 校验库存
         Stock stock = checkStock(sid);
-        //扣库存
+        // 扣库存
         saleStock(stock);
-        //创建订单
+        // 创建订单
         int id = createOrder(stock);
         return id;
     }
 
     @Override
     public int createOptimisticOrder(int sid) {
-        //校验库存
+        // 校验库存
         Stock stock = checkStock(sid);
-        //乐观锁更新库存
+        // 乐观锁更新库存
         boolean success = saleStockOptimistic(stock);
         if (!success) {
             throw new RuntimeException("过期库存值，更新失败");
         }
-        //创建订单
+        // 创建订单
         createOrder(stock);
         return stock.getCount() - (stock.getSale() + 1);
     }
@@ -59,11 +59,11 @@ public class OrderServiceImpl implements OrderService {
     @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)
     @Override
     public int createPessimisticOrder(int sid) {
-        //校验库存(悲观锁for update)
+        // 校验库存(悲观锁for update)
         Stock stock = checkStockForUpdate(sid);
-        //更新库存
+        // 更新库存
         saleStock(stock);
-        //创建订单
+        // 创建订单
         createOrder(stock);
         return stock.getCount() - (stock.getSale());
     }
@@ -97,14 +97,14 @@ public class OrderServiceImpl implements OrderService {
         }
         log.info("商品信息验证成功：[{}]", stock.toString());
 
-        //乐观锁更新库存
+        // 乐观锁更新库存
         boolean success = saleStockOptimistic(stock);
         if (!success) {
             throw new RuntimeException("过期库存值，更新失败");
         }
         log.info("乐观锁更新库存成功");
 
-        //创建订单
+        // 创建订单
         createOrderWithUserInfoInDB(stock, userId);
         log.info("创建订单成功");
 
@@ -118,14 +118,14 @@ public class OrderServiceImpl implements OrderService {
         Thread.sleep(10000);
 
         Stock stock;
-        //校验库存（不要学我在trycatch中做逻辑处理，这样是不优雅的。这里这样处理是为了兼容之前的秒杀系统文章）
+        // 校验库存（不要学我在trycatch中做逻辑处理，这样是不优雅的。这里这样处理是为了兼容之前的秒杀系统文章）
         try {
             stock = checkStock(sid);
         } catch (Exception e) {
             log.info("库存不足！");
             return;
         }
-        //乐观锁更新库存
+        // 乐观锁更新库存
         boolean updateStock = saleStockOptimistic(stock);
         if (!updateStock) {
             log.warn("扣减库存失败，库存已经为0");
@@ -136,7 +136,7 @@ public class OrderServiceImpl implements OrderService {
         stockService.delStockCountCache(sid);
         log.info("删除库存缓存");
 
-        //创建订单
+        // 创建订单
         log.info("写入订单至数据库");
         createOrderWithUserInfoInDB(stock, userId);
         log.info("写入订单至缓存供查询");
