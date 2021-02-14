@@ -21,4 +21,6 @@ public interface StockMapper {
     int updateByPrimaryKey(Stock record);
 
     int updateByOptimistic(Stock record);
+
+    int updateSaleAndVersionByOptimistic(Stock record);
 }

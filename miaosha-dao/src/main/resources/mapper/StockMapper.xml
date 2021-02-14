@@ -109,4 +109,14 @@
         WHERE id = #{id,jdbcType=INTEGER}
         AND sale = #{sale,jdbcType=INTEGER}
     </update>
+
+    <update id="updateSaleAndVersionByOptimistic" parameterType="cn.monitor4all.miaoshadao.dao.Stock">
+        UPDATE stock
+        <set>
+            sale = sale + 1,
+            version = version + 1,
+        </set>
+        WHERE id = #{id,jdbcType=INTEGER}
+        AND version = #{version,jdbcType=INTEGER}
+    </update>
 </mapper>
