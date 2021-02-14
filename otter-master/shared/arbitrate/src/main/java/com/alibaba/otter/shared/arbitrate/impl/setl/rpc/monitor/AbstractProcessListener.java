@@ -71,7 +71,7 @@ public abstract class AbstractProcessListener extends ArbitrateLifeCycle impleme
     public Long waitForProcess() throws InterruptedException {
         // take和history.put操作非原子，addReply操作时会出现并发问题，同一个processId插入两次
         Long processId = (Long) replyProcessIds.take();
-        logger.debug("## {} get reply id [{}]", ClassUtils.getShortClassName(this.getClass()), processId);
+        logger.debug("## {} get reply id 【{}】", ClassUtils.getShortClassName(this.getClass()), processId);
         return processId;
     }
 
@@ -79,9 +79,9 @@ public abstract class AbstractProcessListener extends ArbitrateLifeCycle impleme
         boolean isSuccessed = replyProcessIds.offer(processId);
 
         if (isSuccessed) {
-            logger.debug("## {} add reply id [{}]", ClassUtils.getShortClassName(this.getClass()), processId);
+            logger.debug("## {} add reply id 【{}】", ClassUtils.getShortClassName(this.getClass()), processId);
         } else {
-            logger.warn("## {} dup reply id [{}]", ClassUtils.getShortClassName(this.getClass()), processId);
+            logger.warn("## {} dup reply id 【{}】", ClassUtils.getShortClassName(this.getClass()), processId);
         }
     }
 
@@ -97,7 +97,7 @@ public abstract class AbstractProcessListener extends ArbitrateLifeCycle impleme
                 if (CollectionUtils.isEmpty(processIds) == false) {
                     Long processId = processIds.get(0);
                     if (processId > (Long) replyId) { // 如果当前最小的processId都大于replyId, processId都是递增创建的
-                        logger.info("## {} remove reply id [{}]", ClassUtils.getShortClassName(this.getClass()),
+                        logger.info("## {} remove reply id 【{}】", ClassUtils.getShortClassName(this.getClass()),
                                     (Long) replyId);
                         replyProcessIds.remove((Long) replyId);
                     }
@@ -108,7 +108,7 @@ public abstract class AbstractProcessListener extends ArbitrateLifeCycle impleme
 
     public void destory() {
         super.destory();
-        logger.info("## destory pipeline[{}] , Listener[{}]", getPipelineId(),
+        logger.info("## destory pipeline【{}】 , Listener【{}】", getPipelineId(),
                     ClassUtils.getShortClassName(this.getClass()));
 
         processMonitor.removeListener(this);

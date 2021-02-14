@@ -196,7 +196,7 @@ public class ChannelArbitrateEvent implements ArbitrateEvent {
                     ChannelStatus status = status(channel.getId());
                     if (status.isStop()) {
                         // stop优先级最高，不允许自动重启
-                        logger.info("channel[{}] is already stop , restart is ignored", channel.getId());
+                        logger.info("channel【{}】 is already stop , restart is ignored", channel.getId());
                     } else if (canStart(channel)) { // 出现stop，就不允许进行自动重启，stop优先级最高
                         start(channelId);
                     }

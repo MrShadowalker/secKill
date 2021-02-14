@@ -95,7 +95,7 @@ public class SystemArbitrateEvent implements ArbitrateEvent {
                 mainStemData.setActive(false);
                 try {
                     zookeeper.writeData(path, JsonUtils.marshalToByte(mainStemData), stat.getVersion());
-                    logger.warn("relase channelId[{}],pipelineId[{}] mainstem successed! ", channelId, pipelineId);
+                    logger.warn("relase channelId【{}】,pipelineId【{}】 mainstem successed! ", channelId, pipelineId);
                     break;
                 } catch (ZkBadVersionException e) {
                     // ignore , retrying

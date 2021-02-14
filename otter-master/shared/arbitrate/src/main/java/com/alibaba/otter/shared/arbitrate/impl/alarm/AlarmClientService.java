@@ -47,7 +47,7 @@ public class AlarmClientService {
         arbitrateCommmunicationClient.callManager(event, new Callback<Object>() {
 
             public void call(Object result) {
-                logger.info("##callManager successed! event:[{}]", event.toString());
+                logger.info("##callManager successed! event:【{}】", event.toString());
             }
 
         });

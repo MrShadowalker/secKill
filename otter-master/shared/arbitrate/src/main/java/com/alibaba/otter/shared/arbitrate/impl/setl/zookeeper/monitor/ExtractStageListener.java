@@ -60,7 +60,7 @@ public class ExtractStageListener extends AbstractStageListener implements Stage
             if (stageNodes.contains(currentNode)) {
                 if (replyProcessIds.remove(processId)) {
                     if (logger.isDebugEnabled()) {
-                        logger.debug("## remove reply id [{}]", processId);
+                        logger.debug("## remove reply id 【{}】", processId);
                     }
                 }
 

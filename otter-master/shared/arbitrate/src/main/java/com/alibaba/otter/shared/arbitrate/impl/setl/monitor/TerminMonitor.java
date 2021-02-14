@@ -65,7 +65,7 @@ public class TerminMonitor extends ArbitrateLifeCycle implements Monitor {
     public void reload() {
         try {
             if (logger.isDebugEnabled()) {
-                logger.debug("## reload termin pipeline[{}]", getPipelineId());
+                logger.debug("## reload termin pipeline【{}】", getPipelineId());
             }
 
             initTermin();
@@ -77,7 +77,7 @@ public class TerminMonitor extends ArbitrateLifeCycle implements Monitor {
     public void destory() {
         super.destory();
         if (logger.isDebugEnabled()) {
-            logger.debug("## destory termin pipeline[{}]", getPipelineId());
+            logger.debug("## destory termin pipeline【{}】", getPipelineId());
         }
 
         String path = StagePathUtils.getTerminRoot(getPipelineId());
@@ -92,7 +92,7 @@ public class TerminMonitor extends ArbitrateLifeCycle implements Monitor {
     public Long waitForProcess() throws InterruptedException {
         Long processId = waitProcessIds.peek();
         if (logger.isDebugEnabled()) {
-            logger.debug("## {} get termin id [{}]", getPipelineId(), processId);
+            logger.debug("## {} get termin id 【{}】", getPipelineId(), processId);
         }
         return processId;
     }
@@ -110,7 +110,7 @@ public class TerminMonitor extends ArbitrateLifeCycle implements Monitor {
     public boolean ack(Long processId) {
         boolean result = waitProcessIds.ack();
         if (logger.isDebugEnabled()) {
-            logger.debug("## {} ack termin id [{}]", getPipelineId(), processId);
+            logger.debug("## {} ack termin id 【{}】", getPipelineId(), processId);
         }
         return result;
     }
@@ -137,7 +137,7 @@ public class TerminMonitor extends ArbitrateLifeCycle implements Monitor {
         for (Long processId : processIds) {
             boolean successed = waitProcessIds.offer(processId);
             if (successed && logger.isDebugEnabled()) {
-                logger.debug("## {} add termin id [{}]", getPipelineId(), processId);
+                logger.debug("## {} add termin id 【{}】", getPipelineId(), processId);
             }
         }
     }

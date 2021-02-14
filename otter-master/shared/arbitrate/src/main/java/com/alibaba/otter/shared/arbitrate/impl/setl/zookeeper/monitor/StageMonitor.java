@@ -105,7 +105,7 @@ public class StageMonitor extends ArbitrateLifeCycle implements Monitor {
     public void destory() {
         super.destory();
         if (logger.isDebugEnabled()) {
-            logger.debug("## destory Stage pipeline[{}]", getPipelineId());
+            logger.debug("## destory Stage pipeline【{}】", getPipelineId());
         }
 
         this.listeners.clear();
@@ -117,7 +117,7 @@ public class StageMonitor extends ArbitrateLifeCycle implements Monitor {
     public void reload() {
         try {
             if (logger.isDebugEnabled()) {
-                logger.debug("## reload Stage pipeline[{}]", getPipelineId());
+                logger.debug("## reload Stage pipeline【{}】", getPipelineId());
             }
 
             initStage();
@@ -134,7 +134,7 @@ public class StageMonitor extends ArbitrateLifeCycle implements Monitor {
     public void reloadWithoutStage() {
         try {
             if (logger.isDebugEnabled()) {
-                logger.debug("## reload Stage pipeline[{}]", getPipelineId());
+                logger.debug("## reload Stage pipeline【{}】", getPipelineId());
             }
 
             initStage();
@@ -148,7 +148,7 @@ public class StageMonitor extends ArbitrateLifeCycle implements Monitor {
     public void reload(Long processId) {
         try {
             if (logger.isDebugEnabled()) {
-                logger.debug("## reload Stage pipeline[{}] process[{}]", getPipelineId(), processId);
+                logger.debug("## reload Stage pipeline【{}】 process【{}】", getPipelineId(), processId);
             }
 
             initProcessStage(processId);
@@ -233,7 +233,7 @@ public class StageMonitor extends ArbitrateLifeCycle implements Monitor {
             }
 
             if (logger.isDebugEnabled()) {
-                logger.debug("pipeline[{}] old processIds{},current processIds{}", new Object[] { getPipelineId(),
+                logger.debug("pipeline【{}】 old processIds{},current processIds{}", new Object[] { getPipelineId(),
                         currentProcessIds, processIds });
             }
 
@@ -279,7 +279,7 @@ public class StageMonitor extends ArbitrateLifeCycle implements Monitor {
     private boolean initProcessStage(Long processId, List<String> currentStages) {
         Collections.sort(currentStages, new StageComparator());
         if (logger.isDebugEnabled()) {
-            logger.debug("pipeline[{}] processId[{}] with stage{}", new Object[] { getPipelineId(), processId,
+            logger.debug("pipeline【{}】 processId【{}】 with stage{}", new Object[] { getPipelineId(), processId,
                     currentStages });
         }
 
@@ -398,7 +398,7 @@ public class StageMonitor extends ArbitrateLifeCycle implements Monitor {
 
     public void addListener(StageListener listener) {
         if (logger.isDebugEnabled()) {
-            logger.debug("## pipeline[{}] add listener [{}]", getPipelineId(),
+            logger.debug("## pipeline【{}】 add listener 【{}】", getPipelineId(),
                          ClassUtils.getShortClassName(listener.getClass()));
         }
 
@@ -407,7 +407,7 @@ public class StageMonitor extends ArbitrateLifeCycle implements Monitor {
 
     public void removeListener(StageListener listener) {
         if (logger.isDebugEnabled()) {
-            logger.debug("## pipeline[{}] remove listener [{}]", getPipelineId(),
+            logger.debug("## pipeline【{}】 remove listener 【{}】", getPipelineId(),
                          ClassUtils.getShortClassName(listener.getClass()));
         }
 

@@ -72,7 +72,7 @@ public class LoadRpcArbitrateEvent implements LoadArbitrateEvent {
                 }
             }
 
-            logger.warn("pipelineId[{}] load ignore processId[{}] by status[{}]", new Object[] { pipelineId, processId,
+            logger.warn("pipelineId【{}】 load ignore processId【{}】 by status【{}】", new Object[] { pipelineId, processId,
                     status });
             return await(pipelineId);// 递归调用
         }

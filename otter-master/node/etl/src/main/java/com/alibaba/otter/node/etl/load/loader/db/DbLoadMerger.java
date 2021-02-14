@@ -101,7 +101,7 @@ public class DbLoadMerger {
                 // insert之前出现了update逻辑上不可能，唯一的可能性主要是Freedom的介入，人为的插入了一条Insert记录
                 // 不过freedom一般不建议Insert操作，只建议执行update/delete操作. update默认会走merge
                 // sql,不存在即插入
-                logger.warn("update-insert/insert-insert happend. before[{}] , after[{}]", oldEventData, eventData);
+                logger.warn("update-insert/insert-insert happend. before【{}】 , after【{}】", oldEventData, eventData);
                 // 如果上一条变更是update的，就用insert替换，并且把上一条存在而这一条不存在的字段值拷贝到这一条中
                 EventData mergeEventData = replaceColumnValue(eventData, oldEventData);
                 mergeEventData.getOldKeys().clear();// 清空oldkeys，insert记录不需要

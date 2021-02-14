@@ -177,7 +177,7 @@ public class RpcStageController extends ArbitrateLifeCycle implements ProcessLis
                 if (stage != null && stage.getStage().isTransform()) {
                     return result;
                 } else {
-                    logger.info("rpc compute [{}] but stage [{}]", result, stage == null ? null : stage.getStage());
+                    logger.info("rpc compute 【{}】 but stage 【{}】", result, stage == null ? null : stage.getStage());
                     return null;
                 }
             }
@@ -225,7 +225,7 @@ public class RpcStageController extends ArbitrateLifeCycle implements ProcessLis
                 if (CollectionUtils.isEmpty(processIds) == false) {
                     Long processId = processIds.get(0);
                     if (processId > (Long) replyId) { // 如果当前最小的processId都大于replyId, processId都是递增创建的
-                        logger.info("## {} remove reply id [{}]", ClassUtils.getShortClassName(this.getClass()),
+                        logger.info("## {} remove reply id 【{}】", ClassUtils.getShortClassName(this.getClass()),
                                     (Long) replyId);
                         replyProcessIds.remove((Long) replyId);
                         progress.remove((Long) replyId);

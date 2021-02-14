@@ -50,7 +50,7 @@ public class TerminMemoryArbitrateEvent implements TerminArbitrateEvent {
         MemoryStageController stageController = ArbitrateFactory.getInstance(pipelineId, MemoryStageController.class);
         TerminEventData eventData = stageController.waitTermin();
         if (logger.isDebugEnabled()) {
-            logger.debug("## await pipeline[{}] processId[{}] is termin", pipelineId, eventData.getProcessId());
+            logger.debug("## await pipeline【{}】 processId【{}】 is termin", pipelineId, eventData.getProcessId());
         }
 
         return eventData;

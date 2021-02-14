@@ -41,14 +41,14 @@ public class UserServiceImpl implements UserService {
         if (user == null) {
             throw new Exception("用户不存在");
         }
-        log.info("用户信息：[{}]", user.toString());
+        log.info("用户信息:【{}】", user.toString());
 
         // 检查商品合法性
         Stock stock = stockService.getStockById(sid);
         if (stock == null) {
             throw new Exception("商品不存在");
         }
-        log.info("商品信息：[{}]", stock.toString());
+        log.info("商品信息:【{}】", stock.toString());
 
         // 生成hash
         String verify = SALT + sid + userId;
@@ -57,7 +57,7 @@ public class UserServiceImpl implements UserService {
         // 将hash和用户商品信息存入redis
         String hashKey = CacheKey.HASH_KEY.getKey() + "_" + sid + "_" + userId;
         stringRedisTemplate.opsForValue().set(hashKey, verifyHash, 3600, TimeUnit.SECONDS);
-        log.info("Redis写入：[{}] [{}]", hashKey, verifyHash);
+        log.info("Redis写入:【{}】 【{}】", hashKey, verifyHash);
         return verifyHash;
     }
 

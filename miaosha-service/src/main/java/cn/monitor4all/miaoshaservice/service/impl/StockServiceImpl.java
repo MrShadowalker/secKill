@@ -25,7 +25,7 @@ public class StockServiceImpl implements StockService {
     public Integer getStockCount(int sid) {
         Integer stockLeft;
         stockLeft = getStockCountByCache(sid);
-        log.info("缓存中取得库存数：[{}]", stockLeft);
+        log.info("缓存中取得库存数:【{}】", stockLeft);
         if (stockLeft == null) {
             stockLeft = getStockCountByDB(sid);
             log.info("缓存未命中，查询数据库，并写入缓存");
@@ -55,7 +55,7 @@ public class StockServiceImpl implements StockService {
     public void setStockCountCache(int id, int count) {
         String hashKey = CacheKey.STOCK_COUNT.getKey() + "_" + id;
         String countStr = String.valueOf(count);
-        log.info("写入商品库存缓存: [{}] [{}]", hashKey, countStr);
+        log.info("写入商品库存缓存:【{}】 【{}】", hashKey, countStr);
         stringRedisTemplate.opsForValue().set(hashKey, countStr, 3600, TimeUnit.SECONDS);
     }
 
@@ -63,7 +63,7 @@ public class StockServiceImpl implements StockService {
     public void delStockCountCache(int id) {
         String hashKey = CacheKey.STOCK_COUNT.getKey() + "_" + id;
         stringRedisTemplate.delete(hashKey);
-        log.info("删除商品id：[{}] 缓存", id);
+        log.info("删除商品id:【{}】 缓存", id);
     }
 
     @Override

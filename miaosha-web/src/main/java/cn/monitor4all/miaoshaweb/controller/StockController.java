@@ -28,10 +28,10 @@ public class StockController {
         try {
             count = stockService.getStockCountByDB(sid);
         } catch (Exception e) {
-            log.error("查询库存失败：[{}]", e.getMessage());
+            log.error("查询库存失败:【{}】", e.getMessage());
             return "查询库存失败";
         }
-        log.info("商品Id: [{}] 剩余库存为: [{}]", sid, count);
+        log.info("商品Id:【{}】 剩余库存为:【{}】", sid, count);
         return String.format("商品Id: %d 剩余库存为：%d", sid, count);
     }
 
@@ -50,10 +50,10 @@ public class StockController {
         try {
             count = stockService.getStockCount(sid);
         } catch (Exception e) {
-            log.error("查询库存失败：[{}]", e.getMessage());
+            log.error("查询库存失败:【{}】", e.getMessage());
             return "查询库存失败";
         }
-        log.info("商品Id: [{}] 剩余库存为: [{}]", sid, count);
+        log.info("商品Id:【{}】 剩余库存为:【{}】", sid, count);
         return String.format("商品Id: %d 剩余库存为：%d", sid, count);
     }
 

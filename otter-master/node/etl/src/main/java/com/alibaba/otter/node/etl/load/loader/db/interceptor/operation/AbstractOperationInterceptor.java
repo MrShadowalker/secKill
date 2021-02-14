@@ -168,10 +168,10 @@ public abstract class AbstractOperationInterceptor extends AbstractLoadIntercept
         }
 
         if (affectedCount <= 0) {
-            logger.warn("## update {} failed by [{}]", markTableName, threadId);
+            logger.warn("## update {} failed by 【{}】", markTableName, threadId);
         } else {
             if (logger.isInfoEnabled()) {
-                logger.debug("Interceptor For [{}]", identity);
+                logger.debug("Interceptor For 【{}】", identity);
             }
         }
     }

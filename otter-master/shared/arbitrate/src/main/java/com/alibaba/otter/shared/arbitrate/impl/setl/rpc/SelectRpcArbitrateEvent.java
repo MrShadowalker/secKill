@@ -78,7 +78,7 @@ public class SelectRpcArbitrateEvent implements SelectArbitrateEvent {
                     // termin.setPipelineId(pipelineId);
                     // termin.setType(TerminType.ROLLBACK);
                     // termin.setCode("no_node");
-                    // termin.setDesc(MessageFormat.format("pipeline[{}] extract stage has no node!", pipelineId));
+                    // termin.setDesc(MessageFormat.format("pipeline【{}】 extract stage has no node!", pipelineId));
                     // terminEvent.single(termin);
                     throw new ArbitrateException("Select_single", "no next node");
                 } else {
@@ -87,13 +87,13 @@ public class SelectRpcArbitrateEvent implements SelectArbitrateEvent {
                     return eventData;// 只有这一条路返回
                 }
             } catch (ZkNoNodeException e) {
-                logger.error("pipeline[{}] processId[{}] is invalid , retry again", pipelineId, processId);
+                logger.error("pipeline【{}】 processId【{}】 is invalid , retry again", pipelineId, processId);
                 return await(pipelineId);// /出现节点不存在，说明出现了error情况,递归调用重新获取一次
             } catch (ZkException e) {
                 throw new ArbitrateException("Select_await", e.getMessage(), e);
             }
         } else {
-            logger.warn("pipelineId[{}] select ignore processId[{}] by status[{}]", new Object[] { pipelineId,
+            logger.warn("pipelineId【{}】 select ignore processId【{}】 by status【{}】", new Object[] { pipelineId,
                     processId, status });
             // add by ljh 2013-02-01
             // 遇到一个bug:

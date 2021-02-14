@@ -53,7 +53,7 @@ public class OrderController {
         int id = 0;
         try {
             id = orderService.createWrongOrder(sid);
-            log.info("创建订单id: [{}]", id);
+            log.info("创建订单id:【{}】", id);
         } catch (Exception e) {
             log.error("Exception", e);
         }
@@ -79,12 +79,12 @@ public class OrderController {
         int id;
         try {
             id = orderService.createOptimisticOrder(sid);
-            log.info("购买成功，剩余库存为: [{}]", id);
+            log.info("购买成功，剩余库存为:【{}】", id);
         } catch (Exception e) {
-            log.error("购买失败：[{}]", e.getMessage());
+            log.error("购买失败:【{}】", e.getMessage());
             return "购买失败，库存不足";
         }
-        return String.format("购买成功，剩余库存为：%d", id);
+        return String.format("购买成功，剩余库存为:【{}】", id);
     }
 
     /**
@@ -99,9 +99,9 @@ public class OrderController {
         int id;
         try {
             id = orderService.createPessimisticOrder(sid);
-            log.info("购买成功，剩余库存为: [{}]", id);
+            log.info("购买成功，剩余库存为:【{}】", id);
         } catch (Exception e) {
-            log.error("购买失败：[{}]", e.getMessage());
+            log.error("购买失败:【{}】", e.getMessage());
             return "购买失败，库存不足";
         }
         return String.format("购买成功，剩余库存为：%d", id);
@@ -120,7 +120,7 @@ public class OrderController {
         try {
             hash = userService.getVerifyHash(sid, userId);
         } catch (Exception e) {
-            log.error("获取验证hash失败，原因：[{}]", e.getMessage());
+            log.error("获取验证hash失败，原因:【{}】", e.getMessage());
             return "获取验证hash失败";
         }
         return String.format("请求抢购验证hash值为：%s", hash);
@@ -140,9 +140,9 @@ public class OrderController {
         int stockLeft;
         try {
             stockLeft = orderService.createVerifiedOrder(sid, userId, verifyHash);
-            log.info("购买成功，剩余库存为: [{}]", stockLeft);
+            log.info("购买成功，剩余库存为:【{}】", stockLeft);
         } catch (Exception e) {
-            log.error("购买失败：[{}]", e.getMessage());
+            log.error("购买失败:【{}】", e.getMessage());
             return e.getMessage();
         }
         return String.format("购买成功，剩余库存为：%d", stockLeft);
@@ -162,15 +162,15 @@ public class OrderController {
         int stockLeft;
         try {
             int count = userService.addUserCount(userId);
-            log.info("用户截至该次的访问次数为: [{}]", count);
+            log.info("用户截至该次的访问次数为:【{}】", count);
             boolean isBanned = userService.getUserIsBanned(userId);
             if (isBanned) {
                 return "购买失败，超过频率限制";
             }
             stockLeft = orderService.createVerifiedOrder(sid, userId, verifyHash);
-            log.info("购买成功，剩余库存为: [{}]", stockLeft);
+            log.info("购买成功，剩余库存为:【{}】", stockLeft);
         } catch (Exception e) {
-            log.error("购买失败：[{}]", e.getMessage());
+            log.error("购买失败:【{}】", e.getMessage());
             return e.getMessage();
         }
         return String.format("购买成功，剩余库存为：%d", stockLeft);
@@ -192,10 +192,10 @@ public class OrderController {
             // 完成扣库存下单事务
             orderService.createPessimisticOrder(sid);
         } catch (Exception e) {
-            log.error("购买失败：[{}]", e.getMessage());
+            log.error("购买失败:【{}】", e.getMessage());
             return "购买失败，库存不足";
         }
-        log.info("购买成功，剩余库存为: [{}]", count);
+        log.info("购买成功，剩余库存为:【{}】", count);
         return String.format("购买成功，剩余库存为：%d", count);
     }
 
@@ -215,10 +215,10 @@ public class OrderController {
             // 删除库存缓存
             stockService.delStockCountCache(sid);
         } catch (Exception e) {
-            log.error("购买失败：[{}]", e.getMessage());
+            log.error("购买失败:【{}】", e.getMessage());
             return "购买失败，库存不足";
         }
-        log.info("购买成功，剩余库存为: [{}]", count);
+        log.info("购买成功，剩余库存为:【{}】", count);
         return String.format("购买成功，剩余库存为：%d", count);
     }
 
@@ -241,10 +241,10 @@ public class OrderController {
             // 延时指定时间后再次删除缓存
             cachedThreadPool.execute(new delCacheByThread(sid));
         } catch (Exception e) {
-            log.error("购买失败：[{}]", e.getMessage());
+            log.error("购买失败:【{}】", e.getMessage());
             return "购买失败，库存不足";
         }
-        log.info("购买成功，剩余库存为: [{}]", count);
+        log.info("购买成功，剩余库存为:【{}】", count);
         return String.format("购买成功，剩余库存为：%d", count);
     }
 
@@ -270,10 +270,10 @@ public class OrderController {
             sendToDelCache(String.valueOf(sid));
 
         } catch (Exception e) {
-            log.error("购买失败：[{}]", e.getMessage());
+            log.error("购买失败:【{}】", e.getMessage());
             return "购买失败，库存不足";
         }
-        log.info("购买成功，剩余库存为: [{}]", count);
+        log.info("购买成功，剩余库存为:【{}】", count);
         return "购买成功";
     }
 
@@ -296,7 +296,7 @@ public class OrderController {
 
             // 有库存，则将用户id和商品id封装为消息体传给消息队列处理
             // 注意这里的有库存和已经下单都是缓存中的结论，存在不可靠性，在消息队列中会查表再次验证
-            log.info("有库存：[{}]", count);
+            log.info("有库存:【{}】", count);
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("sid", sid);
             jsonObject.put("userId", userId);
@@ -334,7 +334,7 @@ public class OrderController {
 
             // 有库存，则将用户id和商品id封装为消息体传给消息队列处理
             // 注意这里的有库存和已经下单都是缓存中的结论，存在不可靠性，在消息队列中会查表再次验证
-            log.info("有库存：[{}]", count);
+            log.info("有库存:【{}】", count);
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("sid", sid);
             jsonObject.put("userId", userId);
@@ -379,12 +379,13 @@ public class OrderController {
             this.sid = sid;
         }
 
+        @Override
         public void run() {
             try {
-                log.info("异步执行缓存再删除，商品id：[{}]， 首先休眠：[{}] 毫秒", sid, DELAY_MILLSECONDS);
+                log.info("异步执行缓存再删除，商品id:【{}】， 首先休眠:【{}】 毫秒", sid, DELAY_MILLSECONDS);
                 Thread.sleep(DELAY_MILLSECONDS);
                 stockService.delStockCountCache(sid);
-                log.info("再次删除商品id：[{}] 缓存", sid);
+                log.info("再次删除商品id:【{}】 缓存", sid);
             } catch (Exception e) {
                 log.error("delCacheByThread执行出错", e);
             }
@@ -397,7 +398,7 @@ public class OrderController {
      * @param message
      */
     private void sendToDelCache(String message) {
-        log.info("这就去通知消息队列开始重试删除缓存：[{}]", message);
+        log.info("这就去通知消息队列开始重试删除缓存:【{}】", message);
         this.rabbitTemplate.convertAndSend("delCache", message);
     }
 
@@ -407,7 +408,7 @@ public class OrderController {
      * @param message
      */
     private void sendToOrderQueue(String message) {
-        log.info("这就去通知消息队列开始下单：[{}]", message);
+        log.info("这就去通知消息队列开始下单:【{}】", message);
         this.rabbitTemplate.convertAndSend("orderQueue", message);
     }
 

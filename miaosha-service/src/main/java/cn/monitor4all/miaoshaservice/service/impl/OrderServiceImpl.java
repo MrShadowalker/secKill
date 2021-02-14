@@ -88,14 +88,14 @@ public class OrderServiceImpl implements OrderService {
         if (user == null) {
             throw new Exception("用户不存在");
         }
-        log.info("用户信息验证成功：[{}]", user.toString());
+        log.info("用户信息验证成功:【{}】", user.toString());
 
         // 检查商品合法性
         Stock stock = stockService.getStockById(sid);
         if (stock == null) {
             throw new Exception("商品不存在");
         }
-        log.info("商品信息验证成功：[{}]", stock.toString());
+        log.info("商品信息验证成功:【{}】", stock.toString());
 
         // 乐观锁更新库存
         boolean success = saleStockOptimistic(stock);
@@ -132,7 +132,7 @@ public class OrderServiceImpl implements OrderService {
             return;
         }
 
-        log.info("扣减库存成功，剩余库存：[{}]", stock.getCount() - stock.getSale() - 1);
+        log.info("扣减库存成功，剩余库存:【{}】", stock.getCount() - stock.getSale() - 1);
         stockService.delStockCountCache(sid);
         log.info("删除库存缓存");
 
@@ -148,7 +148,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Boolean checkUserOrderInfoInCache(Integer sid, Integer userId) throws Exception {
         String key = CacheKey.USER_HAS_ORDER.getKey() + "_" + sid;
-        log.info("检查用户Id：[{}] 是否抢购过商品Id：[{}] 检查Key：[{}]", userId, sid, key);
+        log.info("检查用户Id:【{}】 是否抢购过商品Id:【{}】 检查Key:【{}】", userId, sid, key);
         return stringRedisTemplate.opsForSet().isMember(key, userId.toString());
     }
 
@@ -236,7 +236,7 @@ public class OrderServiceImpl implements OrderService {
      */
     private Long createOrderWithUserInfoInCache(Stock stock, Integer userId) {
         String key = CacheKey.USER_HAS_ORDER.getKey() + "_" + stock.getId().toString();
-        log.info("写入用户订单数据Set：[{}] [{}]", key, userId.toString());
+        log.info("写入用户订单数据Set:【{}】 【{}】", key, userId.toString());
         return stringRedisTemplate.opsForSet().add(key, userId.toString());
     }
 }

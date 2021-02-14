@@ -132,7 +132,7 @@ public class PermitMonitor extends ArbitrateLifeCycle implements Monitor {
 
     public void reload() {
         if (logger.isDebugEnabled()) {
-            logger.debug("## reload Permit pipeline[{}]", getPipelineId());
+            logger.debug("## reload Permit pipeline【{}】", getPipelineId());
         }
 
         try {
@@ -166,7 +166,7 @@ public class PermitMonitor extends ArbitrateLifeCycle implements Monitor {
         super.destory();
 
         if (logger.isDebugEnabled()) {
-            logger.debug("## destory Permit pipeline[{}]", getPipelineId());
+            logger.debug("## destory Permit pipeline【{}】", getPipelineId());
         }
         String path = StagePathUtils.getChannel(getPipelineId());
         zookeeper.unsubscribeDataChanges(path, channelDataListener);
@@ -279,7 +279,7 @@ public class PermitMonitor extends ArbitrateLifeCycle implements Monitor {
         ChannelStatus newChannelStatus = JsonUtils.unmarshalFromByte(bytes, ChannelStatus.class);
 
         if (logger.isDebugEnabled()) {
-            logger.debug("pipeline[{}] newChannelStatus is [{}]", getPipelineId(), newChannelStatus);
+            logger.debug("pipeline【{}】 newChannelStatus is 【{}】", getPipelineId(), newChannelStatus);
         }
 
         synchronized (this) {
@@ -342,7 +342,7 @@ public class PermitMonitor extends ArbitrateLifeCycle implements Monitor {
         MainStemEventData.Status newStatus = eventData.getStatus();
 
         if (logger.isDebugEnabled()) {
-            logger.debug("pipeline[{}] new mainStemStatus is [{}]", getPipelineId(), newStatus);
+            logger.debug("pipeline【{}】 new mainStemStatus is 【{}】", getPipelineId(), newStatus);
         }
 
         synchronized (this) {
@@ -406,7 +406,7 @@ public class PermitMonitor extends ArbitrateLifeCycle implements Monitor {
         MainStemEventData.Status newStatus = eventData.getStatus();
 
         if (logger.isDebugEnabled()) {
-            logger.debug("pipeline[{}] new oppositeMainStemStatus is [{}]", getPipelineId(), newStatus);
+            logger.debug("pipeline【{}】 new oppositeMainStemStatus is 【{}】", getPipelineId(), newStatus);
         }
 
         synchronized (this) {
@@ -484,7 +484,7 @@ public class PermitMonitor extends ArbitrateLifeCycle implements Monitor {
 
     public void addListener(PermitListener listener) {
         if (logger.isDebugEnabled()) {
-            logger.debug("## pipeline[{}] add listener [{}]", getPipelineId(),
+            logger.debug("## pipeline【{}】 add listener 【{}】", getPipelineId(),
                          ClassUtils.getShortClassName(listener.getClass()));
         }
 
@@ -493,7 +493,7 @@ public class PermitMonitor extends ArbitrateLifeCycle implements Monitor {
 
     public void removeListener(PermitListener listener) {
         if (logger.isDebugEnabled()) {
-            logger.debug("## pipeline[{}] remove listener [{}]", getPipelineId(),
+            logger.debug("## pipeline【{}】 remove listener 【{}】", getPipelineId(),
                          ClassUtils.getShortClassName(listener.getClass()));
         }
 

@@ -109,7 +109,7 @@ public class DefaultCommunicationClientImpl implements CommunicationClient {
             }
         }
 
-        logger.error("call[{}] failed , event[{}]!", addr, event.toString());
+        logger.error("call【{}】 failed , event【{}】!", addr, event.toString());
         throw new CommunicationException("call[" + addr + "] , Event[" + event.toString() + "]", ex);
     }
 

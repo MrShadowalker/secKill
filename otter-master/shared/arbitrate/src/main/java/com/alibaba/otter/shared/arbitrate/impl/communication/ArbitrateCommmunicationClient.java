@@ -76,7 +76,7 @@ public class ArbitrateCommmunicationClient {
                 return result;
             } catch (CommunicationException e) {
                 ex = e;
-                logger.warn("call manager [{}] event [{}] failed, maybe can try another manager.", address, event);
+                logger.warn("call manager 【{}】 event 【{}】 failed, maybe can try another manager.", address, event);
             }
         }
 

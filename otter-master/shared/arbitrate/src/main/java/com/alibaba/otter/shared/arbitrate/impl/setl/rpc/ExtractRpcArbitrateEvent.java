@@ -65,7 +65,7 @@ public class ExtractRpcArbitrateEvent implements ExtractArbitrateEvent {
                 return eventData;// 只有这一条路返回
             }
         } else {
-            logger.warn("pipelineId[{}] extract ignore processId[{}] by status[{}]", new Object[] { pipelineId,
+            logger.warn("pipelineId【{}】 extract ignore processId【{}】 by status【{}】", new Object[] { pipelineId,
                     processId, status });
             String path = StagePathUtils.getProcess(pipelineId, processId);
             zookeeper.exists(path);

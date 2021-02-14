@@ -54,7 +54,7 @@ public class TransformRpcArbitrateEvent implements TransformArbitrateEvent {
             eventData.setNextNid(ArbitrateConfigUtils.getCurrentNid());// 下一个节点信息即为自己
             return eventData;
         } else {
-            logger.warn("pipelineId[{}] transform ignore processId[{}] by status[{}]", new Object[] { pipelineId,
+            logger.warn("pipelineId【{}】 transform ignore processId【{}】 by status【{}】", new Object[] { pipelineId,
                     processId, status });
             return await(pipelineId);// 递归调用
         }

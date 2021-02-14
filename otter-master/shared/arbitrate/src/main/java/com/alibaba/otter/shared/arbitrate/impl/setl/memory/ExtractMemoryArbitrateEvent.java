@@ -51,7 +51,7 @@ public class ExtractMemoryArbitrateEvent implements ExtractArbitrateEvent {
         if (status.isStart()) {// 即时查询一下当前的状态，状态随时可能会变
             return stageController.getLastData(processId);
         } else {
-            logger.warn("pipelineId[{}] extract ignore processId[{}] by status[{}],rollback now",
+            logger.warn("pipelineId【{}】 extract ignore processId【{}】 by status【{}】,rollback now",
                 new Object[] { pipelineId,
                     processId, status });
             // 进行ROLLBACK，触发释放下processId，信号量及EventStore里面的读位置点。

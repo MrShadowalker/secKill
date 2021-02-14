@@ -220,10 +220,10 @@ public class FileExtractor extends AbstractExtractor<DbBatch> {
             }
 
             long start = System.currentTimeMillis();
-            logger.info("start pipelinep[{}] waitFor FileData Size : {} ", pipeline.getId(), fileDatas.size());
+            logger.info("start pipelinep【{}】 waitFor FileData Size : {} ", pipeline.getId(), fileDatas.size());
             // 等待所有都处理完成
             executorTemplate.waitForResult();
-            logger.info("end pipelinep[{}] waitFor FileData cost : {} ms ", pipeline.getId(),
+            logger.info("end pipelinep【{}】 waitFor FileData cost : {} ms ", pipeline.getId(),
                     (System.currentTimeMillis() - start));
         } finally {
             if (executorTemplate != null) {

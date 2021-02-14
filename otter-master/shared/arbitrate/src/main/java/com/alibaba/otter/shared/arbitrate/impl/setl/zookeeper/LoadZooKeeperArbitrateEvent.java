@@ -93,7 +93,7 @@ public class LoadZooKeeperArbitrateEvent implements LoadArbitrateEvent {
                     byte[] data = zookeeper.readData(path);
                     return JsonUtils.unmarshalFromByte(data, EtlEventData.class);// 反序列化并返回
                 } catch (ZkNoNodeException e) {
-                    logger.error("pipeline[{}] processId[{}] is invalid , retry again", pipelineId, processId);
+                    logger.error("pipeline【{}】 processId【{}】 is invalid , retry again", pipelineId, processId);
                     // try {
                     // lock.unlock();// 出现任何异常解除lock
                     // } catch (KeeperException e1) {
@@ -104,7 +104,7 @@ public class LoadZooKeeperArbitrateEvent implements LoadArbitrateEvent {
                     throw e;
                 }
             } else {
-                logger.warn("pipelineId[{}] load ignore processId[{}] by status[{}]", new Object[] { pipelineId,
+                logger.warn("pipelineId【{}】 load ignore processId【{}】 by status【{}】", new Object[] { pipelineId,
                         processId, status });
                 // try {
                 // lock.unlock();// 出现任何异常解除lock

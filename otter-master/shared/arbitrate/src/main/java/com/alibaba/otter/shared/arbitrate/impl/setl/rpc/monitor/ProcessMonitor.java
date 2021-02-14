@@ -77,7 +77,7 @@ public class ProcessMonitor extends ArbitrateLifeCycle implements Monitor {
     public void reload() {
         try {
             if (logger.isDebugEnabled()) {
-                logger.debug("## reload Stage pipeline[{}]", getPipelineId());
+                logger.debug("## reload Stage pipeline【{}】", getPipelineId());
             }
 
             initProcess();
@@ -106,7 +106,7 @@ public class ProcessMonitor extends ArbitrateLifeCycle implements Monitor {
     public void destory() {
         super.destory();
         if (logger.isDebugEnabled()) {
-            logger.debug("## destory process pipeline[{}]", getPipelineId());
+            logger.debug("## destory process pipeline【{}】", getPipelineId());
         }
 
         this.listeners.clear();
@@ -137,7 +137,7 @@ public class ProcessMonitor extends ArbitrateLifeCycle implements Monitor {
         }
         Collections.sort(processIds); // 排序一下
         if (logger.isDebugEnabled()) {
-            logger.debug("pipeline[{}] old processIds{},current processIds{}", new Object[] { getPipelineId(),
+            logger.debug("pipeline【{}】 old processIds{},current processIds{}", new Object[] { getPipelineId(),
                     currentProcessIds, processIds });
         }
 
@@ -152,7 +152,7 @@ public class ProcessMonitor extends ArbitrateLifeCycle implements Monitor {
 
     public void addListener(ProcessListener listener) {
         if (logger.isDebugEnabled()) {
-            logger.debug("## pipeline[{}] add listener [{}]", getPipelineId(),
+            logger.debug("## pipeline【{}】 add listener 【{}】", getPipelineId(),
                          ClassUtils.getShortClassName(listener.getClass()));
         }
 
@@ -161,7 +161,7 @@ public class ProcessMonitor extends ArbitrateLifeCycle implements Monitor {
 
     public void removeListener(ProcessListener listener) {
         if (logger.isDebugEnabled()) {
-            logger.debug("## pipeline[{}] remove listener [{}]", getPipelineId(),
+            logger.debug("## pipeline【{}】 remove listener 【{}】", getPipelineId(),
                          ClassUtils.getShortClassName(listener.getClass()));
         }
 

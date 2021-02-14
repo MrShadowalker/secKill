@@ -79,13 +79,13 @@ public class TransformZooKeeperArbitrateEvent implements TransformArbitrateEvent
                 eventData.setNextNid(ArbitrateConfigUtils.getCurrentNid());// 下一个节点信息即为自己
                 return eventData;// 只有这一条路返回
             } catch (ZkNoNodeException e) {
-                logger.error("pipeline[{}] processId[{}] is invalid , retry again", pipelineId, processId);
+                logger.error("pipeline【{}】 processId【{}】 is invalid , retry again", pipelineId, processId);
                 return await(pipelineId);// /出现节点不存在，说明出现了error情况,递归调用重新获取一次
             } catch (ZkException e) {
                 throw new ArbitrateException("transform_await", e.getMessage(), e);
             }
         } else {
-            logger.info("pipelineId[{}] transform ignore processId[{}] by status[{}]", new Object[] { pipelineId,
+            logger.info("pipelineId【{}】 transform ignore processId【{}】 by status【{}】", new Object[] { pipelineId,
                     processId, status });
                     
             // 释放下processId，因为load是等待processId最小值完成Tranform才继续，如果这里不释放，会一直卡死等待
@@ -113,11 +113,11 @@ public class TransformZooKeeperArbitrateEvent implements TransformArbitrateEvent
             zookeeper.create(path, bytes, CreateMode.PERSISTENT);
         } catch (ZkNoNodeException e) {
             // process节点不存在，出现了rollback/shutdown操作，直接忽略
-            logger.warn("pipelineId[{}] transform ignore processId[{}] single by data:{}",
+            logger.warn("pipelineId【{}】 transform ignore processId【{}】 single by data:{}",
                         new Object[] { data.getPipelineId(), data.getProcessId(), data });
         } catch (ZkNodeExistsException e) {
             // process节点已存在，出现了ConnectionLoss retry操作
-            logger.warn("pipelineId[{}] transform ignore processId[{}] single by data:{}",
+            logger.warn("pipelineId【{}】 transform ignore processId【{}】 single by data:{}",
                         new Object[] { data.getPipelineId(), data.getProcessId(), data });
         } catch (ZkException e) {
             throw new ArbitrateException("transform_single", e.getMessage(), e);

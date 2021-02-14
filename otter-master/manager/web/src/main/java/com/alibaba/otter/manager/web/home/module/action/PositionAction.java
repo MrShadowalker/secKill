@@ -43,7 +43,7 @@ public class PositionAction {
         String destination = pipeline.getParameters().getDestinationName();
         short clientId = pipeline.getParameters().getMainstemClientId();
         PositionEventData position = arbitrateViewService.getCanalCursor(destination, clientId);
-        logger.warn("remove pipelineId[{}] position \n {}", pipelineId, position); // 记录一下日志
+        logger.warn("remove pipelineId【{}】 position \n {}", pipelineId, position); // 记录一下日志
         arbitrateViewService.removeCanalCursor(destination, clientId);
         nav.redirectToLocation("analysisStageStat.htm?pipelineId=" + pipelineId);
     }

@@ -106,7 +106,7 @@ public class NodeTaskServiceImpl implements NodeTaskService, InitializingBean {
     private void processNodeTask(Channel channel) {
         List<NodeTask> addTasks = parseNodeTask(channel);
         if (logger.isInfoEnabled()) {
-            logger.info("##merge channel[{}] inc NodeTask {}", channel.getId(), printNodeTasks(addTasks));
+            logger.info("##merge channel【{}】 inc NodeTask {}", channel.getId(), printNodeTasks(addTasks));
         }
 
         List<NodeTask> tasks = new ArrayList<NodeTask>(incTasks);

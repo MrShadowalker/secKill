@@ -107,7 +107,7 @@ public class DeadNodeListener implements NodeListener, InitializingBean, Disposa
         List<Long> aliveNodes = nodeMonitor.getAliveNodes(true);
         // 需要考虑一种网络瞬断的情况，会导致node所有出现重连，导致出现restart风暴，执行restart时需要重新check下是否存活
         if (aliveNodes.contains(deadNode)) {
-            logger.warn("dead node[{}] happend just one moment , check it's alived", deadNode);
+            logger.warn("dead node【{}】 happend just one moment , check it's alived", deadNode);
             return;
         }
 

@@ -111,7 +111,7 @@ public class ExecutorTemplate implements InitializingBean, DisposableBean {
     }
 
     public void cancel() {
-        logger.info("canal Futures[{}]", futures.size());
+        logger.info("canal Futures【{}】", futures.size());
         for (int i = 0; i < futures.size(); i++) {
             Future future = futures.get(i);
             if (!future.isDone() && !future.isCancelled()) {

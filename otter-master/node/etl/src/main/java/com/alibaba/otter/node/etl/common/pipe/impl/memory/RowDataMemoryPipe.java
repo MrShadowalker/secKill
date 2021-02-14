@@ -55,7 +55,7 @@ public class RowDataMemoryPipe extends AbstractMemoryPipe<DbBatch, MemoryPipeKey
         key.setIdentity(data.getRowBatch().getIdentity());
         // if (data.getRoot() == null && data.getFileBatch() != null
         // && !CollectionUtils.isEmpty(data.getFileBatch().getFiles())) {
-        // logger.warn("Identity[{}] memory pipe exist fileBatch!",
+        // logger.warn("Identity【{}】 memory pipe exist fileBatch!",
         // key.getIdentity());
         // // data.setRoot(prepareFile(data.getFileBatch()));
         // }

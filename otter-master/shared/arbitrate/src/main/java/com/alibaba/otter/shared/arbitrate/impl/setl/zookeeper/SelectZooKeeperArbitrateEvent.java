@@ -87,7 +87,7 @@ public class SelectZooKeeperArbitrateEvent implements SelectArbitrateEvent {
                     // termin.setPipelineId(pipelineId);
                     // termin.setType(TerminType.ROLLBACK);
                     // termin.setCode("no_node");
-                    // termin.setDesc(MessageFormat.format("pipeline[{}] extract stage has no node!", pipelineId));
+                    // termin.setDesc(MessageFormat.format("pipeline【{}】 extract stage has no node!", pipelineId));
                     // terminEvent.single(termin);
                     throw new ArbitrateException("Select_single", "no next node");
                 } else {
@@ -96,13 +96,13 @@ public class SelectZooKeeperArbitrateEvent implements SelectArbitrateEvent {
                     return eventData;// 只有这一条路返回
                 }
             } catch (ZkNoNodeException e) {
-                logger.error("pipeline[{}] processId[{}] is invalid , retry again", pipelineId, processId);
+                logger.error("pipeline【{}】 processId【{}】 is invalid , retry again", pipelineId, processId);
                 return await(pipelineId);// /出现节点不存在，说明出现了error情况,递归调用重新获取一次
             } catch (ZkException e) {
                 throw new ArbitrateException("Select_await", e.getMessage(), e);
             }
         } else {
-            logger.warn("pipelineId[{}] select ignore processId[{}] by status[{}]", new Object[] { pipelineId,
+            logger.warn("pipelineId【{}】 select ignore processId【{}】 by status【{}】", new Object[] { pipelineId,
                     processId, status });
             // add by ljh 2013-02-01
             // 遇到一个bug:
@@ -134,11 +134,11 @@ public class SelectZooKeeperArbitrateEvent implements SelectArbitrateEvent {
             zookeeper.create(path, bytes, CreateMode.PERSISTENT);
         } catch (ZkNoNodeException e) {
             // process节点不存在，出现了rollback/shutdown操作，直接忽略
-            logger.warn("pipelineId[{}] select ignore processId[{}] single by data:{}",
+            logger.warn("pipelineId【{}】 select ignore processId【{}】 single by data:{}",
                         new Object[] { data.getPipelineId(), data.getProcessId(), data });
         } catch (ZkNodeExistsException e) {
             // process节点已存在，出现了ConnectionLoss retry操作
-            logger.warn("pipelineId[{}] select ignore processId[{}] single by data:{}",
+            logger.warn("pipelineId【{}】 select ignore processId【{}】 single by data:{}",
                         new Object[] { data.getPipelineId(), data.getProcessId(), data });
         } catch (ZkException e) {
             throw new ArbitrateException("Select_single", e.getMessage(), e);

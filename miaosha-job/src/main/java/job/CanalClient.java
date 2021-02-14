@@ -86,7 +86,7 @@ public class CanalClient {
 
                 // 如果是‘查询’ 或者 是 ‘DDL’ 操作，那么sql直接打出来
                 if (eventType == EventType.QUERY || rowChange.getIsDdl()) {
-                    log.info("执行了查询语句：[{}]", rowChange.getSql());
+                    log.info("执行了查询语句:【{}】", rowChange.getSql());
                     return;
                 }
 
@@ -153,7 +153,7 @@ public class CanalClient {
                 }
             });
             // TODO: 删除缓存
-            log.info("Canal删除stock表id：[{}] 的库存缓存", id);
+            log.info("Canal删除stock表id:【{}】 的库存缓存", id);
 
         }
     }

@@ -161,7 +161,7 @@ public class NodeMonitor implements Monitor {
 
     public void addListener(NodeListener listener) {
         if (logger.isDebugEnabled()) {
-            logger.debug("## pipeline[{}] add listener [{}]", ClassUtils.getShortClassName(listener.getClass()));
+            logger.debug("## pipeline【{}】 add listener 【{}】", ClassUtils.getShortClassName(listener.getClass()));
         }
 
         this.listeners.add(listener);
@@ -169,7 +169,7 @@ public class NodeMonitor implements Monitor {
 
     public void removeListener(NodeListener listener) {
         if (logger.isDebugEnabled()) {
-            logger.debug("## remove listener [{}]", ClassUtils.getShortClassName(listener.getClass()));
+            logger.debug("## remove listener 【{}】", ClassUtils.getShortClassName(listener.getClass()));
         }
 
         this.listeners.remove(listener);

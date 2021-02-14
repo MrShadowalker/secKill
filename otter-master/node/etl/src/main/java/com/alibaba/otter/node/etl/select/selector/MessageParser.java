@@ -677,7 +677,7 @@ public class MessageParser {
                 if (sqlType != column.getSqlType()) {
                     // 针对oracle的erosa给出的字段为非标准的jdbc，需要做一次类型反查
                     eventColumn.setColumnType(sqlType);
-                    logger.info("table [{}] column [{}] is not match , MeType: {}, EType {}", new Object[]{
+                    logger.info("table 【{}】 column 【{}】 is not match , MeType: {}, EType {}", new Object[]{
                             tableHolder.getTable().getName(), column.getName(), sqlType, column.getSqlType()});
                 }
             }
@@ -706,7 +706,7 @@ public class MessageParser {
 
         boolean isMKey = dbColumn.isPrimaryKey();
         if (isMKey != isEKey) {
-            logger.info("table [{}] column [{}] is not match , isMeky: {}, isEkey {}",
+            logger.info("table 【{}】 column 【{}】 is not match , isMeky: {}, isEkey {}",
                     new Object[]{tableName, column.getName(), isMKey, isEKey});
         }
         return isMKey;

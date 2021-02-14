@@ -76,7 +76,7 @@ public abstract class GlobalTask extends Thread {
         List<Future> cancelFutures = new ArrayList<Future>();
         for (Map.Entry<Long, Future> entry : pendingFuture.entrySet()) {
             if (!entry.getValue().isDone()) {
-                logger.warn("WARN ## Task future processId[{}] canceled!", entry.getKey());
+                logger.warn("WARN ## Task future processId【{}】 canceled!", entry.getKey());
                 cancelFutures.add(entry.getValue());
             }
         }

@@ -59,7 +59,7 @@ public class TransformStageListener extends AbstractStageListener implements Sta
             if (stageNodes.contains(currentNode)) {
                 if (replyProcessIds.remove(processId)) {
                     if (logger.isDebugEnabled()) {
-                        logger.debug("## remove reply id [{}]", processId);
+                        logger.debug("## remove reply id 【{}】", processId);
                     }
                 }
                 return;// 不需要监听了

@@ -122,7 +122,7 @@ public class MainstemMonitor extends ArbitrateLifeCycle implements Monitor {
 
     public void reload() {
         if (logger.isDebugEnabled()) {
-            logger.debug("## reload mainstem pipeline[{}]", getPipelineId());
+            logger.debug("## reload mainstem pipeline【{}】", getPipelineId());
         }
 
         try {
@@ -220,7 +220,7 @@ public class MainstemMonitor extends ArbitrateLifeCycle implements Monitor {
             // 检查下nid是否为自己
             boolean result = nid.equals(eventData.getNid());
             if (!result) {
-                logger.warn("mainstem is running in node[{}] , but not in node[{}]", eventData.getNid(), nid);
+                logger.warn("mainstem is running in node【{}】 , but not in node【{}】", eventData.getNid(), nid);
             }
             return result;
         } catch (ZkNoNodeException e) {
@@ -265,7 +265,7 @@ public class MainstemMonitor extends ArbitrateLifeCycle implements Monitor {
 
     public void addListener(MainstemListener listener) {
         if (logger.isDebugEnabled()) {
-            logger.debug("## pipeline[{}] add listener [{}]", ClassUtils.getShortClassName(listener.getClass()));
+            logger.debug("## pipeline【{}】 add listener 【{}】", ClassUtils.getShortClassName(listener.getClass()));
         }
 
         this.listeners.add(listener);
@@ -273,7 +273,7 @@ public class MainstemMonitor extends ArbitrateLifeCycle implements Monitor {
 
     public void removeListener(MainstemListener listener) {
         if (logger.isDebugEnabled()) {
-            logger.debug("## remove listener [{}]", ClassUtils.getShortClassName(listener.getClass()));
+            logger.debug("## remove listener 【{}】", ClassUtils.getShortClassName(listener.getClass()));
         }
 
         this.listeners.remove(listener);

@@ -70,7 +70,7 @@ public class MainStemArbitrateEvent implements ArbitrateEvent {
             if (status.isStart()) {
                 return;
             } else {
-                logger.info("pipelineId[{}] mainstem ignore by status[{}]", new Object[] { pipelineId, status });
+                logger.info("pipelineId【{}】 mainstem ignore by status【{}】", new Object[] { pipelineId, status });
                 await(pipelineId);// 重新进行check一次
             }
         }

@@ -77,7 +77,7 @@ public class MediaDatasourceSupplier extends AbstractDatasourceSupplier {
             @Override
             public void callback(String matrixInfo) {
 
-                log.warn("has received changed ds [{}] for [{}] times", matrixInfo, CHANGED_TIME.addAndGet(1));
+                log.warn("has received changed ds 【{}】 for 【{}】 times", matrixInfo, CHANGED_TIME.addAndGet(1));
                 synchronized (MediaDatasourceSupplier.this.lock) {
                     MediaDatasourceSupplier.this.haInfo = parse(matrixInfo);
                     MediaDatasourceSupplier.this.callback();

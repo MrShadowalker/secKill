@@ -71,7 +71,7 @@ public abstract class AbstractStageListener extends ArbitrateLifeCycle implement
     public synchronized void processTermined(Long processId) {
         // 在运行过程中会出现Termin(rollback/restart/shutdown)等信号，仲裁器会删除当前运行的所有process
         // 因此需要删除之前已满足条件的队列记录，在具体的event处理时还会再对processId再做一次判断，是否已被废弃
-        logger.info("## {} remove reply id [{}]", ClassUtils.getShortClassName(this.getClass()), processId);
+        logger.info("## {} remove reply id 【{}】", ClassUtils.getShortClassName(this.getClass()), processId);
         replyProcessIds.remove(processId);
     }
 
@@ -81,7 +81,7 @@ public abstract class AbstractStageListener extends ArbitrateLifeCycle implement
     public Long waitForProcess() throws InterruptedException {
         // take和history.put操作非原子，addReply操作时会出现并发问题，同一个processId插入两次
         Long processId = (Long) replyProcessIds.take();
-        logger.debug("## {} get reply id [{}]", ClassUtils.getShortClassName(this.getClass()), processId);
+        logger.debug("## {} get reply id 【{}】", ClassUtils.getShortClassName(this.getClass()), processId);
         return processId;
     }
 
@@ -89,9 +89,9 @@ public abstract class AbstractStageListener extends ArbitrateLifeCycle implement
         boolean isSuccessed = replyProcessIds.offer(processId);
 
         if (isSuccessed) {
-            logger.debug("## {} add reply id [{}]", ClassUtils.getShortClassName(this.getClass()), processId);
+            logger.debug("## {} add reply id 【{}】", ClassUtils.getShortClassName(this.getClass()), processId);
         } else {
-            logger.warn("## {} dup reply id [{}]", ClassUtils.getShortClassName(this.getClass()), processId);
+            logger.warn("## {} dup reply id 【{}】", ClassUtils.getShortClassName(this.getClass()), processId);
         }
     }
 
@@ -116,7 +116,7 @@ public abstract class AbstractStageListener extends ArbitrateLifeCycle implement
 
     public void destory() {
         super.destory();
-        logger.info("## destory pipeline[{}] , Listener[{}]", getPipelineId(),
+        logger.info("## destory pipeline【{}】 , Listener【{}】", getPipelineId(),
                     ClassUtils.getShortClassName(this.getClass()));
 
         replyProcessIds.clear();

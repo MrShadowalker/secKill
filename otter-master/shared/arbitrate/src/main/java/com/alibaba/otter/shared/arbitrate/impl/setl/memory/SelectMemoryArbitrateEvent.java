@@ -61,7 +61,7 @@ public class SelectMemoryArbitrateEvent implements SelectArbitrateEvent {
             eventData.setNextNid(nid);
             return eventData;// 只有这一条路返回
         } else {
-            logger.warn("pipelineId[{}] select ignore processId[{}] by status[{}],rollback now",
+            logger.warn("pipelineId【{}】 select ignore processId【{}】 by status【{}】,rollback now",
                 new Object[] { pipelineId,
                     processId, status });
             // 进行ROLLBACK，触发释放下processId，信号量及EventStore里面的读位置点。

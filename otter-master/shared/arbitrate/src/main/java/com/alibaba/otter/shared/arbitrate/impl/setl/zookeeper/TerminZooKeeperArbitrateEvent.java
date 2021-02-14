@@ -66,7 +66,7 @@ public class TerminZooKeeperArbitrateEvent implements TerminArbitrateEvent {
         TerminMonitor terminMonitor = ArbitrateFactory.getInstance(pipelineId, TerminMonitor.class);
         Long processId = terminMonitor.waitForProcess(); // 符合条件的processId
         if (logger.isDebugEnabled()) {
-            logger.debug("## await pipeline[{}] processId[{}] is termin", pipelineId, processId);
+            logger.debug("## await pipeline【{}】 processId【{}】 is termin", pipelineId, processId);
         }
 
         // 根据pipelineId+processId构造对应的path
@@ -76,7 +76,7 @@ public class TerminZooKeeperArbitrateEvent implements TerminArbitrateEvent {
             byte[] data = zookeeper.readData(path);
             return JsonUtils.unmarshalFromByte(data, TerminEventData.class);
         } catch (ZkNoNodeException e) {
-            logger.error("pipeline[{}] processId[{}] is process", pipelineId, processId);
+            logger.error("pipeline【{}】 processId【{}】 is process", pipelineId, processId);
             terminMonitor.ack(processId); // modify for 2012-09-08, 发生主备切换时，await会进入死循环，针对NoNode后直接从内存队列中移除
             return await(pipelineId); // 再取下一个节点
         } catch (ZkException e) {
