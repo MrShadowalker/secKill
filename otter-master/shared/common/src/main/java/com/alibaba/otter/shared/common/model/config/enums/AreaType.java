@@ -18,7 +18,7 @@ package com.alibaba.otter.shared.common.model.config.enums;
 
 /**
  * 标记一下地区信息，因为不同地区会有不同的配置信息
- * 
+ *
  * @author jianghang 2013-6-5 下午04:14:05
  * @version 4.1.9
  */

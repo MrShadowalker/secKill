@@ -43,9 +43,9 @@ public class ProcessTimeoutRuleMonitor extends AbstractRuleMonitor {
     private static final String TIME_OUT_MESSAGE = "pid:%s processIds:%s elapsed %s seconds";
 
     @Resource(name = "processStatService")
-    private ProcessStatService  processStatService;
+    private ProcessStatService processStatService;
 
-    ProcessTimeoutRuleMonitor(){
+    ProcessTimeoutRuleMonitor() {
         MonitorRuleExplorerRegisty.register(MonitorName.PIPELINETIMEOUT, this);
     }
 

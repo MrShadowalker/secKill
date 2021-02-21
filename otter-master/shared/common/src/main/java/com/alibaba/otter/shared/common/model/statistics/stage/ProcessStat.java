@@ -29,9 +29,9 @@ import com.alibaba.otter.shared.common.utils.OtterToStringStyle;
 public class ProcessStat implements Serializable {
 
     private static final long serialVersionUID = -5625269232233751756L;
-    private Long              pipelineId;
-    private Long              processId;
-    private List<StageStat>   stageStats;                              // 当前process的阶段列表
+    private Long pipelineId;
+    private Long processId;
+    private List<StageStat> stageStats;                              // 当前process的阶段列表
 
     public Long getPipelineId() {
         return pipelineId;

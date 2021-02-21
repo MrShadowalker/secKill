@@ -33,19 +33,19 @@ import com.alibaba.otter.shared.common.model.config.node.Node;
 
 /**
  * 类NodeList.java的实现描述：TODO 类实现描述
- * 
+ *
  * @author simon 2011-10-25 上午10:25:27
  */
 public class NodeList {
 
     @Resource(name = "nodeService")
-    private NodeService     nodeService;
+    private NodeService nodeService;
 
     @Resource(name = "pipelineService")
     private PipelineService pipelineService;
 
     public void execute(@Param("pageIndex") int pageIndex, @Param("searchKey") String searchKey, Context context)
-                                                                                                                 throws Exception {
+            throws Exception {
         @SuppressWarnings("unchecked")
         Map<String, Object> condition = new HashMap<String, Object>();
         if ("请输入关键字(目前支持Node的ID、名字搜索)".equals(searchKey)) {

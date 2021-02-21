@@ -24,7 +24,7 @@ import com.alibaba.otter.shared.common.model.config.data.ColumnGroup;
 
 /**
  * 类DataColumnPairGroupService.java的实现描述：TODO 类实现描述
- * 
+ *
  * @author simon 2012-4-20 下午4:08:24
  */
 public interface DataColumnPairGroupService extends GenericService<ColumnGroup> {

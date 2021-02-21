@@ -26,7 +26,7 @@ import java.util.List;
  */
 public class HaDatasourceInfo {
 
-    private DatasourceInfo       master;
+    private DatasourceInfo master;
     private List<DatasourceInfo> slavers = new ArrayList<DatasourceInfo>();
 
     public DatasourceInfo getMaster() {

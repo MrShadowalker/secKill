@@ -27,9 +27,9 @@ import com.alibaba.otter.shared.common.model.config.data.DataMediaSource;
  */
 public class SeniorDataMedia extends DataMedia<DataMediaSource> {
 
-    private static final long   serialVersionUID = 1089669449690478640L;
+    private static final long serialVersionUID = 1089669449690478640L;
 
-    private boolean             used;
+    private boolean used;
 
     private List<DataMediaPair> pairs;
 

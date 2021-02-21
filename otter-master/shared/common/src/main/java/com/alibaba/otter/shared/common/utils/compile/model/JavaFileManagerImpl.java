@@ -37,11 +37,11 @@ import com.alibaba.otter.shared.common.utils.compile.impl.JdkCompileTask;
 
 public class JavaFileManagerImpl extends ForwardingJavaFileManager<JavaFileManager> {
 
-    private final JdkCompilerClassLoader   classLoader;
+    private final JdkCompilerClassLoader classLoader;
 
     private final Map<URI, JavaFileObject> fileObjects = new HashMap<URI, JavaFileObject>();
 
-    public JavaFileManagerImpl(JavaFileManager fileManager, JdkCompilerClassLoader classLoader){
+    public JavaFileManagerImpl(JavaFileManager fileManager, JdkCompilerClassLoader classLoader) {
         super(fileManager);
         this.classLoader = classLoader;
     }
@@ -71,7 +71,7 @@ public class JavaFileManagerImpl extends ForwardingJavaFileManager<JavaFileManag
 
     @Override
     public JavaFileObject getJavaFileForOutput(Location location, String qualifiedName, Kind kind, FileObject outputFile)
-                                                                                                                         throws IOException {
+            throws IOException {
         JavaFileObject file = new JavaFileObjectImpl(qualifiedName, kind);
         classLoader.add(qualifiedName, file);
         return file;
@@ -93,7 +93,7 @@ public class JavaFileManagerImpl extends ForwardingJavaFileManager<JavaFileManag
 
     @Override
     public Iterable<JavaFileObject> list(Location location, String packageName, Set<Kind> kinds, boolean recurse)
-                                                                                                                 throws IOException {
+            throws IOException {
         Iterable<JavaFileObject> result = super.list(location, packageName, kinds, recurse);
 
         ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();

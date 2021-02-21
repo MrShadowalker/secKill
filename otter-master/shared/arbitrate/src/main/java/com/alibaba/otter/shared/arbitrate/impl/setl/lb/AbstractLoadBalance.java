@@ -27,7 +27,7 @@ import com.alibaba.otter.shared.common.model.config.pipeline.Pipeline;
 
 /**
  * 抽象的负载均衡接口
- * 
+ *
  * @author jianghang 2011-9-20 下午01:31:29
  * @version 4.0.0
  */
@@ -35,7 +35,7 @@ public abstract class AbstractLoadBalance extends ArbitrateLifeCycle implements 
 
     protected NodeMonitor nodeMonitor;
 
-    public AbstractLoadBalance(Long pipelineId){
+    public AbstractLoadBalance(Long pipelineId) {
         super(pipelineId);
     }
 

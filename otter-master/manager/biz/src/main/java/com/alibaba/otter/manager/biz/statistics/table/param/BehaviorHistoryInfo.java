@@ -39,7 +39,7 @@ public class BehaviorHistoryInfo {
                     insertCountAvg += item.getInsertCount();
                 } else {
                     insertCountAvg += item.getInsertCount() * 1000
-                                      / (item.getEndTime().getTime() - item.getStartTime().getTime());
+                            / (item.getEndTime().getTime() - item.getStartTime().getTime());
                 }
             }
             insertCountAvg = insertCountAvg / items.size();
@@ -60,7 +60,7 @@ public class BehaviorHistoryInfo {
                     updateCountAvg += item.getUpdateCount();
                 } else {
                     updateCountAvg += item.getUpdateCount() * 1000
-                                      / (item.getEndTime().getTime() - item.getStartTime().getTime());
+                            / (item.getEndTime().getTime() - item.getStartTime().getTime());
                 }
             }
             updateCountAvg = updateCountAvg / items.size();
@@ -81,7 +81,7 @@ public class BehaviorHistoryInfo {
                     deleteCountAvg += item.getDeleteCount();
                 } else {
                     deleteCountAvg += item.getDeleteCount() * 1000
-                                      / (item.getEndTime().getTime() - item.getStartTime().getTime());
+                            / (item.getEndTime().getTime() - item.getStartTime().getTime());
                 }
             }
             deleteCountAvg = deleteCountAvg / items.size();
@@ -101,7 +101,7 @@ public class BehaviorHistoryInfo {
                     fileCountAvg += item.getFileCount();
                 } else {
                     fileCountAvg += item.getFileCount() * 1000
-                                    / (item.getEndTime().getTime() - item.getStartTime().getTime());
+                            / (item.getEndTime().getTime() - item.getStartTime().getTime());
                 }
             }
             fileCountAvg = fileCountAvg / items.size();
@@ -121,7 +121,7 @@ public class BehaviorHistoryInfo {
                     fileSizeAvg += item.getFileSize();
                 } else {
                     fileSizeAvg += item.getFileSize() * 1000
-                                   / (item.getEndTime().getTime() - item.getStartTime().getTime());
+                            / (item.getEndTime().getTime() - item.getStartTime().getTime());
                 }
             }
             fileSizeAvg = fileSizeAvg / items.size();

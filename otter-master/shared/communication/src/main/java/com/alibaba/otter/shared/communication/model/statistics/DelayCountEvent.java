@@ -21,14 +21,14 @@ import com.alibaba.otter.shared.communication.core.model.Event;
 
 /**
  * delay queue事件
- * 
+ *
  * @author jianghang
  */
 public class DelayCountEvent extends Event {
 
     private static final long serialVersionUID = -5925977847006864387L;
 
-    public DelayCountEvent(){
+    public DelayCountEvent() {
         super(StatisticsEventType.delayCount);
     }
 
@@ -50,7 +50,7 @@ public class DelayCountEvent extends Event {
 
     private DelayCount count;
 
-    private Action     action;
+    private Action action;
 
     public DelayCount getCount() {
         return count;

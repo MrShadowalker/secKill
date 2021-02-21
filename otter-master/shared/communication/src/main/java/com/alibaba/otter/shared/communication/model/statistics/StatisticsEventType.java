@@ -20,14 +20,20 @@ import com.alibaba.otter.shared.communication.core.model.EventType;
 
 /**
  * 统计数据的事件类型
- * 
+ *
  * @author jianghang
  */
 public enum StatisticsEventType implements EventType {
-    /** delayCount */
+    /**
+     * delayCount
+     */
     delayCount,
-    /** tableStat */
+    /**
+     * tableStat
+     */
     tableStat,
-    /** throughputStat */
+    /**
+     * throughputStat
+     */
     throughputStat;
 }

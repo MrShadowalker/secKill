@@ -29,13 +29,13 @@ import com.alibaba.otter.shared.common.utils.JsonUtils;
 
 /**
  * 处理load模块节点的监控
- * 
+ *
  * <pre>
  * 监控内容：
  *  1. 某个process的stage节点发生变化后，判断transform节点是否已经准备完成，并判断当前是否为最小的process
  *  2. process发生变化后，检测当前的最小processId是否有变化，有变化则触发检查是否可以进行load操作
  * </pre>
- * 
+ *
  * @author jianghang 2011-9-21 下午02:20:52
  * @version 4.0.0
  */
@@ -44,7 +44,7 @@ public class LoadStageListener extends AbstractStageListener implements StageLis
     // private static final String currentNode = ArbitrateConstants.NODE_LOADED;
     private static final String prevNode = ArbitrateConstants.NODE_TRANSFORMED;
 
-    public LoadStageListener(Long pipelineId){
+    public LoadStageListener(Long pipelineId) {
         super(pipelineId);
     }
 

@@ -19,19 +19,19 @@ import com.alibaba.otter.shared.common.utils.thread.NamedThreadFactory;
 
 /**
  * jvm内自动运行，不需要通过外部定时触发
- * 
+ *
  * @author jianghang 2013-9-6 上午10:22:28
  * @since 4.2.2
  */
 public class SelfMonitor implements Monitor, InitializingBean, DisposableBean {
 
-    protected static final Logger    log          = LoggerFactory.getLogger("monitorInfo");
-    private static final int         DEFAULT_POOL = 1;
+    protected static final Logger log = LoggerFactory.getLogger("monitorInfo");
+    private static final int DEFAULT_POOL = 1;
     private ScheduledExecutorService executor;
-    private ScheduledFuture          future;
-    private GlobalMonitor            monitor;
-    private AtomicBoolean            enable       = new AtomicBoolean(true);
-    private int                      interval     = 120;
+    private ScheduledFuture future;
+    private GlobalMonitor monitor;
+    private AtomicBoolean enable = new AtomicBoolean(true);
+    private int interval = 120;
 
     public void explore() {
         monitor.explore();
@@ -60,7 +60,7 @@ public class SelfMonitor implements Monitor, InitializingBean, DisposableBean {
     private synchronized void start() {
         if (executor == null) {
             executor = new ScheduledThreadPoolExecutor(DEFAULT_POOL, new NamedThreadFactory("Self-Monitor"),
-                                                       new ThreadPoolExecutor.CallerRunsPolicy());
+                    new ThreadPoolExecutor.CallerRunsPolicy());
         }
         if (future == null) {
             future = executor.scheduleWithFixedDelay(new Runnable() {

@@ -42,26 +42,26 @@ import com.google.common.collect.OtterMigrateMap;
 
 /**
  * 常用的config处理帮助类
- * 
+ *
  * @author jianghang 2011-10-20 下午05:28:39
  * @version 4.0.0
  */
 public class ConfigHelper {
 
-    public static final String          MODE_PATTERN = "(.*)(\\[(\\d+)\\-(\\d+)\\])(.*)"; // 匹配offer[1-128]
-    private static Map<String, Pattern> patterns     = OtterMigrateMap.makeComputingMap(new Function<String, Pattern>() {
+    public static final String MODE_PATTERN = "(.*)(\\[(\\d+)\\-(\\d+)\\])(.*)"; // 匹配offer[1-128]
+    private static Map<String, Pattern> patterns = OtterMigrateMap.makeComputingMap(new Function<String, Pattern>() {
 
-                                                         public Pattern apply(String input) {
-                                                             PatternCompiler pc = new Perl5Compiler();
-                                                             try {
-                                                                 return pc.compile(input,
-                                                                     Perl5Compiler.CASE_INSENSITIVE_MASK
-                                                                             | Perl5Compiler.READ_ONLY_MASK);
-                                                             } catch (MalformedPatternException e) {
-                                                                 throw new ConfigException(e);
-                                                             }
-                                                         }
-                                                     });
+        public Pattern apply(String input) {
+            PatternCompiler pc = new Perl5Compiler();
+            try {
+                return pc.compile(input,
+                        Perl5Compiler.CASE_INSENSITIVE_MASK
+                                | Perl5Compiler.READ_ONLY_MASK);
+            } catch (MalformedPatternException e) {
+                throw new ConfigException(e);
+            }
+        }
+    });
 
     /**
      * 根据DataMedia id得到对应的DataMedia
@@ -208,7 +208,8 @@ public class ConfigHelper {
             return StringUtils.substringBefore(rawValue, "[") + "%";
         } else if (mode.getMode().isWildCard()) {
             StringBuilder sb = new StringBuilder(rawValue.length());
-            FOR_LOOP: for (int i = 0; i < rawValue.length(); i++) {
+            FOR_LOOP:
+            for (int i = 0; i < rawValue.length(); i++) {
                 String charString = String.valueOf(rawValue.charAt(i));
                 if (isWildCard(charString)) {
                     break FOR_LOOP;
@@ -290,8 +291,8 @@ public class ConfigHelper {
     }
 
     private static boolean isWildCard(String value) {
-        return StringUtils.containsAny(value, new char[] { '*', '?', '+', '|', '(', ')', '{', '}', '[', ']', '\\', '$',
-                '^', '.' });
+        return StringUtils.containsAny(value, new char[]{'*', '?', '+', '|', '(', ')', '{', '}', '[', ']', '\\', '$',
+                '^', '.'});
     }
 
     private static boolean isWildCardMatch(String matchPattern, String value) {

@@ -10,7 +10,7 @@ public class InvalidConfigureException extends RuntimeException {
 
     private INVALID_TYPE type;
 
-    public InvalidConfigureException(INVALID_TYPE type){
+    public InvalidConfigureException(INVALID_TYPE type) {
         super(type.name());
         this.type = type;
     }

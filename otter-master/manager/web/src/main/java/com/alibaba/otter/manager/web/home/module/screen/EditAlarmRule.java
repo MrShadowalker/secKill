@@ -31,7 +31,7 @@ public class EditAlarmRule {
     private AlarmRuleService alarmRuleService;
 
     @Resource(name = "channelService")
-    private ChannelService   channelService;
+    private ChannelService channelService;
 
     public void execute(@Param("alarmRuleId") Long alarmRuleId, Context context, Navigator nav) throws Exception {
         AlarmRule alarmRule = alarmRuleService.getAlarmRuleById(alarmRuleId);

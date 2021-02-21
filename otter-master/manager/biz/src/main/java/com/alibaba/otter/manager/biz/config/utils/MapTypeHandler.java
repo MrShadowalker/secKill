@@ -26,7 +26,7 @@ import com.ibatis.sqlmap.client.extensions.TypeHandlerCallback;
 
 /**
  * 用于Map数据结构的解析，ibatis相关
- * 
+ *
  * @author simon
  */
 public class MapTypeHandler implements TypeHandlerCallback {

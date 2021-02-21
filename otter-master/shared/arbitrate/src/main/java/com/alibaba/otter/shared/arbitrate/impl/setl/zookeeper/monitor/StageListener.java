@@ -20,12 +20,12 @@ import java.util.List;
 
 /**
  * S.E.T.L模块监控的实现
- * 
+ *
  * <pre>
  * 1. 合并S.E.T.L各类事件的监听，减少和zookeeper的交互
  * 2. 采用观察者事件变化推送的模式
  * </pre>
- * 
+ *
  * @author jianghang 2011-9-21 上午10:58:20
  * @version 4.0.0
  */

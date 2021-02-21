@@ -31,16 +31,16 @@ import org.springframework.beans.factory.InitializingBean;
 
 /**
  * 外部文件的class扫描器.
- * 
+ *
  * @author xiaoqing.zhouxq
  */
 public class FileSystemClassScanner implements InitializingBean, ClassScanner {
 
-    private static final Logger   logger     = LoggerFactory.getLogger(FileSystemClassScanner.class);
+    private static final Logger logger = LoggerFactory.getLogger(FileSystemClassScanner.class);
 
-    private static final String   CLASS_FILE = ".class";
-    private static final String   JAR_FILE   = ".jar";
-    private String                extendsDir;
+    private static final String CLASS_FILE = ".class";
+    private static final String JAR_FILE = ".jar";
+    private String extendsDir;
     private FileSystemClassLoader fileClassLoader;
 
     @Override
@@ -61,7 +61,7 @@ public class FileSystemClassScanner implements InitializingBean, ClassScanner {
                 String classFileName = file.getPath();
                 if (classFileName.endsWith(CLASS_FILE)) {
                     String tempClassName = classFileName.substring(rootPath.length() - className.lastIndexOf("."),
-                                                                   classFileName.length() - CLASS_FILE.length());
+                            classFileName.length() - CLASS_FILE.length());
                     if (className.equals(pathToDot(tempClassName))) {
                         try {
                             return fileClassLoader.loadClass(className);

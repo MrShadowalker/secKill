@@ -54,23 +54,23 @@ import com.alibaba.otter.shared.communication.core.model.Event;
 
 /**
  * 测试基类
- * 
+ *
  * @author jianghang 2011-9-21 下午08:21:21
  * @version 4.0.0
  */
 public class BaseStageTest extends BaseEventTest {
 
-    protected ZkClientx              zookeeper  = null;
+    protected ZkClientx zookeeper = null;
     // 环境数据准备对象
-    protected NodeArbitrateEvent     nodeEvent;
-    protected ChannelArbitrateEvent  channelEvent;
+    protected NodeArbitrateEvent nodeEvent;
+    protected ChannelArbitrateEvent channelEvent;
     protected PipelineArbitrateEvent pipelineEvent;
-    protected final Node             local      = new Node();
-    protected final Long             nid        = 1L;
-    protected Long                   channelId  = 100L;
-    protected Long                   pipelineId = 100L;
-    protected String                 pipelinePath;
-    protected String                 processPath;
+    protected final Node local = new Node();
+    protected final Long nid = 1L;
+    protected Long channelId = 100L;
+    protected Long pipelineId = 100L;
+    protected String pipelinePath;
+    protected String processPath;
 
     @BeforeClass
     public void init() {

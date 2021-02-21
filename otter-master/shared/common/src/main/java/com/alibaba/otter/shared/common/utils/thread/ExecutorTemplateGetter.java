@@ -23,7 +23,7 @@ import org.springframework.beans.factory.BeanFactoryAware;
 
 /**
  * 获取池化的{@linkplain ExecutorTemplate}
- * 
+ *
  * @author jianghang 2013-3-1 下午08:05:43
  * @version 4.1.7
  */

@@ -31,14 +31,14 @@ import com.alibaba.otter.shared.common.utils.OtterToStringStyle;
 public class LogRecord implements Serializable {
 
     private static final long serialVersionUID = -6034150366256885260L;
-    private Long              id;
-    private Channel           channel;
-    private Pipeline          pipeline;
-    private Long              nid;
-    private String            title;
-    private String            message;
-    private Date              gmtCreate;
-    private Date              gmtModified;
+    private Long id;
+    private Channel channel;
+    private Pipeline pipeline;
+    private Long nid;
+    private String title;
+    private String message;
+    private Date gmtCreate;
+    private Date gmtModified;
 
     public Long getId() {
         return id;

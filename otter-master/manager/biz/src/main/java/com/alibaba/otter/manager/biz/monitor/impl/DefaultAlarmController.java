@@ -33,9 +33,9 @@ import com.google.common.collect.OtterMigrateMap;
 public class DefaultAlarmController implements AlarmController {
 
     // seconds
-    private Long                    DEFAULT_THRESHOLD = 1800L;
-    private Map<PoolKey, PoolValue> pool              = OtterMigrateMap.makeSoftValueMapWithTimeout(1, TimeUnit.HOURS);
-    private AlarmRecovery           restartAlarmRecovery;
+    private Long DEFAULT_THRESHOLD = 1800L;
+    private Map<PoolKey, PoolValue> pool = OtterMigrateMap.makeSoftValueMapWithTimeout(1, TimeUnit.HOURS);
+    private AlarmRecovery restartAlarmRecovery;
 
     @Override
     public AlarmMessage control(AlarmRule rule, String message, AlarmMessage data) {
@@ -82,12 +82,12 @@ public class DefaultAlarmController implements AlarmController {
 
     private static class PoolKey {
 
-        private Long        pipelineId;
+        private Long pipelineId;
         private MonitorName monitorName;
-        private String      receiveKey;
-        private String      matchValue;
+        private String receiveKey;
+        private String matchValue;
 
-        public PoolKey(AlarmRule rule, String messageToSend, AlarmMessage data){
+        public PoolKey(AlarmRule rule, String messageToSend, AlarmMessage data) {
             // used to hash compute
             this.pipelineId = rule.getPipelineId();
             this.monitorName = rule.getMonitorName();
@@ -132,7 +132,7 @@ public class DefaultAlarmController implements AlarmController {
         private Long lastAlarmTime;    // mill
         private long suppressTimes = 1; // 报警压制次数
 
-        public PoolValue(Long happendTime){
+        public PoolValue(Long happendTime) {
             this.lastAlarmTime = happendTime;
         }
 

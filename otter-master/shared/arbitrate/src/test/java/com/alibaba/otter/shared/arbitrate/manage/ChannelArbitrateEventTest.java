@@ -34,15 +34,15 @@ import com.alibaba.otter.shared.common.utils.zookeeper.ZkClientx;
 
 /**
  * 测试下channel
- * 
+ *
  * @author jianghang 2011-9-19 下午01:04:15
  * @version 4.0.0
  */
 public class ChannelArbitrateEventTest extends BaseEventTest {
 
-    private ZkClientx             zookeeper = null;
+    private ZkClientx zookeeper = null;
     private ChannelArbitrateEvent channelEvent;
-    private Long                  channelId = 100L;
+    private Long channelId = 100L;
 
     @BeforeClass
     public void init() {

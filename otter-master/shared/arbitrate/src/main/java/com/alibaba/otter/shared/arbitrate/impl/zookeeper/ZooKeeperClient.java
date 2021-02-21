@@ -31,21 +31,21 @@ import com.google.common.collect.OtterMigrateMap;
 
 /**
  * 封装了ZooKeeper，使其支持节点的优先顺序，比如美国机房的节点会优先加载美国对应的zk集群列表，都失败后才会选择加载杭州的zk集群列表
- * 
+ *
  * @author jianghang 2011-9-8 下午07:55:44
  * @version 4.0.0
  */
 public class ZooKeeperClient {
 
-    private static String               cluster;
-    private static int                  sessionTimeout = 10 * 1000;
-    private static Map<Long, ZkClientx> clients        = OtterMigrateMap.makeComputingMap(new Function<Long, ZkClientx>() {
+    private static String cluster;
+    private static int sessionTimeout = 10 * 1000;
+    private static Map<Long, ZkClientx> clients = OtterMigrateMap.makeComputingMap(new Function<Long, ZkClientx>() {
 
-                                                           public ZkClientx apply(Long pipelineId) {
-                                                               return createClient();
-                                                           }
-                                                       });
-    private static Long                 defaultId      = 0L;
+        public ZkClientx apply(Long pipelineId) {
+            return createClient();
+        }
+    });
+    private static Long defaultId = 0L;
 
     /**
      * 获取对应的zookeeper客户端

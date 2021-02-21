@@ -26,7 +26,7 @@ import com.ibatis.sqlmap.client.extensions.TypeHandlerCallback;
 
 /**
  * 用于PipelineParameter的解析
- * 
+ *
  * @author simon
  */
 public class PipelineParameterTypeHandler implements TypeHandlerCallback {

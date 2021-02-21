@@ -27,13 +27,13 @@ import com.alibaba.otter.shared.common.model.config.pipeline.PipelineParameter;
 public class PipelineDO implements Serializable {
 
     private static final long serialVersionUID = -4894036418246404446L;
-    private Long              id;
-    private String            name;
+    private Long id;
+    private String name;
     private PipelineParameter parameters;
-    private String            description;                             // 描述信息
-    private Long              channelId;                               // 对应关联的channel唯一标示id
-    private Date              gmtCreate;
-    private Date              gmtModified;
+    private String description;                             // 描述信息
+    private Long channelId;                               // 对应关联的channel唯一标示id
+    private Date gmtCreate;
+    private Date gmtModified;
 
     public Long getId() {
         return id;

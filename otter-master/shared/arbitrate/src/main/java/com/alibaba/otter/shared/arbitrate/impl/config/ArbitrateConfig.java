@@ -22,7 +22,7 @@ import com.alibaba.otter.shared.common.model.config.pipeline.Pipeline;
 
 /**
  * 仲裁器相关配置信息
- * 
+ *
  * @author jianghang 2011-10-9 上午11:31:41
  * @version 4.0.0
  */
@@ -45,7 +45,7 @@ public interface ArbitrateConfig {
 
     /**
      * 根据pipelineId获取pipeline
-     * 
+     *
      * @param pipelineId
      * @return
      */
@@ -53,7 +53,7 @@ public interface ArbitrateConfig {
 
     /**
      * 根据pipelineId查询对应的Channel对象
-     * 
+     *
      * @param pipelineId
      * @return
      */
@@ -61,7 +61,7 @@ public interface ArbitrateConfig {
 
     /**
      * 根据pipelineId查询相对的Pipeline对象
-     * 
+     *
      * @param pipelineId
      * @return
      */

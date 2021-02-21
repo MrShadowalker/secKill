@@ -18,7 +18,7 @@ package com.alibaba.otter.manager.biz.config.parameter.impl;
 
 import java.util.Date;
 import java.util.List;
- 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,7 +36,7 @@ public class SystemParameterServiceImpl implements SystemParameterService {
 
     private static final Logger logger = LoggerFactory.getLogger(SystemParameterServiceImpl.class);
 
-    private SystemParameterDAO  systemParameterDao;
+    private SystemParameterDAO systemParameterDao;
 
     /**
      * 添加
@@ -65,7 +65,7 @@ public class SystemParameterServiceImpl implements SystemParameterService {
 
     /**
      * 类型：数据库类型 Mysql和Oracle 用于Model对象转化为DO对象
-     * 
+     *
      * @param SystemParameter
      * @return SystemParameterDO
      */
@@ -79,7 +79,7 @@ public class SystemParameterServiceImpl implements SystemParameterService {
 
     /**
      * 类型：数据库类型 Mysql和Oracle 用于DO对象转化为Model对象
-     * 
+     *
      * @param SystemParameterDo
      * @return SystemParameter
      */

@@ -37,17 +37,17 @@ import com.alibaba.otter.shared.arbitrate.setl.event.BaseArbitrateEventTest;
 
 /**
  * 基于memory的调度测试
- * 
+ *
  * @author jianghang 2012-9-28 上午11:42:29
  * @version 4.1.0
  */
 public class MemoryArbitrateEventTest extends BaseArbitrateEventTest {
 
-    private SelectMemoryArbitrateEvent    selectEvent;
-    private ExtractMemoryArbitrateEvent   extractEvent;
+    private SelectMemoryArbitrateEvent selectEvent;
+    private ExtractMemoryArbitrateEvent extractEvent;
     private TransformMemoryArbitrateEvent transformEvent;
-    private LoadMemoryArbitrateEvent      loadEvent;
-    private TerminMemoryArbitrateEvent    terminEvent;
+    private LoadMemoryArbitrateEvent loadEvent;
+    private TerminMemoryArbitrateEvent terminEvent;
 
     @Test
     public void test_all() {

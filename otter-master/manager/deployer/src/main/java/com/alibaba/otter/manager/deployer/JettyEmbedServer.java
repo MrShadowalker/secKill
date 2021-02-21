@@ -26,18 +26,18 @@ import org.slf4j.LoggerFactory;
 
 /**
  * 嵌入式jetty启动
- * 
+ *
  * @author jianghang 2013-8-8 下午4:04:17
  * @since 4.2.0
  */
 public class JettyEmbedServer {
 
-    private static final Logger logger         = LoggerFactory.getLogger(JettyEmbedServer.class);
+    private static final Logger logger = LoggerFactory.getLogger(JettyEmbedServer.class);
     private static final String DEFAULT_CONFIG = "jetty.xml";
-    private Server              server;
-    private String              config         = DEFAULT_CONFIG;
+    private Server server;
+    private String config = DEFAULT_CONFIG;
 
-    public JettyEmbedServer(String jettyXml){
+    public JettyEmbedServer(String jettyXml) {
         this.config = jettyXml;
     }
 

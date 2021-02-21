@@ -45,23 +45,23 @@ import com.google.common.collect.Lists;
 
 /**
  * 默认的死亡节点处理
- * 
+ *
  * @author jianghang 2011-9-26 下午10:37:40
  * @version 4.0.0
  */
 public class DeadNodeListener implements NodeListener, InitializingBean, DisposableBean {
 
-    private static final Logger                  logger       = LoggerFactory.getLogger(DeadNodeListener.class);
-    private volatile DelayQueue<DeadNodeDelayed> queue        = new DelayQueue<DeadNodeDelayed>();
-    private NodeMonitor                          nodeMonitor;
-    private ArbitrateManageService               arbitrateManageService;
-    private PassiveMonitor                       exceptionRuleMonitor;
-    private ChannelService                       channelService;
-    private ExecutorService                      executor;
-    private long                                 checkTime    = 60 * 1000L;                                     // 30秒
-    private volatile List<Long>                  currentNodes = new ArrayList<Long>();                          // 当前存活节点
+    private static final Logger logger = LoggerFactory.getLogger(DeadNodeListener.class);
+    private volatile DelayQueue<DeadNodeDelayed> queue = new DelayQueue<DeadNodeDelayed>();
+    private NodeMonitor nodeMonitor;
+    private ArbitrateManageService arbitrateManageService;
+    private PassiveMonitor exceptionRuleMonitor;
+    private ChannelService channelService;
+    private ExecutorService executor;
+    private long checkTime = 60 * 1000L;                                     // 30秒
+    private volatile List<Long> currentNodes = new ArrayList<Long>();                          // 当前存活节点
 
-    public DeadNodeListener(){
+    public DeadNodeListener() {
     }
 
     public void afterPropertiesSet() throws Exception {
@@ -123,7 +123,7 @@ public class DeadNodeListener implements NodeListener, InitializingBean, Disposa
         alarm.setPipelineId(-1L);
         alarm.setTitle(MonitorName.EXCEPTION.name());
         alarm.setMessage(String.format("nid:%s is dead and restart cids:%s", String.valueOf(deadNode),
-                                       channelIds.toString()));
+                channelIds.toString()));
         try {
             exceptionRuleMonitor.feed(alarm, alarm.getPipelineId());
         } catch (Exception e) {
@@ -146,7 +146,7 @@ public class DeadNodeListener implements NodeListener, InitializingBean, Disposa
 
     /**
      * 构建一个基于时间的delay queue，解决一个问题：node出现网络闪段，其jvm并不是真实关闭，可以间隔几秒后check一下是否存活再判断是否进行RESTART操作
-     * 
+     *
      * @author jianghang 2012-8-29 下午01:42:47
      * @version 4.1.0
      */
@@ -154,11 +154,11 @@ public class DeadNodeListener implements NodeListener, InitializingBean, Disposa
 
         // init time for nano
         private static final long MILL_ORIGIN = System.currentTimeMillis();
-        private long              nid;
-        private long              now;                                     // 记录具体的now的偏移时间点，单位ms
-        private long              timeout;                                 // 记录具体需要被delayed处理的偏移时间点,单位ms
+        private long nid;
+        private long now;                                     // 记录具体的now的偏移时间点，单位ms
+        private long timeout;                                 // 记录具体需要被delayed处理的偏移时间点,单位ms
 
-        public DeadNodeDelayed(long nid, long timeout){
+        public DeadNodeDelayed(long nid, long timeout) {
             this.nid = nid;
             this.timeout = timeout;
             this.now = System.currentTimeMillis() - MILL_ORIGIN;

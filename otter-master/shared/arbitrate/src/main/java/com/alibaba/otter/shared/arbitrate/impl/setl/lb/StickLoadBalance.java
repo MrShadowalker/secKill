@@ -26,18 +26,18 @@ import com.alibaba.otter.shared.common.model.config.node.Node;
 
 /**
  * 提供一种固定粘性的{@linkplain LoadBalance}的机制，因为多个load落在同一个jvm，可以减少通过zookeeper的仲裁调度交互
- * 
+ *
  * @author jianghang 2013-2-25 下午10:51:56
  * @version 4.1.7
  */
 public abstract class StickLoadBalance extends AbstractLoadBalance implements LoadBalance {
 
-    private int        stickPercent   = 100;              // 固定返回某一个节点的百分比
-    private long       lastNid        = -1;               // 上一次选择的节点
-    private int        randomThresold = 100;              // 超过100个批次后重新选择
-    private AtomicLong stickCount     = new AtomicLong(0);
+    private int stickPercent = 100;              // 固定返回某一个节点的百分比
+    private long lastNid = -1;               // 上一次选择的节点
+    private int randomThresold = 100;              // 超过100个批次后重新选择
+    private AtomicLong stickCount = new AtomicLong(0);
 
-    public StickLoadBalance(Long pipelineId){
+    public StickLoadBalance(Long pipelineId) {
         super(pipelineId);
     }
 

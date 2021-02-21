@@ -20,7 +20,7 @@ import java.util.List;
 
 /**
  * ephemeral节点的相关统计
- * 
+ *
  * <pre>
  * 命令：echo dump | nc 127.0.0.1 2181
  * Sessions with Ephemerals (4):
@@ -28,15 +28,15 @@ import java.util.List;
  *     /otter/channel/304/388/mainstem
  *     /otter/node/2
  * </pre>
- * 
+ *
  * @author jianghang 2012-9-21 下午02:25:00
  * @version 4.1.0
  */
 public class AutoKeeperEphemeralStat extends AutoKeeperStat {
 
     private static final long serialVersionUID = 7706173088583901348L;
-    private String            sessionId;
-    private List<String>      paths;
+    private String sessionId;
+    private List<String> paths;
 
     public String getSessionId() {
         return sessionId;

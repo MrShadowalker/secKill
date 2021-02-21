@@ -28,7 +28,7 @@ import com.alibaba.otter.shared.common.model.config.pipeline.Pipeline;
 
 /**
  * 配置操作聚合类，方便mock
- * 
+ *
  * @author jianghang 2011-9-27 下午08:27:04
  * @version 4.0.0
  */
@@ -82,7 +82,7 @@ public class ArbitrateConfigUtils {
 
     /**
      * 根据channelId获取task配置中定义的channel
-     * 
+     *
      * @return
      */
     public static Channel getChannelByChannelId(Long channelId) {

@@ -29,25 +29,25 @@ import com.alibaba.otter.shared.communication.core.impl.AbstractCommunicationEnd
 
 /**
  * 基于dubbo的endpoint实现,仅仅使用了dubb的rpc工具
- * 
+ *
  * @author jianghang 2011-11-29 上午11:08:29
  * @version 4.0.0
  */
 public class DubboCommunicationEndpoint extends AbstractCommunicationEndpoint {
 
-    private static final String             DUBBO_SERVICE_URL = "dubbo://127.0.0.1:{0}/endpoint?server=netty&codec=dubbo&serialization=java&heartbeat=5000&iothreads=4&threads=50&connections=30&payload={1}";
-    private DubboProtocol                   protocol          = DubboProtocol.getDubboProtocol();
-    private ProxyFactory                    proxyFactory      = ExtensionLoader.getExtensionLoader(ProxyFactory.class).getExtension("javassist");
+    private static final String DUBBO_SERVICE_URL = "dubbo://127.0.0.1:{0}/endpoint?server=netty&codec=dubbo&serialization=java&heartbeat=5000&iothreads=4&threads=50&connections=30&payload={1}";
+    private DubboProtocol protocol = DubboProtocol.getDubboProtocol();
+    private ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoader(ProxyFactory.class).getExtension("javassist");
 
-    private Exporter<CommunicationEndpoint> exporter          = null;
-    private int                             port              = 2088;
-    private int                             payload           = Constants.DEFAULT_PAYLOAD;
+    private Exporter<CommunicationEndpoint> exporter = null;
+    private int port = 2088;
+    private int payload = Constants.DEFAULT_PAYLOAD;
 
-    public DubboCommunicationEndpoint(){
+    public DubboCommunicationEndpoint() {
 
     }
 
-    public DubboCommunicationEndpoint(int port){
+    public DubboCommunicationEndpoint(int port) {
         this.port = port;
     }
 

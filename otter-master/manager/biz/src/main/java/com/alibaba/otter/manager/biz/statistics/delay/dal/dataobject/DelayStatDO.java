@@ -30,12 +30,12 @@ import com.alibaba.otter.shared.common.utils.OtterToStringStyle;
 public class DelayStatDO implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private Long              id;
-    private Long              delayTime;
-    private Long              delayNumber;
-    private Long              pipelineId;
-    private Date              gmtCreate;
-    private Date              gmtModified;
+    private Long id;
+    private Long delayTime;
+    private Long delayNumber;
+    private Long pipelineId;
+    private Date gmtCreate;
+    private Date gmtModified;
 
     public Long getId() {
         return id;

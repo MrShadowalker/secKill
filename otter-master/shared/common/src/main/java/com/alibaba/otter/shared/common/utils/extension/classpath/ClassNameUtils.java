@@ -18,7 +18,7 @@ package com.alibaba.otter.shared.common.utils.extension.classpath;
 
 /**
  * class名字转换处理类
- * 
+ *
  * @author jianghang 2012-10-23 下午04:37:48
  * @version 4.1.0
  */
@@ -27,7 +27,7 @@ public class ClassNameUtils {
     /**
      * Convert a class name with underscores to the corresponding column name using "_". A name like "CustomerNumber"
      * class name would match a "CUSTOMER_NUMBER".
-     * 
+     *
      * @param name the class name to be converted
      * @return the name using "_"
      */
@@ -56,7 +56,7 @@ public class ClassNameUtils {
     /**
      * Convert a column name with underscores to the corresponding class name using "camel case". A name like
      * "customer_number" would match a "CustomerNumber" class name.
-     * 
+     *
      * @param name the column name to be converted
      * @return the name using "camel case"
      */

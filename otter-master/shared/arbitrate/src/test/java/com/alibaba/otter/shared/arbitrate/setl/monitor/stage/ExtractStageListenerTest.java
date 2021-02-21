@@ -33,7 +33,7 @@ import com.google.common.collect.Lists;
 
 /**
  * extract模块的测试
- * 
+ *
  * @author jianghang 2011-9-22 上午09:16:53
  * @version 4.0.0
  */
@@ -72,7 +72,7 @@ public class ExtractStageListenerTest extends BaseStageTest {
             stages.put(p2, p2Stages);
 
             List<String> p3Stages = Arrays.asList(ArbitrateConstants.NODE_SELECTED, ArbitrateConstants.NODE_EXTRACTED,
-                                                  ArbitrateConstants.NODE_TRANSFORMED);
+                    ArbitrateConstants.NODE_TRANSFORMED);
             stages.put(p3, p3Stages);
 
             List<String> p4Stages = Arrays.asList(ArbitrateConstants.NODE_SELECTED);

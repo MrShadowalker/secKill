@@ -31,7 +31,7 @@ import com.alibaba.otter.shared.arbitrate.setl.BaseStageTest;
 
 /**
  * 测试下select模块
- * 
+ *
  * @author jianghang 2011-9-21 下午08:18:10
  * @version 4.0.0
  */

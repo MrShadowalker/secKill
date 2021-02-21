@@ -41,18 +41,18 @@ import com.alibaba.otter.shared.common.utils.zookeeper.ZkClientx;
 
 /**
  * 为setl提供辅助工具的event事件
- * 
+ *
  * @author jianghang 2011-10-18 上午10:17:18
  * @version 4.0.0
  */
 public class ToolArbitrateEvent implements ArbitrateEvent {
 
-    private static final Logger logger    = LoggerFactory.getLogger(ToolArbitrateEvent.class);
-    private ZkClientx           zookeeper = ZooKeeperClient.getInstance();
+    private static final Logger logger = LoggerFactory.getLogger(ToolArbitrateEvent.class);
+    private ZkClientx zookeeper = ZooKeeperClient.getInstance();
 
     /**
      * 阻塞等待授权通过
-     * 
+     *
      * @param pipelineId
      * @throws InterruptedException
      */
@@ -103,8 +103,8 @@ public class ToolArbitrateEvent implements ArbitrateEvent {
     public void addRemedyIndex(RemedyIndexEventData data) {
         String path = StagePathUtils.getRemedyRoot(data.getPipelineId());
         try {
-            zookeeper.create(path + "/" + RemedyIndexEventData.formatNodeName(data), new byte[] {},
-                             CreateMode.PERSISTENT);
+            zookeeper.create(path + "/" + RemedyIndexEventData.formatNodeName(data), new byte[]{},
+                    CreateMode.PERSISTENT);
         } catch (ZkNodeExistsException e) {
             // ignore
         } catch (ZkException e) {

@@ -38,17 +38,17 @@ import com.alibaba.otter.shared.arbitrate.setl.event.BaseArbitrateEventTest;
 
 /**
  * 基于Rpc的调度测试
- * 
+ *
  * @author jianghang 2012-9-28 上午11:42:29
  * @version 4.1.0
  */
 public class RpcArbitrateEventTest extends BaseArbitrateEventTest {
 
-    private SelectRpcArbitrateEvent    selectEvent;
-    private ExtractRpcArbitrateEvent   extractEvent;
+    private SelectRpcArbitrateEvent selectEvent;
+    private ExtractRpcArbitrateEvent extractEvent;
     private TransformRpcArbitrateEvent transformEvent;
-    private LoadRpcArbitrateEvent      loadEvent;
-    private TerminRpcArbitrateEvent    terminEvent;
+    private LoadRpcArbitrateEvent loadEvent;
+    private TerminRpcArbitrateEvent terminEvent;
 
     @Test
     public void test_all() {

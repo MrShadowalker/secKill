@@ -29,7 +29,7 @@ import com.alibaba.otter.shared.communication.model.arbitrate.StageSingleEvent;
 
 /**
  * 分发rpc的请求，根据不同的pipelineId分发到不同的{@link RpcStageController}实例上去
- * 
+ *
  * @author jianghang 2012-9-29 上午10:26:38
  * @version 4.1.0
  */
@@ -37,7 +37,7 @@ public class RpcStageEventDispatcher {
 
     private ArbitrateCommmunicationClient arbitrateCommmunicationClient;
 
-    public RpcStageEventDispatcher(){
+    public RpcStageEventDispatcher() {
         CommunicationRegistry.regist(ArbitrateEventType.stageSingle, this);
     }
 

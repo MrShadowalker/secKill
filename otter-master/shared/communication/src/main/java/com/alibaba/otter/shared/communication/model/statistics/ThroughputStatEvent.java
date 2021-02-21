@@ -23,14 +23,14 @@ import com.alibaba.otter.shared.communication.core.model.Event;
 
 /**
  * 吞吐量事件
- * 
+ *
  * @author jianghang
  */
 public class ThroughputStatEvent extends Event {
 
     private static final long serialVersionUID = 3626191138534384067L;
 
-    public ThroughputStatEvent(){
+    public ThroughputStatEvent() {
         super(StatisticsEventType.throughputStat);
     }
 

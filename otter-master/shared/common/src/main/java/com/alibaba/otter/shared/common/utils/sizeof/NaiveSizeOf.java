@@ -21,6 +21,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
 /* http://www.glenmccl.com/tip_038.htm modified 1999-10 */
+
 /**
  * Sizeof For Java(tm) Java(tm) has no sizeof() operator like C/C++.With uniform sizes for primitive data types, and a
  * different style of memory allocation, the need for sizeof() really isn't there. And it's hard to define what sizeof()
@@ -35,7 +36,7 @@ import java.lang.reflect.Modifier;
  */
 public class NaiveSizeOf {
 
-    private NaiveSizeOf(){
+    private NaiveSizeOf() {
         super();
     }
 

@@ -35,14 +35,14 @@ import com.alibaba.otter.shared.common.utils.zookeeper.ZkClientx;
 
 /**
  * otter系统节点初始化
- * 
+ *
  * @author jianghang 2012-2-16 下午04:38:33
  * @version 4.0.0
  */
 public class SystemArbitrateEvent implements ArbitrateEvent {
 
-    private static final Logger logger    = LoggerFactory.getLogger(SystemArbitrateEvent.class);
-    private ZkClientx           zookeeper = ZooKeeperClient.getInstance();
+    private static final Logger logger = LoggerFactory.getLogger(SystemArbitrateEvent.class);
+    private ZkClientx zookeeper = ZooKeeperClient.getInstance();
 
     /**
      * 初始化对应的系统节点,同步调用

@@ -37,21 +37,21 @@ import com.alibaba.otter.shared.common.model.config.pipeline.Pipeline;
 public class CanalInfo {
 
     @Resource(name = "canalService")
-    private CanalService             canalService;
+    private CanalService canalService;
 
     @Resource(name = "autoKeeperClusterService")
     private AutoKeeperClusterService autoKeeperClusterService;
 
     @Resource(name = "pipelineService")
-    private PipelineService          pipelineService;
+    private PipelineService pipelineService;
 
     @Resource(name = "channelService")
-    private ChannelService           channelService;
+    private ChannelService channelService;
 
     public void execute(@Param("canalId") Long canalId, Context context) throws Exception {
         Canal canal = canalService.findById(canalId);
         AutoKeeperCluster zkCluster = autoKeeperClusterService.findAutoKeeperClusterById(canal.getCanalParameter()
-            .getZkClusterId());
+                .getZkClusterId());
 
         List<Pipeline> pipelines = pipelineService.listByDestinationWithoutOther(canal.getName());
         List<Long> channelIds = new ArrayList<Long>();

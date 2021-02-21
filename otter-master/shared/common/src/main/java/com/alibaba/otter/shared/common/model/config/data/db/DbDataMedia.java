@@ -20,7 +20,7 @@ import com.alibaba.otter.shared.common.model.config.data.DataMedia;
 
 /**
  * 基于数据库的介质
- * 
+ *
  * @author jianghang
  */
 public class DbDataMedia extends DataMedia<DbMediaSource> {

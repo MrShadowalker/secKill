@@ -25,7 +25,7 @@ import com.alibaba.otter.shared.common.utils.OtterToStringStyle;
  */
 public class BehaviorHistoryCondition {
 
-    private Long    pairId;
+    private Long pairId;
     private boolean detail;
 
     public Long getPairId() {

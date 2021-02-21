@@ -24,19 +24,19 @@ import com.alibaba.otter.shared.common.utils.OtterToStringStyle;
 
 /**
  * 数据介质字段模型，代表某个Key的数据
- * 
+ *
  * @author simon 2012-4-6 上午10:32:01
  */
 public class Column implements Serializable {
 
     private static final long serialVersionUID = -4728005785857916134L;
-    private String            name;                                    // 字段名
+    private String name;                                    // 字段名
 
-    public Column(){
+    public Column() {
 
     }
 
-    public Column(String name){
+    public Column(String name) {
         this.name = name;
     }
 

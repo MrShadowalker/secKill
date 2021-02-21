@@ -22,13 +22,13 @@ import java.util.Date;
 public class DataMatrixDO implements Serializable {
 
     private static final long serialVersionUID = 9148286590254926037L;
-    private Long              id;                                     // 唯一标示id
-    private String            groupKey;                               // groupKey
-    private String            master;
-    private String            slave;
-    private String            description;                            // 描述
-    private Date              gmtCreate;                              // 创建时间
-    private Date              gmtModified;                            // 修改时间
+    private Long id;                                     // 唯一标示id
+    private String groupKey;                               // groupKey
+    private String master;
+    private String slave;
+    private String description;                            // 描述
+    private Date gmtCreate;                              // 创建时间
+    private Date gmtModified;                            // 修改时间
 
     public Long getId() {
         return id;

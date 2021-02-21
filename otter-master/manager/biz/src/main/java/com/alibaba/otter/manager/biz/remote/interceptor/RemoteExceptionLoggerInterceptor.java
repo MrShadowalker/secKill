@@ -29,7 +29,7 @@ import com.alibaba.otter.manager.biz.common.exceptions.ManagerException;
 
 /**
  * 拦截所有的异常调用
- * 
+ *
  * @author jianghang 2011-11-28 下午02:20:14
  * @version 4.0.0
  */

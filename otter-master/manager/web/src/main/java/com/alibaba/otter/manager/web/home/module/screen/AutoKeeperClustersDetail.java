@@ -34,7 +34,7 @@ public class AutoKeeperClustersDetail {
     private AutoKeeperClusterService autoKeeperClusterService;
 
     @Resource(name = "autoKeeperStatService")
-    private AutoKeeperStatService    autoKeeperStatService;
+    private AutoKeeperStatService autoKeeperStatService;
 
     public void execute(@Param("clusterId") String clusterId, Context context) throws Exception {
 

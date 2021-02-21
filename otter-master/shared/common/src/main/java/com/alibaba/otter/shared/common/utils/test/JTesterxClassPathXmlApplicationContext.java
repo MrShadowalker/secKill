@@ -33,16 +33,16 @@ import org.springframework.context.support.AbstractRefreshableApplicationContext
 
 /**
  * 集成jtester，并扩展相关内容
- * 
+ *
  * <pre>
  * 扩展内容：
  * 1. 复写initBeanDefinitionReader，增加XmlBeanDefinitionReader的自定义属性，插入自定义的
  * {@link JTesterxReaderEventListener}，用于复写lazy-init=true属性
  * 2. 复写{@link AbstractRefreshableApplicationContext}的
  * customizeBeanFactory，修改allowEagerClassLoading属性为false，使得支持lazy-init=true的设置
- * 
+ *
  * <pre>
- * 
+ *
  * @author jianghang 2010-6-2 上午10:58:04
  */
 public class JTesterxClassPathXmlApplicationContext extends org.jtester.module.spring.ClassPathXmlApplicationContextFactory {
@@ -50,12 +50,12 @@ public class JTesterxClassPathXmlApplicationContext extends org.jtester.module.s
     private class JTesterxSpringContext extends org.jtester.module.spring.JTesterSpringContext {
 
         public JTesterxSpringContext(Object testedObject, String[] configLocations, boolean ignoreNoSuchBean)
-                                                                                                             throws BeansException{
+                throws BeansException {
             super(testedObject, configLocations, ignoreNoSuchBean);
         }
 
         public JTesterxSpringContext(String[] configLocations, boolean refresh, ApplicationContext parent,
-                                     boolean ignoreNoSuchBean) throws BeansException{
+                                     boolean ignoreNoSuchBean) throws BeansException {
             super(configLocations, refresh, parent, ignoreNoSuchBean);
         }
 
@@ -79,7 +79,7 @@ public class JTesterxClassPathXmlApplicationContext extends org.jtester.module.s
     /**
      * 自定义spring ReaderEventListener<br>
      * 参见{@link DefaultBeanDefinitionDocumentReader} 和 {@link BeanDefinitionParserDelegate}的initDefaults方法
-     * 
+     *
      * <pre>
      * 复写defaultsRegistered方法，在跑单元测试中，强制设置default-lazy-init=true属性
      * </pre>
@@ -98,7 +98,7 @@ public class JTesterxClassPathXmlApplicationContext extends org.jtester.module.s
     @Override
     public JTesterSpringContext createApplicationContext(List<String> locations, boolean ignoreNoSuchBean) {
         JTesterSpringContext c = new JTesterxSpringContext(locations.toArray(new String[0]), false, null,
-                                                           ignoreNoSuchBean);
+                ignoreNoSuchBean);
 
         TracerBeanManager.clear();
         return c;

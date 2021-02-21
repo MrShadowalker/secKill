@@ -47,7 +47,7 @@ public interface AlarmRuleService {
 
     /**
      * 获取所有状态为 status 的 {@linkplain AlarmRule}，并且按照pipelineId分区
-     * 
+     *
      * @param status
      * @return
      */

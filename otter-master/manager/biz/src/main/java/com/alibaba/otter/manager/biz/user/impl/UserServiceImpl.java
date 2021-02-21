@@ -33,13 +33,13 @@ import com.alibaba.otter.manager.biz.user.dal.dataobject.UserDO;
 
 /**
  * TODO Comment of UserServiceImpl
- * 
+ *
  * @author simon
  */
 public class UserServiceImpl implements UserService {
 
     private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
-    private UserDAO             userDao;
+    private UserDAO userDao;
 
     public void createUser(User user) {
         Assert.assertNotNull(user);

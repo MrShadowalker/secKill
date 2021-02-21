@@ -23,12 +23,12 @@ import com.alibaba.otter.shared.common.model.config.enums.StageType;
 
 /**
  * 基于memory + rpc的调度模式的一个整合版，不依赖于zookeeper的process创建
- * 
+ *
  * <pre>
  * 大致算法:
  * 1. 基于内存方式创建一个顺序processId，正常运行过程中不可重复，出现Rollback/Stop操作后可重复
  * 2. 判断最小id的方法：
- *    a. 需要记录上一次成功load的processId，如果当前id为该processId + 1的话，则为最小id. 
+ *    a. 需要记录上一次成功load的processId，如果当前id为该processId + 1的话，则为最小id.
  *    b. 当上一次load的processId为0时，代表第一次启动，数字id 1为最小id
  *    前提：
  *      i. 每次启动，processId一定是从1开始分配，并且必须是连续的id分配
@@ -38,13 +38,13 @@ import com.alibaba.otter.shared.common.model.config.enums.StageType;
  *    前提：
  *      i. zookeeper watcher推送存在不确定性，多台机器推送有先后，其中一台重建状态，另一台可能还处于老状态，
  * </pre>
- * 
+ *
  * @author jianghang 2013-2-28 下午10:15:20
  * @version 4.1.7
  */
 public class FastRpcStageController extends ArbitrateLifeCycle implements PermitListener {
 
-    public FastRpcStageController(Long pipelineId){
+    public FastRpcStageController(Long pipelineId) {
         super(pipelineId);
     }
 

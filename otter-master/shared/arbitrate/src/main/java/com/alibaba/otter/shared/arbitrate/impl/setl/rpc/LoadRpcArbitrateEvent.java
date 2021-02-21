@@ -37,15 +37,15 @@ import com.alibaba.otter.shared.common.utils.zookeeper.ZkClientx;
 
 /**
  * 基于rpc方式实现的load调度
- * 
+ *
  * @author jianghang 2012-9-29 上午10:59:24
  * @version 4.1.0
  */
 public class LoadRpcArbitrateEvent implements LoadArbitrateEvent {
 
-    private static final Logger     logger    = LoggerFactory.getLogger(LoadRpcArbitrateEvent.class);
+    private static final Logger logger = LoggerFactory.getLogger(LoadRpcArbitrateEvent.class);
     private TerminRpcArbitrateEvent terminEvent;
-    private ZkClientx               zookeeper = ZooKeeperClient.getInstance();
+    private ZkClientx zookeeper = ZooKeeperClient.getInstance();
     private RpcStageEventDispatcher rpcStageEventDispatcher;
 
     public EtlEventData await(Long pipelineId) throws InterruptedException {
@@ -72,8 +72,8 @@ public class LoadRpcArbitrateEvent implements LoadArbitrateEvent {
                 }
             }
 
-            logger.warn("pipelineId【{}】 load ignore processId【{}】 by status【{}】", new Object[] { pipelineId, processId,
-                    status });
+            logger.warn("pipelineId【{}】 load ignore processId【{}】 by status【{}】", new Object[]{pipelineId, processId,
+                    status});
             return await(pipelineId);// 递归调用
         }
     }

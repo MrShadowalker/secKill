@@ -29,19 +29,19 @@ import com.alibaba.otter.shared.common.utils.OtterToStringStyle;
 public class TableStat implements Serializable {
 
     private static final long serialVersionUID = -6463213086225536773L;
-    private Long              id;
-    private Long              pipelineId;                              // 同步任务组
-    private Long              dataMediaPairId;                         // 同步任务表对id
-    private Long              fileSize;                                // 文件大小
-    private Long              fileCount;                               // 文件数量
-    private Long              deleteCount;
-    private Long              updateCount;
-    private Long              insertCount;
+    private Long id;
+    private Long pipelineId;                              // 同步任务组
+    private Long dataMediaPairId;                         // 同步任务表对id
+    private Long fileSize;                                // 文件大小
+    private Long fileCount;                               // 文件数量
+    private Long deleteCount;
+    private Long updateCount;
+    private Long insertCount;
     // add by ljh at 2012-07-13
-    private Date              startTime;                               // 批次开始时间
-    private Date              endTime;                                 // 批次结束时间
-    private Date              gmtCreate;
-    private Date              gmtModified;
+    private Date startTime;                               // 批次开始时间
+    private Date endTime;                                 // 批次结束时间
+    private Date gmtCreate;
+    private Date gmtModified;
 
     public Long getId() {
         return id;

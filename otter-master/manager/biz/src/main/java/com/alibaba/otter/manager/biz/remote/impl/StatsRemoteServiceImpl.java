@@ -48,23 +48,23 @@ import com.google.common.collect.OtterMigrateMap;
 
 /**
  * 统计模块远程接口
- * 
+ *
  * @author jianghang 2011-10-21 下午03:04:40
  * @version 4.0.0
  */
 public class StatsRemoteServiceImpl implements StatsRemoteService {
 
-    private static final Logger                            logger       = LoggerFactory.getLogger(StatsRemoteServiceImpl.class);
-    private static final int                               DEFAULT_POOL = 10;
-    private DelayStatService                               delayStatService;
-    private TableStatService                               tableStatService;
-    private ThroughputStatService                          throughputStatService;
-    private Long                                           statUnit     = 60 * 1000L;                                           //统计周期，默认60秒
-    private ScheduledThreadPoolExecutor                    scheduler;
-    private Map<Long, AvgStat>                             delayStats;
+    private static final Logger logger = LoggerFactory.getLogger(StatsRemoteServiceImpl.class);
+    private static final int DEFAULT_POOL = 10;
+    private DelayStatService delayStatService;
+    private TableStatService tableStatService;
+    private ThroughputStatService throughputStatService;
+    private Long statUnit = 60 * 1000L;                                           //统计周期，默认60秒
+    private ScheduledThreadPoolExecutor scheduler;
+    private Map<Long, AvgStat> delayStats;
     private Map<Long, Map<ThroughputType, ThroughputStat>> throughputStats;
 
-    public StatsRemoteServiceImpl(){
+    public StatsRemoteServiceImpl() {
         // 注册一下事件处理
         CommunicationRegistry.regist(StatisticsEventType.delayCount, this);
         CommunicationRegistry.regist(StatisticsEventType.tableStat, this);
@@ -84,7 +84,7 @@ public class StatsRemoteServiceImpl implements StatsRemoteService {
         });
 
         scheduler = new ScheduledThreadPoolExecutor(DEFAULT_POOL, new NamedThreadFactory("Otter-Statistics-Server"),
-                                                    new ThreadPoolExecutor.CallerRunsPolicy());
+                new ThreadPoolExecutor.CallerRunsPolicy());
         if (statUnit > 0) {
             scheduler.scheduleAtFixedRate(new Runnable() {
 
@@ -201,7 +201,7 @@ public class StatsRemoteServiceImpl implements StatsRemoteService {
     public static class AvgStat {
 
         private AtomicLong number = new AtomicLong(0L);
-        private AtomicLong count  = new AtomicLong(0L);
+        private AtomicLong count = new AtomicLong(0L);
 
         public void merge(DelayStat stat) {
             count.incrementAndGet();

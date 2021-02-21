@@ -24,20 +24,20 @@ import com.alibaba.otter.canal.instance.manager.model.CanalStatus;
 
 /**
  * 类CanalDO.java的实现描述：TODO 类实现描述
- * 
+ *
  * @author sarah.lij 2012-7-25 下午05:11:18
  */
 public class CanalDO implements Serializable {
 
     private static final long serialVersionUID = 9148286590254926037L;
 
-    private Long              id;                                     // 唯一标示id
-    private String            name;                                   // canal名字
-    private String            description;                            // 描述
-    private CanalStatus       status;
-    private CanalParameter    parameters;                             // 参数定义
-    private Date              gmtCreate;                              // 创建时间
-    private Date              gmtModified;                            // 修改时间
+    private Long id;                                     // 唯一标示id
+    private String name;                                   // canal名字
+    private String description;                            // 描述
+    private CanalStatus status;
+    private CanalParameter parameters;                             // 参数定义
+    private Date gmtCreate;                              // 创建时间
+    private Date gmtModified;                            // 修改时间
 
     public Long getId() {
         return id;

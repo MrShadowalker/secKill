@@ -28,7 +28,7 @@ import com.alibaba.otter.shared.common.utils.JsonUtils;
 
 /**
  * 类AutoKeeperClusterServiceImpl.java的实现描述：TODO 类实现描述
- * 
+ *
  * @author simon 2012-9-24 下午5:44:43
  * @version 4.1.0
  */
@@ -68,8 +68,8 @@ public class AutoKeeperClusterServiceImpl implements AutoKeeperClusterService {
         autoKeeperCluster.setClusterName(autoKeeperClusterDo.getClusterName());
         autoKeeperCluster.setDescription(autoKeeperClusterDo.getDescription());
         autoKeeperCluster.setServerList(JsonUtils.unmarshalFromString(autoKeeperClusterDo.getServerList(),
-                                                                      new TypeReference<List<String>>() {
-                                                                      }));
+                new TypeReference<List<String>>() {
+                }));
         autoKeeperCluster.setGmtCreate(autoKeeperClusterDo.getGmtCreate());
         autoKeeperCluster.setGmtModified(autoKeeperClusterDo.getGmtModified());
         return autoKeeperCluster;

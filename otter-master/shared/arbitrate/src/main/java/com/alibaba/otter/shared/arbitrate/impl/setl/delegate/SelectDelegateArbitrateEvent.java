@@ -24,7 +24,7 @@ import com.alibaba.otter.shared.common.model.config.pipeline.PipelineParameter.A
 
 /**
  * select delegate实现
- * 
+ *
  * @author jianghang 2012-9-28 上午10:36:38
  * @version 4.1.0
  */

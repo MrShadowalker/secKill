@@ -20,7 +20,7 @@ import com.alibaba.otter.shared.common.model.config.alarm.AlarmRule;
 
 /**
  * 报警尝试自行恢复机制
- * 
+ *
  * @author jianghang 2012-9-19 下午04:43:30
  * @version 4.1.0
  */

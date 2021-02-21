@@ -24,7 +24,7 @@ import com.alibaba.otter.shared.common.model.config.node.Node;
 public class SeniorNode extends Node {
 
     private static final long serialVersionUID = -4121314684324595191L;
-    private boolean           used;
+    private boolean used;
 
     public boolean isUsed() {
         return used;

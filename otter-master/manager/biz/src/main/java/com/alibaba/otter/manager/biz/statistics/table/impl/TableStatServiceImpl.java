@@ -46,11 +46,11 @@ import com.alibaba.otter.shared.common.utils.thread.NamedThreadFactory;
  */
 public class TableStatServiceImpl implements TableStatService, InitializingBean {
 
-    private static final Logger         logger     = LoggerFactory.getLogger(TableStatServiceImpl.class);
-    private TableStatDAO                tableStatDao;
-    private TableHistoryStatDAO         tableHistoryStatDao;
-    private Map<Long, TableStat>        tableStats = new HashMap<Long, TableStat>();
-    private Long                        statUnit   = 60 * 1000L;                                         //统计周期，默认60秒
+    private static final Logger logger = LoggerFactory.getLogger(TableStatServiceImpl.class);
+    private TableStatDAO tableStatDao;
+    private TableHistoryStatDAO tableHistoryStatDao;
+    private Map<Long, TableStat> tableStats = new HashMap<Long, TableStat>();
+    private Long statUnit = 60 * 1000L;                                         //统计周期，默认60秒
     private ScheduledThreadPoolExecutor scheduler;
 
     /**
@@ -124,7 +124,7 @@ public class TableStatServiceImpl implements TableStatService, InitializingBean 
             // 取出每个时间点i以内的数据，k是一个游标，每次遍历时前面已经取过了的数据就不用再遍历了
             for (int j = k; j >= 0; --j) {
                 if ((i - tableHistoryStatDOs.get(j).getEndTime().getTime() <= 60 * 1000)
-                    && (i - tableHistoryStatDOs.get(j).getEndTime().getTime() >= 0)) {
+                        && (i - tableHistoryStatDOs.get(j).getEndTime().getTime() >= 0)) {
                     tableStat.add(tableHistoryStatDOToModel(tableHistoryStatDOs.get(j)));
                     k = j - 1;
                 }// 如果不满足if条件，则后面的数据也不用再遍历
@@ -154,7 +154,7 @@ public class TableStatServiceImpl implements TableStatService, InitializingBean 
 
     public void afterPropertiesSet() throws Exception {
         scheduler = new ScheduledThreadPoolExecutor(1, new NamedThreadFactory("Otter-Statistics-Table"),
-                                                    new ThreadPoolExecutor.CallerRunsPolicy());
+                new ThreadPoolExecutor.CallerRunsPolicy());
         if (statUnit > 0) {
             scheduler.scheduleAtFixedRate(new Runnable() {
 
@@ -171,7 +171,7 @@ public class TableStatServiceImpl implements TableStatService, InitializingBean 
 
     /**
      * 用于Model对象转化为DO对象
-     * 
+     *
      * @param tableStat
      * @return TableStatDO
      */
@@ -193,7 +193,7 @@ public class TableStatServiceImpl implements TableStatService, InitializingBean 
 
     /**
      * 用于DO对象转化为Model对象
-     * 
+     *
      * @param tableStatDO
      * @return TableStat
      */
@@ -215,7 +215,7 @@ public class TableStatServiceImpl implements TableStatService, InitializingBean 
 
     /**
      * 用于Model对象转化为DO对象
-     * 
+     *
      * @param tableStat
      * @return TableHistoryStatDO
      */
@@ -239,7 +239,7 @@ public class TableStatServiceImpl implements TableStatService, InitializingBean 
 
     /**
      * 用于DO对象转化为Model对象
-     * 
+     *
      * @param TableHistoryStatDO
      * @return TableStat
      */

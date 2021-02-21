@@ -25,30 +25,30 @@ import com.alibaba.otter.shared.common.utils.OtterToStringStyle;
 
 /**
  * 基于数据库的同步记录对象
- * 
+ *
  * @author xiaoqing.zhouxq
  */
 public class DbBatch implements Serializable {
 
     private static final long serialVersionUID = 1716704802567430638L;
 
-    private RowBatch          rowBatch;                               // 如果目标端是db，则一定不为空
+    private RowBatch rowBatch;                               // 如果目标端是db，则一定不为空
 
-    private FileBatch         fileBatch;                              // 可能没有附件
+    private FileBatch fileBatch;                              // 可能没有附件
 
-    private File              root;                                   // attachment的根路径，如果存在fileBatch一定存在attachment
+    private File root;                                   // attachment的根路径，如果存在fileBatch一定存在attachment
 
-    public DbBatch(){
+    public DbBatch() {
 
     }
 
-    public DbBatch(RowBatch rowBatch){
+    public DbBatch(RowBatch rowBatch) {
         this.rowBatch = rowBatch;
         this.fileBatch = new FileBatch();
         this.fileBatch.setIdentity(rowBatch.getIdentity());
     }
 
-    public DbBatch(RowBatch rowBatch, FileBatch fileBatch, File root){
+    public DbBatch(RowBatch rowBatch, FileBatch fileBatch, File root) {
         this.rowBatch = rowBatch;
         this.fileBatch = fileBatch;
         this.root = root;

@@ -20,13 +20,13 @@ import org.apache.oro.text.regex.Pattern;
 
 /**
  * 封装url pattern匹配
- * 
+ *
  * @author jianghang 2011-11-11 下午12:38:06
  * @version 4.0.0
  */
 public class URLPatternHolder {
 
-    private String  url;
+    private String url;
     private Pattern compiledPattern;
 
     public Pattern getCompiledPattern() {

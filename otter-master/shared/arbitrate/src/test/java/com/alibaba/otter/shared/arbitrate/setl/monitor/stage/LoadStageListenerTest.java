@@ -33,7 +33,7 @@ import com.google.common.collect.Lists;
 
 /**
  * load模块的测试
- * 
+ *
  * @author jianghang 2011-9-22 上午10:35:18
  * @version 4.0.0
  */
@@ -60,11 +60,11 @@ public class LoadStageListenerTest extends BaseStageTest {
             initProcessIds.add(p2);
 
             List<String> p1Stages = Arrays.asList(ArbitrateConstants.NODE_SELECTED, ArbitrateConstants.NODE_EXTRACTED,
-                                                  ArbitrateConstants.NODE_TRANSFORMED);
+                    ArbitrateConstants.NODE_TRANSFORMED);
             stages.put(p1, p1Stages);
 
             List<String> p2Stages = Arrays.asList(ArbitrateConstants.NODE_SELECTED, ArbitrateConstants.NODE_EXTRACTED,
-                                                  ArbitrateConstants.NODE_TRANSFORMED);
+                    ArbitrateConstants.NODE_TRANSFORMED);
             stages.put(p2, p2Stages);
 
             // 进行验证
@@ -137,11 +137,11 @@ public class LoadStageListenerTest extends BaseStageTest {
             stages.put(p1, p1Stages);
 
             List<String> p2Stages = Arrays.asList(ArbitrateConstants.NODE_SELECTED, ArbitrateConstants.NODE_EXTRACTED,
-                                                  ArbitrateConstants.NODE_TRANSFORMED);
+                    ArbitrateConstants.NODE_TRANSFORMED);
             stages.put(p2, p2Stages);
 
             List<String> p3Stages = Arrays.asList(ArbitrateConstants.NODE_SELECTED, ArbitrateConstants.NODE_EXTRACTED,
-                                                  ArbitrateConstants.NODE_TRANSFORMED);
+                    ArbitrateConstants.NODE_TRANSFORMED);
             stages.put(p3, p3Stages);
 
             sleep();

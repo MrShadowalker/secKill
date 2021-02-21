@@ -25,7 +25,7 @@ public class AppDeleteEvent extends Event {
 
     private static final long serialVersionUID = 810191575813164952L;
 
-    public AppDeleteEvent(){
+    public AppDeleteEvent() {
         super(AppEventType.create);
     }
 

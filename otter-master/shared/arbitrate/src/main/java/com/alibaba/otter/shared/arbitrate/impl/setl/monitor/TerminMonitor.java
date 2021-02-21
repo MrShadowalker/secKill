@@ -33,19 +33,19 @@ import com.alibaba.otter.shared.common.utils.zookeeper.ZkClientx;
 
 /**
  * 结束信号的监听
- * 
+ *
  * @author jianghang 2011-9-26 上午11:31:50
  * @version 4.0.0
  */
 public class TerminMonitor extends ArbitrateLifeCycle implements Monitor {
 
-    private static final Logger logger         = LoggerFactory.getLogger(TerminMonitor.class);
+    private static final Logger logger = LoggerFactory.getLogger(TerminMonitor.class);
 
-    private ZkClientx           zookeeper      = ZooKeeperClient.getInstance();
-    private TerminProcessQueue  waitProcessIds = new TerminProcessQueue();                    // 记录对应的终结信号数据，从小到大的排序
-    private IZkChildListener    childListener;
+    private ZkClientx zookeeper = ZooKeeperClient.getInstance();
+    private TerminProcessQueue waitProcessIds = new TerminProcessQueue();                    // 记录对应的终结信号数据，从小到大的排序
+    private IZkChildListener childListener;
 
-    public TerminMonitor(Long pipelineId){
+    public TerminMonitor(Long pipelineId) {
         super(pipelineId);
         childListener = new IZkChildListener() {
 

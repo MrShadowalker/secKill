@@ -27,7 +27,7 @@ import com.alibaba.otter.shared.common.utils.zookeeper.ZkClientx;
 
 /**
  * 递归删除zookeeper下的otter相关的所有节点
- * 
+ *
  * @author jianghang 2011-9-21 下午03:03:31
  * @version 4.0.0
  */

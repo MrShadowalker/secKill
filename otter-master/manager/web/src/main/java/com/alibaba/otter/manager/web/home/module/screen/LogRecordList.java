@@ -30,7 +30,7 @@ import com.alibaba.otter.shared.common.model.config.record.LogRecord;
 
 /**
  * 类NodeList.java的实现描述：TODO 类实现描述
- * 
+ *
  * @author simon 2011-10-25 上午10:25:27
  */
 public class LogRecordList {
@@ -40,7 +40,7 @@ public class LogRecordList {
 
     public void execute(@Param("pageIndex") int pageIndex, @Param("pipelineId") String pipelineId,
                         @Param("monitorName") String monitorName, @Param("searchKey") String searchKey, Context context)
-                                                                                                                        throws Exception {
+            throws Exception {
         @SuppressWarnings("unchecked")
         Map<String, Object> condition = new HashMap<String, Object>();
         if ("请输入关键字(目前支持CID,PID搜索)".equals(searchKey)) {

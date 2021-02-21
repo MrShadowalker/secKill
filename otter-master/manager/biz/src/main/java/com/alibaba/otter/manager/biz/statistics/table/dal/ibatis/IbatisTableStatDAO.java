@@ -57,7 +57,7 @@ public class IbatisTableStatDAO extends SqlMapClientDaoSupport implements TableS
         tableStat.setPipelineId(pipelineId);
         tableStat.setDataMediaPairId(dataMediaPairId);
         return (TableStatDO) getSqlMapClientTemplate().queryForObject("findTableStatByPipelineIdAndDataMediaPairId",
-                                                                      tableStat);
+                tableStat);
     }
 
     @Override
@@ -70,7 +70,7 @@ public class IbatisTableStatDAO extends SqlMapClientDaoSupport implements TableS
     public List<TableStatDO> listTableStatsByPairId(Long dataMediaPairId) {
 
         return (List<TableStatDO>) getSqlMapClientTemplate().queryForList("listTableStatsByDataMediaPairId",
-                                                                          dataMediaPairId);
+                dataMediaPairId);
     }
 
     public List<TableStatDO> listTimelineTableStat(BehaviorHistoryCondition condition) {

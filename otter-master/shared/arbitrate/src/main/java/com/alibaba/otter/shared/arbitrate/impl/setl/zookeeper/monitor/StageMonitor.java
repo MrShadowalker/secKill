@@ -50,40 +50,40 @@ import com.alibaba.otter.shared.common.utils.zookeeper.ZooKeeperx;
 
 /**
  * 所有process节点变化的监控
- * 
+ *
  * <pre>
  * 监控内容：
  *  1. process列表的删除/新增
  *  2. 每个process下的子节点(setl + end + error)节点的变化信息
- *  
+ *
  * 数据获取：
  *  1. 定义{@linkplain StageListener}
  * 接口，并注册。即可监听监控内容的数据变化
- * 
+ *
  * 注意点：
  *  stageListener返回的processId为历史数据，可能出现以下情况：
  *  1. 历史已就绪的process，因为系统的error错误或者人为的关闭同步队列，会导致当前的processId被删除
  *  2. 此时该processId仍会被返回，需要在各个event中最后进行检查。判断Permit,是否出现error节点,process是否被删除等
- * 
+ *
  * </pre>
- * 
+ *
  * @author jianghang 2011-9-21 下午01:16:06
  * @version 4.0.0
  */
 public class StageMonitor extends ArbitrateLifeCycle implements Monitor {
 
-    private static final Logger              logger            = LoggerFactory.getLogger(StageMonitor.class);
+    private static final Logger logger = LoggerFactory.getLogger(StageMonitor.class);
 
-    private ExecutorService                  arbitrateExecutor;
-    private ZkClientx                        zookeeper         = ZooKeeperClient.getInstance();
-    private volatile List<Long>              currentProcessIds = new ArrayList<Long>();                                       // 当前的处于监控中的processId列表
-    private volatile Map<Long, List<String>> currentStages     = new ConcurrentHashMap<Long, List<String>>();                 // 记录下stages信息
+    private ExecutorService arbitrateExecutor;
+    private ZkClientx zookeeper = ZooKeeperClient.getInstance();
+    private volatile List<Long> currentProcessIds = new ArrayList<Long>();                                       // 当前的处于监控中的processId列表
+    private volatile Map<Long, List<String>> currentStages = new ConcurrentHashMap<Long, List<String>>();                 // 记录下stages信息
 
-    private List<StageListener>              listeners         = Collections.synchronizedList(new ArrayList<StageListener>());
+    private List<StageListener> listeners = Collections.synchronizedList(new ArrayList<StageListener>());
 
-    private IZkChildListener                 processListener;
+    private IZkChildListener processListener;
 
-    public StageMonitor(Long pipelineId){
+    public StageMonitor(Long pipelineId) {
         super(pipelineId);
 
         processListener = new IZkChildListener() {
@@ -233,8 +233,8 @@ public class StageMonitor extends ArbitrateLifeCycle implements Monitor {
             }
 
             if (logger.isDebugEnabled()) {
-                logger.debug("pipeline【{}】 old processIds{},current processIds{}", new Object[] { getPipelineId(),
-                        currentProcessIds, processIds });
+                logger.debug("pipeline【{}】 old processIds{},current processIds{}", new Object[]{getPipelineId(),
+                        currentProcessIds, processIds});
             }
 
             currentProcessIds = processIds; // 切换引用，需设置为volatile保证线程安全&可见性
@@ -279,8 +279,8 @@ public class StageMonitor extends ArbitrateLifeCycle implements Monitor {
     private boolean initProcessStage(Long processId, List<String> currentStages) {
         Collections.sort(currentStages, new StageComparator());
         if (logger.isDebugEnabled()) {
-            logger.debug("pipeline【{}】 processId【{}】 with stage{}", new Object[] { getPipelineId(), processId,
-                    currentStages });
+            logger.debug("pipeline【{}】 processId【{}】 with stage{}", new Object[]{getPipelineId(), processId,
+                    currentStages});
         }
 
         this.currentStages.put(processId, currentStages);// 更新下stage数据
@@ -367,9 +367,9 @@ public class StageMonitor extends ArbitrateLifeCycle implements Monitor {
 
                     // 出现session expired/connection losscase下，会触发所有的watcher响应，同时老的watcher会继续保留，所以会导致出现多次watcher响应
                     boolean dataChanged = event.getType() == EventType.NodeDataChanged
-                                          || event.getType() == EventType.NodeDeleted
-                                          || event.getType() == EventType.NodeCreated
-                                          || event.getType() == EventType.NodeChildrenChanged;
+                            || event.getType() == EventType.NodeDeleted
+                            || event.getType() == EventType.NodeCreated
+                            || event.getType() == EventType.NodeChildrenChanged;
                     if (dataChanged) {
                         // boolean reply = initStage(processId);
                         // if (reply == false) {// 出现过load后就不需要再监听变化，剩下的就是节点的删除操作
@@ -399,7 +399,7 @@ public class StageMonitor extends ArbitrateLifeCycle implements Monitor {
     public void addListener(StageListener listener) {
         if (logger.isDebugEnabled()) {
             logger.debug("## pipeline【{}】 add listener 【{}】", getPipelineId(),
-                         ClassUtils.getShortClassName(listener.getClass()));
+                    ClassUtils.getShortClassName(listener.getClass()));
         }
 
         this.listeners.add(listener);
@@ -408,7 +408,7 @@ public class StageMonitor extends ArbitrateLifeCycle implements Monitor {
     public void removeListener(StageListener listener) {
         if (logger.isDebugEnabled()) {
             logger.debug("## pipeline【{}】 remove listener 【{}】", getPipelineId(),
-                         ClassUtils.getShortClassName(listener.getClass()));
+                    ClassUtils.getShortClassName(listener.getClass()));
         }
 
         this.listeners.remove(listener);

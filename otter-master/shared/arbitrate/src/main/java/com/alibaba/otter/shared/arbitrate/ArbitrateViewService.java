@@ -24,7 +24,7 @@ import com.alibaba.otter.shared.common.model.statistics.stage.ProcessStat;
 
 /**
  * 仲裁器状态视图服务,允许查看当前的一些process/termin状态信息
- * 
+ *
  * @author jianghang 2011-9-27 下午05:20:42
  * @version 4.0.0
  */

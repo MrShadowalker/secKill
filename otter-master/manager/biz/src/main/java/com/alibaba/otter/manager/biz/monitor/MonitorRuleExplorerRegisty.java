@@ -34,7 +34,7 @@ public class MonitorRuleExplorerRegisty {
 
     // Map<MonitorName, Map<explorerName, MonitorExplorer>>
     private static Map<MonitorName, Map<String, Monitor>> registy = new ConcurrentHashMap<MonitorName, Map<String, Monitor>>(
-                                                                                                                             16);
+            16);
 
     public static void register(MonitorName monitorName, Monitor explorer) {
         MonitorRuleExplorerRegisty.register(monitorName, null, explorer);
@@ -47,7 +47,7 @@ public class MonitorRuleExplorerRegisty {
 
         if (!AbstractRuleMonitor.class.isAssignableFrom(explorer.getClass())) {
             throw new UnsupportedOperationException(
-                                                    "only accept AbstractRuleMonitorExplorer or it's subclass to regist");
+                    "only accept AbstractRuleMonitorExplorer or it's subclass to regist");
         }
 
         Map<String, Monitor> explorers = registy.get(monitorName);

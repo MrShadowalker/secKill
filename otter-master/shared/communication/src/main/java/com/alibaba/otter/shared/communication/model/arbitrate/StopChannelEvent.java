@@ -22,9 +22,9 @@ public class StopChannelEvent extends Event {
 
     private static final long serialVersionUID = 476657754177940448L;
 
-    private Long              channelId;                             // 对应的channelId
+    private Long channelId;                             // 对应的channelId
 
-    public StopChannelEvent(){
+    public StopChannelEvent() {
         super(ArbitrateEventType.stopChannel);
     }
 

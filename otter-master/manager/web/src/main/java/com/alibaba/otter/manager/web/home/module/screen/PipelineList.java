@@ -44,19 +44,19 @@ import com.alibaba.otter.shared.common.model.statistics.throughput.ThroughputTyp
 public class PipelineList {
 
     @Resource(name = "channelService")
-    private ChannelService        channelService;
+    private ChannelService channelService;
 
     @Resource(name = "delayStatService")
-    private DelayStatService      delayStatService;
+    private DelayStatService delayStatService;
 
     @Resource(name = "arbitrateViewService")
-    private ArbitrateViewService  arbitrateViewService;
+    private ArbitrateViewService arbitrateViewService;
 
     @Resource(name = "throughputStatService")
     private ThroughputStatService throughputStatService;
 
     @Resource(name = "alarmRuleService")
-    private AlarmRuleService      alarmRuleService;
+    private AlarmRuleService alarmRuleService;
 
     public void execute(@Param("channelId") Long channelId, @Param("pipelineId") Long pipelineId, HttpSession session,
                         Context context) throws Exception {
@@ -96,7 +96,7 @@ public class PipelineList {
             List<AlarmRule> alarmRules = alarmRuleService.getAlarmRules(pipeline.getId());
             alarmRuleStats.put(pipeline.getId(), alarmRules);
             PositionEventData positionData = arbitrateViewService.getCanalCursor(pipeline.getParameters().getDestinationName(),
-                                                                                 pipeline.getParameters().getMainstemClientId());
+                    pipeline.getParameters().getMainstemClientId());
             positionDatas.put(pipeline.getId(), positionData);
         }
 

@@ -22,14 +22,14 @@ import java.util.Date;
 public class User implements Serializable {
 
     private static final long serialVersionUID = -1724299315008190533L;
-    private Long              id;
-    private String            name;
-    private String            password;
-    private String            department;
-    private String            realName;
-    private AuthorizeType     authorizeType;
-    private Date              gmtCreate;
-    private Date              gmtModified;
+    private Long id;
+    private String name;
+    private String password;
+    private String department;
+    private String realName;
+    private AuthorizeType authorizeType;
+    private Date gmtCreate;
+    private Date gmtModified;
 
     public Long getId() {
         return id;

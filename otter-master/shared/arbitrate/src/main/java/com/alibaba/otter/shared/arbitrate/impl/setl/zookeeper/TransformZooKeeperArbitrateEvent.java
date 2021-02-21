@@ -40,13 +40,13 @@ import com.alibaba.otter.shared.common.utils.zookeeper.ZkClientx;
 
 /**
  * 关注extracted节点，创建transformed节点
- * 
+ *
  * @author jianghang 2011-8-9 下午05:10:50
  */
 public class TransformZooKeeperArbitrateEvent implements TransformArbitrateEvent {
 
-    private static final Logger logger    = LoggerFactory.getLogger(TransformZooKeeperArbitrateEvent.class);
-    private ZkClientx           zookeeper = ZooKeeperClient.getInstance();
+    private static final Logger logger = LoggerFactory.getLogger(TransformZooKeeperArbitrateEvent.class);
+    private ZkClientx zookeeper = ZooKeeperClient.getInstance();
 
     /**
      * <pre>
@@ -56,7 +56,7 @@ public class TransformZooKeeperArbitrateEvent implements TransformArbitrateEvent
      * 3. 检查当前的即时Permit状态 (在阻塞获取processId过程会出现一些error信号,process节点会被删除)
      * 4. 获取Select传递的EventData数据，添加next node信息后直接返回
      * </pre>
-     * 
+     *
      * @return
      */
     public EtlEventData await(Long pipelineId) throws InterruptedException {
@@ -65,7 +65,7 @@ public class TransformZooKeeperArbitrateEvent implements TransformArbitrateEvent
         permitMonitor.waitForPermit();// 阻塞等待授权
 
         TransformStageListener transformStageListener = ArbitrateFactory.getInstance(pipelineId,
-                                                                                     TransformStageListener.class);
+                TransformStageListener.class);
         Long processId = transformStageListener.waitForProcess(); // 符合条件的processId
 
         ChannelStatus status = permitMonitor.getChannelPermit();
@@ -85,9 +85,9 @@ public class TransformZooKeeperArbitrateEvent implements TransformArbitrateEvent
                 throw new ArbitrateException("transform_await", e.getMessage(), e);
             }
         } else {
-            logger.info("pipelineId【{}】 transform ignore processId【{}】 by status【{}】", new Object[] { pipelineId,
-                    processId, status });
-                    
+            logger.info("pipelineId【{}】 transform ignore processId【{}】 by status【{}】", new Object[]{pipelineId,
+                    processId, status});
+
             // 释放下processId，因为load是等待processId最小值完成Tranform才继续，如果这里不释放，会一直卡死等待
             String path = StagePathUtils.getProcess(pipelineId, processId);
             zookeeper.delete(path);
@@ -100,7 +100,7 @@ public class TransformZooKeeperArbitrateEvent implements TransformArbitrateEvent
      * 算法:
      * 1. 创建对应的transformed节点,标志transform已完成
      * </pre>
-     * 
+     *
      * @param pipelineId 同步流id
      */
     public void single(EtlEventData data) {
@@ -114,11 +114,11 @@ public class TransformZooKeeperArbitrateEvent implements TransformArbitrateEvent
         } catch (ZkNoNodeException e) {
             // process节点不存在，出现了rollback/shutdown操作，直接忽略
             logger.warn("pipelineId【{}】 transform ignore processId【{}】 single by data:{}",
-                        new Object[] { data.getPipelineId(), data.getProcessId(), data });
+                    new Object[]{data.getPipelineId(), data.getProcessId(), data});
         } catch (ZkNodeExistsException e) {
             // process节点已存在，出现了ConnectionLoss retry操作
             logger.warn("pipelineId【{}】 transform ignore processId【{}】 single by data:{}",
-                        new Object[] { data.getPipelineId(), data.getProcessId(), data });
+                    new Object[]{data.getPipelineId(), data.getProcessId(), data});
         } catch (ZkException e) {
             throw new ArbitrateException("transform_single", e.getMessage(), e);
         }

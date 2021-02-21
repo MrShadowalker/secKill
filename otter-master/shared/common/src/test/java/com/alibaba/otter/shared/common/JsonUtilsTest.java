@@ -61,8 +61,8 @@ public class JsonUtilsTest extends BaseOtterTest {
     @Test
     public void test_map_byte() {
         Map data = new HashMap<String, byte[]>();
-        byte[] one = new byte[] { 1, 2, 3 };
-        byte[] two = new byte[] { 4, 5, 6 };
+        byte[] one = new byte[]{1, 2, 3};
+        byte[] two = new byte[]{4, 5, 6};
         data.put("one", one);
         data.put("two", two);
 
@@ -78,8 +78,8 @@ public class JsonUtilsTest extends BaseOtterTest {
     @Test
     public void test_bytes() {
         Map data = new HashMap<String, byte[]>();
-        byte[] one = new byte[] { 1, 2, 3 };
-        byte[] two = new byte[] { 4, 5, 6 };
+        byte[] one = new byte[]{1, 2, 3};
+        byte[] two = new byte[]{4, 5, 6};
         data.put("one", one);
         data.put("two", two);
 
@@ -163,11 +163,11 @@ public class JsonUtilsTest extends BaseOtterTest {
 
     public static class PipeEventData<T> {
 
-        @JSONField(serialzeFeatures = { SerializerFeature.WriteClassName })
+        @JSONField(serialzeFeatures = {SerializerFeature.WriteClassName})
         private PipeKey key;
 
         @JSONField(serialize = false, deserialize = true)
-        private int     id;
+        private int id;
 
         public PipeKey getKey() {
             return key;
@@ -190,7 +190,7 @@ public class JsonUtilsTest extends BaseOtterTest {
     public static class PipeKey {
 
         private String url;
-        private int    id;
+        private int id;
 
         public String getUrl() {
             return url;

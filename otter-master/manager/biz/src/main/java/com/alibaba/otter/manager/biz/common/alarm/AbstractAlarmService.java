@@ -31,17 +31,17 @@ import org.springframework.beans.factory.InitializingBean;
 
 /**
  * 报警服务实现
- * 
+ *
  * @author jianghang 2011-11-3 上午11:12:16
  * @version 4.0.0
  */
 public abstract class AbstractAlarmService implements AlarmService, InitializingBean, DisposableBean {
 
-    private static final Logger         logger = LoggerFactory.getLogger(AbstractAlarmService.class);
+    private static final Logger logger = LoggerFactory.getLogger(AbstractAlarmService.class);
 
-    private BlockingQueue<AlarmMessage> queue  = new LinkedBlockingQueue<AlarmMessage>(3 * 3 * 3600);
-    private ExecutorService             executor;
-    private int                         period = 150;                                                // milliseconds
+    private BlockingQueue<AlarmMessage> queue = new LinkedBlockingQueue<AlarmMessage>(3 * 3 * 3600);
+    private ExecutorService executor;
+    private int period = 150;                                                // milliseconds
 
     public void sendAlarm(AlarmMessage data) {
         try {

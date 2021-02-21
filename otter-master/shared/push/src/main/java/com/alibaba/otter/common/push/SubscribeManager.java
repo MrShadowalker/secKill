@@ -30,7 +30,7 @@ public interface SubscribeManager {
      * 注册监听dataId的callback，如果对应dataId的配置发生了变化，则回调callback。<br/>
      * callback 的处理逻辑应该尽可能的快，如果callback处理的时间需要很长，建议采取异步的方式进行处理 <br/>
      * 或者实现可以起一个线程池，帮助客户端吧callback做异步处理。
-     * 
+     *
      * @param dataId
      * @param callback
      */
@@ -38,7 +38,7 @@ public interface SubscribeManager {
 
     /**
      * 移除监听事件
-     * 
+     *
      * @param dataId
      * @param callback
      */
@@ -47,7 +47,7 @@ public interface SubscribeManager {
     /**
      * 同 {@linkplain SubscribeManager#registerCallback}。<br/>
      * groupId 也是组成配置key的部分，可以为<code>null</code>。
-     * 
+     *
      * @param dataId
      * @param groupId
      * @param callback
@@ -56,7 +56,7 @@ public interface SubscribeManager {
 
     /**
      * 移除监听事件
-     * 
+     *
      * @param dataId
      * @param groupId
      * @param callback
@@ -65,7 +65,7 @@ public interface SubscribeManager {
 
     /**
      * 主动获取配置信息
-     * 
+     *
      * @param dataId
      * @return 配置信息
      */
@@ -73,7 +73,7 @@ public interface SubscribeManager {
 
     /**
      * 主动获取配置信息
-     * 
+     *
      * @param dataId
      * @param timeout 超时时间，非正数代表无限长，单位毫秒
      * @return 配置信息
@@ -83,7 +83,7 @@ public interface SubscribeManager {
     /**
      * 同 {@linkplain SubscribeManager#fetchConfig(String)}。<br/>
      * groupId 也是组成配置key的部分，可以为<code>null</code>。
-     * 
+     *
      * @param dataId
      * @param groupId
      * @return 配置信息
@@ -93,7 +93,7 @@ public interface SubscribeManager {
     /**
      * 同 {@linkplain SubscribeManager#fetchConfig(String)}。<br/>
      * groupId 也是组成配置key的部分，可以为<code>null</code>。
-     * 
+     *
      * @param dataId
      * @param groupId
      * @param timeout 超时时间，非正数代表无限长，单位毫秒

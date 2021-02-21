@@ -27,14 +27,14 @@ import com.alibaba.otter.shared.communication.core.model.CommunicationParam;
  */
 public class CommunicationConnectionPoolFactory implements CommunicationConnectionFactory {
 
-    private volatile GenericKeyedObjectPool pool      = null;
-    private CommunicationConnectionFactory  factory   = new RmiCommunicationConnectionFactory();
-    private int                             maxActive = 10;
+    private volatile GenericKeyedObjectPool pool = null;
+    private CommunicationConnectionFactory factory = new RmiCommunicationConnectionFactory();
+    private int maxActive = 10;
 
-    public CommunicationConnectionPoolFactory(){
+    public CommunicationConnectionPoolFactory() {
     }
 
-    public CommunicationConnectionPoolFactory(CommunicationConnectionFactory factory){
+    public CommunicationConnectionPoolFactory(CommunicationConnectionFactory factory) {
         this.factory = factory;
         initial();
     }
@@ -70,8 +70,8 @@ public class CommunicationConnectionPoolFactory implements CommunicationConnecti
     public CommunicationConnection createConnection(CommunicationParam params) {
         try {
             CommunicationConnectionPoolable poolable = new CommunicationConnectionPoolable(
-                                                                                           (CommunicationConnection) pool.borrowObject(params),
-                                                                                           this);
+                    (CommunicationConnection) pool.borrowObject(params),
+                    this);
             return poolable;
         } catch (Exception e) {
             throw new CommunicationException("createConnection_error", e);

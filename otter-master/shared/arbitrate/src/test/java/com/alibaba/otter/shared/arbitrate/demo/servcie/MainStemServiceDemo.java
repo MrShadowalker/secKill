@@ -32,10 +32,10 @@ import com.google.common.collect.Maps;
 public class MainStemServiceDemo implements PipelineLifeCycle {
 
     private ArbitrateEventService arbitrateEventService;
-    private ExecutorService       executor = Executors.newCachedThreadPool();
-    private Map<Long, Future>     threads  = Maps.newConcurrentMap();
+    private ExecutorService executor = Executors.newCachedThreadPool();
+    private Map<Long, Future> threads = Maps.newConcurrentMap();
 
-    public MainStemServiceDemo(){
+    public MainStemServiceDemo() {
 
     }
 
@@ -61,7 +61,7 @@ public class MainStemServiceDemo implements PipelineLifeCycle {
 
         private Long pipelineId;
 
-        public MainStemWorker(Long pipelineId){
+        public MainStemWorker(Long pipelineId) {
             this.pipelineId = pipelineId;
         }
 

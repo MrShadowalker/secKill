@@ -69,7 +69,7 @@ public class IbatisPipelineNodeRelationDAO extends SqlMapClientDaoSupport implem
     public List<PipelineNodeRelationDO> listByPipelineIds(Long... pipelineId) {
         Assert.assertNotNull(pipelineId);
         return (List<PipelineNodeRelationDO>) getSqlMapClientTemplate().queryForList("listRelationsByPipelineIds",
-                                                                                     pipelineId);
+                pipelineId);
     }
 
     public List<PipelineNodeRelationDO> listByNodeId(Long nodeId) {

@@ -28,23 +28,23 @@ import com.alibaba.otter.shared.common.utils.OtterToStringStyle;
 
 /**
  * 同步任务数据对象
- * 
+ *
  * @author jianghang 2011-8-31 下午07:35:38
  */
 public class Pipeline implements Serializable {
 
-    private static final long   serialVersionUID = 5055655233043393285L;
-    private Long                id;
-    private Long                channelId;                                 // 对应关联的channel唯一标示id
-    private String              name;
-    private String              description;                               // 描述信息
-    private List<Node>          selectNodes;
-    private List<Node>          extractNodes;
-    private List<Node>          loadNodes;
+    private static final long serialVersionUID = 5055655233043393285L;
+    private Long id;
+    private Long channelId;                                 // 对应关联的channel唯一标示id
+    private String name;
+    private String description;                               // 描述信息
+    private List<Node> selectNodes;
+    private List<Node> extractNodes;
+    private List<Node> loadNodes;
     private List<DataMediaPair> pairs;
-    private Date                gmtCreate;
-    private Date                gmtModified;
-    private PipelineParameter   parameters       = new PipelineParameter();
+    private Date gmtCreate;
+    private Date gmtModified;
+    private PipelineParameter parameters = new PipelineParameter();
 
     public Long getId() {
         return id;

@@ -47,20 +47,20 @@ import com.alibaba.otter.shared.common.model.config.data.ExtensionDataType;
 public class DataMediaPairAction {
 
     @Resource(name = "dataMediaPairService")
-    private DataMediaPairService   dataMediaPairService;
+    private DataMediaPairService dataMediaPairService;
 
     @Resource(name = "dataMediaService")
-    private DataMediaService       dataMediaService;
+    private DataMediaService dataMediaService;
 
     @Resource(name = "dataMediaSourceService")
     private DataMediaSourceService dataMediaSourceService;
 
     @Resource(name = "channelService")
-    private ChannelService         channelService;
+    private ChannelService channelService;
 
     /**
      * 添加DataMediaPair
-     * 
+     *
      * @param channelInfo
      * @param channelParameterInfo
      * @throws Exception
@@ -109,14 +109,14 @@ public class DataMediaPairAction {
             nav.redirectToLocation("dataMediaPairList.htm?pipelineId=" + dataMediaPair.getPipelineId());
         } else if (submitKey.equals("下一步")) {
             nav.redirectToLocation("addColumnPair.htm?dataMediaPairId=" + id + "&pipelineId="
-                                   + dataMediaPair.getPipelineId() + "&dataMediaPairId=" + id + "&sourceMediaId="
-                                   + sourceDataMedia.getId() + "&targetMediaId=" + targetDataMedia.getId());
+                    + dataMediaPair.getPipelineId() + "&dataMediaPairId=" + id + "&sourceMediaId="
+                    + sourceDataMedia.getId() + "&targetMediaId=" + targetDataMedia.getId());
         }
     }
 
     /**
      * 批量添加DataMediaPair
-     * 
+     *
      * @param dataMediaPairInfo
      * @throws Exception
      */
@@ -230,8 +230,8 @@ public class DataMediaPairAction {
             nav.redirectToLocation("dataMediaPairList.htm?pipelineId=" + dataMediaPair.getPipelineId());
         } else if (submitKey.equals("下一步")) {
             nav.redirectToLocation("addColumnPair.htm?pipelineId=" + dataMediaPair.getPipelineId() + "&channelId="
-                                   + channelId + "&dataMediaPairId=" + dataMediaPair.getId() + "&sourceMediaId="
-                                   + sourceDataMedia.getId() + "&targetMediaId=" + targetDataMedia.getId());
+                    + channelId + "&dataMediaPairId=" + dataMediaPair.getId() + "&sourceMediaId="
+                    + sourceDataMedia.getId() + "&targetMediaId=" + targetDataMedia.getId());
         }
     }
 
@@ -251,7 +251,7 @@ public class DataMediaPairAction {
 
     /**
      * 选择视图同步
-     * 
+     *
      * @param channelInfo
      * @param channelParameterInfo
      * @throws Exception

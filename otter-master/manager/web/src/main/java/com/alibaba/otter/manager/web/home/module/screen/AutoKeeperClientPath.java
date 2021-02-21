@@ -35,10 +35,10 @@ public class AutoKeeperClientPath {
     private AutoKeeperClusterService autoKeeperClusterService;
 
     @Resource(name = "autoKeeperStatService")
-    private AutoKeeperStatService    autoKeeperStatService;
+    private AutoKeeperStatService autoKeeperStatService;
 
     public void execute(@Param("clusterId") String clusterId, @Param("address") String address, Context context)
-                                                                                                                throws Exception {
+            throws Exception {
 
         AutoKeeperCluster autoKeeperCluster = autoKeeperClusterService.findAutoKeeperClusterById(Long.valueOf(clusterId));
         Set<AutoKeeperConnectionStat> autoKeeperConnectionStats = new HashSet<AutoKeeperConnectionStat>();

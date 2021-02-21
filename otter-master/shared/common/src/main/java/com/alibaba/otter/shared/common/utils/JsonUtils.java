@@ -48,7 +48,7 @@ import com.alibaba.otter.shared.common.utils.JsonUtils.InetSocketAddressSerializ
 
 /**
  * 字节处理相关工具类
- * 
+ *
  * @author jianghang
  */
 public class JsonUtils {
@@ -63,8 +63,8 @@ public class JsonUtils {
         ParserConfig.getGlobalInstance().getDeserializers().put(Inet4Address.class, InetAddressDeserializer.instance);
         ParserConfig.getGlobalInstance().getDeserializers().put(Inet6Address.class, InetAddressDeserializer.instance);
         ParserConfig.getGlobalInstance()
-            .getDeserializers()
-            .put(InetSocketAddress.class, InetSocketAddressDeserializer.instance);
+                .getDeserializers()
+                .put(InetSocketAddress.class, InetSocketAddressDeserializer.instance);
         SerializeConfig.getGlobalInstance().put(Inet6Address.class, InetAddressSerializer.instance);
 
         // ParserConfig.getGlobalInstance().setAutoTypeSupport(true);
@@ -150,7 +150,7 @@ public class JsonUtils {
         public static InetAddressSerializer instance = new InetAddressSerializer();
 
         public void write(JSONSerializer serializer, Object object, Object fieldName, Type fieldType)
-                                                                                                     throws IOException {
+                throws IOException {
             if (object == null) {
                 serializer.writeNull();
                 return;
@@ -162,7 +162,7 @@ public class JsonUtils {
         }
 
         public void write(JSONSerializer serializer, Object object, Object fieldName, Type fieldType, int features)
-                                                                                                                   throws IOException {
+                throws IOException {
             if (object == null) {
                 serializer.writeNull();
                 return;
@@ -179,7 +179,7 @@ public class JsonUtils {
         public static InetSocketAddressSerializer instance = new InetSocketAddressSerializer();
 
         public void write(JSONSerializer serializer, Object object, Object fieldName, Type fieldType)
-                                                                                                     throws IOException {
+                throws IOException {
             if (object == null) {
                 serializer.writeNull();
                 return;
@@ -202,7 +202,7 @@ public class JsonUtils {
         }
 
         public void write(JSONSerializer serializer, Object object, Object fieldName, Type fieldType, int features)
-                                                                                                                   throws IOException {
+                throws IOException {
             if (object == null) {
                 serializer.writeNull();
                 return;
@@ -257,7 +257,7 @@ public class JsonUtils {
 
                 Object address = null;
                 int port = 0;
-                for (;;) {
+                for (; ; ) {
                     String key = lexer.stringVal();
                     lexer.nextToken(JSONToken.COLON);
 

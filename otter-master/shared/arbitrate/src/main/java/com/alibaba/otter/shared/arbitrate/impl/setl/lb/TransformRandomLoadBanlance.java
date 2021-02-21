@@ -22,13 +22,13 @@ import com.alibaba.otter.shared.common.model.config.node.Node;
 
 /**
  * transform模块的负载均衡实现
- * 
+ *
  * @author jianghang 2011-9-20 下午01:24:22
  * @version 4.0.0
  */
 public class TransformRandomLoadBanlance extends RandomLoadBalance {
 
-    public TransformRandomLoadBanlance(Long pipelineId){
+    public TransformRandomLoadBanlance(Long pipelineId) {
         super(pipelineId);
     }
 

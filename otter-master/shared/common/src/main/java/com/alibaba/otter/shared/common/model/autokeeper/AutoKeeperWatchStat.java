@@ -20,7 +20,7 @@ import java.util.List;
 
 /**
  * watch对应的状态 <br/>
- * 
+ *
  * <pre>
  * 命令1: echo wchc | nc 127.0.0.1 2181
  * ----
@@ -38,15 +38,15 @@ import java.util.List;
  * 1 connections watching 2 paths
  * Total watches:2
  * </pre>
- * 
+ *
  * @author jianghang 2012-9-21 下午02:19:30
  * @version 4.1.0
  */
 public class AutoKeeperWatchStat extends AutoKeeperStat {
 
     private static final long serialVersionUID = -448913735928277986L;
-    private String            sessionId;
-    private List<String>      paths;
+    private String sessionId;
+    private List<String> paths;
 
     public String getSessionId() {
         return sessionId;

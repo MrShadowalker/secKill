@@ -21,17 +21,17 @@ import java.util.Date;
 
 /**
  * 类DataColumnPairGroupDO.java的实现描述：TODO 类实现描述
- * 
+ *
  * @author simon 2012-4-20 下午4:09:50
  */
 public class DataColumnPairGroupDO implements Serializable {
 
     private static final long serialVersionUID = 7205447225855754450L;
-    private Long              id;
-    private String            columnPairContent;
-    private Long              dataMediaPairId;
-    private Date              gmtCreate;
-    private Date              gmtModified;
+    private Long id;
+    private String columnPairContent;
+    private Long dataMediaPairId;
+    private Date gmtCreate;
+    private Date gmtModified;
 
     public Long getId() {
         return id;

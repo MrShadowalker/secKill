@@ -29,11 +29,11 @@ public class AppUpdateEvent extends Event {
 
     private static final long serialVersionUID = 810191575813164952L;
 
-    public AppUpdateEvent(){
+    public AppUpdateEvent() {
         super(AppEventType.update);
     }
 
-    private String     name;
+    private String name;
     private BigInteger bigIntegerValue;
     private BigDecimal bigDecimalValue;
     private UpdateData data;
@@ -41,9 +41,9 @@ public class AppUpdateEvent extends Event {
     public static class UpdateData implements Serializable {
 
         private static final long serialVersionUID = -2591770066519646446L;
-        private String            name;
-        private BigInteger        bigIntegerValue;
-        private BigDecimal        bigDecimalValue;
+        private String name;
+        private BigInteger bigIntegerValue;
+        private BigDecimal bigDecimalValue;
 
         public String getName() {
             return name;

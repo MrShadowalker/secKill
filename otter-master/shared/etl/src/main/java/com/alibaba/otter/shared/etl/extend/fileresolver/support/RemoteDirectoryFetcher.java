@@ -24,7 +24,7 @@ public interface RemoteDirectoryFetcher {
 
     /**
      * 获取 RemoteDirectory， 可能为 null!
-     * 
+     *
      * @param namespace
      * @param path
      * @return

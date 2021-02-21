@@ -47,12 +47,12 @@ import com.alibaba.otter.shared.common.utils.JsonUtils;
  */
 public class CanalServiceImpl implements CanalService {
 
-    private static final Logger      logger = LoggerFactory.getLogger(NodeServiceImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(NodeServiceImpl.class);
 
-    private CanalDAO                 canalDao;
-    private TransactionTemplate      transactionTemplate;
+    private CanalDAO canalDao;
+    private TransactionTemplate transactionTemplate;
     private AutoKeeperClusterService autoKeeperClusterService;
-    private ArbitrateViewService     arbitrateViewService;
+    private ArbitrateViewService arbitrateViewService;
 
     /**
      * 添加
@@ -208,7 +208,7 @@ public class CanalServiceImpl implements CanalService {
 
     /**
      * 用于Model对象转化为DO对象
-     * 
+     *
      * @param canal
      * @return CanalDO
      */
@@ -231,7 +231,7 @@ public class CanalServiceImpl implements CanalService {
 
     /**
      * 用于DO对象转化为Model对象
-     * 
+     *
      * @param canalDo
      * @return Canal
      */

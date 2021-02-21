@@ -44,13 +44,13 @@ import com.alibaba.otter.shared.common.utils.zookeeper.ZooKeeperx;
  * 实现一个基于zookeeper的分布式锁 <br/>
  * document : <br/>
  * <a href="http://zookeeper.apache.org/doc/trunk/recipes.html">http://zookeeper.apache.org/doc/trunk/recipes.html</a>
- * 
+ *
  * <pre>
  * 使用注意：
  *  传统的{@linkplain ReentrantLock}使用有所区别，ReentrantLock主要用于空只单进程多线程之间的调度，所以要求每个线程使用同一个ReentrantLock实例
  *  而{@linkplain DistributedLock}主要是用于控制多进程的调度，所以如果需要被用来控制多线程时，需要使用不同的DistributedLock实例对象。
  *  <strong>因此单个DistributedLock实例在多个线程中进行lock/unlock操作时会有线程安全问题!!</strong>
- *  
+ *
  * 使用例子：
  * <code>
  *         DistributedLock lock = new DistributedLock("/lock/");
@@ -70,26 +70,26 @@ import com.alibaba.otter.shared.common.utils.zookeeper.ZooKeeperx;
  *         }
  * </code>
  * </pre>
- * 
+ *
  * @author jianghang 2011-9-29 上午11:16:07
  * @version 4.0.0
  */
 public class DistributedLock {
 
-    private static final Logger  logger    = LoggerFactory.getLogger(DistributedLock.class);
-    private static final byte[]  data      = { 0x12, 0x34 };
+    private static final Logger logger = LoggerFactory.getLogger(DistributedLock.class);
+    private static final byte[] data = {0x12, 0x34};
     // private static final Long DEFAULT_TIMEOUT_PERIOD = 60 * 1000L;
-    private ZkClientx            zookeeper = ZooKeeperClient.getInstance();
-    private final String         root;                                                      // 根节点路径
-    private String               id;
-    private LockNode             idName;
-    private String               ownerId;
-    private String               lastChildId;
-    private Throwable            other     = null;
-    private KeeperException      exception = null;
+    private ZkClientx zookeeper = ZooKeeperClient.getInstance();
+    private final String root;                                                      // 根节点路径
+    private String id;
+    private LockNode idName;
+    private String ownerId;
+    private String lastChildId;
+    private Throwable other = null;
+    private KeeperException exception = null;
     private InterruptedException interrupt = null;
 
-    public DistributedLock(String root){
+    public DistributedLock(String root) {
         this.root = root;
         ensureExists(root);
     }
@@ -146,7 +146,7 @@ public class DistributedLock {
 
     /**
      * 尝试获取锁对象, 不会阻塞
-     * 
+     *
      * @throws InterruptedException
      * @throws KeeperException
      */

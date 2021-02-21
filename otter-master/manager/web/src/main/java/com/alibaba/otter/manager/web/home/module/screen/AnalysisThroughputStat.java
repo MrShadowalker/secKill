@@ -40,7 +40,7 @@ public class AnalysisThroughputStat {
     private ThroughputStatService throughputStatService;
 
     @Resource(name = "channelService")
-    private ChannelService        channelService;
+    private ChannelService channelService;
 
     public void execute(@Param("pipelineId") Long pipelineId, Context context) throws Exception {
         Channel channel = channelService.findByPipelineId(pipelineId);

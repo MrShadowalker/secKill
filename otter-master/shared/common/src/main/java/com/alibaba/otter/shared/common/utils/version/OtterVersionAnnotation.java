@@ -30,7 +30,7 @@ public @interface OtterVersionAnnotation {
 
     /**
      * Get the Otter version
-     * 
+     *
      * @return the version string "3.0.5-r"
      */
     String version();
@@ -42,7 +42,7 @@ public @interface OtterVersionAnnotation {
 
     /**
      * Get the date when Otter was compiled.
-     * 
+     *
      * @return the date in unix 'date' format
      */
     String date();
@@ -54,21 +54,21 @@ public @interface OtterVersionAnnotation {
 
     /**
      * Get the subversion revision.
-     * 
+     *
      * @return the revision number as a string (eg. "168168")
      */
     String revision();
 
     /**
      * Get the branch from which this was compiled.
-     * 
+     *
      * @return The branch name, e.g. "trunk" or "branches/branch-3.0.5"
      */
     String branch();
 
     /**
      * Get a checksum of the source files from which Otter was compiled.
-     * 
+     *
      * @return a string that uniquely identifies the source
      */
     String srcChecksum();

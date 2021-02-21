@@ -24,14 +24,14 @@ import java.util.Date;
  */
 public class TopDelayStat {
 
-    private String   channelName;
-    private String   pipelineName;
-    private Long     channelId;
-    private Long     pipelineId;
-    private Long     delayTime;
-    private Date     lastUpdate;                     // 延迟统计最后一次更新时间
-    private Long     statTime;                       // stat统计时间范围,分钟为单位
-    private DataStat dbStat   = new DataStat(0L, 0L);
+    private String channelName;
+    private String pipelineName;
+    private Long channelId;
+    private Long pipelineId;
+    private Long delayTime;
+    private Date lastUpdate;                     // 延迟统计最后一次更新时间
+    private Long statTime;                       // stat统计时间范围,分钟为单位
+    private DataStat dbStat = new DataStat(0L, 0L);
     private DataStat fileStat = new DataStat(0L, 0L);
 
     public String getChannelName() {
@@ -115,7 +115,7 @@ public class TopDelayStat {
 
     public static class DataStat {
 
-        public DataStat(Long number, Long size){
+        public DataStat(Long number, Long size) {
             this.number = number;
             this.size = size;
         }

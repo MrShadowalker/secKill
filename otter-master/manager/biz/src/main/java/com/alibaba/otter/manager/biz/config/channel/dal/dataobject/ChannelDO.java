@@ -28,13 +28,13 @@ import com.alibaba.otter.shared.common.model.config.channel.ChannelStatus;
 public class ChannelDO implements Serializable {
 
     private static final long serialVersionUID = 3708730560311969117L;
-    private Long              id;                                     // 唯一标示id
-    private String            name;                                   // channel命名
-    private ChannelStatus     status;                                 // 运行状态
-    private String            description;                            // 描述信息
-    private ChannelParameter  parameters;                             // 配置参数
-    private Date              gmtCreate;
-    private Date              gmtModified;
+    private Long id;                                     // 唯一标示id
+    private String name;                                   // channel命名
+    private ChannelStatus status;                                 // 运行状态
+    private String description;                            // 描述信息
+    private ChannelParameter parameters;                             // 配置参数
+    private Date gmtCreate;
+    private Date gmtModified;
 
     public Long getId() {
         return id;

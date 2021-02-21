@@ -31,13 +31,13 @@ import com.alibaba.otter.shared.communication.core.model.heart.HeartEvent;
 
 /**
  * 默认的endpoint实现
- * 
+ *
  * @author jianghang 2011-9-9 下午07:01:49
  */
 public abstract class AbstractCommunicationEndpoint implements CommunicationEndpoint {
 
     // 需要禁止输出详细内容的事件
-    private static final Logger logger         = LoggerFactory.getLogger(CommunicationEndpoint.class);
+    private static final Logger logger = LoggerFactory.getLogger(CommunicationEndpoint.class);
 
     private static final String DEFAULT_METHOD = "handleEvent";
 
@@ -56,27 +56,27 @@ public abstract class AbstractCommunicationEndpoint implements CommunicationEndp
                 // 通过反射获取方法并执行
                 String methodName = "on" + StringUtils.capitalize(event.getType().toString());
                 Method method = ReflectionUtils.findMethod(action.getClass(), methodName,
-                                                           new Class[] { event.getClass() });
+                        new Class[]{event.getClass()});
                 if (method == null) {
                     methodName = DEFAULT_METHOD; // 尝试一下默认方法
-                    method = ReflectionUtils.findMethod(action.getClass(), methodName, new Class[] { event.getClass() });
+                    method = ReflectionUtils.findMethod(action.getClass(), methodName, new Class[]{event.getClass()});
 
                     if (method == null) { // 再尝试一下Event参数
-                        method = ReflectionUtils.findMethod(action.getClass(), methodName, new Class[] { Event.class });
+                        method = ReflectionUtils.findMethod(action.getClass(), methodName, new Class[]{Event.class});
                     }
                 }
                 // 方法不为空就调用指定的方法,反之调用缺省的处理函数
                 if (method != null) {
                     try {
                         ReflectionUtils.makeAccessible(method);
-                        return method.invoke(action, new Object[] { event });
+                        return method.invoke(action, new Object[]{event});
                     } catch (Throwable e) {
                         throw new CommunicationException("method_invoke_error:" + methodName, e);
                     }
                 } else {
                     throw new CommunicationException("no_method_error for["
-                                                     + StringUtils.capitalize(event.getType().toString())
-                                                     + "] in Class[" + action.getClass().getName() + "]");
+                            + StringUtils.capitalize(event.getType().toString())
+                            + "] in Class[" + action.getClass().getName() + "]");
                 }
 
             }

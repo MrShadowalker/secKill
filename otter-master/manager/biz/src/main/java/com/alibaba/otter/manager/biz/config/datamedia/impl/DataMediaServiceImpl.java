@@ -49,13 +49,13 @@ import com.alibaba.otter.shared.common.utils.meta.DdlUtils;
  */
 public class DataMediaServiceImpl implements DataMediaService {
 
-    private static final Logger    logger = LoggerFactory.getLogger(DataMediaServiceImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(DataMediaServiceImpl.class);
 
-    private DataMediaDAO           dataMediaDao;
+    private DataMediaDAO dataMediaDao;
 
     private DataMediaSourceService dataMediaSourceService;
 
-    private DataSourceCreator      dataSourceCreator;
+    private DataSourceCreator dataSourceCreator;
 
     @Override
     public List<String> queryColumnByMediaId(Long dataMediaId) {
@@ -186,7 +186,7 @@ public class DataMediaServiceImpl implements DataMediaService {
             List<DataMediaDO> dataMediaDos = dataMediaDao.listByCondition(condition);
             if (dataMediaDos.isEmpty()) {
                 logger.debug("DEBUG ## couldn't query any dataMedias by the condition:"
-                             + JsonUtils.marshalToString(condition));
+                        + JsonUtils.marshalToString(condition));
                 return dataMedias;
             }
             dataMedias = doToModel(dataMediaDos);
@@ -207,7 +207,7 @@ public class DataMediaServiceImpl implements DataMediaService {
         List<DataMedia> dataMedias = listByIds(dataMediaId);
         if (dataMedias.size() != 1) {
             String exceptionCause = "query dataMediaId:" + dataMediaId + " but return " + dataMedias.size()
-                                    + " dataMedia.";
+                    + " dataMedia.";
             logger.error("ERROR ## " + exceptionCause);
             throw new ManagerException(exceptionCause);
         }
@@ -230,7 +230,7 @@ public class DataMediaServiceImpl implements DataMediaService {
                 dataMediaDos = dataMediaDao.listByMultiId(identities);
                 if (dataMediaDos.isEmpty()) {
                     String exceptionCause = "couldn't query any dataMedia by dataMediaIds:"
-                                            + Arrays.toString(identities);
+                            + Arrays.toString(identities);
                     logger.error("ERROR ## " + exceptionCause);
                     throw new ManagerException(exceptionCause);
                 }
@@ -273,7 +273,7 @@ public class DataMediaServiceImpl implements DataMediaService {
 
     /**
      * 用于Model对象转化为DO对象
-     * 
+     *
      * @param dataMedia
      * @return DataMediaDO
      */
@@ -302,7 +302,7 @@ public class DataMediaServiceImpl implements DataMediaService {
 
     /**
      * 用于DO对象转化为Model对象
-     * 
+     *
      * @param dataMediaDo
      * @return DataMedia
      */

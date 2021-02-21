@@ -81,7 +81,7 @@ public class DelayStatServiceImpl implements DelayStatService {
             // 取出每个时间点i以内的数据，k是一个游标，每次遍历时前面已经取过了的数据就不用再遍历了
             for (int j = k; j >= 0; --j) {
                 if ((i - delayStatDOs.get(j).getGmtModified().getTime() <= 60 * 1000)
-                    && (i - delayStatDOs.get(j).getGmtModified().getTime() >= 0)) {
+                        && (i - delayStatDOs.get(j).getGmtModified().getTime() >= 0)) {
                     delayStats.add(delayStatDOToModel(delayStatDOs.get(j)));
                     k = j - 1;
                 }// 如果不满足if条件，则后面的数据也不用再遍历
@@ -104,7 +104,7 @@ public class DelayStatServiceImpl implements DelayStatService {
 
     /**
      * 用于Model对象转化为DO对象
-     * 
+     *
      * @param delayStat
      * @return DelayStatDO
      */
@@ -122,7 +122,7 @@ public class DelayStatServiceImpl implements DelayStatService {
 
     /**
      * 用于DO对象转化为Model对象
-     * 
+     *
      * @param delayStatDO
      * @return DelayStat
      */

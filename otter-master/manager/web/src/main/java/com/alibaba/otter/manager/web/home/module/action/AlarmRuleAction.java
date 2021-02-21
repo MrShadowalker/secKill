@@ -39,14 +39,14 @@ import com.alibaba.otter.shared.common.model.config.parameter.SystemParameter;
 public class AlarmRuleAction extends AbstractAction {
 
     @Resource(name = "alarmRuleService")
-    private AlarmRuleService       alarmRuleService;
+    private AlarmRuleService alarmRuleService;
 
     @Resource(name = "systemParameterService")
     private SystemParameterService systemParameterService;
 
     public void doAdd(@FormGroup("alarmRuleInfo") Group alarmRuleInfo,
                       @FormField(name = "formAlarmRuleError", group = "alarmRuleInfo") CustomErrors err, Navigator nav)
-                                                                                                                       throws Exception {
+            throws Exception {
         AlarmRule alarmRule = new AlarmRule();
         alarmRuleInfo.setProperties(alarmRule);
 
@@ -118,7 +118,7 @@ public class AlarmRuleAction extends AbstractAction {
      */
     public void doEdit(@FormGroup("alarmRuleInfo") Group alarmRuleInfo,
                        @FormField(name = "formAlarmRuleError", group = "alarmRuleInfo") CustomErrors err, Navigator nav)
-                                                                                                                        throws Exception {
+            throws Exception {
         AlarmRule alarmRule = new AlarmRule();
         alarmRuleInfo.setProperties(alarmRule);
 
@@ -135,7 +135,7 @@ public class AlarmRuleAction extends AbstractAction {
      * 删除node
      */
     public void doDelete(@Param("alarmRuleId") Long alarmRuleId, @Param("pipelineId") Long pipelineId, Navigator nav)
-                                                                                                                     throws WebxException {
+            throws WebxException {
         alarmRuleService.remove(alarmRuleId);
 
         nav.redirectToLocation("alarmRuleList.htm?pipelineId=" + pipelineId);
@@ -144,7 +144,7 @@ public class AlarmRuleAction extends AbstractAction {
 
     public void doStatus(@Param("alarmRuleId") Long alarmRuleId, @Param("pipelineId") Long pipelineId,
                          @Param("status") String status, @Param("pauseTime") String pauseTime, Navigator nav)
-                                                                                                             throws WebxException {
+            throws WebxException {
         if (status.equals("enable")) {
             alarmRuleService.enableMonitor(alarmRuleId);
         } else if (status.equals("disable")) {
@@ -160,7 +160,7 @@ public class AlarmRuleAction extends AbstractAction {
 
     public void doStatusSystem(@Param("alarmRuleId") Long alarmRuleId, @Param("pageIndex") int pageIndex,
                                @Param("status") String status, @Param("pauseTime") String pauseTime, Navigator nav)
-                                                                                                                   throws WebxException {
+            throws WebxException {
 
         if (status.equals("enable")) {
             alarmRuleService.enableMonitor(alarmRuleId);
@@ -198,7 +198,7 @@ public class AlarmRuleAction extends AbstractAction {
 
     public void doStatusByRule(@Param("alarmRuleIds") String alarmRuleIds, @Param("pageIndex") int pageIndex,
                                @Param("status") String status, @Param("pauseTime") String pauseTime, Navigator nav)
-                                                                                                                   throws WebxException {
+            throws WebxException {
 
         String[] a = alarmRuleIds.split(",");
         List<String> alarmRuleArray = Arrays.asList(a);

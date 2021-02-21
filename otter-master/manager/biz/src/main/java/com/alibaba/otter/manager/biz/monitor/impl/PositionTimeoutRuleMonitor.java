@@ -32,17 +32,17 @@ import com.alibaba.otter.shared.common.model.config.pipeline.Pipeline;
 
 /**
  * 位点超时监控
- * 
+ *
  * @author jianghang 2012-12-12 上午10:33:12
  * @version 4.1.3
  */
 public class PositionTimeoutRuleMonitor extends AbstractRuleMonitor {
 
-    private PipelineService      pipelineService;
+    private PipelineService pipelineService;
     private ArbitrateViewService arbitrateViewService;
-    private static final String  TIME_OUT_MESSAGE = "pid:%s position %s seconds no update";
+    private static final String TIME_OUT_MESSAGE = "pid:%s position %s seconds no update";
 
-    PositionTimeoutRuleMonitor(){
+    PositionTimeoutRuleMonitor() {
         MonitorRuleExplorerRegisty.register(MonitorName.POSITIONTIMEOUT, this);
     }
 
@@ -54,7 +54,7 @@ public class PositionTimeoutRuleMonitor extends AbstractRuleMonitor {
         Long pipelineId = rules.get(0).getPipelineId();
         Pipeline pipeline = pipelineService.findById(pipelineId);
         PositionEventData data = arbitrateViewService.getCanalCursor(pipeline.getParameters().getDestinationName(),
-                                                                     pipeline.getParameters().getMainstemClientId());
+                pipeline.getParameters().getMainstemClientId());
 
         long latestSyncTime = 0L;
         if (data != null && data.getModifiedTime() != null) {
@@ -73,7 +73,7 @@ public class PositionTimeoutRuleMonitor extends AbstractRuleMonitor {
 
         if (flag) {
             logRecordAlarm(pipelineId, MonitorName.POSITIONTIMEOUT,
-                           String.format(TIME_OUT_MESSAGE, pipelineId, (elapsed / 1000)));
+                    String.format(TIME_OUT_MESSAGE, pipelineId, (elapsed / 1000)));
         }
     }
 

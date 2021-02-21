@@ -31,10 +31,10 @@ import com.alibaba.otter.shared.common.model.config.node.Node;
 public class NodeInfo {
 
     @Resource(name = "nodeService")
-    private NodeService       nodeService;
+    private NodeService nodeService;
 
     @Resource(name = "channelService")
-    private ChannelService    channelService;
+    private ChannelService channelService;
 
     @Resource(name = "nodeRemoteService")
     private NodeRemoteService nodeRemoteService;

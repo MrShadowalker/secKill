@@ -30,14 +30,14 @@ import com.alibaba.otter.shared.common.utils.OtterToStringStyle;
 public class StageStat implements Serializable {
 
     private static final long serialVersionUID = 8751367492373579459L;
-    private Long              pipelineId;
-    private Long              processId;
-    private StageType         stage;                                  // 对应的阶段
-    private Long              startTime;                              // 开始时间
-    private Long              endTime;                                // 结束时间
-    private Long              number;                                 // 处理的数据量
-    private Long              size;                                   // 处理的数据大小
-    private Map               exts;                                   // 扩展信息字段
+    private Long pipelineId;
+    private Long processId;
+    private StageType stage;                                  // 对应的阶段
+    private Long startTime;                              // 开始时间
+    private Long endTime;                                // 结束时间
+    private Long number;                                 // 处理的数据量
+    private Long size;                                   // 处理的数据大小
+    private Map exts;                                   // 扩展信息字段
 
     public Long getPipelineId() {
         return pipelineId;

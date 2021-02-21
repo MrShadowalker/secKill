@@ -51,7 +51,7 @@ import com.alibaba.otter.shared.communication.model.config.NotifyChannelEvent;
 
 /**
  * Config的remote接口处理
- * 
+ *
  * @author jianghang 2011-10-21 下午02:53:53
  * @version 4.0.0
  */
@@ -59,11 +59,11 @@ public class ConfigRemoteServiceImpl implements ConfigRemoteService {
 
     private static final Logger logger = LoggerFactory.getLogger(ConfigRemoteServiceImpl.class);
     private CommunicationClient communicationClient;
-    private ChannelService      channelService;
-    private NodeService         nodeService;
-    private DataMatrixService   dataMatrixService;
+    private ChannelService channelService;
+    private NodeService nodeService;
+    private DataMatrixService dataMatrixService;
 
-    public ConfigRemoteServiceImpl(){
+    public ConfigRemoteServiceImpl() {
         // 注册一下事件处理
         CommunicationRegistry.regist(ConfigEventType.findChannel, this);
         CommunicationRegistry.regist(ConfigEventType.findNode, this);
@@ -118,7 +118,7 @@ public class ConfigRemoteServiceImpl implements ConfigRemoteService {
                 String[] addrs = addrsList.toArray(new String[addrsList.size()]);
                 List<Boolean> result = (List<Boolean>) communicationClient.call(addrs, event); // 推送配置
                 logger.info("## notifyChannel to 【{}】 channel【{}】 result【{}】",
-                    new Object[] { ArrayUtils.toString(addrs), channel.toString(), result });
+                        new Object[]{ArrayUtils.toString(addrs), channel.toString(), result});
 
                 boolean flag = true;
                 for (Boolean f : result) {

@@ -23,14 +23,14 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 参数信息类
- * 
+ *
  * @author jianghang 2011-9-2 上午10:35:16
  */
 public class Parameter implements Serializable {
 
-    private static final long   serialVersionUID      = -8019445081834822960L;
-    private Map<String, String> params                = new ConcurrentHashMap<String, String>(10);
-    private boolean             mergeSystemProperties = true;
+    private static final long serialVersionUID = -8019445081834822960L;
+    private Map<String, String> params = new ConcurrentHashMap<String, String>(10);
+    private boolean mergeSystemProperties = true;
 
     public Object put(String key, String value) {
         return params.put(key, value);

@@ -20,7 +20,7 @@ import com.alibaba.otter.shared.common.model.config.pipeline.PipelineParameter.A
 
 /**
  * process node节点使用的数据对象
- * 
+ *
  * @author jianghang 2011-12-1 下午06:23:40
  * @version 4.0.0
  */
@@ -29,9 +29,13 @@ public class ProcessNodeEventData extends EventData {
     private static final long serialVersionUID = -7622558087796345197L;
 
     public enum Status {
-        /** 已使用 */
+        /**
+         * 已使用
+         */
         USED,
-        /** 未使用 */
+        /**
+         * 未使用
+         */
         UNUSED;
 
         public boolean isUsed() {
@@ -43,8 +47,8 @@ public class ProcessNodeEventData extends EventData {
         }
     }
 
-    private Long          nid;
-    private Status        status;
+    private Long nid;
+    private Status status;
     private ArbitrateMode mode = ArbitrateMode.ZOOKEEPER;
 
     public Status getStatus() {

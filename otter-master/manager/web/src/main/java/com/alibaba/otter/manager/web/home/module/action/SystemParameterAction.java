@@ -41,7 +41,7 @@ public class SystemParameterAction extends AbstractAction {
      * 修改系统参数
      */
     public void doEdit(@FormGroup("systemParameterDetailInfo") Group systemParameterDetailInfo, Navigator nav)
-                                                                                                              throws Exception {
+            throws Exception {
 
         SystemParameter systemParameter = new SystemParameter();
         systemParameterDetailInfo.setProperties(systemParameter);

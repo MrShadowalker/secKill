@@ -32,21 +32,21 @@ import com.alibaba.otter.shared.common.model.config.channel.ChannelStatus;
 
 public class NodeOp extends AbstractJsonScreen<String> {
 
-    private final static String    ONLINE  = "online";
+    private final static String ONLINE = "online";
 
-    private final static String    OFFLINE = "offline";
+    private final static String OFFLINE = "offline";
 
-    private final static String    THREAD  = "thread";
-    private final static String    PROFILE = "profile";
+    private final static String THREAD = "thread";
+    private final static String PROFILE = "profile";
 
     @Resource(name = "channelService")
-    private ChannelService         channelService;
+    private ChannelService channelService;
 
     @Resource(name = "arbitrateManageService")
     private ArbitrateManageService arbitrateManageService;
 
     @Resource(name = "nodeRemoteService")
-    private NodeRemoteService      nodeRemoteService;
+    private NodeRemoteService nodeRemoteService;
 
     public void execute(@Param("nid") Long nid, @Param("command") String command, @Param("value") String value) {
         try {

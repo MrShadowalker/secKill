@@ -22,7 +22,7 @@ import com.alibaba.otter.shared.common.model.config.node.Node;
 
 public class ExtractStickLoadBalance extends StickLoadBalance {
 
-    public ExtractStickLoadBalance(Long pipelineId){
+    public ExtractStickLoadBalance(Long pipelineId) {
         super(pipelineId);
     }
 

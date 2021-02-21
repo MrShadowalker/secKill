@@ -36,7 +36,7 @@ import com.alibaba.otter.shared.common.model.config.channel.Channel;
 public class AnalysisDelayStat {
 
     @Resource(name = "channelService")
-    private ChannelService   channelService;
+    private ChannelService channelService;
 
     @Resource(name = "delayStatService")
     private DelayStatService delayStatService;

@@ -26,26 +26,26 @@ public class ConfigException extends NestableRuntimeException {
 
     private static final long serialVersionUID = -7288830284122672209L;
 
-    private String            errorCode;
-    private String            errorDesc;
+    private String errorCode;
+    private String errorDesc;
 
-    public ConfigException(String errorCode){
+    public ConfigException(String errorCode) {
         super(errorCode);
     }
 
-    public ConfigException(String errorCode, Throwable cause){
+    public ConfigException(String errorCode, Throwable cause) {
         super(errorCode, cause);
     }
 
-    public ConfigException(String errorCode, String errorDesc){
+    public ConfigException(String errorCode, String errorDesc) {
         super(errorCode + ":" + errorDesc);
     }
 
-    public ConfigException(String errorCode, String errorDesc, Throwable cause){
+    public ConfigException(String errorCode, String errorDesc, Throwable cause) {
         super(errorCode + ":" + errorDesc, cause);
     }
 
-    public ConfigException(Throwable cause){
+    public ConfigException(Throwable cause) {
         super(cause);
     }
 

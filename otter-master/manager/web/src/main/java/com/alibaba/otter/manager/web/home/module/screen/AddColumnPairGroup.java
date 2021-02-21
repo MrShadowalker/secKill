@@ -36,16 +36,16 @@ import com.alibaba.otter.shared.common.model.config.data.DataMediaPair;
 public class AddColumnPairGroup {
 
     @Resource(name = "dataMediaPairService")
-    private DataMediaPairService       dataMediaPairService;
+    private DataMediaPairService dataMediaPairService;
 
     @Resource(name = "dataMediaService")
-    private DataMediaService           dataMediaService;
+    private DataMediaService dataMediaService;
 
     @Resource(name = "dataColumnPairGroupService")
     private DataColumnPairGroupService dataColumnPairGroupService;
 
     @Resource(name = "dataColumnPairService")
-    private DataColumnPairService      dataColumnPairService;
+    private DataColumnPairService dataColumnPairService;
 
     public void execute(@Param("dataMediaPairId") Long dataMediaPairId, @Param("pipelineId") Long pipelineId,
                         @Param("channelId") Long channelId, @Param("sourceMediaId") Long sourceMediaId,
@@ -57,7 +57,7 @@ public class AddColumnPairGroup {
             DataMediaPair dataMediaPair = dataMediaPairService.findById(dataMediaPairId);
             if (dataMediaPair.getColumnPairMode().isExclude()) {
                 List<ColumnPair> allColumnPairs = buildColumnPairFromDataMedia(dataMediaPairId, sourceMediaId,
-                                                                               targetMediaId);
+                        targetMediaId);
                 allColumnPairs.removeAll(columnPairs); // 如果是exclude模式，排除掉
                 columnPairs = allColumnPairs;
             }

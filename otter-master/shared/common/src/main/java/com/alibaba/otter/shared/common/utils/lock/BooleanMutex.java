@@ -23,18 +23,18 @@ import java.util.concurrent.locks.AbstractQueuedSynchronizer;
 /**
  * 实现一个互斥实现，基于Cocurrent中的{@linkplain AbstractQueuedSynchronizer}实现了自己的sync <br/>
  * 应用场景：系统初始化/授权控制，没权限时阻塞等待。有权限时所有线程都可以快速通过
- * 
+ *
  * <pre>
  * false : 代表需要被阻塞挂起，等待mutex变为true被唤醒
  * true : 唤醒被阻塞在false状态下的thread
- * 
+ *
  * BooleanMutex mutex = new BooleanMutex(true);
  * try {
  *     mutex.get(); //当前状态为true, 不会被阻塞
  * } catch (InterruptedException e) {
  *     // do something
  * }
- * 
+ *
  * mutex.set(false);
  * try {
  *     mutex.get(); //当前状态为false, 会被阻塞直到另一个线程调用mutex.set(true);
@@ -42,7 +42,7 @@ import java.util.concurrent.locks.AbstractQueuedSynchronizer;
  *     // do something
  * }
  * </pre>
- * 
+ *
  * @author jianghang 2011-9-23 上午09:58:03
  * @version 4.0.0
  */
@@ -50,19 +50,19 @@ public class BooleanMutex {
 
     private Sync sync;
 
-    public BooleanMutex(){
+    public BooleanMutex() {
         sync = new Sync();
         set(false);
     }
 
-    public BooleanMutex(Boolean mutex){
+    public BooleanMutex(Boolean mutex) {
         sync = new Sync();
         set(mutex);
     }
 
     /**
      * 阻塞等待Boolean为true
-     * 
+     *
      * @throws InterruptedException
      */
     public void get() throws InterruptedException {
@@ -71,7 +71,7 @@ public class BooleanMutex {
 
     /**
      * 阻塞等待Boolean为true,允许设置超时时间
-     * 
+     *
      * @param timeout
      * @param unit
      * @throws InterruptedException
@@ -83,7 +83,7 @@ public class BooleanMutex {
 
     /**
      * 重新设置对应的Boolean mutex
-     * 
+     *
      * @param mutex
      */
     public void set(Boolean mutex) {
@@ -105,10 +105,14 @@ public class BooleanMutex {
 
         private static final long serialVersionUID = -7828117401763700385L;
 
-        /** State value representing that TRUE */
-        private static final int  TRUE             = 1;
-        /** State value representing that FALSE */
-        private static final int  FALSE            = 2;
+        /**
+         * State value representing that TRUE
+         */
+        private static final int TRUE = 1;
+        /**
+         * State value representing that FALSE
+         */
+        private static final int FALSE = 2;
 
         private boolean isTrue(int state) {
             return (state & TRUE) != 0;
@@ -144,7 +148,7 @@ public class BooleanMutex {
         }
 
         void innerSetTrue() {
-            for (;;) {
+            for (; ; ) {
                 int s = getState();
                 if (s == TRUE) {
                     return; // 直接退出
@@ -157,7 +161,7 @@ public class BooleanMutex {
         }
 
         void innerSetFalse() {
-            for (;;) {
+            for (; ; ) {
                 int s = getState();
                 if (s == FALSE) {
                     return; // 直接退出

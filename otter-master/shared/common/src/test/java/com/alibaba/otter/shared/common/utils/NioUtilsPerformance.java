@@ -30,25 +30,25 @@ import org.apache.commons.io.IOUtils;
 
 /**
  * 测试下nio的一些操作方法性能
- * 
+ *
  * <pre>
- * jvm args : 
+ * jvm args :
  * -server -Xmx2g -Xms2g -Xmn512m -XX:PermSize=196m -Xss256k -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:+UseCMSCompactAtFullCollection -XX:LargePageSizeInBytes=128m -XX:+UseFastAccessorMethods -XX:+UseCMSInitiatingOccupancyOnly -XX:+UseCompressedOops
- * 
+ *
  * result :
- * 500Mb : 
+ * 500Mb :
  * copyTest cost : 12148 , 15924
- * channel cost : 14423 , 13847 
+ * channel cost : 14423 , 13847
  * mapped cost : 7857 , 7883
- * sendfile cost : 5728 , 9352 
- * 
- * 1GB : 
+ * sendfile cost : 5728 , 9352
+ *
+ * 1GB :
  * copyTest cost : 32409 , 33557
  * channel cost : 32856 , 33305
  * mapped cost : 55789 , 52108
  * sendfile cost : 28179 , 30279
  * </pre>
- * 
+ *
  * @author jianghang 2011-10-10 下午03:31:17
  * @version 4.0.0
  */

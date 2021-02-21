@@ -37,17 +37,17 @@ import com.alibaba.otter.shared.common.model.config.node.NodeParameter;
 public class NodeAction extends AbstractAction {
 
     @Resource(name = "nodeService")
-    private NodeService              nodeService;
+    private NodeService nodeService;
 
     @Resource(name = "pipelineService")
-    private PipelineService          pipelineService;
+    private PipelineService pipelineService;
 
     @Resource(name = "autoKeeperClusterService")
     private AutoKeeperClusterService autoKeeperClusterService;
 
     public void doAdd(@FormGroup("nodeInfo") Group nodeInfo, @FormGroup("nodeParameterInfo") Group nodeParameterInfo,
                       @FormField(name = "formNodeError", group = "nodeInfo") CustomErrors err, Navigator nav)
-                                                                                                             throws Exception {
+            throws Exception {
         Node node = new Node();
         NodeParameter parameter = new NodeParameter();
         nodeInfo.setProperties(node);
@@ -83,7 +83,7 @@ public class NodeAction extends AbstractAction {
     public void doEdit(@FormGroup("nodeInfo") Group nodeInfo, @FormGroup("nodeParameterInfo") Group nodeParameterInfo,
                        @Param("pageIndex") int pageIndex, @Param("searchKey") String searchKey,
                        @FormField(name = "formNodeError", group = "nodeInfo") CustomErrors err, Navigator nav)
-                                                                                                              throws Exception {
+            throws Exception {
         Node node = new Node();
         NodeParameter parameter = new NodeParameter();
         nodeInfo.setProperties(node);
@@ -116,7 +116,7 @@ public class NodeAction extends AbstractAction {
 
     /**
      * 删除node
-     * 
+     *
      * @param nodeId
      * @throws WebxException
      */

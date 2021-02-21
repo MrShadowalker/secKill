@@ -26,7 +26,7 @@ import com.alibaba.otter.shared.arbitrate.impl.setl.TransformArbitrateEvent;
 
 /**
  * 仲裁器事件处理的service，使用者可关注相应的await/single两个方法
- * 
+ *
  * @author jianghang 2011-8-9 下午04:39:49
  */
 public interface ArbitrateEventService {

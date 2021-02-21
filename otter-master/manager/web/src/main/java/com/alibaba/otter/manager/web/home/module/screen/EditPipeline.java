@@ -34,13 +34,13 @@ public class EditPipeline {
     @Resource(name = "pipelineService")
     private PipelineService pipelineService;
     @Resource(name = "nodeService")
-    private NodeService     nodeService;
+    private NodeService nodeService;
     @Resource(name = "channelService")
-    private ChannelService  channelService;
+    private ChannelService channelService;
 
     /**
      * 找到单个Channel，用于编辑Channel信息界面加载信息
-     * 
+     *
      * @param channelId
      * @param context
      * @throws WebxException

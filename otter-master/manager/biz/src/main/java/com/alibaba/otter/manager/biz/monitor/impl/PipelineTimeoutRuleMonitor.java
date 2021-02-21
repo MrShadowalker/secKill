@@ -38,12 +38,12 @@ import com.alibaba.otter.shared.common.model.statistics.throughput.ThroughputTyp
  */
 public class PipelineTimeoutRuleMonitor extends AbstractRuleMonitor {
 
-    private static final String   TIME_OUT_MESSAGE = "pid:%s elapsed %s seconds no sync";
+    private static final String TIME_OUT_MESSAGE = "pid:%s elapsed %s seconds no sync";
 
     @Resource(name = "throughputStatService")
     private ThroughputStatService throughputStatService;
 
-    PipelineTimeoutRuleMonitor(){
+    PipelineTimeoutRuleMonitor() {
         MonitorRuleExplorerRegisty.register(MonitorName.PIPELINETIMEOUT, this);
     }
 
@@ -73,7 +73,7 @@ public class PipelineTimeoutRuleMonitor extends AbstractRuleMonitor {
 
         if (flag) {
             logRecordAlarm(pipelineId, MonitorName.PIPELINETIMEOUT,
-                           String.format(TIME_OUT_MESSAGE, pipelineId, (elapsed / 1000)));
+                    String.format(TIME_OUT_MESSAGE, pipelineId, (elapsed / 1000)));
         }
     }
 

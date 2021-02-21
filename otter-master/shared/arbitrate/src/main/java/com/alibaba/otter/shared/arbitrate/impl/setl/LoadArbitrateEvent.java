@@ -21,7 +21,7 @@ import com.alibaba.otter.shared.arbitrate.model.EtlEventData;
 
 /**
  * 抽象load模块的调度接口
- * 
+ *
  * @author jianghang 2012-9-27 下午09:54:53
  * @version 4.1.0
  */

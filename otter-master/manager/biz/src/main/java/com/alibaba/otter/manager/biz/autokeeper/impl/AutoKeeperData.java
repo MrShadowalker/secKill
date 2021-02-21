@@ -27,20 +27,20 @@ import com.google.common.collect.MapMaker;
 
 /**
  * join server之间的统计数据，提供当前最新和完整的数据结构方便数据查询
- * 
+ *
  * <pre>
- * server -> 
- *        connection -> 
+ * server ->
+ *        connection ->
  *               ->  watcher
  *               ->  ephemeral
  * </pre>
- * 
+ *
  * @author jianghang 2012-9-21 下午03:02:00
  * @version 4.1.0
  */
 public class AutoKeeperData implements AutoKeeperPersist {
 
-    private Map<String, AutoKeeperServerStat>     serverStats     = new MapMaker().makeMap(); // serverIp和server的对应关系
+    private Map<String, AutoKeeperServerStat> serverStats = new MapMaker().makeMap(); // serverIp和server的对应关系
     private Map<String, AutoKeeperConnectionStat> connectionStats = new MapMaker().makeMap(); // sessionId和connection的对应关系
 
     public void joinServer(String address, AutoKeeperServerStat summary) {

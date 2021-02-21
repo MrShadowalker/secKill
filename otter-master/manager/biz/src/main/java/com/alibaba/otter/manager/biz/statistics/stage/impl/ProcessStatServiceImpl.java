@@ -32,7 +32,7 @@ import com.alibaba.otter.shared.common.model.statistics.stage.ProcessStat;
 public class ProcessStatServiceImpl implements ProcessStatService {
 
     private ArbitrateViewService arbitrateViewService;
-    private ChannelService       channelService;
+    private ChannelService channelService;
 
     public void createProcessStat(ProcessStat stat) {
         throw new UnsupportedOperationException("unsupport method!");

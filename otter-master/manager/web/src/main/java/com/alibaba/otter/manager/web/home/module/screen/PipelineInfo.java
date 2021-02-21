@@ -30,7 +30,7 @@ public class PipelineInfo {
     private PipelineService pipelineService;
 
     @Resource(name = "nodeService")
-    private NodeService     nodeService;
+    private NodeService nodeService;
 
     public void execute(@Param("pipelineId") Long pipelineId, Context context) throws Exception {
         Pipeline pipeline = pipelineService.findById(pipelineId);

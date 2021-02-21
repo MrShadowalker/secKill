@@ -28,19 +28,19 @@ import org.apache.commons.lang.builder.ToStringStyle;
 public class DatasourceInfo {
 
     private InetSocketAddress address;            // 主库信息
-    private String            username;           // 帐号
-    private String            password;           // 密码
-    private String            defaultDatabaseName; // 默认链接的数据库
+    private String username;           // 帐号
+    private String password;           // 密码
+    private String defaultDatabaseName; // 默认链接的数据库
 
-    public DatasourceInfo(){
+    public DatasourceInfo() {
         super();
     }
 
-    public DatasourceInfo(InetSocketAddress address, String username, String password){
+    public DatasourceInfo(InetSocketAddress address, String username, String password) {
         this(address, username, password, "");
     }
 
-    public DatasourceInfo(InetSocketAddress address, String username, String password, String defaultDatabaseName){
+    public DatasourceInfo(InetSocketAddress address, String username, String password, String defaultDatabaseName) {
         this.address = address;
         this.username = username;
         this.password = password;

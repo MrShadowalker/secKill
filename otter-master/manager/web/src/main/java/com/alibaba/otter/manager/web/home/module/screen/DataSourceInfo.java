@@ -33,7 +33,7 @@ public class DataSourceInfo {
     private DataMediaSourceService dataMediaSourceService;
 
     @Resource(name = "dataMediaService")
-    private DataMediaService       dataMediaService;
+    private DataMediaService dataMediaService;
 
     public void execute(@Param("dataMediaSourceId") Long dataMediaSourceId, Context context) throws Exception {
         DataMediaSource dataMediaSource = dataMediaSourceService.findById(dataMediaSourceId);

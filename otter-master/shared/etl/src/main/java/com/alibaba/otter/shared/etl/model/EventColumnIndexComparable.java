@@ -20,7 +20,7 @@ import java.util.Comparator;
 
 /**
  * 按照EventColumn的index进行排序.
- * 
+ *
  * @author xiaoqing.zhouxq 2012-3-8 上午11:38:25
  */
 public class EventColumnIndexComparable implements Comparator<EventColumn> {

@@ -22,12 +22,12 @@ import java.util.Date;
 public class PipelineNodeRelationDO implements Serializable {
 
     private static final long serialVersionUID = -2066978336563209425L;
-    private Long              id;
-    private Long              nodeId;
-    private Long              PipelineId;
-    private Location          location;                                // 表示Node位于该pipeline的源或是目的
-    private Date              gmtCreate;
-    private Date              gmtModified;
+    private Long id;
+    private Long nodeId;
+    private Long PipelineId;
+    private Location location;                                // 表示Node位于该pipeline的源或是目的
+    private Date gmtCreate;
+    private Date gmtModified;
 
     public static enum Location {
         SELECT, EXTRACT, LOAD;

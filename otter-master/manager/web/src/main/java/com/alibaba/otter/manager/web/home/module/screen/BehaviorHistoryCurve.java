@@ -39,17 +39,17 @@ import com.alibaba.otter.shared.common.model.config.data.DataMediaPair;
 public class BehaviorHistoryCurve {
 
     @Resource(name = "channelService")
-    private ChannelService       channelService;
+    private ChannelService channelService;
 
     @Resource(name = "dataMediaPairService")
     private DataMediaPairService dataMediaPairService;
 
     @Resource(name = "tableStatService")
-    private TableStatService     tableStatService;
+    private TableStatService tableStatService;
 
     public void execute(@Param("d5221") String startTime, @Param("d5222") String endTime,
                         @Param("dataMediaPairId") Long dataMediaPairId, HttpSession session, Context context)
-                                                                                                             throws Exception {
+            throws Exception {
         Date end = null;
         Date start = null;
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");

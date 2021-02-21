@@ -74,7 +74,7 @@ public class URLProtectedEditor extends PropertyEditorSupport {
 
     /**
      * 把字符串转成Pattern和UrlType
-     * 
+     *
      * @param perl5RegExp
      * @return
      */

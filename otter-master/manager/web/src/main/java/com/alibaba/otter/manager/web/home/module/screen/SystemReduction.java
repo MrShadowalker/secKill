@@ -36,10 +36,10 @@ import com.alibaba.otter.manager.biz.config.channel.ChannelService;
  */
 public class SystemReduction {
 
-    private static final Logger    logger = LoggerFactory.getLogger(SystemReduction.class);
+    private static final Logger logger = LoggerFactory.getLogger(SystemReduction.class);
 
     @Resource(name = "channelService")
-    private ChannelService         channelService;
+    private ChannelService channelService;
 
     @Resource(name = "arbitrateManageService")
     private ArbitrateManageService arbitrateManageService;

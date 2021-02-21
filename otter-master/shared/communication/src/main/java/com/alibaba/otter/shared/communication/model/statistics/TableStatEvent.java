@@ -23,14 +23,14 @@ import com.alibaba.otter.shared.communication.core.model.Event;
 
 /**
  * table stat事件
- * 
+ *
  * @author jianghang
  */
 public class TableStatEvent extends Event {
 
     private static final long serialVersionUID = -5925977847006864387L;
 
-    public TableStatEvent(){
+    public TableStatEvent() {
         super(StatisticsEventType.tableStat);
 
     }

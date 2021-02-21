@@ -24,12 +24,12 @@ import com.alibaba.otter.shared.common.model.config.data.DataMediaType;
  */
 public class DataSourceKey {
 
-    private String        url;
-    private String        userName;
-    private String        password;
-    private String        driverClassName;
+    private String url;
+    private String userName;
+    private String password;
+    private String driverClassName;
     private DataMediaType dataMediaType;
-    private String        encoding;
+    private String encoding;
 
     public static DataSourceKey getInstance(String url, String userName, String password, String driverClassName,
                                             DataMediaType dataMediaType, String encoding) {
@@ -37,7 +37,7 @@ public class DataSourceKey {
     }
 
     public DataSourceKey(String url, String userName, String password, String driverClassName,
-                         DataMediaType dataMediaType, String encoding){
+                         DataMediaType dataMediaType, String encoding) {
         this.url = url;
         this.userName = userName;
         this.password = password;

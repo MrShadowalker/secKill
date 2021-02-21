@@ -63,11 +63,12 @@ public enum TableType {
     /**
      * Synonym
      */
-    synonym, ;
+    synonym,
+    ;
 
     /**
      * Converts an array of table types to an array of their corresponding string values.
-     * 
+     *
      * @param tableTypes Array of table types
      * @return Array of string table types
      */
@@ -89,7 +90,7 @@ public enum TableType {
 
     /**
      * Converts an array of string table types to an array of their corresponding enumeration values.
-     * 
+     *
      * @param tableTypeStrings Array of string table types
      * @return Array of table types
      */

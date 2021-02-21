@@ -40,11 +40,11 @@ public class ColumnPairAction extends AbstractAction {
     private DataColumnPairService dataColumnPairService;
 
     @Resource(name = "dataMediaPairService")
-    private DataMediaPairService  dataMediaPairService;
+    private DataMediaPairService dataMediaPairService;
 
     /**
      * 添加Channel
-     * 
+     *
      * @param channelInfo
      * @param channelParameterInfo
      * @throws Exception
@@ -103,7 +103,7 @@ public class ColumnPairAction extends AbstractAction {
                 int i = 0;
                 for (String sourceColumnName : sourceColumnNames) {
                     if (StringUtils.isEquals(columnPair.getSourceColumn().getName(), sourceColumnName)
-                        && StringUtils.isEquals(columnPair.getTargetColumn().getName(), targetColumnNames.get(i))) {
+                            && StringUtils.isEquals(columnPair.getTargetColumn().getName(), targetColumnNames.get(i))) {
                         columnPairsTemp.add(columnPair);
                         columnPairsNameSource.add(sourceColumnName);
                         columnPairsNameTarget.add(targetColumnNames.get(i));
@@ -137,8 +137,8 @@ public class ColumnPairAction extends AbstractAction {
             nav.redirectToLocation("dataMediaPairList.htm?pipelineId=" + pipelineId);
         } else if (submitKey.equals("下一步")) {
             nav.redirectToLocation("addColumnPairGroup.htm?dataMediaPairId=" + dataMediaPairId + "&channelId="
-                                   + channelId + "&pipelineId=" + pipelineId + "&sourceMediaId=" + sourceMediaId
-                                   + "&targetMediaId=" + targetMediaId);
+                    + channelId + "&pipelineId=" + pipelineId + "&sourceMediaId=" + sourceMediaId
+                    + "&targetMediaId=" + targetMediaId);
         }
     }
 }

@@ -38,7 +38,7 @@ import com.alibaba.otter.shared.common.model.config.record.LogRecord;
 
 /**
  * 一类报警规则的匹配规则和报警
- * 
+ *
  * @author zebin.xuzb @ 2012-8-29
  * @version 4.1.0
  */
@@ -47,13 +47,13 @@ public abstract class AbstractRuleMonitor implements Monitor, PassiveMonitor {
     protected static final Logger log = LoggerFactory.getLogger("monitorInfo");
 
     @Resource(name = "alarmService")
-    private AbstractAlarmService  alarmService;
+    private AbstractAlarmService alarmService;
 
     @Resource(name = "logRecordService")
-    private LogRecordService      logRecordService;
+    private LogRecordService logRecordService;
 
     @Resource(name = "alarmController")
-    private AlarmController       alarmController;
+    private AlarmController alarmController;
 
     @Override
     public void explore() {

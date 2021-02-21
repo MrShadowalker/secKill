@@ -27,7 +27,7 @@ import com.alibaba.otter.manager.biz.config.datacolumnpair.dal.dataobject.DataCo
 
 /**
  * 类IbatisDataColumnPairGroupDAO.java的实现描述：TODO 类实现描述
- * 
+ *
  * @author simon 2012-4-20 下午4:11:06
  */
 public class IbatisDataColumnPairGroupDAO extends SqlMapClientDaoSupport implements DataColumnPairGroupDAO {
@@ -62,14 +62,14 @@ public class IbatisDataColumnPairGroupDAO extends SqlMapClientDaoSupport impleme
     public List<DataColumnPairGroupDO> ListByDataMediaPairId(Long dataMediaPairId) {
         Assert.assertNotNull(dataMediaPairId);
         List<DataColumnPairGroupDO> dataColumnPairGroupDos = getSqlMapClientTemplate().queryForList("listDataColumnPairGroupByDataMediaPairId",
-                                                                                                    dataMediaPairId);
+                dataMediaPairId);
         return dataColumnPairGroupDos;
     }
 
     public List<DataColumnPairGroupDO> ListByDataMediaPairIds(Long... dataMediaPairIds) {
         Assert.assertNotNull(dataMediaPairIds);
         List<DataColumnPairGroupDO> dataColumnPairGroupDos = getSqlMapClientTemplate().queryForList("listDataColumnPairGroupByDataMediaPairIds",
-                                                                                                    dataMediaPairIds);
+                dataMediaPairIds);
         return dataColumnPairGroupDos;
     }
 

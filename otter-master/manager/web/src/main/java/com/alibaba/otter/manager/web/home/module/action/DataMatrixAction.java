@@ -39,7 +39,7 @@ public class DataMatrixAction extends AbstractAction {
 
     public void doAdd(@FormGroup("dataMatrixInfo") Group dataMatrixInfo,
                       @FormField(name = "formDataMatrixError", group = "dataMatrixInfo") CustomErrors err, Navigator nav)
-                                                                                                                         throws Exception {
+            throws Exception {
         DataMatrix matrix = new DataMatrix();
         dataMatrixInfo.setProperties(matrix);
 

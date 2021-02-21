@@ -43,34 +43,34 @@ import com.alibaba.otter.shared.common.utils.zookeeper.ZkClientx;
 
 /**
  * 同步任务状态的监控
- * 
+ *
  * <pre>
  * 监控数据内容：
  * 1. channel的status状态
  * 2. 当前pipeline的mainStem状态 &　反向同步的pipeline的mainStem状态
  * </pre>
- * 
+ *
  * @author jianghang
  */
 public class PermitMonitor extends ArbitrateLifeCycle implements Monitor {
 
-    private static final Logger      logger                 = LoggerFactory.getLogger(PermitMonitor.class);
+    private static final Logger logger = LoggerFactory.getLogger(PermitMonitor.class);
 
-    private ZkClientx                zookeeper              = ZooKeeperClient.getInstance();
-    private ChannelStatus            channelStatus          = ChannelStatus.STOP;                                           // 标识channel的状态
-    private MainStemEventData.Status mainStemStatus         = MainStemEventData.Status.TAKEING;                             // 当前pipeline的mainStem状态
+    private ZkClientx zookeeper = ZooKeeperClient.getInstance();
+    private ChannelStatus channelStatus = ChannelStatus.STOP;                                           // 标识channel的状态
+    private MainStemEventData.Status mainStemStatus = MainStemEventData.Status.TAKEING;                             // 当前pipeline的mainStem状态
     private MainStemEventData.Status oppositeMainStemStatus = MainStemEventData.Status.TAKEING;                             // 反方向的pipeline的mainStem状态
 
-    private ExecutorService          arbitrateExecutor;
-    private BooleanMutex             permitMutex            = new BooleanMutex(false);                                      // 控制器
-    private BooleanMutex             channelMutex           = new BooleanMutex(false);
-    private List<PermitListener>     listeners              = Collections.synchronizedList(new ArrayList<PermitListener>());
-    private volatile boolean         existOpposite          = false;
-    private IZkDataListener          channelDataListener;
-    private IZkDataListener          mainstemDataListener;
-    private IZkDataListener          oppositeMainstemDataListener;
+    private ExecutorService arbitrateExecutor;
+    private BooleanMutex permitMutex = new BooleanMutex(false);                                      // 控制器
+    private BooleanMutex channelMutex = new BooleanMutex(false);
+    private List<PermitListener> listeners = Collections.synchronizedList(new ArrayList<PermitListener>());
+    private volatile boolean existOpposite = false;
+    private IZkDataListener channelDataListener;
+    private IZkDataListener mainstemDataListener;
+    private IZkDataListener oppositeMainstemDataListener;
 
-    public PermitMonitor(Long pipelineId){
+    public PermitMonitor(Long pipelineId) {
         super(pipelineId);
         existOpposite = (ArbitrateConfigUtils.getOppositePipeline(getPipelineId()) != null);
         // 开始同步
@@ -243,7 +243,7 @@ public class PermitMonitor extends ArbitrateLifeCycle implements Monitor {
 
     /**
      * 阻塞等待允许授权处理, 支持线程中断信号
-     * 
+     *
      * @return
      */
     public void waitForPermit() throws InterruptedException {
@@ -252,7 +252,7 @@ public class PermitMonitor extends ArbitrateLifeCycle implements Monitor {
 
     /**
      * 阻塞等待允许channel的授权处理, 支持线程中断信号
-     * 
+     *
      * @throws InterruptedException
      */
     public void waitForChannelPermit() throws InterruptedException {
@@ -485,7 +485,7 @@ public class PermitMonitor extends ArbitrateLifeCycle implements Monitor {
     public void addListener(PermitListener listener) {
         if (logger.isDebugEnabled()) {
             logger.debug("## pipeline【{}】 add listener 【{}】", getPipelineId(),
-                         ClassUtils.getShortClassName(listener.getClass()));
+                    ClassUtils.getShortClassName(listener.getClass()));
         }
 
         this.listeners.add(listener);
@@ -494,7 +494,7 @@ public class PermitMonitor extends ArbitrateLifeCycle implements Monitor {
     public void removeListener(PermitListener listener) {
         if (logger.isDebugEnabled()) {
             logger.debug("## pipeline【{}】 remove listener 【{}】", getPipelineId(),
-                         ClassUtils.getShortClassName(listener.getClass()));
+                    ClassUtils.getShortClassName(listener.getClass()));
         }
 
         this.listeners.remove(listener);

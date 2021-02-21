@@ -33,15 +33,15 @@ import com.google.common.collect.OtterMigrateMap;
  */
 public class SubscribeManagerFactory implements ApplicationContextAware {
 
-    private static ApplicationContext                         context        = null;
+    private static ApplicationContext context = null;
 
     private static final Map<SubscribeType, SubscribeManager> innerContainer = OtterMigrateMap.makeComputingMap(new Function<SubscribeType, SubscribeManager>() {
 
-                                                                                 @Override
-                                                                                 public SubscribeManager apply(SubscribeType input) {
-                                                                                     return createSubsrcibeManager(input);
-                                                                                 }
-                                                                             });
+        @Override
+        public SubscribeManager apply(SubscribeType input) {
+            return createSubsrcibeManager(input);
+        }
+    });
 
     private static SubscribeManager createSubsrcibeManager(SubscribeType type) {
         SubscribeManager manager = null;
@@ -69,7 +69,7 @@ public class SubscribeManagerFactory implements ApplicationContextAware {
 
     /**
      * 根据订阅类型获取相应的订阅管理器。每个订阅类型对应一个单例的订阅管理器。<br/>
-     * 
+     *
      * @param type
      * @return 订阅管理器
      * @see SubscribeManager
@@ -86,8 +86,8 @@ public class SubscribeManagerFactory implements ApplicationContextAware {
     public static void autowire(Object obj) {
         // 重新注入一下对象
         context.getAutowireCapableBeanFactory().autowireBeanProperties(obj,
-                                                                       AutowireCapableBeanFactory.AUTOWIRE_BY_NAME,
-                                                                       true);
+                AutowireCapableBeanFactory.AUTOWIRE_BY_NAME,
+                true);
     }
 
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {

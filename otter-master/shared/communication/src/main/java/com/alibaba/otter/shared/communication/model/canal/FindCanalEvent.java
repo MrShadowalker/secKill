@@ -20,16 +20,16 @@ import com.alibaba.otter.shared.communication.core.model.Event;
 
 /**
  * 配置查询的事件
- * 
+ *
  * @author jianghang
  */
 public class FindCanalEvent extends Event {
 
     private static final long serialVersionUID = 476657754177940448L;
 
-    private String            destination;
+    private String destination;
 
-    public FindCanalEvent(){
+    public FindCanalEvent() {
         super(CanalEventType.findCanal);
     }
 

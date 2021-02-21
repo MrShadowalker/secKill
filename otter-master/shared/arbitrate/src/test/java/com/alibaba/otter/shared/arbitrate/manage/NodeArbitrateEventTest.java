@@ -26,13 +26,13 @@ import com.alibaba.otter.shared.common.utils.zookeeper.ZkClientx;
 
 /**
  * 测试下Node manage
- * 
+ *
  * @author jianghang 2011-9-19 上午11:37:12
  * @version 4.0.0
  */
 public class NodeArbitrateEventTest extends BaseEventTest {
 
-    private ZkClientx          zookeeper = null;
+    private ZkClientx zookeeper = null;
     private NodeArbitrateEvent nodeEvent;
 
     @BeforeMethod

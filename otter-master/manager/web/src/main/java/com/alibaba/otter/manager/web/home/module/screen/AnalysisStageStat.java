@@ -39,13 +39,13 @@ import com.alibaba.otter.shared.common.model.statistics.stage.ProcessStat;
 public class AnalysisStageStat {
 
     @Resource(name = "pipelineService")
-    private PipelineService       pipelineService;
+    private PipelineService pipelineService;
 
     @Resource(name = "processStatService")
-    private ProcessStatService    processStatService;
+    private ProcessStatService processStatService;
 
     @Resource(name = "arbitrateViewService")
-    private ArbitrateViewService  arbitrateViewService;
+    private ArbitrateViewService arbitrateViewService;
 
     @Resource(name = "channelEvent")
     private ChannelArbitrateEvent channelArbitrateEvent;
@@ -132,7 +132,7 @@ public class AnalysisStageStat {
         MainStemEventData mainstemData = arbitrateViewService.mainstemData(pipeline.getChannelId(), pipelineId);
 
         PositionEventData positionData = arbitrateViewService.getCanalCursor(pipeline.getParameters().getDestinationName(),
-                                                                             pipeline.getParameters().getMainstemClientId());
+                pipeline.getParameters().getMainstemClientId());
 
         ChannelStatus status = channelArbitrateEvent.status(pipeline.getChannelId());
 

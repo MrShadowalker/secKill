@@ -26,18 +26,18 @@ import com.alibaba.otter.shared.common.utils.OtterToStringStyle;
 
 /**
  * eromanga中取出的一批数据需要划分成多个process进行同步，保存process的数目和每个process同步的数据量,以及这一批数据同步是否成功.
- * 
+ *
  * @author jianghang 2011-10-18 上午10:16:12
  * @version 4.0.0
  */
 public class SyncStatusEventData extends PipelineEventData {
 
     private static final long serialVersionUID = -1755817244279698216L;
-    private List<SyncStatus>  status           = new ArrayList<SyncStatus>();
+    private List<SyncStatus> status = new ArrayList<SyncStatus>();
     /**
      * 初始值为并行度,在ProcessEndTask收到一个process的ack以后，就减1，如果=0时，就可以开启SelectConsumerTask去取下一批数据了.
      */
-    private long              parallelism;
+    private long parallelism;
 
     public void decParallelism() {
         --parallelism;
@@ -72,27 +72,27 @@ public class SyncStatusEventData extends PipelineEventData {
      */
     public static class SyncStatus implements Serializable {
 
-        private static final long serialVersionUID  = 794565950364625433L;
+        private static final long serialVersionUID = 794565950364625433L;
 
-        public static final long  DEFAULT_PROCESSID = -1;
+        public static final long DEFAULT_PROCESSID = -1;
 
         /**
          * 划分成的多个process同步是否成功,如果成功，给eromanga发送ack，如果失败，从eromanga中取同一批数据， 并且过滤掉已经同步成功的process的数据.
          */
-        private boolean           status;
+        private boolean status;
 
         /**
          * 每个process需要同步的数据量.
          */
-        private int               processDataCount;
+        private int processDataCount;
 
-        private long              processId         = DEFAULT_PROCESSID;
+        private long processId = DEFAULT_PROCESSID;
 
-        public SyncStatus(){
+        public SyncStatus() {
 
         }
 
-        public SyncStatus(boolean status, int processDataCount){
+        public SyncStatus(boolean status, int processDataCount) {
             this.status = status;
             this.processDataCount = processDataCount;
         }

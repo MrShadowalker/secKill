@@ -46,11 +46,11 @@ import com.alibaba.otter.shared.common.utils.JsonUtils;
  */
 public class NodeServiceImpl implements NodeService {
 
-    private static final Logger      logger = LoggerFactory.getLogger(NodeServiceImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(NodeServiceImpl.class);
 
-    private NodeDAO                  nodeDao;
-    private TransactionTemplate      transactionTemplate;
-    private ArbitrateManageService   arbitrateManageService;
+    private NodeDAO nodeDao;
+    private TransactionTemplate transactionTemplate;
+    private ArbitrateManageService arbitrateManageService;
     private AutoKeeperClusterService autoKeeperClusterService;
 
     /**
@@ -220,7 +220,7 @@ public class NodeServiceImpl implements NodeService {
 
     /**
      * 用于Model对象转化为DO对象
-     * 
+     *
      * @param node
      * @return NodeDO
      */
@@ -245,7 +245,7 @@ public class NodeServiceImpl implements NodeService {
 
     /**
      * 用于DO对象转化为Model对象
-     * 
+     *
      * @param nodeDo
      * @return Node
      */

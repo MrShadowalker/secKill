@@ -34,12 +34,12 @@ import com.alibaba.otter.shared.common.model.config.data.ColumnPair;
 
 /**
  * 类ColumnPairGroupAction.java的实现描述：TODO 类实现描述
- * 
+ *
  * @author simon 2012-4-24 下午4:37:18
  */
 public class ColumnPairGroupAction {
 
-    private static final String        COLON = ":";
+    private static final String COLON = ":";
 
     @Resource(name = "dataColumnPairGroupService")
     private DataColumnPairGroupService dataColumnPairGroupService;

@@ -41,19 +41,19 @@ import com.alibaba.otter.shared.common.utils.zookeeper.ZkClientx;
 
 /**
  * 关注transformed节点，创建loaded节点
- * 
+ *
+ * @author jianghang 2011-8-9 下午05:10:50
  * @version 4.0.3
- * 
+ *
  * <pre>
  * 1. 去除对应的DistributedLock的操作，减少中美同步时的latency. 每次DistributedLock操作都会涉及中美zk集群的交互，延迟在300ms
- * 
+ *
  * </pre>
- * @author jianghang 2011-8-9 下午05:10:50
  */
 public class LoadZooKeeperArbitrateEvent implements LoadArbitrateEvent {
 
-    private static final Logger           logger    = LoggerFactory.getLogger(LoadZooKeeperArbitrateEvent.class);
-    private ZkClientx                     zookeeper = ZooKeeperClient.getInstance();
+    private static final Logger logger = LoggerFactory.getLogger(LoadZooKeeperArbitrateEvent.class);
+    private ZkClientx zookeeper = ZooKeeperClient.getInstance();
     private TerminZooKeeperArbitrateEvent terminEvent;
 
     // private Map<Long, DistributedLock> locks = new ConcurrentHashMap<Long,
@@ -104,8 +104,8 @@ public class LoadZooKeeperArbitrateEvent implements LoadArbitrateEvent {
                     throw e;
                 }
             } else {
-                logger.warn("pipelineId【{}】 load ignore processId【{}】 by status【{}】", new Object[] { pipelineId,
-                        processId, status });
+                logger.warn("pipelineId【{}】 load ignore processId【{}】 by status【{}】", new Object[]{pipelineId,
+                        processId, status});
                 // try {
                 // lock.unlock();// 出现任何异常解除lock
                 // } catch (KeeperException e) {
@@ -134,7 +134,7 @@ public class LoadZooKeeperArbitrateEvent implements LoadArbitrateEvent {
      * 算法:
      * 1. 创建对应的loaded节点,标志load已完成
      * </pre>
-     * 
+     *
      * @param pipelineId 同步流id
      */
     public void single(EtlEventData data) {
@@ -190,7 +190,7 @@ public class LoadZooKeeperArbitrateEvent implements LoadArbitrateEvent {
      * 算法:
      * 1. load出现异常，解除load锁定，并发送对应的termin信号
      * </pre>
-     * 
+     *
      * @param pipelineId 同步流id
      */
     public void release(Long pipelineId) {

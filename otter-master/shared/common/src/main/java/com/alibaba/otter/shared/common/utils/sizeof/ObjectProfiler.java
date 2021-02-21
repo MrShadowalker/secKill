@@ -37,23 +37,24 @@ import java.util.WeakHashMap;
 import java.util.jar.JarFile;
 
 // ----------------------------------------------------------------------------
+
 /**
  * This non-instantiable class presents an API for object sizing as described in the <a
  * href="http://www.javaworld.com/javaqa/2003-12/02-qa-1226-sizeof_p.html">article</a>. See individual methods for
  * details.
- * <P>
+ * <p>
  * This implementation is J2SE 1.4+ only. You would need to code your own identity hashmap to port this to earlier Java
  * versions.
- * <P>
+ * <p>
  * Security: this implementation uses AccessController.doPrivileged() so it could be granted privileges to access
  * non-public class fields separately from your main application code. The minimum set of permissions necessary for this
  * class to function correctly follows:
- * 
+ *
  * <pre>
  *    permission java.lang.RuntimePermission &quot;accessDeclaredMembers&quot;;
  *    permission java.lang.reflect.ReflectPermission &quot;suppressAccessChecks&quot;;
  * </pre>
- * 
+ *
  * @author (C) <a href="http://www.javaworld.com/columns/jw-qna-index.shtml">Vlad Roubtsov</a>, 2003
  */
 public abstract class ObjectProfiler {
@@ -63,22 +64,22 @@ public abstract class ObjectProfiler {
     // the following constants are physical sizes (in bytes) and are JVM-dependent:
     // [the current values are Ok for most 32-bit JVMs]
 
-    public static final int OBJECT_SHELL_SIZE  = 8; // java.lang.Object shell
+    public static final int OBJECT_SHELL_SIZE = 8; // java.lang.Object shell
     // size in bytes
-    public static final int OBJREF_SIZE        = 4;
-    public static final int LONG_FIELD_SIZE    = 8;
-    public static final int INT_FIELD_SIZE     = 4;
-    public static final int SHORT_FIELD_SIZE   = 2;
-    public static final int CHAR_FIELD_SIZE    = 2;
-    public static final int BYTE_FIELD_SIZE    = 1;
+    public static final int OBJREF_SIZE = 4;
+    public static final int LONG_FIELD_SIZE = 8;
+    public static final int INT_FIELD_SIZE = 4;
+    public static final int SHORT_FIELD_SIZE = 2;
+    public static final int CHAR_FIELD_SIZE = 2;
+    public static final int BYTE_FIELD_SIZE = 1;
     public static final int BOOLEAN_FIELD_SIZE = 1;
-    public static final int DOUBLE_FIELD_SIZE  = 8;
-    public static final int FLOAT_FIELD_SIZE   = 4;
+    public static final int DOUBLE_FIELD_SIZE = 8;
+    public static final int FLOAT_FIELD_SIZE = 4;
 
     /**
      * Estimates the full size of the object graph rooted at 'obj'. Duplicate data instances are correctly accounted
      * for. The implementation is not recursive.
-     * 
+     *
      * @param obj input object instance to be measured
      * @return 'obj' size [0 if 'obj' is null']
      */
@@ -108,9 +109,9 @@ public abstract class ObjectProfiler {
      * Estimates the full size of the object graph rooted at 'obj' by pre-populating the "visited" set with the object
      * graph rooted at 'base'. The net effect is to compute the size of 'obj' by summing over all instance data
      * contained in 'obj' but not in 'base'.
-     * 
+     *
      * @param base graph boundary [may not be null]
-     * @param obj input object instance to be measured
+     * @param obj  input object instance to be measured
      * @return 'obj' size [0 if 'obj' is null']
      */
     public static long sizedelta(final Object base, final Object obj) {
@@ -150,7 +151,7 @@ public abstract class ObjectProfiler {
      */
     private static final class ClassMetadata {
 
-        ClassMetadata(final int primitiveFieldCount, final int shellSize, final Field[] refFields){
+        ClassMetadata(final int primitiveFieldCount, final int shellSize, final Field[] refFields) {
             m_primitiveFieldCount = primitiveFieldCount;
             m_shellSize = shellSize;
             m_refFields = refFields;
@@ -158,9 +159,9 @@ public abstract class ObjectProfiler {
 
         // all fields are inclusive of superclasses:
 
-        final int     m_primitiveFieldCount;
+        final int m_primitiveFieldCount;
 
-        final int     m_shellSize;          // class shell size
+        final int m_shellSize;          // class shell size
 
         final Field[] m_refFields;          // cached non-static fields (made accessible)
 
@@ -168,7 +169,9 @@ public abstract class ObjectProfiler {
 
     private static final class ClassAccessPrivilegedAction implements PrivilegedExceptionAction {
 
-        /** {@inheritDoc} */
+        /**
+         * {@inheritDoc}
+         */
         public Object run() throws Exception {
             return m_cls.getDeclaredFields();
         }
@@ -183,7 +186,9 @@ public abstract class ObjectProfiler {
 
     private static final class FieldAccessPrivilegedAction implements PrivilegedExceptionAction {
 
-        /** {@inheritDoc} */
+        /**
+         * {@inheritDoc}
+         */
         public Object run() throws Exception {
             m_field.setAccessible(true);
             return null;
@@ -197,7 +202,7 @@ public abstract class ObjectProfiler {
 
     } // end of nested class
 
-    private ObjectProfiler(){
+    private ObjectProfiler() {
     } // this class is not extendible
 
     /*
@@ -270,7 +275,7 @@ public abstract class ObjectProfiler {
                         ref = field.get(obj);
                     } catch (Exception e) {
                         throw new RuntimeException("cannot get field [" + field.getName() + "] of class ["
-                                                   + field.getDeclaringClass().getName() + "]: " + e.toString());
+                                + field.getDeclaringClass().getName() + "]: " + e.toString());
                     }
 
                     if ((ref != null) && !visited.containsKey(ref)) {
@@ -312,7 +317,7 @@ public abstract class ObjectProfiler {
             declaredFields = (Field[]) AccessController.doPrivileged(caAction);
         } catch (PrivilegedActionException pae) {
             throw new RuntimeException("could not access declared fields of class " + cls.getName() + ": "
-                                       + pae.getException());
+                    + pae.getException());
         }
 
         for (int f = 0; f < declaredFields.length; ++f) {
@@ -338,7 +343,7 @@ public abstract class ObjectProfiler {
                         AccessController.doPrivileged(faAction);
                     } catch (PrivilegedActionException pae) {
                         throw new RuntimeException("could not make field " + field + " accessible: "
-                                                   + pae.getException());
+                                + pae.getException());
                     }
                 }
 
@@ -406,7 +411,7 @@ public abstract class ObjectProfiler {
     // class metadata cache:
     private static final Map CLASS_METADATA_CACHE = new WeakHashMap(101);
 
-    static final Class[]     sunProblematicClasses;
+    static final Class[] sunProblematicClasses;
     static final Map        /* <Class, Integer> */sunProblematicClassesSizes;
 
     static {
@@ -478,12 +483,12 @@ public abstract class ObjectProfiler {
             return true;
         }
         if (/* obj == Locale.ROOT || *//* Java 6 */
-        obj == Locale.ENGLISH || obj == Locale.FRENCH || obj == Locale.GERMAN || obj == Locale.ITALIAN
-                || obj == Locale.JAPANESE || obj == Locale.KOREAN || obj == Locale.CHINESE
-                || obj == Locale.SIMPLIFIED_CHINESE || obj == Locale.TRADITIONAL_CHINESE || obj == Locale.FRANCE
-                || obj == Locale.GERMANY || obj == Locale.ITALY || obj == Locale.JAPAN || obj == Locale.KOREA
-                || obj == Locale.CHINA || obj == Locale.PRC || obj == Locale.TAIWAN || obj == Locale.UK
-                || obj == Locale.US || obj == Locale.CANADA || obj == Locale.CANADA_FRENCH) {
+                obj == Locale.ENGLISH || obj == Locale.FRENCH || obj == Locale.GERMAN || obj == Locale.ITALIAN
+                        || obj == Locale.JAPANESE || obj == Locale.KOREAN || obj == Locale.CHINESE
+                        || obj == Locale.SIMPLIFIED_CHINESE || obj == Locale.TRADITIONAL_CHINESE || obj == Locale.FRANCE
+                        || obj == Locale.GERMANY || obj == Locale.ITALY || obj == Locale.JAPAN || obj == Locale.KOREA
+                        || obj == Locale.CHINA || obj == Locale.PRC || obj == Locale.TAIWAN || obj == Locale.UK
+                        || obj == Locale.US || obj == Locale.CANADA || obj == Locale.CANADA_FRENCH) {
             return true;
         }
         if (obj == Collections.EMPTY_SET || obj == Collections.EMPTY_LIST || obj == Collections.EMPTY_MAP) {
@@ -507,12 +512,12 @@ public abstract class ObjectProfiler {
 
 final class Integers {
 
-    private Integers(){
+    private Integers() {
     }
 
-    private static final int     cache_low  = -128;
-    private static final int     cache_high = 127;
-    private static final Integer cache[]    = new Integer[(cache_high - cache_low) + 1];
+    private static final int cache_low = -128;
+    private static final int cache_high = 127;
+    private static final Integer cache[] = new Integer[(cache_high - cache_low) + 1];
 
     static {
         for (int i = 0; i < cache.length; ++i) {
@@ -525,7 +530,7 @@ final class Integers {
      * instance is not required, this method should generally be used in preference to the constructor
      * {@link #Integer(int)}, as this method is likely to yield significantly better space and time performance by
      * caching frequently requested values.
-     * 
+     *
      * @param i an <code>int</code> value.
      * @return a <tt>Integer</tt> instance representing <tt>i</tt>.
      * @since 1.5

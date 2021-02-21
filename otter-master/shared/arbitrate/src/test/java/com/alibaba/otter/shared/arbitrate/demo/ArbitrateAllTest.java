@@ -65,31 +65,31 @@ import com.alibaba.otter.shared.communication.core.model.Event;
 
 /**
  * demo的启动入口
- * 
+ *
  * @author jianghang 2011-9-22 下午03:58:53
  * @version 4.0.0
  */
 public class ArbitrateAllTest extends BaseEventTest {
 
-    private MainStemServiceDemo    mainStem;
-    private SelectServiceDemo      select;
-    private ExtractServiceDemo     extract;
-    private TransformServiceDemo   transform;
-    private LoadServiceDemo        load;
-    private ProcessViewDemo        view;
-    private TerminProcessDemo      termin;
+    private MainStemServiceDemo mainStem;
+    private SelectServiceDemo select;
+    private ExtractServiceDemo extract;
+    private TransformServiceDemo transform;
+    private LoadServiceDemo load;
+    private ProcessViewDemo view;
+    private TerminProcessDemo termin;
 
     // 环境数据准备对象
-    private NodeArbitrateEvent     nodeEvent;
-    private ChannelArbitrateEvent  channelEvent;
+    private NodeArbitrateEvent nodeEvent;
+    private ChannelArbitrateEvent channelEvent;
     private PipelineArbitrateEvent pipelineEvent;
-    private ArbitrateEventService  arbitrateEventService;
-    private final Node             local         = new Node();
-    private final Long             nid           = 1L;
-    private Long                   channelId     = 100L;
-    private Long                   pipelineId    = 100L;
-    private ZkClientx              zookeeper;
-    private ArbitrateMode          arbitrateMode = ArbitrateMode.RPC;
+    private ArbitrateEventService arbitrateEventService;
+    private final Node local = new Node();
+    private final Long nid = 1L;
+    private Long channelId = 100L;
+    private Long pipelineId = 100L;
+    private ZkClientx zookeeper;
+    private ArbitrateMode arbitrateMode = ArbitrateMode.RPC;
 
     @BeforeMethod
     public void setUp() {

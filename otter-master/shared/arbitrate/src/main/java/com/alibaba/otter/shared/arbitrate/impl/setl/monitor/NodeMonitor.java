@@ -35,21 +35,21 @@ import com.alibaba.otter.shared.common.utils.zookeeper.ZkClientx;
 
 /**
  * otter所有node节点监控
- * 
+ *
  * @author jianghang 2012-8-29 下午01:00:43
  * @version 4.1.0
  */
 public class NodeMonitor implements Monitor {
 
-    private static final Logger logger     = LoggerFactory.getLogger(NodeMonitor.class);
+    private static final Logger logger = LoggerFactory.getLogger(NodeMonitor.class);
 
-    private ExecutorService     arbitrateExecutor;
-    private ZkClientx           zookeeper  = ZooKeeperClient.getInstance();
-    private List<NodeListener>  listeners  = Collections.synchronizedList(new ArrayList<NodeListener>());
+    private ExecutorService arbitrateExecutor;
+    private ZkClientx zookeeper = ZooKeeperClient.getInstance();
+    private List<NodeListener> listeners = Collections.synchronizedList(new ArrayList<NodeListener>());
     private volatile List<Long> aliveNodes = new ArrayList<Long>();                                      // se模块存活的节点
-    private IZkChildListener    childListener;
+    private IZkChildListener childListener;
 
-    public NodeMonitor(){
+    public NodeMonitor() {
         childListener = new IZkChildListener() {
 
             public void handleChildChange(String parentPath, List<String> currentChilds) throws Exception {
@@ -124,7 +124,7 @@ public class NodeMonitor implements Monitor {
 
         if (!aliveNodes.equals(nids)) {// 不相同，说明有变化
             if (logger.isDebugEnabled()) {
-                logger.debug("old aliveNodes{} ,current aliveNodes{}", new Object[] { aliveNodes, nids });
+                logger.debug("old aliveNodes{} ,current aliveNodes{}", new Object[]{aliveNodes, nids});
             }
 
             aliveNodes = nids; // 切换引用，需设置为volatile保证线程安全&可见性

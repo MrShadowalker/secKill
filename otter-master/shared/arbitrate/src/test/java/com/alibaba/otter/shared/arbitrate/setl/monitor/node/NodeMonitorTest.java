@@ -37,21 +37,21 @@ import com.alibaba.otter.shared.common.model.config.pipeline.Pipeline;
 
 /**
  * 测试下Node的监听事件
- * 
+ *
  * @author jianghang 2011-9-19 下午01:21:08
  * @version 4.0.0
  */
 public class NodeMonitorTest extends BaseEventTest {
 
-    private Long               channelId  = 100L;
+    private Long channelId = 100L;
     // private Long pipelineId = 100L;
     private NodeArbitrateEvent nodeEvent;
-    private final Node         node1      = new Node();
-    private final Node         node2      = new Node();
-    private final Node         node3      = new Node();
-    private final Node         node4      = new Node();
-    private List<Node>         sourceList = Arrays.asList(node1, node3);
-    private List<Node>         targetList = Arrays.asList(node2, node4);
+    private final Node node1 = new Node();
+    private final Node node2 = new Node();
+    private final Node node3 = new Node();
+    private final Node node4 = new Node();
+    private List<Node> sourceList = Arrays.asList(node1, node3);
+    private List<Node> targetList = Arrays.asList(node2, node4);
 
     @BeforeClass
     public void init() {

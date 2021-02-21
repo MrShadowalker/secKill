@@ -99,7 +99,7 @@ public class ThroughputStatServiceImpl implements ThroughputStatService {
 
     /**
      * <pre>
-     * 列出pipeLineId下，start-end时间段下的throughputStat 
+     * 列出pipeLineId下，start-end时间段下的throughputStat
      * 首先从数据库中取出这一段时间所以数据，该数据都是根据end_time倒排序的, 每隔1分钟将这些数据分组
      * </pre>
      */
@@ -115,7 +115,7 @@ public class ThroughputStatServiceImpl implements ThroughputStatService {
             // 取出每个时间点i以内的数据，k是一个游标，每次遍历时前面已经取过了的数据就不用再遍历了
             for (int j = k; j >= 0; --j) {
                 if ((i - throughputStatDOs.get(j).getEndTime().getTime() <= 60 * 1000)
-                    && (i - throughputStatDOs.get(j).getEndTime().getTime() >= 0)) {
+                        && (i - throughputStatDOs.get(j).getEndTime().getTime() >= 0)) {
                     throughputStat.add(throughputStatDOToModel(throughputStatDOs.get(j)));
                     k = j - 1;
                 }// 如果不满足if条件，则后面的数据也不用再遍历
@@ -136,7 +136,7 @@ public class ThroughputStatServiceImpl implements ThroughputStatService {
     public List<ThroughputStat> listRealtimeThroughputByPipelineIds(List<Long> pipelineIds, int minute) {
         Assert.assertNotNull(pipelineIds);
         List<ThroughputStatDO> throughputStatDOs = throughputDao.listRealTimeThroughputStatByPipelineIds(pipelineIds,
-                                                                                                         minute);
+                minute);
 
         List<ThroughputStat> infos = new ArrayList<ThroughputStat>();
         for (ThroughputStatDO throughputStatDO : throughputStatDOs) {
@@ -148,7 +148,7 @@ public class ThroughputStatServiceImpl implements ThroughputStatService {
 
     /**
      * 用于Model对象转化为DO对象
-     * 
+     *
      * @param throughputStat
      * @return throughputStatDO
      */
@@ -168,7 +168,7 @@ public class ThroughputStatServiceImpl implements ThroughputStatService {
 
     /**
      * 用于DO对象转化为Model对象
-     * 
+     *
      * @param throughputStatDO
      * @return throughputStat
      */

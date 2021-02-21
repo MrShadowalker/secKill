@@ -27,7 +27,7 @@ import com.alibaba.otter.manager.biz.config.channel.dal.dataobject.ChannelDO;
 
 /**
  * Channel的DAO层，ibatis的实现，主要是CRUD操作。
- * 
+ *
  * @author simon
  */
 public class IbatisChannelDAO extends SqlMapClientDaoSupport implements ChannelDAO {

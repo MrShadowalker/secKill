@@ -30,14 +30,14 @@ public interface DatasourceSupplier {
 
     /**
      * 客户端可以主动获取 master 的 {@linkplain AuthenticationInfo}
-     * 
+     *
      * @return
      */
     DatasourceInfo fetchMaster();
 
     /**
      * 客户端可以注册数据库连接发生变更的callback
-     * 
+     *
      * @param callback
      */
     void addSwtichCallback(DatasourceChangeCallback callback);

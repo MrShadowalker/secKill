@@ -27,25 +27,25 @@ import com.alibaba.otter.shared.common.utils.OtterToStringStyle;
 
 /**
  * 介质A -> 介质B 的同步映射关系对
- * 
+ *
  * @author jianghang 2011-9-2 上午11:41:33
  */
 public class DataMediaPair implements Serializable {
 
     private static final long serialVersionUID = 6173105172139714032L;
-    private Long              id;
-    private Long              pipelineId;                                     // 同步任务id
-    private DataMedia         source;
-    private DataMedia         target;
-    private Long              pullWeight;                                     // 介质A中获取数据的权重
-    private Long              pushWeight;                                     // 介质B中写入数据的权重
-    private ExtensionData     resolverData;                                   // 关联数据解析类
-    private ExtensionData     filterData;                                     // filter解析类
-    private ColumnPairMode    columnPairMode   = ColumnPairMode.INCLUDE;
-    private List<ColumnPair>  columnPairs      = new ArrayList<ColumnPair>();
-    private List<ColumnGroup> columnGroups     = new ArrayList<ColumnGroup>();
-    private Date              gmtCreate;
-    private Date              gmtModified;
+    private Long id;
+    private Long pipelineId;                                     // 同步任务id
+    private DataMedia source;
+    private DataMedia target;
+    private Long pullWeight;                                     // 介质A中获取数据的权重
+    private Long pushWeight;                                     // 介质B中写入数据的权重
+    private ExtensionData resolverData;                                   // 关联数据解析类
+    private ExtensionData filterData;                                     // filter解析类
+    private ColumnPairMode columnPairMode = ColumnPairMode.INCLUDE;
+    private List<ColumnPair> columnPairs = new ArrayList<ColumnPair>();
+    private List<ColumnGroup> columnGroups = new ArrayList<ColumnGroup>();
+    private Date gmtCreate;
+    private Date gmtModified;
 
     public Long getId() {
         return id;

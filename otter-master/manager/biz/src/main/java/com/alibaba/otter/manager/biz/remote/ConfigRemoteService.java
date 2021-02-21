@@ -27,7 +27,7 @@ import com.alibaba.otter.shared.communication.model.config.FindTaskEvent;
 
 /**
  * 针对manager config对象的远程服务接口定义
- * 
+ *
  * @author jianghang
  */
 public interface ConfigRemoteService {

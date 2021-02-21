@@ -37,8 +37,8 @@ import com.google.common.collect.Maps;
 public class ProcessViewDemo implements PipelineLifeCycle {
 
     private ArbitrateViewService arbitrateViewService;
-    private ExecutorService      executor = Executors.newCachedThreadPool(new NamedThreadFactory("ProcessView"));
-    private Map<Long, Future>    threads  = Maps.newConcurrentMap();
+    private ExecutorService executor = Executors.newCachedThreadPool(new NamedThreadFactory("ProcessView"));
+    private Map<Long, Future> threads = Maps.newConcurrentMap();
 
     public void submit(Long pipelineId) {
         if (threads.containsKey(pipelineId)) {
@@ -62,7 +62,7 @@ public class ProcessViewDemo implements PipelineLifeCycle {
 
         private Long pipelineId;
 
-        public ViewWorker(Long pipelineId){
+        public ViewWorker(Long pipelineId) {
             this.pipelineId = pipelineId;
         }
 

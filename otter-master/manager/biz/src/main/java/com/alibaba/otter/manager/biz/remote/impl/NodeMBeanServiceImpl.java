@@ -36,18 +36,18 @@ import com.google.common.collect.OtterMigrateMap;
 
 /**
  * 基于node Mbean获取数据的实现
- * 
+ *
  * @author jianghang 2012-7-30 上午10:38:30
  */
 public class NodeMBeanServiceImpl implements NodeRemoteService {
 
-    private static final String              MBEAN_NAME  = "bean:name=otterControllor";
-    private static final String              SERVICE_URL = "service:jmx:rmi://{0}/jndi/rmi://{0}:{1}/mbean";
-    private ObjectName                       objectName;
-    private NodeService                      nodeService;
+    private static final String MBEAN_NAME = "bean:name=otterControllor";
+    private static final String SERVICE_URL = "service:jmx:rmi://{0}/jndi/rmi://{0}:{1}/mbean";
+    private ObjectName objectName;
+    private NodeService nodeService;
     private Map<Long, MBeanServerConnection> mbeanServers;
 
-    public NodeMBeanServiceImpl(){
+    public NodeMBeanServiceImpl() {
         try {
             objectName = new ObjectName(MBEAN_NAME);
         } catch (Exception e) {
@@ -71,8 +71,8 @@ public class NodeMBeanServiceImpl implements NodeRemoteService {
 
                 try {
                     JMXServiceURL serviceURL = new JMXServiceURL(MessageFormat.format(SERVICE_URL,
-                        ip,
-                        String.valueOf(port)));
+                            ip,
+                            String.valueOf(port)));
                     JMXConnector cntor = JMXConnectorFactory.connect(serviceURL, null);
                     MBeanServerConnection mbsc = cntor.getMBeanServerConnection();
                     return mbsc;
@@ -81,7 +81,7 @@ public class NodeMBeanServiceImpl implements NodeRemoteService {
                 }
             }
 
-        },5, TimeUnit.MINUTES);
+        }, 5, TimeUnit.MINUTES);
     }
 
     public String getHeapMemoryUsage(Long nid) {
@@ -111,9 +111,9 @@ public class NodeMBeanServiceImpl implements NodeRemoteService {
     public void setProfile(Long nid, boolean profile) {
         try {
             mbeanServers.get(nid).invoke(objectName,
-                "setProfile",
-                new Object[] { profile },
-                new String[] { "java.lang.Boolean" });
+                    "setProfile",
+                    new Object[]{profile},
+                    new String[]{"java.lang.Boolean"});
         } catch (Exception e) {
             mbeanServers.remove(nid);
             throw new ManagerException(e);
@@ -123,9 +123,9 @@ public class NodeMBeanServiceImpl implements NodeRemoteService {
     public void setThreadPoolSize(Long nid, int size) {
         try {
             mbeanServers.get(nid).invoke(objectName,
-                "setThreadPoolSize",
-                new Object[] { size },
-                new String[] { "java.lang.Integer" });
+                    "setThreadPoolSize",
+                    new Object[]{size},
+                    new String[]{"java.lang.Integer"});
         } catch (Exception e) {
             mbeanServers.remove(nid);
             throw new ManagerException(e);
@@ -196,9 +196,9 @@ public class NodeMBeanServiceImpl implements NodeRemoteService {
     private Object invoke(Long nid, Long pipelineId, String method) {
         try {
             return mbeanServers.get(nid).invoke(objectName,
-                method,
-                new Object[] { pipelineId },
-                new String[] { "java.lang.Long" });
+                    method,
+                    new Object[]{pipelineId},
+                    new String[]{"java.lang.Long"});
         } catch (Exception e) {
             mbeanServers.remove(nid);
             throw new ManagerException(e);

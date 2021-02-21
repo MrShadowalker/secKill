@@ -25,27 +25,27 @@ public class AppCreateEvent extends Event {
 
     private static final long serialVersionUID = 810191575813164952L;
 
-    public AppCreateEvent(){
+    public AppCreateEvent() {
         super(AppEventType.create);
     }
 
-    private String    name;
-    private int       intValue;
-    private boolean   boolValue;
-    private float     floatValue;
-    private double    doubleValue;
-    private long      longValue;
-    private char      charValue;
-    private byte      byteValue;
-    private short     shortValue;
-    private Integer   integerValue;
-    private Boolean   boolObjValue;
-    private Float     floatObjValue;
-    private Double    doubleObjValue;
-    private Long      longObjValue;
+    private String name;
+    private int intValue;
+    private boolean boolValue;
+    private float floatValue;
+    private double doubleValue;
+    private long longValue;
+    private char charValue;
+    private byte byteValue;
+    private short shortValue;
+    private Integer integerValue;
+    private Boolean boolObjValue;
+    private Float floatObjValue;
+    private Double doubleObjValue;
+    private Long longObjValue;
     private Character characterValue;
-    private Short     shortObjValue;
-    private Byte      byteObjValue;
+    private Short shortObjValue;
+    private Byte byteObjValue;
 
     public String getName() {
         return name;

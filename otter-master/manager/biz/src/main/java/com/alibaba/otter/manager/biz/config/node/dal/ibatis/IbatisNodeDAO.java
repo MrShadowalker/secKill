@@ -27,7 +27,7 @@ import com.alibaba.otter.manager.biz.config.node.dal.dataobject.NodeDO;
 
 /**
  * Node的DAO层，ibatis的实现，主要是CRUD操作。
- * 
+ *
  * @author simon
  */
 public class IbatisNodeDAO extends SqlMapClientDaoSupport implements NodeDAO {

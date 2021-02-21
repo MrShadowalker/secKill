@@ -33,7 +33,7 @@ public class AlarmRuleList {
     private AlarmRuleService alarmRuleService;
 
     @Resource(name = "channelService")
-    private ChannelService   channelService;
+    private ChannelService channelService;
 
     public void execute(@Param("pipelineId") Long pipelineId, Context context) throws Exception {
 

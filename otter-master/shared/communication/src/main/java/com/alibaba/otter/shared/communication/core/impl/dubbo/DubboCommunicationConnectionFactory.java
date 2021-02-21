@@ -33,22 +33,22 @@ import com.google.common.collect.OtterMigrateMap;
 
 /**
  * dubbo rpc服务链接的factory
- * 
+ *
  * @author jianghang 2011-11-29 上午11:13:31
  * @version 4.0.0
  */
 public class DubboCommunicationConnectionFactory implements CommunicationConnectionFactory {
 
-    private final String                       DUBBO_SERVICE_URL = "dubbo://{0}:{1}/endpoint?client=netty&codec=dubbo&serialization=java&lazy=true&iothreads=4&threads=50&connections=30&acceptEvent.timeout=50000&payload={2}";
+    private final String DUBBO_SERVICE_URL = "dubbo://{0}:{1}/endpoint?client=netty&codec=dubbo&serialization=java&lazy=true&iothreads=4&threads=50&connections=30&acceptEvent.timeout=50000&payload={2}";
 
-    private DubboProtocol                      protocol          = DubboProtocol.getDubboProtocol();
-    private ProxyFactory                       proxyFactory      = ExtensionLoader.getExtensionLoader(ProxyFactory.class)
-                                                                     .getExtension("javassist");
+    private DubboProtocol protocol = DubboProtocol.getDubboProtocol();
+    private ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoader(ProxyFactory.class)
+            .getExtension("javassist");
 
-    private Map<String, CommunicationEndpoint> connections       = null;
-    private int                                payload           = Constants.DEFAULT_PAYLOAD;
+    private Map<String, CommunicationEndpoint> connections = null;
+    private int payload = Constants.DEFAULT_PAYLOAD;
 
-    public DubboCommunicationConnectionFactory(){
+    public DubboCommunicationConnectionFactory() {
         connections = OtterMigrateMap.makeComputingMap(new Function<String, CommunicationEndpoint>() {
 
             public CommunicationEndpoint apply(String serviceUrl) {

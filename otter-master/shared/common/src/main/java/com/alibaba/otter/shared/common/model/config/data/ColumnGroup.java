@@ -27,17 +27,17 @@ import com.alibaba.otter.shared.common.utils.OtterToStringStyle;
 
 /**
  * 数据介质字段同步组
- * 
+ *
  * @author simon 2012-3-31 下午03:54:22
  */
 public class ColumnGroup implements Serializable {
 
     private static final long serialVersionUID = 8903835374659632986L;
-    private Long              id;
-    private List<ColumnPair>  columnPairs      = new ArrayList<ColumnPair>();
-    private Long              dataMediaPairId;
-    private Date              gmtCreate;
-    private Date              gmtModified;
+    private Long id;
+    private List<ColumnPair> columnPairs = new ArrayList<ColumnPair>();
+    private Long dataMediaPairId;
+    private Date gmtCreate;
+    private Date gmtModified;
 
     public Long getId() {
         return id;

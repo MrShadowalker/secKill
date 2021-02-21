@@ -22,7 +22,7 @@ package com.alibaba.otter.common.push.supplier;
  */
 public abstract class AbstractDatasourceSupplier implements DatasourceSupplier {
 
-    private Object             lock    = new Object();
+    private Object lock = new Object();
     protected volatile boolean running = false;
 
     @Override

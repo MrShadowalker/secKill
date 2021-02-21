@@ -27,12 +27,12 @@ import com.alibaba.otter.shared.common.model.config.data.DataMediaType;
 public class DataMediaSourceDO implements Serializable {
 
     private static final long serialVersionUID = 5123273832849527936L;
-    private Long              id;
-    private String            name;
-    private DataMediaType     type;
-    private String            properties;
-    private Date              gmtCreate;
-    private Date              gmtModified;
+    private Long id;
+    private String name;
+    private DataMediaType type;
+    private String properties;
+    private Date gmtCreate;
+    private Date gmtModified;
 
     public Long getId() {
         return id;

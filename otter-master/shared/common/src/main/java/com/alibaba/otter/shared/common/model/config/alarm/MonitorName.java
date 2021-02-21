@@ -22,19 +22,29 @@ package com.alibaba.otter.shared.common.model.config.alarm;
  */
 public enum MonitorName {
 
-    /** 延迟 */
+    /**
+     * 延迟
+     */
     DELAYTIME,
 
-    /** 异常 */
+    /**
+     * 异常
+     */
     EXCEPTION,
 
-    /** Pipeline超时 */
+    /**
+     * Pipeline超时
+     */
     PIPELINETIMEOUT,
 
-    /** Process超时 */
+    /**
+     * Process超时
+     */
     PROCESSTIMEOUT,
 
-    /** position超时 */
+    /**
+     * position超时
+     */
     POSITIONTIMEOUT;
 
     public boolean isDelayTime() {

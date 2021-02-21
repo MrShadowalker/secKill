@@ -36,22 +36,22 @@ import com.alibaba.otter.shared.common.model.config.pipeline.Pipeline;
 public class PipelineMonitor implements Monitor {
 
     @Resource(name = "delayStatRuleMonitor")
-    private Monitor                delayStatRuleMonitor;
+    private Monitor delayStatRuleMonitor;
 
     // @Resource(name = "exceptionRuleMonitor")
     // private Monitor exceptionRuleMonitor;
 
     @Resource(name = "pipelineTimeoutRuleMonitor")
-    private Monitor                pipelineTimeoutRuleMonitor;
+    private Monitor pipelineTimeoutRuleMonitor;
 
     @Resource(name = "processTimeoutRuleMonitor")
-    private Monitor                processTimeoutRuleMonitor;
+    private Monitor processTimeoutRuleMonitor;
 
     @Resource(name = "positionTimeoutRuleMonitor")
-    private Monitor                positionTimeoutRuleMonitor;
+    private Monitor positionTimeoutRuleMonitor;
 
     @Resource(name = "pipelineService")
-    private PipelineService        pipelineService;
+    private PipelineService pipelineService;
 
     @Resource(name = "arbitrateManageService")
     private ArbitrateManageService arbitrateManageService;

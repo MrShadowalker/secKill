@@ -28,7 +28,7 @@ import com.alibaba.otter.shared.common.model.config.data.ColumnPair;
 
 /**
  * DataMediaPair的DAO层，ibatis的实现，主要是CRUD操作。
- * 
+ *
  * @author simon
  */
 public class IbatisDataMediaPairDAO extends SqlMapClientDaoSupport implements DataMediaPairDAO {
@@ -72,7 +72,7 @@ public class IbatisDataMediaPairDAO extends SqlMapClientDaoSupport implements Da
     public List<DataMediaPairDO> listByPipelineId(Long pipelineId) {
         Assert.assertNotNull(pipelineId);
         return (List<DataMediaPairDO>) getSqlMapClientTemplate().queryForList("listDataMediaPairsByPipelineId",
-                                                                              pipelineId);
+                pipelineId);
     }
 
     public List<DataMediaPairDO> listByCondition(Map condition) {
@@ -83,12 +83,12 @@ public class IbatisDataMediaPairDAO extends SqlMapClientDaoSupport implements Da
     public List<DataMediaPairDO> listByDataMediaId(Long dataMediaId) {
         Assert.assertNotNull(dataMediaId);
         return (List<DataMediaPairDO>) getSqlMapClientTemplate().queryForList("listDataMediaPairsByDataMediaId",
-                                                                              dataMediaId);
+                dataMediaId);
     }
 
     public List<DataMediaPairDO> listByMultiId(Long... identities) {
         List<DataMediaPairDO> dataMediaPairDos = getSqlMapClientTemplate().queryForList("listDataMediaPairByIds",
-                                                                                        identities);
+                identities);
         return dataMediaPairDos;
     }
 

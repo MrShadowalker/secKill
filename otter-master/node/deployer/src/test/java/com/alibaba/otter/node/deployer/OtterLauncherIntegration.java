@@ -22,7 +22,7 @@ import com.alibaba.otter.node.etl.OtterContextLocator;
 
 /**
  * 集成测试
- * 
+ *
  * @author jianghang 2011-10-8 下午06:25:52
  * @version 4.0.0
  */

@@ -24,13 +24,14 @@ import com.google.common.collect.Maps;
 
 /**
  * stage阶段的排序因子
- * 
+ *
  * @author jianghang 2011-9-22 上午09:57:17
  * @version 4.0.0
  */
 public class StageComparator implements Comparator<String> {
 
     private static final Map<String, Integer> stageIndex = Maps.newHashMap();
+
     static {
         stageIndex.put(ArbitrateConstants.NODE_SELECTED, 1);
         stageIndex.put(ArbitrateConstants.NODE_EXTRACTED, 2);

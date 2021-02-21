@@ -33,11 +33,11 @@ import com.alibaba.otter.shared.common.model.statistics.delay.DelayStat;
  */
 public class DelayStatRuleMonitor extends AbstractRuleMonitor {
 
-    private static final String DELAY_TIME_MESSAGE        = "pid:%s delay_time:%s seconds";
-    private static final String DELAY_UPDATE_MESSAGE      = "pid:%s delay %s seconds no update";
+    private static final String DELAY_TIME_MESSAGE = "pid:%s delay_time:%s seconds";
+    private static final String DELAY_UPDATE_MESSAGE = "pid:%s delay %s seconds no update";
     private static final String DELAY_TIME_UPDATE_MESSAGE = "pid:%s delay_time:%s seconds, but delay %s seconds no update";
 
-    private DelayStatService    delayStatService;
+    private DelayStatService delayStatService;
 
     @Override
     public void explore(List<AlarmRule> rules) {
@@ -72,10 +72,10 @@ public class DelayStatRuleMonitor extends AbstractRuleMonitor {
             logRecordAlarm(pipelineId, MonitorName.DELAYTIME, String.format(DELAY_TIME_MESSAGE, pipelineId, delayTime));
         } else if (delayTimeFlag && delayUpdateFlag) {
             logRecordAlarm(pipelineId, MonitorName.DELAYTIME,
-                           String.format(DELAY_TIME_UPDATE_MESSAGE, pipelineId, delayTime, delayUpdate));
+                    String.format(DELAY_TIME_UPDATE_MESSAGE, pipelineId, delayTime, delayUpdate));
         } else if (delayUpdateFlag) {
             logRecordAlarm(pipelineId, MonitorName.DELAYTIME,
-                           String.format(DELAY_UPDATE_MESSAGE, pipelineId, delayUpdate));
+                    String.format(DELAY_UPDATE_MESSAGE, pipelineId, delayUpdate));
         }
     }
 

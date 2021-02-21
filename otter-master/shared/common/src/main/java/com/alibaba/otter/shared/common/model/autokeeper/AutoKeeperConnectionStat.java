@@ -21,23 +21,23 @@ import java.util.Set;
 
 /**
  * 客户端链接统计信息
- * 
+ *
  * <pre>
  * 命令: echo cons | nc 127.0.0.1 2181
  *  /127.0.0.1:60731[1](queued=0,recved=1506932,sent=2005617,sid=0x6339e69e49350004,lop=GETC,est=1348196892287,to=10000,lcxid=0x16fe71,lzxid=0x1b03dbc434,lresp=1348209252756,llat=0,minlat=0,avglat=0,maxlat=60)
  * </pre>
- * 
+ *
  * @author jianghang 2012-9-21 下午02:13:19
  * @version 4.1.0
  */
 public class AutoKeeperConnectionStat extends AutoKeeperStateStat {
 
-    private static final long            serialVersionUID = -786367247388065889L;
-    private String                       sessionId;
-    private String                       serverAddress;
-    private String                       clientAddress;
-    private Set<AutoKeeperWatchStat>     watchStats       = new HashSet<AutoKeeperWatchStat>();    // watcher请求状态
-    private Set<AutoKeeperEphemeralStat> ephemeralStats   = new HashSet<AutoKeeperEphemeralStat>(); // 临时节点状态
+    private static final long serialVersionUID = -786367247388065889L;
+    private String sessionId;
+    private String serverAddress;
+    private String clientAddress;
+    private Set<AutoKeeperWatchStat> watchStats = new HashSet<AutoKeeperWatchStat>();    // watcher请求状态
+    private Set<AutoKeeperEphemeralStat> ephemeralStats = new HashSet<AutoKeeperEphemeralStat>(); // 临时节点状态
 
     public String getServerAddress() {
         return serverAddress;

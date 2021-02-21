@@ -44,14 +44,14 @@ import com.alibaba.otter.shared.common.utils.zookeeper.ZkClientx;
 
 /**
  * 基于rpc模式的select实现, process的持久化控制还是依赖于zookeeper，只是改变了原先s/e/t/l之间的通讯方式，由zookeeper watcher改为rpc
- * 
+ *
  * @author jianghang 2012-9-28 下午09:32:04
  * @version 4.1.0
  */
 public class SelectRpcArbitrateEvent implements SelectArbitrateEvent {
 
-    private static final Logger     logger    = LoggerFactory.getLogger(SelectRpcArbitrateEvent.class);
-    private ZkClientx               zookeeper = ZooKeeperClient.getInstance();
+    private static final Logger logger = LoggerFactory.getLogger(SelectRpcArbitrateEvent.class);
+    private ZkClientx zookeeper = ZooKeeperClient.getInstance();
     private RpcStageEventDispatcher rpcStageEventDispatcher;
 
     public EtlEventData await(Long pipelineId) throws InterruptedException {
@@ -61,7 +61,7 @@ public class SelectRpcArbitrateEvent implements SelectArbitrateEvent {
         permitMonitor.waitForPermit();// 阻塞等待授权
 
         SelectProcessListener selectProcessListener = ArbitrateFactory.getInstance(pipelineId,
-                                                                                   SelectProcessListener.class);
+                SelectProcessListener.class);
         Long processId = selectProcessListener.waitForProcess(); // 符合条件的processId
 
         ChannelStatus status = permitMonitor.getChannelPermit();
@@ -93,8 +93,8 @@ public class SelectRpcArbitrateEvent implements SelectArbitrateEvent {
                 throw new ArbitrateException("Select_await", e.getMessage(), e);
             }
         } else {
-            logger.warn("pipelineId【{}】 select ignore processId【{}】 by status【{}】", new Object[] { pipelineId,
-                    processId, status });
+            logger.warn("pipelineId【{}】 select ignore processId【{}】 by status【{}】", new Object[]{pipelineId,
+                    processId, status});
             // add by ljh 2013-02-01
             // 遇到一个bug:
             // a. 某台机器发起了一个RESTART指令，然后开始删除process列表

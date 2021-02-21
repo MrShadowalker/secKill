@@ -40,19 +40,19 @@ import com.google.common.collect.OtterMigrateMap;
 
 /**
  * 基于rpc的stage调度控制器，排除select调度,主要控制e/t/l的调度控制
- * 
+ *
  * @author jianghang 2012-9-28 下午10:05:26
  * @version 4.1.0
  */
 public class RpcStageController extends ArbitrateLifeCycle implements ProcessListener {
 
-    private static final Logger               logger                 = LoggerFactory.getLogger(RpcStageController.class);
+    private static final Logger logger = LoggerFactory.getLogger(RpcStageController.class);
     private Map<StageType, ReplyProcessQueue> replys;
-    private Map<Long, StageProgress>          progress;
-    private ProcessMonitor                    processMonitor;
-    private volatile Long                     lastestLoadedProcessId = -1L;                                              // 最近一次同步成功的processId
+    private Map<Long, StageProgress> progress;
+    private ProcessMonitor processMonitor;
+    private volatile Long lastestLoadedProcessId = -1L;                                              // 最近一次同步成功的processId
 
-    public RpcStageController(Long pipelineId){
+    public RpcStageController(Long pipelineId) {
         super(pipelineId);
 
         replys = OtterMigrateMap.makeComputingMap(new Function<StageType, ReplyProcessQueue>() {
@@ -226,7 +226,7 @@ public class RpcStageController extends ArbitrateLifeCycle implements ProcessLis
                     Long processId = processIds.get(0);
                     if (processId > (Long) replyId) { // 如果当前最小的processId都大于replyId, processId都是递增创建的
                         logger.info("## {} remove reply id 【{}】", ClassUtils.getShortClassName(this.getClass()),
-                                    (Long) replyId);
+                                (Long) replyId);
                         replyProcessIds.remove((Long) replyId);
                         progress.remove((Long) replyId);
                     }

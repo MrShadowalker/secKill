@@ -33,7 +33,7 @@ import com.google.common.collect.Lists;
 
 /**
  * transform模块的测试，和extract测试基本接近
- * 
+ *
  * @author jianghang 2011-9-22 上午09:16:53
  * @version 4.0.0
  */
@@ -69,14 +69,14 @@ public class TransformStageListenerTest extends BaseStageTest {
             initProcessIds.add(p4);
 
             List<String> p1Stages = Arrays.asList(ArbitrateConstants.NODE_SELECTED, ArbitrateConstants.NODE_EXTRACTED,
-                                                  ArbitrateConstants.NODE_TRANSFORMED);
+                    ArbitrateConstants.NODE_TRANSFORMED);
             stages.put(p1, p1Stages);
 
             List<String> p2Stages = Arrays.asList(ArbitrateConstants.NODE_SELECTED, ArbitrateConstants.NODE_EXTRACTED);
             stages.put(p2, p2Stages);
 
             List<String> p3Stages = Arrays.asList(ArbitrateConstants.NODE_SELECTED, ArbitrateConstants.NODE_EXTRACTED,
-                                                  ArbitrateConstants.NODE_TRANSFORMED);
+                    ArbitrateConstants.NODE_TRANSFORMED);
             stages.put(p3, p3Stages);
 
             List<String> p4Stages = Arrays.asList(ArbitrateConstants.NODE_SELECTED, ArbitrateConstants.NODE_EXTRACTED);

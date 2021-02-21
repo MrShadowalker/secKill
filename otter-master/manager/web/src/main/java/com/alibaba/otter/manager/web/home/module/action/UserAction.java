@@ -35,7 +35,7 @@ import com.alibaba.otter.shared.common.utils.SecurityUtils;
 
 /**
  * 类UserAction.java的实现描述：TODO 类实现描述
- * 
+ *
  * @author simon 2011-11-10 下午07:14:50
  */
 public class UserAction extends AbstractAction {

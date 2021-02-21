@@ -33,12 +33,12 @@ import com.alibaba.otter.shared.common.model.autokeeper.AutoKeeperServerStat;
 public class AutoKeeperCollectorTest extends BaseOtterTest {
 
     @SpringBeanByName
-    private AutoKeeperCollector   autoKeeperCollector;
+    private AutoKeeperCollector autoKeeperCollector;
 
     @SpringBeanByName
     private AutoKeeperStatService autoKeeperStatService;
 
-    private final static String   ADDRESS = "127.0.0.1:2181";
+    private final static String ADDRESS = "127.0.0.1:2181";
 
     @Test
     public void testCollectorServerStat() {

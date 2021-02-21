@@ -78,7 +78,7 @@ public class IbatisAlarmRuleDAO extends SqlMapClientDaoSupport implements AlarmR
 
     public List<AlarmRuleDO> listAllByPipeline(Map condition) {
         List<AlarmRuleDO> alarmRuleDos = getSqlMapClientTemplate().queryForList("listAllAlarmOrderByPipeline",
-                                                                                condition);
+                condition);
         return alarmRuleDos;
     }
 

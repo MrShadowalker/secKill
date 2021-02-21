@@ -29,7 +29,7 @@ public abstract class DdlUtilsFilter {
 
     /**
      * 返回要获取 {@linkplain DatabaseMetaData} 的 {@linkplain Connection}，不能返回null
-     * 
+     *
      * @param con
      * @return
      */
@@ -39,7 +39,7 @@ public abstract class DdlUtilsFilter {
 
     /**
      * 对 databaseMetaData 做一些过滤,返回 {@linkplain DatabaseMetaData}，不能为 null
-     * 
+     *
      * @param databaseMetaData
      * @return
      */

@@ -42,9 +42,9 @@ import com.alibaba.otter.shared.common.utils.Assert;
  */
 public class AlarmRuleServiceImpl implements AlarmRuleService {
 
-    private static final Logger logger           = LoggerFactory.getLogger(AlarmRuleServiceImpl.class);
-    public static final String  TIMESTAMP_FORMAT = "yyyy-MM-dd HH:mm:ss";
-    private AlarmRuleDAO        alarmRuleDao;
+    private static final Logger logger = LoggerFactory.getLogger(AlarmRuleServiceImpl.class);
+    public static final String TIMESTAMP_FORMAT = "yyyy-MM-dd HH:mm:ss";
+    private AlarmRuleDAO alarmRuleDao;
 
     public void create(AlarmRule alarmRule) {
         Assert.assertNotNull(alarmRule);

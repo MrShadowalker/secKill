@@ -36,21 +36,21 @@ import com.google.common.collect.OtterMigrateMap;
 
 /**
  * manager下的基于db查询的{@linkplain ArbitrateConfig}实现
- * 
+ *
  * @author jianghang 2011-11-3 上午11:09:24
  * @version 4.0.0
  */
 public class ArbitrateConfigImpl implements ArbitrateConfig, InitializingBean {
 
-    private static final Long                  DEFAULT_PERIOD = 60 * 1000L;
-    private Long                               timeout        = DEFAULT_PERIOD;
+    private static final Long DEFAULT_PERIOD = 60 * 1000L;
+    private Long timeout = DEFAULT_PERIOD;
     private RefreshMemoryMirror<Long, Channel> channelCache;
-    private Map<Long, Long>                    channelMapping;
-    private ChannelService                     channelService;
-    private NodeService                        nodeService;
-    private RefreshMemoryMirror<Long, Node>    nodeCache;
+    private Map<Long, Long> channelMapping;
+    private ChannelService channelService;
+    private NodeService nodeService;
+    private RefreshMemoryMirror<Long, Node> nodeCache;
 
-    public ArbitrateConfigImpl(){
+    public ArbitrateConfigImpl() {
         // 注册自己到arbitrate模块
         ArbitrateConfigRegistry.regist(this);
     }

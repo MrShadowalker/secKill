@@ -31,7 +31,7 @@ import com.alibaba.otter.shared.common.model.autokeeper.AutoKeeperCluster;
 public class EditCanal {
 
     @Resource(name = "canalService")
-    private CanalService             canalService;
+    private CanalService canalService;
 
     @Resource(name = "autoKeeperClusterService")
     private AutoKeeperClusterService autoKeeperClusterService;

@@ -40,13 +40,13 @@ public class OtterMigrateMap {
 
     @SuppressWarnings("deprecation")
     public static <K, V> ConcurrentMap<K, V> makeSoftValueComputingMapWithTimeout(Function<? super K, ? extends V> computingFunction,
-                                                                       long timeout, TimeUnit timeUnit) {
+                                                                                  long timeout, TimeUnit timeUnit) {
         return new MapMaker().expireAfterWrite(timeout, timeUnit).softValues().makeComputingMap(computingFunction);
     }
 
     @SuppressWarnings("deprecation")
     public static <K, V> ConcurrentMap<K, V> makeSoftValueMapWithTimeout(MapMaker maker,
-    long timeout, TimeUnit timeUnit) {
+                                                                         long timeout, TimeUnit timeUnit) {
         return maker.expireAfterWrite(timeout, timeUnit).softValues().makeMap();
     }
 

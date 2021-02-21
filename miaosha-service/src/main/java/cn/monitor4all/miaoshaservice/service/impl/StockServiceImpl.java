@@ -84,7 +84,7 @@ public class StockServiceImpl implements StockService {
     @Override
     public int updateStockByOptimistic(Stock stock) {
         // 根据 sale 更新库存
-        //        return stockMapper.updateByOptimistic(stock);
+        // return stockMapper.updateByOptimistic(stock);
         // 根据 version 更新库存和版本号
         return stockMapper.updateSaleAndVersionByOptimistic(stock);
     }

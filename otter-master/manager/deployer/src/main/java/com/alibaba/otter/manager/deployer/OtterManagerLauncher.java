@@ -27,7 +27,7 @@ import org.slf4j.LoggerFactory;
 
 public class OtterManagerLauncher {
 
-    private static final Logger logger               = LoggerFactory.getLogger(OtterManagerLauncher.class);
+    private static final Logger logger = LoggerFactory.getLogger(OtterManagerLauncher.class);
     private static final String CLASSPATH_URL_PREFIX = "classpath:";
 
     public static void main(String[] args) throws Throwable {
@@ -56,7 +56,7 @@ public class OtterManagerLauncher {
                         server.join();
                     } catch (Throwable e) {
                         logger.warn("##something goes wrong when stopping manager Server:\n{}",
-                                    ExceptionUtils.getFullStackTrace(e));
+                                ExceptionUtils.getFullStackTrace(e));
                     } finally {
                         logger.info("## manager server is down.");
                     }
@@ -65,7 +65,7 @@ public class OtterManagerLauncher {
             });
         } catch (Throwable e) {
             logger.error("## Something goes wrong when starting up the manager Server:\n{}",
-                         ExceptionUtils.getFullStackTrace(e));
+                    ExceptionUtils.getFullStackTrace(e));
             System.exit(0);
         }
     }

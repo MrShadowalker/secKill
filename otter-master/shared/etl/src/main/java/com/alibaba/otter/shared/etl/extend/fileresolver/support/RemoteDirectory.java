@@ -28,7 +28,7 @@ public interface RemoteDirectory {
 
     /**
      * 删除目录
-     * 
+     *
      * @return
      * @throws IOException
      */
@@ -36,14 +36,14 @@ public interface RemoteDirectory {
 
     /**
      * 判断目录是否存在。
-     * 
+     *
      * @return 如果目录存在返回true，否则false
      */
     public boolean exists();
 
     /**
      * 返回当前目录下的文件列表
-     * 
+     *
      * @return
      * @throws IOException
      */

@@ -27,19 +27,19 @@ import com.alibaba.otter.shared.arbitrate.impl.setl.TransformArbitrateEvent;
 
 /**
  * 仲裁器事件service的默认实现
- * 
+ *
  * @author jianghang 2011-9-22 下午04:04:00
  * @version 4.0.0
  */
 public class ArbitrateEventServiceImpl implements ArbitrateEventService {
 
-    private MainStemArbitrateEvent  mainStemEvent;
-    private SelectArbitrateEvent    selectEvent;
-    private ExtractArbitrateEvent   extractEvent;
+    private MainStemArbitrateEvent mainStemEvent;
+    private SelectArbitrateEvent selectEvent;
+    private ExtractArbitrateEvent extractEvent;
     private TransformArbitrateEvent transformEvent;
-    private LoadArbitrateEvent      loadEvent;
-    private TerminArbitrateEvent    terminEvent;
-    private ToolArbitrateEvent      toolEvent;
+    private LoadArbitrateEvent loadEvent;
+    private TerminArbitrateEvent terminEvent;
+    private ToolArbitrateEvent toolEvent;
 
     public MainStemArbitrateEvent mainStemEvent() {
         return mainStemEvent;

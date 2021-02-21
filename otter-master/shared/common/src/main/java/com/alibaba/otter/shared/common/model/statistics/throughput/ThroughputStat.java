@@ -25,21 +25,21 @@ import com.alibaba.otter.shared.common.utils.OtterToStringStyle;
 
 /**
  * 吞吐量统计
- * 
+ *
  * @author jianghang 2011-9-8 下午12:53:59
  */
 public class ThroughputStat implements Serializable {
 
     private static final long serialVersionUID = 1953478777704061454L;
-    private Long              id;
-    private Long              pipelineId;
-    private Date              startTime;
-    private Date              endTime;
-    private ThroughputType    type;
-    private Long              number;
-    private Long              size;
-    private Date              gmtCreate;
-    private Date              gmtModified;
+    private Long id;
+    private Long pipelineId;
+    private Date startTime;
+    private Date endTime;
+    private ThroughputType type;
+    private Long number;
+    private Long size;
+    private Date gmtCreate;
+    private Date gmtModified;
 
     public Long getId() {
         return id;

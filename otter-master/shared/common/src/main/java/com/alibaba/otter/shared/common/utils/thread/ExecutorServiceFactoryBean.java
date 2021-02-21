@@ -26,18 +26,18 @@ import org.springframework.beans.factory.InitializingBean;
 
 /**
  * 基于spring 提供一个async的容器
- * 
+ *
  * @author jianghang 2011-11-14 下午03:48:57
  * @version 4.0.0
  */
 public class ExecutorServiceFactoryBean implements FactoryBean, InitializingBean, DisposableBean {
 
     private ThreadPoolExecutor executor;
-    private static final int   DEFAULT_POOL_SIZE    = 50;
-    private static final int   DEFAULT_ACCEPT_COUNT = 100;
-    private int                poolSize             = DEFAULT_POOL_SIZE;
-    private int                acceptCount          = DEFAULT_ACCEPT_COUNT;
-    private String             name                 = "Otter-Async-Executor";
+    private static final int DEFAULT_POOL_SIZE = 50;
+    private static final int DEFAULT_ACCEPT_COUNT = 100;
+    private int poolSize = DEFAULT_POOL_SIZE;
+    private int acceptCount = DEFAULT_ACCEPT_COUNT;
+    private String name = "Otter-Async-Executor";
 
     public Object getObject() throws Exception {
         return executor;
@@ -54,8 +54,8 @@ public class ExecutorServiceFactoryBean implements FactoryBean, InitializingBean
     public void afterPropertiesSet() throws Exception {
         if (executor == null) {// 初始化一个默认值
             executor = new ThreadPoolExecutor(poolSize, poolSize, 60, TimeUnit.SECONDS,
-                                              new ArrayBlockingQueue(acceptCount), new NamedThreadFactory(name),
-                                              new ThreadPoolExecutor.CallerRunsPolicy());
+                    new ArrayBlockingQueue(acceptCount), new NamedThreadFactory(name),
+                    new ThreadPoolExecutor.CallerRunsPolicy());
         }
     }
 

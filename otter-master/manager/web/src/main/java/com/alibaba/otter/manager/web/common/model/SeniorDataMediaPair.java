@@ -24,7 +24,7 @@ import com.alibaba.otter.shared.common.model.config.data.DataMediaPair;
  */
 public class SeniorDataMediaPair {
 
-    private Channel       channel;
+    private Channel channel;
 
     private DataMediaPair dataMediaPair;
 

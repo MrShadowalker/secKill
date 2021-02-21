@@ -24,14 +24,14 @@ import com.alibaba.otter.shared.arbitrate.impl.zookeeper.SessionExpiredNotificat
 
 /**
  * node节点重建
- * 
+ *
  * @author jianghang 2012-1-13 上午11:16:59
  * @version 4.0.0
  */
 public class NodeSessionExpired implements SessionExpiredNotification {
 
     private static final Logger logger = LoggerFactory.getLogger(NodeSessionExpired.class);
-    private NodeArbitrateEvent  nodeEvent;
+    private NodeArbitrateEvent nodeEvent;
 
     public void notification() {
         try {

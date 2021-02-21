@@ -40,29 +40,29 @@ import com.alibaba.otter.shared.common.utils.JsonUtils;
 
 /**
  * 基于data media机制提供的数据源信息
- * 
+ *
  * @author jianghang 2013-4-18 下午03:03:26
  * @version 4.1.8
  */
 public class MediaDatasourceSupplier extends AbstractDatasourceSupplier {
 
-    private static final Logger            log          = LoggerFactory.getLogger(MediaDatasourceSupplier.class);
-    private static AtomicInteger           CHANGED_TIME = new AtomicInteger(0);
+    private static final Logger log = LoggerFactory.getLogger(MediaDatasourceSupplier.class);
+    private static AtomicInteger CHANGED_TIME = new AtomicInteger(0);
 
-    private SubscribeManager               mediaSubscribeManager;
+    private SubscribeManager mediaSubscribeManager;
 
-    private String                         groupKey;
-    private HaDatasourceInfo               haInfo;
+    private String groupKey;
+    private HaDatasourceInfo haInfo;
 
-    private List<DatasourceChangeCallback> callbacks    = new LinkedList<DatasourceChangeCallback>();
+    private List<DatasourceChangeCallback> callbacks = new LinkedList<DatasourceChangeCallback>();
 
-    private Object                         lock         = new Object();
-    private SubscribeCallback              subscribeCallback;
+    private Object lock = new Object();
+    private SubscribeCallback subscribeCallback;
 
-    private MediaDatasourceSupplier(){
+    private MediaDatasourceSupplier() {
     }
 
-    private MediaDatasourceSupplier(String groupKey){
+    private MediaDatasourceSupplier(String groupKey) {
         this.groupKey = groupKey;
     }
 

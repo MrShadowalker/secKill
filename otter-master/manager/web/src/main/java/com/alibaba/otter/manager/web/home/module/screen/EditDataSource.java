@@ -25,7 +25,7 @@ import com.alibaba.otter.manager.biz.config.datamediasource.DataMediaSourceServi
 
 /**
  * 类EditDataSource.java的实现描述：TODO 类实现描述
- * 
+ *
  * @author simon 2011-10-26 下午04:03:14
  */
 public class EditDataSource {

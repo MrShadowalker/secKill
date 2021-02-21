@@ -45,13 +45,13 @@ import com.alibaba.otter.shared.common.model.config.pipeline.PipelineParameter;
 public class PipelineAction {
 
     @Resource(name = "pipelineService")
-    private PipelineService      pipelineService;
+    private PipelineService pipelineService;
 
     @Resource(name = "dataMediaPairService")
     private DataMediaPairService dataMediaPairService;
 
     @Resource(name = "channelService")
-    private ChannelService       channelService;
+    private ChannelService channelService;
 
     public void doAdd(@FormGroup("pipelineInfo") Group pipelineInfo,
                       @FormGroup("pipelineParameterInfo") Group pipelineParameterInfo,
@@ -66,7 +66,7 @@ public class PipelineAction {
         // }
 
         List<Long> selectNodeIds = Arrays.asList(ArrayUtils.toObject(pipelineInfo.getField("selectNodeIds")
-            .getLongValues()));
+                .getLongValues()));
         List<Node> selectNodes = new ArrayList<Node>();
         for (Long selectNodeId : selectNodeIds) {
             Node node = new Node();
@@ -76,7 +76,7 @@ public class PipelineAction {
 
         // select/extract节点普遍配置为同一个节点
         List<Long> extractNodeIds = Arrays.asList(ArrayUtils.toObject(pipelineInfo.getField("selectNodeIds")
-            .getLongValues()));
+                .getLongValues()));
         // List<Long> extractNodeIds =
         // Arrays.asList(ArrayUtils.toObject(pipelineInfo.getField("extractNodeIds").getLongValues()));
         List<Node> extractNodes = new ArrayList<Node>();
@@ -100,7 +100,7 @@ public class PipelineAction {
         pipeline.setParameters(parameters);
 
         List<Pipeline> values = pipelineService.listByDestinationWithoutOther(pipeline.getParameters()
-            .getDestinationName());
+                .getDestinationName());
         if (!values.isEmpty()) {
             err.setMessage("invalidDestinationName");
             return;
@@ -116,7 +116,7 @@ public class PipelineAction {
     }
 
     public void doDelete(@Param("pipelineId") Long pipelineId, @Param("channelId") Long channelId, Navigator nav)
-                                                                                                                 throws WebxException {
+            throws WebxException {
         Channel channel = channelService.findById(channelId);
         if (channel.getStatus().isStart()) {
             nav.redirectTo(WebConstant.ERROR_FORBIDDEN_Link);
@@ -143,7 +143,7 @@ public class PipelineAction {
         // }
 
         List<Long> selectNodeIds = Arrays.asList(ArrayUtils.toObject(pipelineInfo.getField("selectNodeIds")
-            .getLongValues()));
+                .getLongValues()));
         List<Node> selectNodes = new ArrayList<Node>();
         for (Long selectNodeId : selectNodeIds) {
             Node node = new Node();
@@ -153,7 +153,7 @@ public class PipelineAction {
 
         // select/extract节点普遍配置为同一个节点
         List<Long> extractNodeIds = Arrays.asList(ArrayUtils.toObject(pipelineInfo.getField("selectNodeIds")
-            .getLongValues()));
+                .getLongValues()));
         // List<Long> extractNodeIds =
         // Arrays.asList(ArrayUtils.toObject(pipelineInfo.getField("extractNodeIds").getLongValues()));
         List<Node> extractNodes = new ArrayList<Node>();
@@ -177,7 +177,7 @@ public class PipelineAction {
         pipeline.setParameters(parameters);
 
         List<Pipeline> values = pipelineService.listByDestinationWithoutOther(pipeline.getParameters()
-            .getDestinationName());
+                .getDestinationName());
 
         if (!values.isEmpty()) {
             if (values.size() > 1 || !values.get(0).getId().equals(pipeline.getId())) {

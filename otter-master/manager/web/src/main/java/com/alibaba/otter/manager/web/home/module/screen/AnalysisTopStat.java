@@ -39,16 +39,16 @@ import com.alibaba.otter.shared.common.model.statistics.throughput.ThroughputTyp
 public class AnalysisTopStat {
 
     @Resource(name = "throughputStatService")
-    private ThroughputStatService  throughputStatService;
+    private ThroughputStatService throughputStatService;
 
     @Resource(name = "delayStatService")
-    private DelayStatService       delayStatService;
+    private DelayStatService delayStatService;
 
     @Resource(name = "arbitrateManageService")
     private ArbitrateManageService arbitrateManageService;
 
     @Resource(name = "arbitrateViewService")
-    private ArbitrateViewService   arbitrateViewService;
+    private ArbitrateViewService arbitrateViewService;
 
     public void execute(@Param("searchKey") String searchKey, @Param("topN") int topN, @Param("statTime") int minute,
                         Context context) throws Exception {
@@ -91,12 +91,12 @@ public class AnalysisTopStat {
             for (TopDelayStat top : tops) {
                 if (!channelStatuses.containsKey(top.getChannelId())) {
                     channelStatuses.put(top.getChannelId(),
-                                        arbitrateManageService.channelEvent().status(top.getChannelId()));
+                            arbitrateManageService.channelEvent().status(top.getChannelId()));
                 }
 
                 if (!mainstemStatuses.containsKey(top.getPipelineId())) {
                     mainstemStatuses.put(top.getPipelineId(),
-                                         arbitrateViewService.mainstemData(top.getChannelId(), top.getPipelineId()));
+                            arbitrateViewService.mainstemData(top.getChannelId(), top.getPipelineId()));
                 }
             }
         }

@@ -43,23 +43,23 @@ import com.alibaba.otter.shared.common.utils.compile.model.JdkCompilerClassLoade
 
 public class JdkCompileTask<T> {
 
-    public static final String                  JAVA_EXTENSION = ".java";
+    public static final String JAVA_EXTENSION = ".java";
 
-    private final JdkCompilerClassLoader        classLoader;
+    private final JdkCompilerClassLoader classLoader;
 
-    private final JavaCompiler                  compiler;
+    private final JavaCompiler compiler;
 
-    private final List<String>                  options;
+    private final List<String> options;
 
     private DiagnosticCollector<JavaFileObject> diagnostics;
 
-    private JavaFileManagerImpl                 javaFileManager;
+    private JavaFileManagerImpl javaFileManager;
 
-    public JdkCompileTask(JdkCompilerClassLoader classLoader, Iterable<String> options){
+    public JdkCompileTask(JdkCompilerClassLoader classLoader, Iterable<String> options) {
         compiler = ToolProvider.getSystemJavaCompiler();
         if (compiler == null) {
             throw new IllegalStateException("Cannot find the system Java compiler. "
-                                            + "Check that your class path includes tools.jar");
+                    + "Check that your class path includes tools.jar");
         }
 
         this.classLoader = classLoader;
@@ -68,7 +68,7 @@ public class JdkCompileTask<T> {
         final StandardJavaFileManager fileManager = compiler.getStandardFileManager(diagnostics, null, null);
 
         if (loader instanceof URLClassLoader
-            && (!loader.getClass().getName().equalsIgnoreCase("sun.misc.Launcher$AppClassLoader"))) {
+                && (!loader.getClass().getName().equalsIgnoreCase("sun.misc.Launcher$AppClassLoader"))) {
             try {
                 @SuppressWarnings("resource")
                 URLClassLoader urlClassLoader = (URLClassLoader) loader;
@@ -95,8 +95,8 @@ public class JdkCompileTask<T> {
 
     public synchronized Class compile(final String className, final CharSequence javaSource,
                                       final DiagnosticCollector<JavaFileObject> diagnosticsList)
-                                                                                                throws JdkCompileException,
-                                                                                                ClassCastException {
+            throws JdkCompileException,
+            ClassCastException {
         if (diagnosticsList != null) {
             diagnostics = diagnosticsList;
         } else {
@@ -113,7 +113,7 @@ public class JdkCompileTask<T> {
 
     public synchronized Map<String, Class> compile(final Map<String, CharSequence> classes,
                                                    final DiagnosticCollector<JavaFileObject> diagnosticsList)
-                                                                                                             throws JdkCompileException {
+            throws JdkCompileException {
         Map<String, Class> compiled = new HashMap<String, Class>();
 
         List<JavaFileObject> sources = new ArrayList<JavaFileObject>();
@@ -127,9 +127,9 @@ public class JdkCompileTask<T> {
                 final JavaFileObjectImpl source = new JavaFileObjectImpl(className, javaSource);
                 sources.add(source);
                 javaFileManager.putFileForInput(StandardLocation.SOURCE_PATH,
-                    packageName,
-                    className + JAVA_EXTENSION,
-                    source);
+                        packageName,
+                        className + JAVA_EXTENSION,
+                        source);
             }
         }
 

@@ -32,7 +32,7 @@ import com.alibaba.otter.shared.common.model.config.data.DataMediaSource;
 public class DataMatrixInfo {
 
     @Resource(name = "dataMatrixService")
-    private DataMatrixService      dataMatrixService;
+    private DataMatrixService dataMatrixService;
 
     @Resource(name = "dataMediaSourceService")
     private DataMediaSourceService dataMediaSourceService;

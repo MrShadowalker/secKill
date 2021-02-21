@@ -63,7 +63,7 @@ public class ArbitrateViewServiceTest extends BaseStageTest {
             initProcessIds.add(p3);
             initProcessIds.add(p4);
             List<String> p1Stages = Arrays.asList(ArbitrateConstants.NODE_SELECTED, ArbitrateConstants.NODE_EXTRACTED,
-                                                  ArbitrateConstants.NODE_TRANSFORMED);
+                    ArbitrateConstants.NODE_TRANSFORMED);
             stages.put(p1, p1Stages);
 
             List<String> p2Stages = Arrays.asList(ArbitrateConstants.NODE_SELECTED, ArbitrateConstants.NODE_EXTRACTED);

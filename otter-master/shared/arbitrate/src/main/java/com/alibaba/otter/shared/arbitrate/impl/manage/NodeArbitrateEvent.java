@@ -32,7 +32,7 @@ import com.alibaba.otter.shared.common.utils.zookeeper.ZkClientx;
 
 /**
  * 机器node节点的相关信号
- * 
+ *
  * @author jianghang 2011-8-31 下午07:26:02
  */
 public class NodeArbitrateEvent implements ArbitrateEvent {
@@ -41,7 +41,7 @@ public class NodeArbitrateEvent implements ArbitrateEvent {
 
     /**
      * 创建相应的node节点，说明：node节点的生命周期为EPHEMERAL
-     * 
+     *
      * <pre>
      * 1. 是个同步调用
      * </pre>
@@ -58,7 +58,7 @@ public class NodeArbitrateEvent implements ArbitrateEvent {
 
     /**
      * 销毁的node节点
-     * 
+     *
      * <pre>
      * 1. 是个同步调用
      * </pre>

@@ -22,9 +22,9 @@ public class FindNodeEvent extends Event {
 
     private static final long serialVersionUID = 476657754177940448L;
 
-    private Long              nid;                                   // 对应的task机器id
+    private Long nid;                                   // 对应的task机器id
 
-    public FindNodeEvent(){
+    public FindNodeEvent() {
         super(ConfigEventType.findNode);
     }
 

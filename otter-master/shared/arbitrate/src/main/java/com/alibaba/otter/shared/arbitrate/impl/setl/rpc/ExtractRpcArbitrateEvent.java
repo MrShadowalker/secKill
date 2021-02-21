@@ -35,14 +35,14 @@ import com.alibaba.otter.shared.common.utils.zookeeper.ZkClientx;
 
 /**
  * 基于rpc方式实现的extract调度
- * 
+ *
  * @author jianghang 2012-9-29 上午10:59:24
  * @version 4.1.0
  */
 public class ExtractRpcArbitrateEvent implements ExtractArbitrateEvent {
 
-    private static final Logger     logger    = LoggerFactory.getLogger(ExtractRpcArbitrateEvent.class);
-    private ZkClientx               zookeeper = ZooKeeperClient.getInstance();
+    private static final Logger logger = LoggerFactory.getLogger(ExtractRpcArbitrateEvent.class);
+    private ZkClientx zookeeper = ZooKeeperClient.getInstance();
     private RpcStageEventDispatcher rpcStageEventDispatcher;
 
     public EtlEventData await(Long pipelineId) throws InterruptedException {
@@ -65,8 +65,8 @@ public class ExtractRpcArbitrateEvent implements ExtractArbitrateEvent {
                 return eventData;// 只有这一条路返回
             }
         } else {
-            logger.warn("pipelineId【{}】 extract ignore processId【{}】 by status【{}】", new Object[] { pipelineId,
-                    processId, status });
+            logger.warn("pipelineId【{}】 extract ignore processId【{}】 by status【{}】", new Object[]{pipelineId,
+                    processId, status});
             String path = StagePathUtils.getProcess(pipelineId, processId);
             zookeeper.exists(path);
 

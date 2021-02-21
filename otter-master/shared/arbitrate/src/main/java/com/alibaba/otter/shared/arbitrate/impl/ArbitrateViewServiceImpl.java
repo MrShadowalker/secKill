@@ -51,16 +51,16 @@ import com.alibaba.otter.shared.common.utils.zookeeper.ZooKeeperx;
 
 /**
  * 查询当前的仲裁器的一些运行状态视图
- * 
+ *
  * @author jianghang 2011-9-27 下午05:27:38
  * @version 4.0.0
  */
 public class ArbitrateViewServiceImpl implements ArbitrateViewService {
 
-    private static final String CANAL_PATH        = "/otter/canal/destinations/%s";
-    private static final String CANAL_DATA_PATH   = CANAL_PATH + "/%s";
+    private static final String CANAL_PATH = "/otter/canal/destinations/%s";
+    private static final String CANAL_DATA_PATH = CANAL_PATH + "/%s";
     private static final String CANAL_CURSOR_PATH = CANAL_PATH + "/%s/cursor";
-    private ZkClientx           zookeeper         = ZooKeeperClient.getInstance();
+    private ZkClientx zookeeper = ZooKeeperClient.getInstance();
 
     public MainStemEventData mainstemData(Long channelId, Long pipelineId) {
         String path = ManagePathUtils.getMainStem(channelId, pipelineId);
@@ -149,7 +149,7 @@ public class ArbitrateViewServiceImpl implements ArbitrateViewService {
                         stageStat.setStartTime(prev.getEndTime());
                     } else {
                         stageStat.setStartTime(zkProcessStat.getMtime()); // process的最后修改时间,select
-                                                                          // await成功后会设置USED标志位
+                        // await成功后会设置USED标志位
                     }
                     stageStat.setEndTime(zkStat.getMtime());
                     if (ArbitrateConstants.NODE_SELECTED.equals(stage)) {

@@ -34,15 +34,15 @@ import org.apache.commons.lang.SystemUtils;
  */
 public class StreamCopier extends Thread {
 
-    protected final String         identifier;
-    protected final OutputStream   out;
+    protected final String identifier;
+    protected final OutputStream out;
     protected final BufferedReader reader;
 
-    public StreamCopier(InputStream stream, OutputStream out){
+    public StreamCopier(InputStream stream, OutputStream out) {
         this(stream, out, null);
     }
 
-    public StreamCopier(InputStream stream, OutputStream out, String identifier){
+    public StreamCopier(InputStream stream, OutputStream out, String identifier) {
         if ((stream == null) || (out == null)) {
             throw new AssertionError("null streams not allowed");
         }

@@ -25,7 +25,7 @@ public class AppFindEvent extends Event {
 
     private static final long serialVersionUID = 810191575813164952L;
 
-    public AppFindEvent(){
+    public AppFindEvent() {
         super(AppEventType.find);
     }
 

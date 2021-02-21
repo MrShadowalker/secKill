@@ -23,7 +23,7 @@ import com.alibaba.otter.manager.biz.common.arbitrate.DeadNodeListener.DeadNodeD
 
 /**
  * recovery异步延迟处理对象
- * 
+ *
  * @author jianghang 2012-9-20 上午10:42:35
  * @version 4.1.0
  */
@@ -31,13 +31,13 @@ public class AlarmRecoveryDelayed implements Delayed {
 
     // init time for nano
     private static final long MILL_ORIGIN = System.currentTimeMillis();
-    private long              ruleId;
-    private long              channelId;
-    private boolean           stop        = false;
-    private long              now;                                     // 记录具体的now的偏移时间点，单位ms
-    private long              timeout;                                 // 记录具体需要被delayed处理的偏移时间点,单位ms
+    private long ruleId;
+    private long channelId;
+    private boolean stop = false;
+    private long now;                                     // 记录具体的now的偏移时间点，单位ms
+    private long timeout;                                 // 记录具体需要被delayed处理的偏移时间点,单位ms
 
-    public AlarmRecoveryDelayed(long channelId, long ruleId, boolean stop, long timeout){
+    public AlarmRecoveryDelayed(long channelId, long ruleId, boolean stop, long timeout) {
         this.channelId = channelId;
         this.ruleId = ruleId;
         this.stop = stop;

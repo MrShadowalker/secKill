@@ -27,7 +27,7 @@ import com.alibaba.otter.manager.biz.config.record.dal.dataobject.LogRecordDO;
 
 /**
  * 类IbatisLogRecordDAO.java的实现描述：TODO 类实现描述
- * 
+ *
  * @author simon 2012-6-15 下午1:52:15
  */
 public class IbatisLogRecordDAO extends SqlMapClientDaoSupport implements LogRecordDAO {
@@ -58,7 +58,7 @@ public class IbatisLogRecordDAO extends SqlMapClientDaoSupport implements LogRec
     public List<LogRecordDO> listByCondition(Map condition) {
 
         List<LogRecordDO> logRecordDos = getSqlMapClientTemplate().queryForList("listLogRecordsWithCondition",
-                                                                                condition);
+                condition);
         return logRecordDos;
     }
 
@@ -79,7 +79,7 @@ public class IbatisLogRecordDAO extends SqlMapClientDaoSupport implements LogRec
 
     public int getCount(Map condition) {
         Integer count = (Integer) getSqlMapClientTemplate().queryForObject("getLogRecordCountWithPIdAndSearchKey",
-                                                                           condition);
+                condition);
         return count.intValue();
     }
 
@@ -90,13 +90,13 @@ public class IbatisLogRecordDAO extends SqlMapClientDaoSupport implements LogRec
 
     public List<LogRecordDO> listByPipelineId(Long pipelineId) {
         List<LogRecordDO> logRecordDos = getSqlMapClientTemplate().queryForList("listLogRecordsByPipelineId",
-                                                                                pipelineId);
+                pipelineId);
         return logRecordDos;
     }
 
     public List<LogRecordDO> listByPipelineIdWithoutContent(Long pipelineId) {
         List<LogRecordDO> logRecordDos = getSqlMapClientTemplate().queryForList("listLogRecordsByPipelineIdWithoutContent",
-                                                                                pipelineId);
+                pipelineId);
         return logRecordDos;
     }
 

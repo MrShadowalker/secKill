@@ -22,18 +22,18 @@ import com.alibaba.otter.shared.arbitrate.exception.ArbitrateException;
 
 /**
  * 补救数据记录
- * 
+ *
  * @author jianghang 2012-4-13 上午11:18:11
  * @version 4.0.2
  */
 public class RemedyIndexEventData extends EventData {
 
-    private static final String SPLIT            = "_";
-    private static final long   serialVersionUID = 3125886367323255220L;
-    private Long                pipelineId;                             // 通道id
-    private Long                processId;
-    private Long                startTime;
-    private Long                endTime;
+    private static final String SPLIT = "_";
+    private static final long serialVersionUID = 3125886367323255220L;
+    private Long pipelineId;                             // 通道id
+    private Long processId;
+    private Long startTime;
+    private Long endTime;
 
     public Long getPipelineId() {
         return pipelineId;

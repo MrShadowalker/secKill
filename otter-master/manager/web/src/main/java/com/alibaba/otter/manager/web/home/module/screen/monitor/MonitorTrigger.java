@@ -31,7 +31,7 @@ public class MonitorTrigger {
     private static final Logger log = LoggerFactory.getLogger("monitorTrigger");
 
     @Resource(name = "globalMonitor")
-    private Monitor             globalMonitor;
+    private Monitor globalMonitor;
 
     public void execute(@Param(name = "token") String token, Context context) throws Exception {
 

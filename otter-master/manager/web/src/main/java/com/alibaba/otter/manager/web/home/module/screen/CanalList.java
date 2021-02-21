@@ -38,13 +38,13 @@ import com.alibaba.otter.shared.common.model.config.pipeline.Pipeline;
 public class CanalList {
 
     @Resource(name = "canalService")
-    private CanalService    canalService;
+    private CanalService canalService;
 
     @Resource(name = "pipelineService")
     private PipelineService pipelineService;
 
     public void execute(@Param("pageIndex") int pageIndex, @Param("searchKey") String searchKey, Context context)
-                                                                                                                 throws Exception {
+            throws Exception {
         @SuppressWarnings("unchecked")
         Map<String, Object> condition = new HashMap<String, Object>();
         if ("请输入关键字(目前支持Node的ID、名字搜索)".equals(searchKey)) {

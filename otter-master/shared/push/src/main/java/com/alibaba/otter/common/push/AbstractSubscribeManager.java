@@ -27,14 +27,14 @@ import com.google.common.collect.SetMultimap;
 
 /**
  * 帮助子类管理callback的manager
- * 
+ *
  * @author zebin.xuzb 2012-9-19 下午4:10:55
  * @version 4.1.0
  */
 public abstract class AbstractSubscribeManager implements SubscribeManager {
 
-    private boolean                                inited      = false;
-    private ConcurrentMap<String, Object>          mutexes     = new ConcurrentHashMap<String, Object>();
+    private boolean inited = false;
+    private ConcurrentMap<String, Object> mutexes = new ConcurrentHashMap<String, Object>();
 
     private SetMultimap<String, SubscribeCallback> callBackMap = HashMultimap.create();
 
@@ -107,7 +107,7 @@ public abstract class AbstractSubscribeManager implements SubscribeManager {
 
     /**
      * 当同一个 dataId-groupId 的callback 被清楚完成之后的动作。同于同一个 dataId-groupId，此方法不会并发
-     * 
+     *
      * @param dataId
      * @param groupId
      * @param callback
@@ -118,7 +118,7 @@ public abstract class AbstractSubscribeManager implements SubscribeManager {
 
     /**
      * 注册监听器之后的方法，同于同一个 dataId-groupId，此方法不会并发
-     * 
+     *
      * @param dataId
      * @param groupId
      * @param callback

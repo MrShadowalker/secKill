@@ -9,14 +9,14 @@ import com.alibaba.otter.shared.common.utils.OtterToStringStyle;
 public class AlarmMessage implements Serializable {
 
     private static final long serialVersionUID = 6110474591366995515L;
-    private String            message;
-    private String            receiveKey;
+    private String message;
+    private String receiveKey;
 
-    public AlarmMessage(){
+    public AlarmMessage() {
 
     }
 
-    public AlarmMessage(String message, String receiveKey){
+    public AlarmMessage(String message, String receiveKey) {
         this.message = message;
         this.receiveKey = receiveKey;
     }

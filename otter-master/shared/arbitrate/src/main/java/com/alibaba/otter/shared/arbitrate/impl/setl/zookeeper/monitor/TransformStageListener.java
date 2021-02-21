@@ -29,21 +29,21 @@ import com.alibaba.otter.shared.common.utils.JsonUtils;
 
 /**
  * 处理transofrm模块节点的监控
- * 
+ *
  * <pre>
  * 监控内容：
  *  1. 某个process的stage节点发生变化后，判断extracted节点是否已经准备完成
  * </pre>
- * 
+ *
  * @author jianghang 2011-9-21 下午02:20:30
  * @version 4.0.0
  */
 public class TransformStageListener extends AbstractStageListener implements StageListener {
 
     private static final String currentNode = ArbitrateConstants.NODE_TRANSFORMED;
-    private static final String prevNode    = ArbitrateConstants.NODE_EXTRACTED;
+    private static final String prevNode = ArbitrateConstants.NODE_EXTRACTED;
 
-    public TransformStageListener(Long pipelineId){
+    public TransformStageListener(Long pipelineId) {
         super(pipelineId);
     }
 

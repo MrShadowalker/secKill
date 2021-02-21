@@ -28,7 +28,7 @@ import com.alibaba.otter.shared.common.utils.Assert;
 
 /**
  * Pipeline的DAO层，ibatis的实现，主要是CRUD操作。
- * 
+ *
  * @author simon
  */
 public class IbatisPipelineDAO extends SqlMapClientDaoSupport implements PipelineDAO {

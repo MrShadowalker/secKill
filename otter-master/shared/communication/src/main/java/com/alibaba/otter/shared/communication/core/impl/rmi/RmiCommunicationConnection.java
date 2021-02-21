@@ -24,15 +24,15 @@ import com.alibaba.otter.shared.communication.core.model.Event;
 
 /**
  * 对应rmi的connection实现
- * 
+ *
  * @author jianghang 2011-9-9 下午05:26:44
  */
 public class RmiCommunicationConnection implements CommunicationConnection {
 
     private CommunicationEndpoint endpoint;
-    private CommunicationParam    params;
+    private CommunicationParam params;
 
-    public RmiCommunicationConnection(CommunicationParam params, CommunicationEndpoint endpoint){
+    public RmiCommunicationConnection(CommunicationParam params, CommunicationEndpoint endpoint) {
         this.params = params;
         this.endpoint = endpoint;
     }

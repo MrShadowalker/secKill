@@ -26,19 +26,19 @@ import com.alibaba.otter.shared.common.utils.OtterToStringStyle;
 
 /**
  * zk集群监控对象
- * 
+ *
  * @author jianghang 2012-9-21 下午01:54:17
  * @version 4.1.0
  */
 public class AutoKeeperCluster implements Serializable {
 
     private static final long serialVersionUID = 6065960677054678659L;
-    private Long              id;
-    private String            clusterName;
-    private List<String>      serverList;                             // 机器列表
-    private String            description;                            // 描述
-    private Date              gmtCreate;
-    private Date              gmtModified;
+    private Long id;
+    private String clusterName;
+    private List<String> serverList;                             // 机器列表
+    private String description;                            // 描述
+    private Date gmtCreate;
+    private Date gmtModified;
 
     public Long getId() {
         return id;

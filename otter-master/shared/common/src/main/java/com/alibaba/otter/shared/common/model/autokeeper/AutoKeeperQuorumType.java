@@ -18,7 +18,7 @@ package com.alibaba.otter.shared.common.model.autokeeper;
 
 /**
  * 当前Quorum类型
- * 
+ *
  * @author jianghang 2012-9-21 下午02:03:44
  * @version 4.1.0
  */

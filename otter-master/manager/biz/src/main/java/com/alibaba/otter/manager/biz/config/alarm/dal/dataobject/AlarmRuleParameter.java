@@ -25,10 +25,10 @@ import java.io.Serializable;
 public class AlarmRuleParameter implements Serializable {
 
     private static final long serialVersionUID = 1570395344191530689L;
-    private Long              intervalTime     = 1800L;
-    private String            pauseTime;
-    private Integer           recoveryThresold = 3;
-    private Boolean           autoRecovery     = false;
+    private Long intervalTime = 1800L;
+    private String pauseTime;
+    private Integer recoveryThresold = 3;
+    private Boolean autoRecovery = false;
 
     public Long getIntervalTime() {
         return intervalTime;

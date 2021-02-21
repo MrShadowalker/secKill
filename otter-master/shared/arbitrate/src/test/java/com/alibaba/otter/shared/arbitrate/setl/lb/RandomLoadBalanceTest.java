@@ -29,7 +29,7 @@ import com.alibaba.otter.shared.common.model.config.pipeline.Pipeline;
 
 /**
  * Random lb测试
- * 
+ *
  * @author jianghang 2011-9-22 上午11:36:08
  * @version 4.0.0
  */

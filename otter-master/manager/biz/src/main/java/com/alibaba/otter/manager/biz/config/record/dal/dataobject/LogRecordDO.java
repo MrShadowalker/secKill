@@ -25,14 +25,14 @@ import java.util.Date;
 public class LogRecordDO implements Serializable {
 
     private static final long serialVersionUID = -4295402837089297629L;
-    private Long              id;
-    private Long              pipelineId;
-    private Long              channelId;
-    private Long              nid;
-    private String            title;
-    private String            message;
-    private Date              gmtCreate;
-    private Date              gmtModified;
+    private Long id;
+    private Long pipelineId;
+    private Long channelId;
+    private Long nid;
+    private String title;
+    private String message;
+    private Date gmtCreate;
+    private Date gmtModified;
 
     public Long getId() {
         return id;

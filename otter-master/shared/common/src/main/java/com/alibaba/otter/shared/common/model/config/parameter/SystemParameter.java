@@ -29,40 +29,44 @@ import com.alibaba.otter.shared.common.utils.OtterToStringStyle;
 
 /**
  * 全局参数定义
- * 
+ *
  * @author jianghang 2012-4-9 下午01:51:04
  * @version 4.0.2
  */
 public class SystemParameter implements Serializable {
 
-    private static final long   serialVersionUID       = -1780184554337059839L;
+    private static final long serialVersionUID = -1780184554337059839L;
 
-    private String              systemSchema           = "retl";                             // 默认为retl，不允许为空
-    private String              systemMarkTable        = "retl_mark";                        // 双向同步标记表
-    private String              systemMarkTableColumn  = "channel_id";                       // 双向同步标记的列名
-    private String              systemMarkTableInfo    = "channel_info";                     // 双向同步标记的info信息
-    private String              systemBufferTable      = "retl_buffer";                      // otter同步系统buffer表
-    private String              systemDualTable        = "xdual";                            // otter同步心跳表
-    private List<String>        hzZkClusters           = new ArrayList<String>();            // 杭州zk集群列表
-    private List<String>        usZkClusters           = new ArrayList<String>();            // 美国zk集群列表
-    private List<String>        hzStoreClusters        = new ArrayList<String>();            // 杭州store集群列表
-    private List<String>        usStoreClusters        = new ArrayList<String>();            // 美国store集群列表
-    private String              hzArandaCluster        = "";                                 // 杭州aranda集群地址
-    private String              usArandaCluster        = "";                                 // 美国aranda集群地址
-    private RetrieverType       retriever              = RetrieverType.ARIA2C;               // 下载方式
-    private String              defaultAlarmReceiveKey = "otterteam";
-    private String              defaultAlarmReceiver   = "jianghang115@gmail.com";
-    private Map<String, String> alarmReceiver          = new LinkedHashMap<String, String>(); // 报警联系人
+    private String systemSchema = "retl";                             // 默认为retl，不允许为空
+    private String systemMarkTable = "retl_mark";                        // 双向同步标记表
+    private String systemMarkTableColumn = "channel_id";                       // 双向同步标记的列名
+    private String systemMarkTableInfo = "channel_info";                     // 双向同步标记的info信息
+    private String systemBufferTable = "retl_buffer";                      // otter同步系统buffer表
+    private String systemDualTable = "xdual";                            // otter同步心跳表
+    private List<String> hzZkClusters = new ArrayList<String>();            // 杭州zk集群列表
+    private List<String> usZkClusters = new ArrayList<String>();            // 美国zk集群列表
+    private List<String> hzStoreClusters = new ArrayList<String>();            // 杭州store集群列表
+    private List<String> usStoreClusters = new ArrayList<String>();            // 美国store集群列表
+    private String hzArandaCluster = "";                                 // 杭州aranda集群地址
+    private String usArandaCluster = "";                                 // 美国aranda集群地址
+    private RetrieverType retriever = RetrieverType.ARIA2C;               // 下载方式
+    private String defaultAlarmReceiveKey = "otterteam";
+    private String defaultAlarmReceiver = "jianghang115@gmail.com";
+    private Map<String, String> alarmReceiver = new LinkedHashMap<String, String>(); // 报警联系人
 
     public static enum RetrieverType {
-        /** java版多线程下载 */
+        /**
+         * java版多线程下载
+         */
         MR4J(""),
-        /** aria2c多线程下载 */
+        /**
+         * aria2c多线程下载
+         */
         ARIA2C("aria2c");
 
         private String exe; // 代表可执行文件的路径，可以是相对于PATH的路径
 
-        RetrieverType(String exe){
+        RetrieverType(String exe) {
             this.exe = exe;
         }
 

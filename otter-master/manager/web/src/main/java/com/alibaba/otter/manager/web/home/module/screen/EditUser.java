@@ -32,7 +32,7 @@ public class EditUser {
 
     /**
      * 找到单个Channel，用于编辑Channel信息界面加载信息
-     * 
+     *
      * @param channelId
      * @param context
      * @throws WebxException

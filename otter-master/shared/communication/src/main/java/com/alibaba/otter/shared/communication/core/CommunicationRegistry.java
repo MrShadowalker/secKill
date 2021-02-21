@@ -27,19 +27,19 @@ import com.alibaba.otter.shared.communication.core.model.EventType;
 
 /**
  * 注册中心,针对每个事件允许绑定一个对象处理,类似于webx中的Action事件处理
- * 
+ *
  * @author jianghang
  */
 public class CommunicationRegistry {
 
-    private static final Logger           logger = LoggerFactory.getLogger(CommunicationRegistry.class);
+    private static final Logger logger = LoggerFactory.getLogger(CommunicationRegistry.class);
 
     // 定义事件和动作的关联关系
-    private static Map<EventType, Object> table  = new ConcurrentHashMap<EventType, Object>();
+    private static Map<EventType, Object> table = new ConcurrentHashMap<EventType, Object>();
 
     /**
      * 注册一个事件对应的处理对象
-     * 
+     *
      * @param eventType
      * @param action
      */
@@ -58,7 +58,7 @@ public class CommunicationRegistry {
 
     /**
      * 注册一组事件处理对象
-     * 
+     *
      * @param eventType
      * @param action
      */
@@ -72,7 +72,7 @@ public class CommunicationRegistry {
 
     /**
      * 注册一个事件处理对象
-     * 
+     *
      * @param eventType
      */
     public static void unregist(EventType eventType) {
@@ -85,7 +85,7 @@ public class CommunicationRegistry {
 
     /**
      * 注销调一个Action
-     * 
+     *
      * @param action
      * @return
      */
@@ -95,7 +95,7 @@ public class CommunicationRegistry {
         }
 
         if (action != null) {
-            for (Iterator<Map.Entry<EventType, Object>> iter = table.entrySet().iterator(); iter.hasNext();) {
+            for (Iterator<Map.Entry<EventType, Object>> iter = table.entrySet().iterator(); iter.hasNext(); ) {
                 Map.Entry<EventType, Object> entry = iter.next();
                 if (action == entry.getValue()) {
                     if (logger.isInfoEnabled()) {
@@ -110,7 +110,7 @@ public class CommunicationRegistry {
 
     /**
      * 获得事件对应的Action
-     * 
+     *
      * @param eventType
      * @return
      */

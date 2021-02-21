@@ -30,19 +30,19 @@ public class JavaSource {
     private String className;
     private String source;
 
-    public JavaSource(String sourceString){
+    public JavaSource(String sourceString) {
         String className = RegexUtils.findFirst(sourceString, "public class (?s).*?{").split("extends")[0].split("implements")[0].replaceAll("public class ",
-                                                                                                                                             StringUtils.EMPTY).replace("{",
-                                                                                                                                                                        StringUtils.EMPTY).trim();
+                StringUtils.EMPTY).replace("{",
+                StringUtils.EMPTY).trim();
         String packageName = RegexUtils.findFirst(sourceString, "package (?s).*?;").replaceAll("package ",
-                                                                                               StringUtils.EMPTY).replaceAll(";",
-                                                                                                                             StringUtils.EMPTY).trim();
+                StringUtils.EMPTY).replaceAll(";",
+                StringUtils.EMPTY).trim();
         this.packageName = packageName;
         this.className = className;
         this.source = sourceString;
     }
 
-    public JavaSource(String packageName, String className, String source){
+    public JavaSource(String packageName, String className, String source) {
         this.packageName = packageName;
         this.className = className;
         this.source = source;

@@ -24,7 +24,7 @@ import com.alibaba.otter.shared.common.utils.OtterToStringStyle;
 
 /**
  * 仲裁器信号传递的基类
- * 
+ *
  * @author jianghang 2011-8-22 下午08:19:54
  */
 public class EventData implements Serializable {

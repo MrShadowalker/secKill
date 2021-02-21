@@ -36,11 +36,11 @@ import com.alibaba.otter.shared.arbitrate.impl.manage.NodeArbitrateEvent;
 public class NodeSerivceTest extends BaseOtterTest {
 
     @SpringBeanByName
-    private NodeService            nodeService;
+    private NodeService nodeService;
 
     @SpringBeanFrom
     @Mocked
-    private NodeDAO                nodeDao;
+    private NodeDAO nodeDao;
 
     @SpringBeanFrom
     @Mocked

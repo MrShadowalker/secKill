@@ -37,25 +37,25 @@ import com.alibaba.otter.shared.common.model.config.data.db.DbMediaSource;
 
 public class DataSourceCreator implements DisposableBean {
 
-    private static final Logger     logger                        = LoggerFactory.getLogger(DataSourceCreator.class);
+    private static final Logger logger = LoggerFactory.getLogger(DataSourceCreator.class);
 
-    private int                     maxWait                       = 60 * 1000;
+    private int maxWait = 60 * 1000;
 
-    private int                     minIdle                       = 0;
+    private int minIdle = 0;
 
-    private int                     initialSize                   = 1;
+    private int initialSize = 1;
 
-    private int                     maxActive                     = 5;
+    private int maxActive = 5;
 
-    private int                     maxIdle                       = 1;
+    private int maxIdle = 1;
 
-    private int                     numTestsPerEvictionRun        = -1;
+    private int numTestsPerEvictionRun = -1;
 
-    private int                     timeBetweenEvictionRunsMillis = 60 * 1000;
+    private int timeBetweenEvictionRunsMillis = 60 * 1000;
 
-    private int                     removeAbandonedTimeout        = 10 * 60;
+    private int removeAbandonedTimeout = 10 * 60;
 
-    private int                     minEvictableIdleTimeMillis    = 30 * 60 * 1000;
+    private int minEvictableIdleTimeMillis = 30 * 60 * 1000;
 
     private List<DataSourceHanlder> dataSourceHandlers;
 
@@ -73,11 +73,11 @@ public class DataSourceCreator implements DisposableBean {
         }
 
         return createDataSource(dbMediaSource.getUrl(),
-            dbMediaSource.getUsername(),
-            dbMediaSource.getPassword(),
-            dbMediaSource.getDriver(),
-            dbMediaSource.getType(),
-            dbMediaSource.getEncode());
+                dbMediaSource.getUsername(),
+                dbMediaSource.getPassword(),
+                dbMediaSource.getDriver(),
+                dbMediaSource.getType(),
+                dbMediaSource.getEncode());
     }
 
     public void destroyDataSource(DataSource dataSource) {

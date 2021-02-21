@@ -30,18 +30,18 @@ import com.alibaba.otter.shared.common.utils.OtterToStringStyle;
 public class TableHistoryStatDO implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private Long              id;
-    private Date              startTime;
-    private Date              endTime;
-    private Long              fileSize;
-    private Long              fileCount;
-    private Long              insertCount;
-    private Long              updateCount;
-    private Long              deleteCount;
-    private Long              dataMediaPairId;
-    private Long              pipelineId;
-    private Date              gmtCreate;
-    private Date              gmtModified;
+    private Long id;
+    private Date startTime;
+    private Date endTime;
+    private Long fileSize;
+    private Long fileCount;
+    private Long insertCount;
+    private Long updateCount;
+    private Long deleteCount;
+    private Long dataMediaPairId;
+    private Long pipelineId;
+    private Date gmtCreate;
+    private Date gmtModified;
 
     public Long getId() {
         return id;

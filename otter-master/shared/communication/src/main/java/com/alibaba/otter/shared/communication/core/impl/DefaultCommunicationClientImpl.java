@@ -46,24 +46,24 @@ import com.alibaba.otter.shared.communication.core.model.Event;
 
 /**
  * 通讯交互的client的默认实现实现
- * 
+ *
  * @author jianghang
  */
 public class DefaultCommunicationClientImpl implements CommunicationClient {
 
-    private static final Logger            logger     = LoggerFactory.getLogger(DefaultCommunicationClientImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(DefaultCommunicationClientImpl.class);
 
-    private CommunicationConnectionFactory factory    = null;
-    private int                            poolSize   = 10;
-    private ExecutorService                executor   = null;
-    private int                            retry      = 3;
-    private int                            retryDelay = 1000;
-    private boolean                        discard    = false;
+    private CommunicationConnectionFactory factory = null;
+    private int poolSize = 10;
+    private ExecutorService executor = null;
+    private int retry = 3;
+    private int retryDelay = 1000;
+    private boolean discard = false;
 
-    public DefaultCommunicationClientImpl(){
+    public DefaultCommunicationClientImpl() {
     }
 
-    public DefaultCommunicationClientImpl(CommunicationConnectionFactory factory){
+    public DefaultCommunicationClientImpl(CommunicationConnectionFactory factory) {
         this.factory = factory;
     }
 
@@ -76,8 +76,8 @@ public class DefaultCommunicationClientImpl implements CommunicationClient {
         }
 
         executor = new ThreadPoolExecutor(poolSize, poolSize, 60 * 1000L, TimeUnit.MILLISECONDS,
-                                          new LinkedBlockingQueue<Runnable>(10 * 1000),
-                                          new NamedThreadFactory("communication-async"), handler);
+                new LinkedBlockingQueue<Runnable>(10 * 1000),
+                new NamedThreadFactory("communication-async"), handler);
     }
 
     public void destory() {
@@ -185,7 +185,7 @@ public class DefaultCommunicationClientImpl implements CommunicationClient {
 
         if (ex != null) {
             throw new CommunicationException(String.format("call addr[%s] error by %s", addrs[errorIndex],
-                                                           ex.getMessage()), ex);
+                    ex.getMessage()), ex);
         } else {
             return result;
         }

@@ -37,15 +37,15 @@ import org.slf4j.LoggerFactory;
 
 /**
  * 基于nio技术，提供一些快速的stream处理
- * 
+ *
  * @author jianghang 2011-10-9 下午06:28:44
  * @version 4.0.0
  */
 public class NioUtils {
 
-    private static final Logger logger              = LoggerFactory.getLogger(NioUtils.class);
-    private static final int    DEFAULT_BUFFER_SIZE = 8 * 1024;
-    private static final int    timeWait            = 1000;
+    private static final Logger logger = LoggerFactory.getLogger(NioUtils.class);
+    private static final int DEFAULT_BUFFER_SIZE = 8 * 1024;
+    private static final int timeWait = 1000;
 
     /**
      * 基于流的数据copy
@@ -289,7 +289,7 @@ public class NioUtils {
 
     /**
      * 尝试多次复制文件，排除网络故障
-     * 
+     *
      * @param src
      * @param dest
      * @param retryTimes
@@ -424,7 +424,7 @@ public class NioUtils {
 
                     // 记录日志
                     logger.warn(String.format("[%s] create() - retry %s failed : wait [%s] ms , caused by %s",
-                                              dest.getAbsolutePath(), retry, wait, ex.getMessage()));
+                            dest.getAbsolutePath(), retry, wait, ex.getMessage()));
                     try {
                         Thread.sleep(wait);
                     } catch (InterruptedException e) {
@@ -439,7 +439,7 @@ public class NioUtils {
 
     /**
      * 正常删除，实在不行就jvm退出时删除
-     * 
+     *
      * @param dest
      * @param retryTimes
      */
@@ -449,7 +449,7 @@ public class NioUtils {
 
     /**
      * 尝试多次删除，实在不行就jvm退出时删除
-     * 
+     *
      * @param dest
      * @param retryTimes
      */
@@ -488,7 +488,7 @@ public class NioUtils {
                 } else {
                     // 记录日志
                     logger.warn(String.format("[%s] delete() - retry %s failed : wait [%s] ms , caused by %s",
-                                              dest.getAbsolutePath(), retry, wait, ex.getMessage()));
+                            dest.getAbsolutePath(), retry, wait, ex.getMessage()));
                     try {
                         Thread.sleep(wait);
                     } catch (InterruptedException e) {
@@ -512,9 +512,9 @@ public class NioUtils {
      * Moves the source file to the destination. If the destination cannot be created or is a read-only file, the method
      * returns <code>false</code>. Otherwise, the contents of the source are copied to the destination, the source is
      * deleted, and <code>true</code> is returned.
-     * 
-     * @param src The source file to move.
-     * @param dest The destination where to move the file.
+     *
+     * @param src        The source file to move.
+     * @param dest       The destination where to move the file.
      * @param retryTimes Move and delete retry times
      */
     public static void move(final File src, File dest, final int retryTimes) throws IOException {

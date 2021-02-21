@@ -27,7 +27,7 @@ import com.alibaba.otter.shared.communication.core.model.CommunicationParam;
 
 /**
  * 基于rmi的通讯链接实现
- * 
+ *
  * @author jianghang 2011-9-9 下午04:58:28
  */
 public class RmiCommunicationConnectionFactory implements CommunicationConnectionFactory {

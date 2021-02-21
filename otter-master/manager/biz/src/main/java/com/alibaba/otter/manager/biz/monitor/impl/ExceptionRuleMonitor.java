@@ -40,7 +40,7 @@ public class ExceptionRuleMonitor extends AbstractRuleMonitor {
     private static final String MESAGE_FORMAT = "pid:%s nid:%s exception:%s";
 
     @Resource(name = "alarmRuleService")
-    private AlarmRuleService    alarmRuleService;
+    private AlarmRuleService alarmRuleService;
 
     // ExceptionRuleMonitor(){
     // MonitorRuleExplorerRegisty.register(MonitorName.EXCEPTON, this);
@@ -59,7 +59,7 @@ public class ExceptionRuleMonitor extends AbstractRuleMonitor {
         NodeAlarmEvent alarmEvent = (NodeAlarmEvent) data;
         // 异常一定需要记录日志
         String message = String.format(MESAGE_FORMAT, alarmEvent.getPipelineId(), alarmEvent.getNid(),
-                                       alarmEvent.getMessage());
+                alarmEvent.getMessage());
         logRecordAlarm(pipelineId, alarmEvent.getNid(), MonitorName.EXCEPTION, message);
         // 报警检查
         List<AlarmRule> rules = alarmRuleService.getAlarmRules(pipelineId, AlarmRuleStatus.ENABLE);
@@ -99,7 +99,7 @@ public class ExceptionRuleMonitor extends AbstractRuleMonitor {
         for (String match : matchValues) {
             if (StringUtils.containsIgnoreCase(alarmEvent.getMessage(), match)) {
                 String message = String.format(MESAGE_FORMAT, alarmEvent.getPipelineId(), alarmEvent.getNid(),
-                                               alarmEvent.getMessage());
+                        alarmEvent.getMessage());
                 sendAlarm(rule, message);
                 break;
             }

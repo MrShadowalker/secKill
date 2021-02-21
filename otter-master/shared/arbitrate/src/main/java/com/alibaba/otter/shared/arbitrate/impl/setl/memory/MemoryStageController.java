@@ -44,13 +44,13 @@ import com.google.common.collect.OtterMigrateMap;
  */
 public class MemoryStageController extends ArbitrateLifeCycle {
 
-    private AtomicLong                        atomicMaxProcessId = new AtomicLong(0);
+    private AtomicLong atomicMaxProcessId = new AtomicLong(0);
     private Map<StageType, ReplyProcessQueue> replys;
-    private Map<Long, StageProgress>          progress;
-    private BlockingQueue<TerminEventData>    termins;
-    private StageProgress                     nullProgress       = new StageProgress();
+    private Map<Long, StageProgress> progress;
+    private BlockingQueue<TerminEventData> termins;
+    private StageProgress nullProgress = new StageProgress();
 
-    public MemoryStageController(Long pipelineId){
+    public MemoryStageController(Long pipelineId) {
         super(pipelineId);
 
         replys = OtterMigrateMap.makeComputingMap(new Function<StageType, ReplyProcessQueue>() {

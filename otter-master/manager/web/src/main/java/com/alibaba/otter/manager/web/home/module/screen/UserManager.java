@@ -30,7 +30,7 @@ import com.alibaba.otter.manager.biz.user.UserService;
 
 /**
  * 类AddDataMedia.java的实现描述：TODO 类实现描述
- * 
+ *
  * @author simon 2011-10-25 上午10:00:32
  */
 public class UserManager {
@@ -39,7 +39,7 @@ public class UserManager {
     private UserService userService;
 
     public void execute(@Param("pageIndex") int pageIndex, @Param("searchKey") String searchKey, Context context)
-                                                                                                                 throws Exception {
+            throws Exception {
         @SuppressWarnings("unchecked")
         Map<String, Object> condition = new HashMap<String, Object>();
         if ("支持ID、用户名、真实姓名、部门搜索".equals(searchKey)) {

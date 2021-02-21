@@ -20,9 +20,9 @@ import org.apache.oro.text.regex.Pattern;
 
 public class ActionPatternHolder {
 
-    private String  actionName;
+    private String actionName;
     private Pattern actionPattern;
-    private String  methodName;
+    private String methodName;
     private Pattern methodPattern;
 
     public String getActionName() {

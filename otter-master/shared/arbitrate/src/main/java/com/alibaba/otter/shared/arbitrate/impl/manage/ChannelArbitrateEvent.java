@@ -55,18 +55,18 @@ import com.alibaba.otter.shared.common.utils.zookeeper.ZkClientx;
 
 /**
  * 针对channel管理的相关信号操作
- * 
+ *
  * @author jianghang 2011-8-31 下午07:39:26
  */
 public class ChannelArbitrateEvent implements ArbitrateEvent {
 
-    protected static final Logger logger    = LoggerFactory.getLogger(ChannelArbitrateEvent.class);
-    private ZkClientx             zookeeper = ZooKeeperClient.getInstance();
-    private ArbitrateViewService  arbitrateViewService;
-    private NodeArbitrateEvent    nodeEvent;
-    private ErrorTerminProcess    errorTerminProcess;
-    private WarningTerminProcess  warningTerminProcess;
-    private ExecutorService       arbitrateExecutor;
+    protected static final Logger logger = LoggerFactory.getLogger(ChannelArbitrateEvent.class);
+    private ZkClientx zookeeper = ZooKeeperClient.getInstance();
+    private ArbitrateViewService arbitrateViewService;
+    private NodeArbitrateEvent nodeEvent;
+    private ErrorTerminProcess errorTerminProcess;
+    private WarningTerminProcess warningTerminProcess;
+    private ExecutorService arbitrateExecutor;
 
     /**
      * 初始化对应的channel节点,同步调用
@@ -310,8 +310,8 @@ public class ChannelArbitrateEvent implements ArbitrateEvent {
             // 判断select
             List<Long> nids = getNids(pipeline.getSelectNodes());
             if (!CollectionUtils.containsAny(liveNodes, nids)) {
-                logger.error("current live nodes:{} , but select nids:{} , result:{}", new Object[] { liveNodes, nids,
-                        CollectionUtils.containsAny(liveNodes, nids) });
+                logger.error("current live nodes:{} , but select nids:{} , result:{}", new Object[]{liveNodes, nids,
+                        CollectionUtils.containsAny(liveNodes, nids)});
                 sendWarningMessage(pipeline.getId(), "can't restart by no select live node");
                 return false;
             }
@@ -319,8 +319,8 @@ public class ChannelArbitrateEvent implements ArbitrateEvent {
             // 判断extract
             nids = getNids(pipeline.getExtractNodes());
             if (!CollectionUtils.containsAny(liveNodes, nids)) {
-                logger.error("current live nodes:{} , but extract nids:{} , result:{}", new Object[] { liveNodes, nids,
-                        CollectionUtils.containsAny(liveNodes, nids) });
+                logger.error("current live nodes:{} , but extract nids:{} , result:{}", new Object[]{liveNodes, nids,
+                        CollectionUtils.containsAny(liveNodes, nids)});
                 sendWarningMessage(pipeline.getId(), "can't restart by no extract live node");
                 return false;
             }
@@ -328,8 +328,8 @@ public class ChannelArbitrateEvent implements ArbitrateEvent {
             // 判断transform/load
             nids = getNids(pipeline.getLoadNodes());
             if (!CollectionUtils.containsAny(liveNodes, nids)) {
-                logger.error("current live nodes:{} , but transform nids:{} , result:{}", new Object[] { liveNodes,
-                        nids, CollectionUtils.containsAny(liveNodes, nids) });
+                logger.error("current live nodes:{} , but transform nids:{} , result:{}", new Object[]{liveNodes,
+                        nids, CollectionUtils.containsAny(liveNodes, nids)});
                 sendWarningMessage(pipeline.getId(), "can't restart by no transform live node");
                 return false;
             }
@@ -342,7 +342,7 @@ public class ChannelArbitrateEvent implements ArbitrateEvent {
                     processIds.add(stat.getProcessId());
                 }
                 sendWarningMessage(pipeline.getId(),
-                                   "can't restart by exist process[" + StringUtils.join(processIds, ',') + "]");
+                        "can't restart by exist process[" + StringUtils.join(processIds, ',') + "]");
                 return false;
             }
         }

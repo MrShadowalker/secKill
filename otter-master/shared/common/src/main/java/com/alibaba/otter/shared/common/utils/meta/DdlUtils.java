@@ -49,15 +49,16 @@ import org.springframework.util.Assert;
 
 /**
  * copy from otter3.0
- * 
+ *
  * @author xiaoqing.zhouxq 2012-3-30 上午10:43:04
  * @author zebin.xuzb add filter for data
  */
 public class DdlUtils {
 
-    private static final Logger               logger                = LoggerFactory.getLogger(DdlUtils.class);
-    private static TableType[]                SUPPORTED_TABLE_TYPES = new TableType[] { TableType.view, TableType.table };
-    private final static Map<Integer, String> _defaultSizes         = new HashMap<Integer, String>();
+    private static final Logger logger = LoggerFactory.getLogger(DdlUtils.class);
+    private static TableType[] SUPPORTED_TABLE_TYPES = new TableType[]{TableType.view, TableType.table};
+    private final static Map<Integer, String> _defaultSizes = new HashMap<Integer, String>();
+
     static {
         _defaultSizes.put(new Integer(1), "254");
         _defaultSizes.put(new Integer(12), "254");
@@ -84,8 +85,8 @@ public class DdlUtils {
                 return jdbcTemplate.query("show databases", new SingleColumnRowMapper(String.class));
             }
             return jdbcTemplate.query("show databases like ?",
-                new Object[] { schemaPattern },
-                new SingleColumnRowMapper(String.class));
+                    new Object[]{schemaPattern},
+                    new SingleColumnRowMapper(String.class));
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             return new ArrayList<String>();
@@ -137,7 +138,7 @@ public class DdlUtils {
                     String databaseName = databaseMetaData.getDatabaseProductName();
                     String version = databaseMetaData.getDatabaseProductVersion();
                     if (StringUtils.startsWithIgnoreCase(databaseName, "mysql")
-                        && StringUtils.contains(version, "-TDDL-")) {
+                            && StringUtils.contains(version, "-TDDL-")) {
                         isDRDS = true;
                     }
 
@@ -190,7 +191,7 @@ public class DdlUtils {
     public static List<Table> findTables(final JdbcTemplate jdbcTemplate, final String catalogName,
                                          final String schemaName, final String tableNamePattern,
                                          final DdlUtilsFilter filter, final DdlTableNameFilter tableNameFilter)
-                                                                                                               throws Exception {
+            throws Exception {
         return (List<Table>) jdbcTemplate.execute(new ConnectionCallback() {
 
             public Object doInConnection(Connection con) throws SQLException, DataAccessException {
@@ -211,7 +212,7 @@ public class DdlUtils {
                     String databaseName = databaseMetaData.getDatabaseProductName();
                     String version = databaseMetaData.getDatabaseProductVersion();
                     if (StringUtils.startsWithIgnoreCase(databaseName, "mysql")
-                        && StringUtils.contains(version, "-TDDL-")) {
+                            && StringUtils.contains(version, "-TDDL-")) {
                         isDRDS = true;
                     }
 
@@ -241,7 +242,7 @@ public class DdlUtils {
 
                             Table table = readTable(metaData, values);
                             if ((tableNameFilter == null)
-                                || tableNameFilter.accept(catalogName, schemaName, table.getName())) {
+                                    || tableNameFilter.accept(catalogName, schemaName, table.getName())) {
                                 tables.add(table);
                             }
                         }
@@ -296,14 +297,14 @@ public class DdlUtils {
 
     /**
      * 获取DRDS下表的拆分字段, 返回格式为 id,name
-     * 
+     *
      * @param dataSource
      * @param schemaName
      * @param tableName
      * @return
      */
     public static String getShardKeyByDRDS(final JdbcTemplate jdbcTemplate, final String catalogName,
-                                            final String schemaName, final String tableName) {
+                                           final String schemaName, final String tableName) {
         try {
             return (String) jdbcTemplate.execute("show partitions from ?", new PreparedStatementCallback() {
 
@@ -365,10 +366,10 @@ public class DdlUtils {
                     col.setPrimaryKey(true);
                 } else {
                     throw new NullPointerException(String.format("%s pk %s is null - %s %s",
-                        tableName,
-                        key,
-                        ToStringBuilder.reflectionToString(metaData, ToStringStyle.SIMPLE_STYLE),
-                        ToStringBuilder.reflectionToString(values, ToStringStyle.SIMPLE_STYLE)));
+                            tableName,
+                            key,
+                            ToStringBuilder.reflectionToString(metaData, ToStringStyle.SIMPLE_STYLE),
+                            ToStringBuilder.reflectionToString(values, ToStringStyle.SIMPLE_STYLE)));
                 }
             }
         }
@@ -562,12 +563,12 @@ public class DdlUtils {
     }
 
     private static Map<String, Object> readColumns(ResultSet resultSet, List<MetaDataColumnDescriptor> columnDescriptors)
-                                                                                                                         throws SQLException {
+            throws SQLException {
         Map<String, Object> values = new HashMap<String, Object>();
         MetaDataColumnDescriptor descriptor;
 
         for (Iterator<MetaDataColumnDescriptor> it = columnDescriptors.iterator(); it.hasNext(); values.put(descriptor.getName(),
-            descriptor.readColumn(resultSet))) {
+                descriptor.readColumn(resultSet))) {
             descriptor = (MetaDataColumnDescriptor) it.next();
         }
 
@@ -575,7 +576,7 @@ public class DdlUtils {
     }
 
     private static Collection<String> readPrimaryKeyNames(DatabaseMetaDataWrapper metaData, String tableName)
-                                                                                                             throws SQLException {
+            throws SQLException {
         ResultSet pkData = null;
 
         try {
@@ -583,7 +584,7 @@ public class DdlUtils {
             Map<String, Object> values;
 
             for (pkData = metaData.getPrimaryKeys(tableName); pkData.next(); pks.add(readPrimaryKeyName(metaData,
-                values))) {
+                    values))) {
                 values = readColumns(pkData, initColumnsForPK());
             }
 
@@ -594,7 +595,7 @@ public class DdlUtils {
     }
 
     private static String readPrimaryKeyName(DatabaseMetaDataWrapper metaData, Map<String, Object> values)
-                                                                                                          throws SQLException {
+            throws SQLException {
         return (String) values.get("COLUMN_NAME");
     }
 }

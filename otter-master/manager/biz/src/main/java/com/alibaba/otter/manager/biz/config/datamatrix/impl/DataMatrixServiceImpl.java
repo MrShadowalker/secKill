@@ -41,7 +41,7 @@ public class DataMatrixServiceImpl implements DataMatrixService {
 
     private static final Logger logger = LoggerFactory.getLogger(NodeServiceImpl.class);
 
-    private DataMatrixDAO       dataMatrixDao;
+    private DataMatrixDAO dataMatrixDao;
     private TransactionTemplate transactionTemplate;
 
     /**

@@ -42,18 +42,18 @@ import com.alibaba.otter.shared.communication.model.arbitrate.StopChannelEvent;
 
 /**
  * 处理termin信号
- * 
+ *
  * @author jianghang 2011-8-9 下午04:39:20
  */
 public class TerminZooKeeperArbitrateEvent implements TerminArbitrateEvent {
 
-    private static final Logger           logger    = LoggerFactory.getLogger(TerminZooKeeperArbitrateEvent.class);
+    private static final Logger logger = LoggerFactory.getLogger(TerminZooKeeperArbitrateEvent.class);
 
-    private ZkClientx                     zookeeper = ZooKeeperClient.getInstance();
+    private ZkClientx zookeeper = ZooKeeperClient.getInstance();
     private ArbitrateCommmunicationClient arbitrateCommmunicationClient;
-    private NormalTerminProcess           normalTerminProcess;
-    private WarningTerminProcess          warningTerminProcess;
-    private ChannelArbitrateEvent         channelEvent;
+    private NormalTerminProcess normalTerminProcess;
+    private WarningTerminProcess warningTerminProcess;
+    private ChannelArbitrateEvent channelEvent;
 
     /**
      * <pre>

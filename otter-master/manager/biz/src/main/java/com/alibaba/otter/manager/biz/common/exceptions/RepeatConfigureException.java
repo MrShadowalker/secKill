@@ -23,15 +23,15 @@ public class RepeatConfigureException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
 
-    public RepeatConfigureException(String cause){
+    public RepeatConfigureException(String cause) {
         super(cause);
     }
 
-    public RepeatConfigureException(Throwable t){
+    public RepeatConfigureException(Throwable t) {
         super(t);
     }
 
-    public RepeatConfigureException(String cause, Throwable t){
+    public RepeatConfigureException(String cause, Throwable t) {
         super(cause, t);
     }
 

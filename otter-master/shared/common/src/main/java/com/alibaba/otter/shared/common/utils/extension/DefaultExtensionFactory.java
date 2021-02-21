@@ -33,11 +33,11 @@ import com.alibaba.otter.shared.common.utils.extension.exceptions.ExtensionLoadE
 public class DefaultExtensionFactory implements ExtensionFactory {
 
     private ExtensionMemoryMirror<ExtensionData, Object> resolverCache;
-    private ClassScanner                                 classPathScanner;
-    private ClassScanner                                 fileSystemScanner;
-    private JdkCompiler                                  jdkCompiler;
+    private ClassScanner classPathScanner;
+    private ClassScanner fileSystemScanner;
+    private JdkCompiler jdkCompiler;
 
-    public DefaultExtensionFactory(){
+    public DefaultExtensionFactory() {
         resolverCache = new ExtensionMemoryMirror<ExtensionData, Object>(new ComputeFunction<ExtensionData, Object>() {
 
             public Object apply(ExtensionData extensionData) {
@@ -58,7 +58,7 @@ public class DefaultExtensionFactory implements ExtensionFactory {
             clazz = scan(extensionData.getClazzPath());
             fullname = "[" + extensionData.getClazzPath() + "]ClassPath";
         } else if (extensionData.getExtensionDataType().isSource()
-                   && StringUtils.isNotBlank(extensionData.getSourceText())) {
+                && StringUtils.isNotBlank(extensionData.getSourceText())) {
             JavaSource javaSource = new JavaSource(extensionData.getSourceText());
             clazz = jdkCompiler.compile(javaSource);
             fullname = "[" + javaSource.toString() + "]SourceText";

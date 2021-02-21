@@ -25,14 +25,14 @@ import com.alibaba.otter.shared.communication.core.model.heart.HeartEvent;
 
 /**
  * 链接池内容管理工厂, @see {@linkplain GenericObjectPool} , {@linkplain PoolableObjectFactory}
- * 
+ *
  * @author jianghang 2011-9-9 下午05:00:15
  */
 public class CommunicationConnectionPoolableFactory implements KeyedPoolableObjectFactory {
 
     private CommunicationConnectionFactory factory;
 
-    public CommunicationConnectionPoolableFactory(CommunicationConnectionFactory factory){
+    public CommunicationConnectionPoolableFactory(CommunicationConnectionFactory factory) {
         this.factory = factory;
     }
 

@@ -18,7 +18,7 @@ package com.alibaba.otter.shared.etl.model;
 
 /**
  * chang the eventtype num to I/U/D/C/A/E.
- * 
+ *
  * @author xiaoqing.zhouxq 2010-7-22 下午02:47:44
  */
 public enum EventType {
@@ -80,7 +80,7 @@ public enum EventType {
 
     private String value;
 
-    private EventType(String value){
+    private EventType(String value) {
         this.value = value;
     }
 

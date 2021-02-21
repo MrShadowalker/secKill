@@ -24,7 +24,7 @@ import com.alibaba.otter.shared.common.model.config.channel.Channel;
 public class SeniorChannel extends Channel {
 
     private static final long serialVersionUID = -5864547001482768341L;
-    private boolean           processEmpty;
+    private boolean processEmpty;
 
     public boolean isProcessEmpty() {
         return processEmpty;

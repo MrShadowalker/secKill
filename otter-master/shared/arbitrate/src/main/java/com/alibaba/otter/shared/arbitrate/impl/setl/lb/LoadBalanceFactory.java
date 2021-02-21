@@ -24,7 +24,7 @@ import com.alibaba.otter.shared.common.model.config.pipeline.PipelineParameter.L
 
 /**
  * 获取next node
- * 
+ *
  * @author jianghang 2013-2-28 下午09:55:56
  * @version 4.1.4
  */

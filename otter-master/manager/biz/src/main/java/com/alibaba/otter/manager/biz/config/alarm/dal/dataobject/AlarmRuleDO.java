@@ -28,17 +28,17 @@ import com.alibaba.otter.shared.common.model.config.alarm.MonitorName;
  */
 public class AlarmRuleDO implements Serializable {
 
-    private static final long  serialVersionUID   = -1284784362325347636L;
-    private Long               id;
-    private Long               pipelineId;
-    private AlarmRuleStatus    status;
-    private MonitorName        monitorName;
-    private String             receiverKey;
-    private String             matchValue;
+    private static final long serialVersionUID = -1284784362325347636L;
+    private Long id;
+    private Long pipelineId;
+    private AlarmRuleStatus status;
+    private MonitorName monitorName;
+    private String receiverKey;
+    private String matchValue;
     private AlarmRuleParameter alarmRuleParameter = new AlarmRuleParameter();
-    private String             description;
-    private Date               gmtCreate;
-    private Date               gmtModified;
+    private String description;
+    private Date gmtCreate;
+    private Date gmtModified;
 
     public Long getId() {
         return id;

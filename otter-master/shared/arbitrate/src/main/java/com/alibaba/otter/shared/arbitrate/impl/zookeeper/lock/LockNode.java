@@ -20,17 +20,17 @@ import org.springframework.util.Assert;
 
 /**
  * 支持排序的节点
- * 
+ *
  * @author jianghang 2011-9-29 下午01:30:36
  * @version 4.0.0
  */
 public class LockNode implements Comparable<LockNode> {
 
     private final String name;
-    private String       prefix;
-    private int          sequence = -1;
+    private String prefix;
+    private int sequence = -1;
 
-    public LockNode(String name){
+    public LockNode(String name) {
         Assert.notNull(name, "id cannot be null");
         this.name = name;
         this.prefix = name;

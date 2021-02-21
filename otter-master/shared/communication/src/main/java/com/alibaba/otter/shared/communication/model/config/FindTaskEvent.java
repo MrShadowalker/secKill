@@ -20,16 +20,16 @@ import com.alibaba.otter.shared.communication.core.model.Event;
 
 /**
  * 配置查询的事件
- * 
+ *
  * @author jianghang
  */
 public class FindTaskEvent extends Event {
 
     private static final long serialVersionUID = 476657754177940448L;
 
-    private Long              nid;                                   // 对应的task机器id
+    private Long nid;                                   // 对应的task机器id
 
-    public FindTaskEvent(){
+    public FindTaskEvent() {
         super(ConfigEventType.findTask);
     }
 

@@ -36,23 +36,23 @@ import com.alibaba.otter.shared.common.utils.zookeeper.ZkClientx;
 
 /**
  * lb 测试基础
- * 
+ *
  * @author jianghang 2011-9-22 上午11:38:21
  * @version 4.0.0
  */
 public class BaseLoadBalanceTest extends BaseEventTest {
 
-    protected ZkClientx          zookeeper  = null;
-    protected Long               channelId  = 100L;
-    protected Long               pipelineId = 100L;
+    protected ZkClientx zookeeper = null;
+    protected Long channelId = 100L;
+    protected Long pipelineId = 100L;
     protected NodeArbitrateEvent nodeEvent;
-    protected NodeMonitor        nodeMonitor;
-    protected final Node         node1      = new Node();
-    protected final Node         node2      = new Node();
-    protected final Node         node3      = new Node();
-    protected final Node         node4      = new Node();
-    protected List<Node>         sourceList = Arrays.asList(node1, node3);
-    protected List<Node>         targetList = Arrays.asList(node2, node4);
+    protected NodeMonitor nodeMonitor;
+    protected final Node node1 = new Node();
+    protected final Node node2 = new Node();
+    protected final Node node3 = new Node();
+    protected final Node node4 = new Node();
+    protected List<Node> sourceList = Arrays.asList(node1, node3);
+    protected List<Node> targetList = Arrays.asList(node2, node4);
 
     @BeforeClass
     public void init() {

@@ -31,15 +31,15 @@ import com.google.common.collect.Maps;
 
 /**
  * select的示例代码
- * 
+ *
  * @author jianghang 2011-8-22 下午04:28:12
  */
 public class SelectServiceDemo implements PipelineLifeCycle {
 
     private ArbitrateEventService arbitrateEventService;
 
-    private ExecutorService       executor = Executors.newCachedThreadPool(new NamedThreadFactory("SelectService"));
-    private Map<Long, Future>     threads  = Maps.newConcurrentMap();
+    private ExecutorService executor = Executors.newCachedThreadPool(new NamedThreadFactory("SelectService"));
+    private Map<Long, Future> threads = Maps.newConcurrentMap();
 
     public void submit(Long pipelineId) {
         if (threads.containsKey(pipelineId)) {
@@ -63,9 +63,9 @@ public class SelectServiceDemo implements PipelineLifeCycle {
 
         private ExecutorService executor = Executors.newFixedThreadPool(10, new NamedThreadFactory("SelectWorker"));
 
-        private Long            pipelineId;
+        private Long pipelineId;
 
-        public SelectWorker(Long pipelineId){
+        public SelectWorker(Long pipelineId) {
             this.pipelineId = pipelineId;
         }
 

@@ -30,7 +30,7 @@ import com.alibaba.otter.shared.common.utils.zookeeper.ZkClientx;
 
 /**
  * 针对pipeline管理的相关信号操作
- * 
+ *
  * @author jianghang 2011-8-31 下午07:34:11
  */
 public class PipelineArbitrateEvent implements ArbitrateEvent {

@@ -26,9 +26,9 @@ import com.alibaba.otter.shared.common.utils.OtterToStringStyle;
  */
 public class ThroughputCondition {
 
-    private Long           pipelineId;
+    private Long pipelineId;
     private ThroughputType type;
-    private boolean        detail;
+    private boolean detail;
 
     public Long getPipelineId() {
         return pipelineId;

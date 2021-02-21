@@ -30,8 +30,8 @@ import com.alibaba.otter.shared.common.utils.zookeeper.ZkClientx;
 
 public class BaseEventTest extends BaseOtterTest {
 
-    private String    cluster1  = "127.0.0.1:2188";
-    private String    cluster2  = "127.0.0.1:2188,127.0.0.1:2188";
+    private String cluster1 = "127.0.0.1:2188";
+    private String cluster2 = "127.0.0.1:2188,127.0.0.1:2188";
     private ZkClientx zookeeper = null;
 
     public ZkClientx getZookeeper() {

@@ -25,19 +25,19 @@ import com.alibaba.otter.shared.common.utils.OtterToStringStyle;
 
 /**
  * delay count的计数器
- * 
+ *
  * @author jianghang 2011-11-21 下午02:44:59
  * @version 4.0.0
  */
 public class DelayCount implements Serializable {
 
     private static final long serialVersionUID = -1350200637109107904L;
-    private Long              id;
-    private Long              pipelineId;
-    private Long              number;                                  // 延迟数量
-    private Long              time;                                    // 延迟时间
-    private Date              gmtCreate;
-    private Date              gmtModified;
+    private Long id;
+    private Long pipelineId;
+    private Long number;                                  // 延迟数量
+    private Long time;                                    // 延迟时间
+    private Date gmtCreate;
+    private Date gmtModified;
 
     public Long getId() {
         return id;

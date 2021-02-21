@@ -26,19 +26,19 @@ public class PushException extends NestableRuntimeException {
 
     private static final long serialVersionUID = -1223749329887228066L;
 
-    public PushException(){
+    public PushException() {
         super();
     }
 
-    public PushException(String msg, Throwable cause){
+    public PushException(String msg, Throwable cause) {
         super(msg, cause);
     }
 
-    public PushException(String msg){
+    public PushException(String msg) {
         super(msg);
     }
 
-    public PushException(Throwable cause){
+    public PushException(Throwable cause) {
         super(cause);
     }
 

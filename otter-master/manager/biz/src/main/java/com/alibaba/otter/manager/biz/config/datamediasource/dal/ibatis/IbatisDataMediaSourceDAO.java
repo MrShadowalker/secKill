@@ -27,7 +27,7 @@ import com.alibaba.otter.manager.biz.config.datamediasource.dal.dataobject.DataM
 
 /**
  * DataMediaSource的DAO层，ibatis的实现，主要是CRUD操作。
- * 
+ *
  * @author simon
  */
 public class IbatisDataMediaSourceDAO extends SqlMapClientDaoSupport implements DataMediaSourceDAO {
@@ -56,12 +56,12 @@ public class IbatisDataMediaSourceDAO extends SqlMapClientDaoSupport implements 
     public DataMediaSourceDO findById(Long dataMediaSourceId) {
         Assert.assertNotNull(dataMediaSourceId);
         return (DataMediaSourceDO) getSqlMapClientTemplate().queryForObject("findDataMediaSourceById",
-                                                                            dataMediaSourceId);
+                dataMediaSourceId);
     }
 
     public List<DataMediaSourceDO> listByCondition(Map condition) {
         List<DataMediaSourceDO> dataMediaSourceDos = getSqlMapClientTemplate().queryForList("listDataMediaSources",
-                                                                                            condition);
+                condition);
         return dataMediaSourceDos;
     }
 
@@ -72,7 +72,7 @@ public class IbatisDataMediaSourceDAO extends SqlMapClientDaoSupport implements 
 
     public List<DataMediaSourceDO> listByMultiId(Long... identities) {
         List<DataMediaSourceDO> dataMediaSourceDos = getSqlMapClientTemplate().queryForList("listSourceByIds",
-                                                                                            identities);
+                identities);
         return dataMediaSourceDos;
     }
 

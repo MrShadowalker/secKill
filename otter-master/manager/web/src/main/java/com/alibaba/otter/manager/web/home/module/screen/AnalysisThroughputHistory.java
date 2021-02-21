@@ -38,7 +38,7 @@ import com.alibaba.otter.shared.common.model.statistics.throughput.ThroughputTyp
 public class AnalysisThroughputHistory {
 
     @Resource(name = "channelService")
-    private ChannelService        channelService;
+    private ChannelService channelService;
 
     @Resource(name = "throughputStatService")
     private ThroughputStatService throughputStatService;

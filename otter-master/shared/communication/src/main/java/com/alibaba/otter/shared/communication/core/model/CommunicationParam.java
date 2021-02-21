@@ -18,13 +18,13 @@ package com.alibaba.otter.shared.communication.core.model;
 
 /**
  * 连接参数类，<strong>如果参数有变化，需要酌情考虑是否更新相应的hashcode & equals方法</strong>
- * 
+ *
  * @author jianghang 2011-9-9 下午07:16:59
  */
 public class CommunicationParam {
 
-    private String              ip;                                 // 通讯ip
-    private int                 port;                               // 通讯端口
+    private String ip;                                 // 通讯ip
+    private int port;                               // 通讯端口
     private CummunicationMethod comMethod = CummunicationMethod.RMI; // 通讯方式
 
     /**

@@ -35,13 +35,13 @@ import com.alibaba.otter.shared.common.model.config.data.DataMediaPair;
 public class DataMediaList {
 
     @Resource(name = "dataMediaService")
-    private DataMediaService     dataMediaService;
+    private DataMediaService dataMediaService;
 
     @Resource(name = "dataMediaPairService")
     private DataMediaPairService dataMediaPairService;
 
     public void execute(@Param("pageIndex") int pageIndex, @Param("searchKey") String searchKey, Context context)
-                                                                                                                 throws Exception {
+            throws Exception {
         @SuppressWarnings("unchecked")
         Map<String, Object> condition = new HashMap<String, Object>();
         if ("请输入关键字(目前支持DataMedia的ID、名字搜索)".equals(searchKey)) {

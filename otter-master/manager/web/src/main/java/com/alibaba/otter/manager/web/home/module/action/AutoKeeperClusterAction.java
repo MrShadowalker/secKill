@@ -39,7 +39,7 @@ public class AutoKeeperClusterAction extends AbstractAction {
     @Resource(name = "autoKeeperClusterService")
     private AutoKeeperClusterService autoKeeperClusterService;
     @Resource(name = "autoKeeperCollector")
-    private AutoKeeperCollector      autoKeeperCollector;
+    private AutoKeeperCollector autoKeeperCollector;
 
     public void doAdd(@FormGroup("autokeeperClusterInfo") Group autokeeperClusterInfo,
                       @FormField(name = "formAutokeeperClusterError", group = "autokeeperClusterInfo") CustomErrors err,

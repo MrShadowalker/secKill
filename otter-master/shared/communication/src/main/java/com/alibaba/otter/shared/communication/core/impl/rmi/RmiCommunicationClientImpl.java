@@ -23,7 +23,7 @@ import com.alibaba.otter.shared.communication.core.impl.connection.Communication
 
 /**
  * 基于rmi的通讯实现
- * 
+ *
  * @author jianghang 2011-9-13 下午04:10:30
  */
 public class RmiCommunicationClientImpl extends DefaultCommunicationClientImpl implements CommunicationClient {

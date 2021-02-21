@@ -34,7 +34,7 @@ public class AlarmSystemList {
     private AlarmRuleService alarmRuleService;
 
     public void execute(@Param("pipelineId") Long pipelineId, @Param("pageIndex") int pageIndex, Context context)
-                                                                                                                 throws Exception {
+            throws Exception {
         Map<String, Object> condition = new HashMap<String, Object>();
         int count = alarmRuleService.getCount();
         Paginator paginator = new Paginator();

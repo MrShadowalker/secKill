@@ -21,7 +21,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Class path 扫描器
- * 
+ *
  * @author xiaoqing.zhouxq
  */
 public class ClasspathClassScanner implements ClassScanner {

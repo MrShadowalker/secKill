@@ -22,7 +22,7 @@ import com.alibaba.otter.shared.common.model.config.alarm.AlarmRule;
 
 /**
  * 被动监控者，由其他人喂给他需要监控的数据
- * 
+ *
  * @author zebin.xuzb @ 2012-8-30
  * @version 4.1.0
  */

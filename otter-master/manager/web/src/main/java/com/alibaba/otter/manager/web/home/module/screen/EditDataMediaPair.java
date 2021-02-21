@@ -33,7 +33,7 @@ public class EditDataMediaPair {
     private DataMediaPairService dataMediaPairService;
 
     @Resource(name = "channelService")
-    private ChannelService       channelService;
+    private ChannelService channelService;
 
     public void execute(@Param("dataMediaPairId") Long dataMediaPairId, @Param("pipelineId") Long pipelineId,
                         Context context, Navigator nav) throws Exception {

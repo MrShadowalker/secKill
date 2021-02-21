@@ -39,24 +39,24 @@ import com.alibaba.otter.shared.communication.model.config.FindMediaEvent;
 
 /**
  * 基于otter manager media的管理
- * 
+ *
  * @author jianghang 2013-4-18 下午12:11:53
  * @version 4.1.8
  */
 public class MediaSubscribeManager extends AbstractSubscribeManager {
 
-    private static final Long                   DEFAULT_PERIOD = 60 * 1000L;
-    private static final Logger                 logger         = LoggerFactory.getLogger(MediaSubscribeManager.class);
-    private ConcurrentMap<String, Object>       mutexes        = new ConcurrentHashMap<String, Object>();
-    private Map<String, Runnable>               runnableMap    = new ConcurrentHashMap<String, Runnable>();
-    private Long                                timeout        = DEFAULT_PERIOD;
+    private static final Long DEFAULT_PERIOD = 60 * 1000L;
+    private static final Logger logger = LoggerFactory.getLogger(MediaSubscribeManager.class);
+    private ConcurrentMap<String, Object> mutexes = new ConcurrentHashMap<String, Object>();
+    private Map<String, Runnable> runnableMap = new ConcurrentHashMap<String, Runnable>();
+    private Long timeout = DEFAULT_PERIOD;
     private RefreshMemoryMirror<String, String> matrixCache;
-    private ArbitrateCommmunicationClient       arbitrateCommmunicationClient;
+    private ArbitrateCommmunicationClient arbitrateCommmunicationClient;
 
-    private int                                 poolSize       = 8;
-    private ScheduledThreadPoolExecutor         executor;
+    private int poolSize = 8;
+    private ScheduledThreadPoolExecutor executor;
 
-    public MediaSubscribeManager(){
+    public MediaSubscribeManager() {
         // 注册一下事件处理
         ComputeFunction function = new ComputeFunction<String, String>() {
 
@@ -100,7 +100,7 @@ public class MediaSubscribeManager extends AbstractSubscribeManager {
         }
 
         executor = new ScheduledThreadPoolExecutor(poolSize, new NamedThreadFactory("canal-media-callback-worker"),
-                                                   new ThreadPoolExecutor.CallerRunsPolicy());
+                new ThreadPoolExecutor.CallerRunsPolicy());
     }
 
     protected void doShutdown() {

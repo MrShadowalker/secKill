@@ -29,8 +29,8 @@ import com.alibaba.otter.shared.common.model.config.pipeline.Pipeline;
 public class SeniorCanal extends Canal {
 
     private static final long serialVersionUID = -4121314684324595191L;
-    private boolean           used;
-    private List<Pipeline>    pipelines;
+    private boolean used;
+    private List<Pipeline> pipelines;
 
     public boolean isUsed() {
         return used;
@@ -59,8 +59,8 @@ public class SeniorCanal extends Canal {
                 for (DataSourcing dbAddress : groupAddress) {
                     ++i;
                     address.append(dbAddress.getDbAddress().getHostString())
-                        .append(":")
-                        .append(dbAddress.getDbAddress().getPort());
+                            .append(":")
+                            .append(dbAddress.getDbAddress().getPort());
 
                     if (i < groupAddress.size()) {
                         address.append(',');

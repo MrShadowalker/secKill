@@ -25,21 +25,21 @@ import com.alibaba.otter.shared.arbitrate.model.TerminEventData;
 
 /**
  * 回滚的终结信号处理
- * 
+ *
  * @author jianghang 2011-9-26 下午02:03:02
  * @version 4.0.0
  */
 public class WarningTerminProcess implements TerminProcess {
 
     private static final Logger logger = LoggerFactory.getLogger(WarningTerminProcess.class);
-    private AlarmClientService  alarmClientService;
+    private AlarmClientService alarmClientService;
 
     public boolean process(TerminEventData data) {
         logger.warn("nid:{}[{}:{}]",
-                    new Object[] { ArbitrateConfigUtils.getCurrentNid(), data.getPipelineId(),
-                            data.getCode() + ":" + data.getDesc() });
+                new Object[]{ArbitrateConfigUtils.getCurrentNid(), data.getPipelineId(),
+                        data.getCode() + ":" + data.getDesc()});
         alarmClientService.sendAlarm(ArbitrateConfigUtils.getCurrentNid(), data.getPipelineId(), data.getCode(),
-                                     data.getDesc());
+                data.getDesc());
         return true;
     }
 

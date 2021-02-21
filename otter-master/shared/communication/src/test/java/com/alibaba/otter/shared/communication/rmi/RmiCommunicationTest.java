@@ -42,12 +42,12 @@ import com.alibaba.otter.shared.communication.core.model.Callback;
 
 /**
  * 测试下基于rmi通讯的功能
- * 
+ *
  * @author jianghang 2011-9-13 下午04:03:38
  */
 public class RmiCommunicationTest extends org.jtester.testng.JTester {
 
-    private CommunicationClient     client  = null;
+    private CommunicationClient client = null;
     private CommunicationAppService service = new CommunicationAppServiceImpl();
 
     @BeforeClass
@@ -61,7 +61,7 @@ public class RmiCommunicationTest extends org.jtester.testng.JTester {
         endpoint1098.initial();
 
         CommunicationConnectionPoolFactory factory = new CommunicationConnectionPoolFactory(
-                                                                                            new RmiCommunicationConnectionFactory());
+                new RmiCommunicationConnectionFactory());
         factory.initial();
         client = new DefaultCommunicationClientImpl(factory);
         client.initial();
@@ -105,7 +105,7 @@ public class RmiCommunicationTest extends org.jtester.testng.JTester {
         data.setBigDecimalValue(BigDecimal.TEN);
         data.setBigIntegerValue(BigInteger.TEN);
         event.setData(data);
-        List<Boolean> result = (List<Boolean>) client.call(new String[] { "127.0.0.1:1099", "127.0.0.1:1098" }, event);// 同步调用
+        List<Boolean> result = (List<Boolean>) client.call(new String[]{"127.0.0.1:1099", "127.0.0.1:1098"}, event);// 同步调用
 
         want.number(result.size()).isEqualTo(2);
         want.bool(result.get(0)).is(true);
@@ -119,7 +119,7 @@ public class RmiCommunicationTest extends org.jtester.testng.JTester {
         AppDeleteEvent event = new AppDeleteEvent();
         event.setName("rmiEvent");
 
-        client.call(new String[] { "127.0.0.1:1099", "127.0.0.1:1098" }, event, new Callback<List<Boolean>>() {
+        client.call(new String[]{"127.0.0.1:1099", "127.0.0.1:1098"}, event, new Callback<List<Boolean>>() {
 
             public void call(List<Boolean> event) {
                 want.number(event.size()).isEqualTo(2);

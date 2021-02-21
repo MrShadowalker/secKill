@@ -47,24 +47,25 @@ import com.alibaba.otter.shared.common.utils.zookeeper.ZooKeeperx;
 
 /**
  * 测试下zookeeper优先集群列表
- * 
+ *
  * @author jianghang 2011-9-16 下午03:00:01
  * @version 4.0.0
  */
 public class ZooKeeperClientTest extends BaseOtterTest {
 
-    private static final Field clientCnxnField      = ReflectionUtils.findField(ZooKeeper.class, "cnxn");
-    private static final Field hostProviderField    = ReflectionUtils.findField(ClientCnxn.class, "hostProvider");
+    private static final Field clientCnxnField = ReflectionUtils.findField(ZooKeeper.class, "cnxn");
+    private static final Field hostProviderField = ReflectionUtils.findField(ClientCnxn.class, "hostProvider");
     private static final Field serverAddressesField = ReflectionUtils.findField(StaticHostProvider.class,
-                                                        "serverAddresses");
+            "serverAddresses");
+
     static {
         ReflectionUtils.makeAccessible(clientCnxnField);
         ReflectionUtils.makeAccessible(hostProviderField);
         ReflectionUtils.makeAccessible(serverAddressesField);
     }
 
-    private String             cluster1             = "127.0.0.1:2188";
-    private String             cluster2             = "127.0.0.1:2188,127.0.0.1:2188";
+    private String cluster1 = "127.0.0.1:2188";
+    private String cluster2 = "127.0.0.1:2188,127.0.0.1:2188";
 
     // private String cluster1 = "127.0.0.1:2181";
     // private String cluster2 = "127.0.0.1:2181,127.0.0.1:2181";
@@ -102,7 +103,7 @@ public class ZooKeeperClientTest extends BaseOtterTest {
         ClientCnxn cnxn = (ClientCnxn) ReflectionUtils.getField(clientCnxnField, zkp);
         HostProvider hostProvider = (HostProvider) ReflectionUtils.getField(hostProviderField, cnxn);
         List<InetSocketAddress> serverAddrs = (List<InetSocketAddress>) ReflectionUtils.getField(serverAddressesField,
-            hostProvider);
+                hostProvider);
         want.number(serverAddrs.size()).isEqualTo(3);
         String s1 = serverAddrs.get(0).getAddress().getHostAddress() + ":" + serverAddrs.get(0).getPort();
         want.string(s1).isEqualTo(cluster1);

@@ -37,20 +37,20 @@ import com.alibaba.otter.shared.communication.model.arbitrate.NodeAlarmEvent;
 
 /**
  * 基于RESTART命令的恢复机制
- * 
+ *
  * @author jianghang 2012-9-19 下午04:44:12
  * @version 4.1.0
  */
 public class RestartAlarmRecovery implements AlarmRecovery, InitializingBean, DisposableBean {
 
-    private static final Logger                       logger    = LoggerFactory.getLogger(RestartAlarmRecovery.class);
-    private volatile DelayQueue<AlarmRecoveryDelayed> queue     = new DelayQueue<AlarmRecoveryDelayed>();
-    private long                                      checkTime = 10 * 1000L;                                         // 5秒
-    private ExecutorService                           executor;
-    private PipelineService                           pipelineService;
-    private PassiveMonitor                            exceptionRuleMonitor;
-    private ArbitrateManageService                    arbitrateManageService;
-    private ChannelService                            channelService;
+    private static final Logger logger = LoggerFactory.getLogger(RestartAlarmRecovery.class);
+    private volatile DelayQueue<AlarmRecoveryDelayed> queue = new DelayQueue<AlarmRecoveryDelayed>();
+    private long checkTime = 10 * 1000L;                                         // 5秒
+    private ExecutorService executor;
+    private PipelineService pipelineService;
+    private PassiveMonitor exceptionRuleMonitor;
+    private ArbitrateManageService arbitrateManageService;
+    private ChannelService channelService;
 
     public void recovery(Long channelId) {
         AlarmRecoveryDelayed delayed = new AlarmRecoveryDelayed(channelId, -1, false, checkTime);
@@ -65,7 +65,7 @@ public class RestartAlarmRecovery implements AlarmRecovery, InitializingBean, Di
     public void recovery(AlarmRule alarmRule) {
         Pipeline pipeline = pipelineService.findById(alarmRule.getPipelineId());
         AlarmRecoveryDelayed delayed = new AlarmRecoveryDelayed(pipeline.getChannelId(), alarmRule.getId(), false,
-                                                                checkTime);
+                checkTime);
         // 做异步处理，避免并发时重复执行recovery
         synchronized (queue) {
             if (!queue.contains(delayed)) {
@@ -82,7 +82,7 @@ public class RestartAlarmRecovery implements AlarmRecovery, InitializingBean, Di
                 // 超过2倍阀值，强制停止一下通道释放一下内存
                 boolean needStop = (alarmCount >= alarmRule.getRecoveryThresold() + 1);// recovery的下一次启用修复
                 AlarmRecoveryDelayed delayed = new AlarmRecoveryDelayed(pipeline.getChannelId(), alarmRule.getId(),
-                                                                        needStop, checkTime);
+                        needStop, checkTime);
                 if (!queue.contains(delayed)) {
                     queue.add(delayed);
                 }
@@ -109,10 +109,10 @@ public class RestartAlarmRecovery implements AlarmRecovery, InitializingBean, Di
         if (result) {
             if (!needStop) {
                 alarm.setMessage(String.format("cid:%s restart recovery successful for rid:%s",
-                                               String.valueOf(channelId), String.valueOf(ruleId)));
+                        String.valueOf(channelId), String.valueOf(ruleId)));
             } else {
                 alarm.setMessage(String.format("cid:%s stop recovery successful for rid:%s", String.valueOf(channelId),
-                                               String.valueOf(ruleId)));
+                        String.valueOf(ruleId)));
             }
 
             try {

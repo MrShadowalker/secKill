@@ -28,11 +28,11 @@ public class ExtensionData implements Serializable, Comparable<ExtensionData> {
 
     private static final long serialVersionUID = 5697237591471377596L;
     private ExtensionDataType extensionDataType;
-    private String            clazzPath;
-    private String            sourceText;
-    private Long              timestamp;
+    private String clazzPath;
+    private String sourceText;
+    private Long timestamp;
 
-    public ExtensionData(){
+    public ExtensionData() {
         this.timestamp = System.currentTimeMillis();
     }
 

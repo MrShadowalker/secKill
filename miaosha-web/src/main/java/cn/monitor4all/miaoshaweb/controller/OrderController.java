@@ -9,7 +9,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.SynchronousQueue;
@@ -72,10 +77,10 @@ public class OrderController {
         // 1. 阻塞式获取令牌
         log.info("等待时间" + rateLimiter.acquire());
         // 2. 非阻塞式获取令牌
-        //        if (!rateLimiter.tryAcquire(1000, TimeUnit.MILLISECONDS)) {
-        //            log.warn("你被限流了，真不幸，直接返回失败");
-        //            return "你被限流了，真不幸，直接返回失败";
-        //        }
+        // if (!rateLimiter.tryAcquire(1000, TimeUnit.MILLISECONDS)) {
+        //    log.warn("你被限流了，真不幸，直接返回失败");
+        //    return "你被限流了，真不幸，直接返回失败";
+        // }
         int id;
         try {
             id = orderService.createOptimisticOrder(sid);

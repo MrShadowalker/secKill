@@ -26,23 +26,23 @@ public class ArbitrateException extends NestableRuntimeException {
 
     private static final long serialVersionUID = -7288830284122672209L;
 
-    public ArbitrateException(String errorCode){
+    public ArbitrateException(String errorCode) {
         super(errorCode);
     }
 
-    public ArbitrateException(String errorCode, Throwable cause){
+    public ArbitrateException(String errorCode, Throwable cause) {
         super(errorCode, cause);
     }
 
-    public ArbitrateException(String errorCode, String errorDesc){
+    public ArbitrateException(String errorCode, String errorDesc) {
         super(errorCode + ":" + errorDesc);
     }
 
-    public ArbitrateException(String errorCode, String errorDesc, Throwable cause){
+    public ArbitrateException(String errorCode, String errorDesc, Throwable cause) {
         super(errorCode + ":" + errorDesc, cause);
     }
 
-    public ArbitrateException(Throwable cause){
+    public ArbitrateException(Throwable cause) {
         super(cause);
     }
 

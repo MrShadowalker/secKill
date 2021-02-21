@@ -28,7 +28,7 @@ import com.alibaba.otter.shared.common.utils.lock.BooleanMutex;
 
 /**
  * 锁对象测试
- * 
+ *
  * @author jianghang 2011-9-23 上午10:40:32
  * @version 4.0.0
  */

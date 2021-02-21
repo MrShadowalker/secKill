@@ -52,28 +52,28 @@ import com.google.common.collect.Lists;
 
 /**
  * 主备切换控制器，active的只有一位，所有的standy都有平等的选择权
- * 
+ *
  * <pre>
  * 1. active一旦产生，出现瞬断，在规定的时间内，其享有优先权
  * 2. active一旦产生，如果主动释放其active权利，其他的standby的节点就有机会立即参与选举
  * </pre>
- * 
+ *
  * @author jianghang 2012-10-1 下午02:19:22
  * @version 4.1.0
  */
 public class MainstemMonitor extends ArbitrateLifeCycle implements Monitor {
 
-    private static final Logger        logger       = LoggerFactory.getLogger(MainstemMonitor.class);
-    private ZkClientx                  zookeeper    = ZooKeeperClient.getInstance();
-    private ScheduledExecutorService   delayExector = Executors.newScheduledThreadPool(1);
-    private int                        delayTime    = 5;
+    private static final Logger logger = LoggerFactory.getLogger(MainstemMonitor.class);
+    private ZkClientx zookeeper = ZooKeeperClient.getInstance();
+    private ScheduledExecutorService delayExector = Executors.newScheduledThreadPool(1);
+    private int delayTime = 5;
     private volatile MainStemEventData activeData;
-    private IZkDataListener            dataListener;
-    private BooleanMutex               mutex        = new BooleanMutex(false);
-    private volatile boolean           release      = false;
-    private List<MainstemListener>     listeners    = Collections.synchronizedList(new ArrayList<MainstemListener>());
+    private IZkDataListener dataListener;
+    private BooleanMutex mutex = new BooleanMutex(false);
+    private volatile boolean release = false;
+    private List<MainstemListener> listeners = Collections.synchronizedList(new ArrayList<MainstemListener>());
 
-    public MainstemMonitor(Long pipelineId){
+    public MainstemMonitor(Long pipelineId) {
         super(pipelineId);
         // initMainstem();
         dataListener = new IZkDataListener() {
@@ -199,7 +199,7 @@ public class MainstemMonitor extends ArbitrateLifeCycle implements Monitor {
 
     /**
      * 阻塞等待自己成为active，如果自己成为active，立马返回
-     * 
+     *
      * @throws InterruptedException
      */
     public void waitForActive() throws InterruptedException {

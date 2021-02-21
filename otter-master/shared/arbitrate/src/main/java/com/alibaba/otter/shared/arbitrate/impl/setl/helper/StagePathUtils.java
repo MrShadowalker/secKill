@@ -27,7 +27,7 @@ import com.alibaba.otter.shared.common.model.config.pipeline.Pipeline;
 
 /**
  * 对应zookeeper path构建的helper类
- * 
+ *
  * @author jianghang
  */
 public class StagePathUtils extends ManagePathUtils {
@@ -38,7 +38,7 @@ public class StagePathUtils extends ManagePathUtils {
     public static String getPipeline(Long pipelineId) {
         // 根据channelId , pipelineId构造path
         return MessageFormat.format(ArbitrateConstants.NODE_PIPELINE_FORMAT, getChannelId(pipelineId),
-                                    String.valueOf(pipelineId));
+                String.valueOf(pipelineId));
     }
 
     /**
@@ -47,7 +47,7 @@ public class StagePathUtils extends ManagePathUtils {
     public static String getOppositePipeline(Long pipelineId) {
         // 根据channelId , pipelineId构造path
         return MessageFormat.format(ArbitrateConstants.NODE_PIPELINE_FORMAT, getChannelId(pipelineId),
-                                    getOppositePipelineId(pipelineId));
+                getOppositePipelineId(pipelineId));
     }
 
     /**
@@ -64,7 +64,7 @@ public class StagePathUtils extends ManagePathUtils {
     public static String getRemedyRoot(Long pipelineId) {
         // 根据channelId , pipelineId构造path
         return MessageFormat.format(ArbitrateConstants.NODE_REMEDY_ROOT, getChannelId(pipelineId),
-                                    String.valueOf(pipelineId));
+                String.valueOf(pipelineId));
     }
 
     /**
@@ -73,7 +73,7 @@ public class StagePathUtils extends ManagePathUtils {
     public static String getProcessRoot(Long pipelineId) {
         // 根据channelId , pipelineId构造path
         return MessageFormat.format(ArbitrateConstants.NODE_PROCESS_ROOT, getChannelId(pipelineId),
-                                    String.valueOf(pipelineId));
+                String.valueOf(pipelineId));
     }
 
     /**
@@ -82,7 +82,7 @@ public class StagePathUtils extends ManagePathUtils {
     public static String getProcess(Long pipelineId, Long processId) {
         // 根据channelId , pipelineId构造path
         return MessageFormat.format(ArbitrateConstants.NODE_PROCESS_FORMAT, getChannelId(pipelineId),
-                                    String.valueOf(pipelineId), getProcessNode(processId));
+                String.valueOf(pipelineId), getProcessNode(processId));
     }
 
     /**
@@ -91,7 +91,7 @@ public class StagePathUtils extends ManagePathUtils {
     public static String getTerminRoot(Long pipelineId) {
         // 根据channelId , pipelineId构造path
         return MessageFormat.format(ArbitrateConstants.NODE_TERMIN_ROOT, getChannelId(pipelineId),
-                                    String.valueOf(pipelineId));
+                String.valueOf(pipelineId));
     }
 
     /**
@@ -100,7 +100,7 @@ public class StagePathUtils extends ManagePathUtils {
     public static String getTermin(Long pipelineId, Long processId) {
         // 根据channelId , pipelineId构造path
         return MessageFormat.format(ArbitrateConstants.NODE_TERMIN_FORMAT, getChannelId(pipelineId),
-                                    String.valueOf(pipelineId), getProcessNode(processId));
+                String.valueOf(pipelineId), getProcessNode(processId));
     }
 
     /**
@@ -109,7 +109,7 @@ public class StagePathUtils extends ManagePathUtils {
     public static String getProcess(Long pipelineId, String processNode) {
         // 根据channelId , pipelineId构造path
         return MessageFormat.format(ArbitrateConstants.NODE_PROCESS_FORMAT, getChannelId(pipelineId),
-                                    String.valueOf(pipelineId), processNode);
+                String.valueOf(pipelineId), processNode);
     }
 
     /**
@@ -132,7 +132,7 @@ public class StagePathUtils extends ManagePathUtils {
     public static String getLockRoot(Long pipelineId) {
         // 根据channelId , pipelineId构造path
         return MessageFormat.format(ArbitrateConstants.NODE_LOCK_ROOT, getChannelId(pipelineId),
-                                    String.valueOf(pipelineId));
+                String.valueOf(pipelineId));
     }
 
     /**

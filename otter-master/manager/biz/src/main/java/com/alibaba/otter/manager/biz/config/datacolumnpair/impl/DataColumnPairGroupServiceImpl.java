@@ -43,11 +43,11 @@ import com.alibaba.otter.shared.common.utils.JsonUtils;
  */
 public class DataColumnPairGroupServiceImpl implements DataColumnPairGroupService {
 
-    private static final Logger    logger = LoggerFactory.getLogger(DataColumnPairGroupServiceImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(DataColumnPairGroupServiceImpl.class);
 
     private DataColumnPairGroupDAO dataColumnPairGroupDao;
 
-    private DataColumnPairService  dataColumnPairService;
+    private DataColumnPairService dataColumnPairService;
 
     @Override
     public void create(ColumnGroup entityObj) {
@@ -153,6 +153,7 @@ public class DataColumnPairGroupServiceImpl implements DataColumnPairGroupServic
     }
 
     /*-------------------------------------------------------------*/
+
     /**
      * 用于DO对象转化为Model对象
      */
@@ -162,8 +163,8 @@ public class DataColumnPairGroupServiceImpl implements DataColumnPairGroupServic
         List<ColumnPair> columnPairs = new ArrayList<ColumnPair>();
         if (StringUtils.isNotBlank(dataColumnPairGroupDo.getColumnPairContent())) {
             columnPairs = JsonUtils.unmarshalFromString(dataColumnPairGroupDo.getColumnPairContent(),
-                                                        new TypeReference<ArrayList<ColumnPair>>() {
-                                                        });
+                    new TypeReference<ArrayList<ColumnPair>>() {
+                    });
         }
 
         columnGroup.setColumnPairs(columnPairs);
@@ -185,7 +186,7 @@ public class DataColumnPairGroupServiceImpl implements DataColumnPairGroupServic
 
     /**
      * 用于Model对象转化为DO对象
-     * 
+     *
      * @param dataColumnPair
      * @return DataMediaPairDO
      */

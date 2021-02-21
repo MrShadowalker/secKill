@@ -36,18 +36,18 @@ import com.alibaba.otter.shared.communication.model.arbitrate.StopNodeEvent;
 
 /**
  * 处理仲裁器事件的远程接口
- * 
+ *
  * @author jianghang 2011-11-24 下午09:19:09
  * @version 4.0.0
  */
 public class ArbitrateRemoteServiceImpl implements ArbitrateRemoteService {
 
-    private static final Logger    logger = LoggerFactory.getLogger(ArbitrateRemoteServiceImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(ArbitrateRemoteServiceImpl.class);
     private ArbitrateManageService arbitrateManageService;
-    private ChannelService         channelService;
-    private PassiveMonitor         exceptionRuleMonitor;
+    private ChannelService channelService;
+    private PassiveMonitor exceptionRuleMonitor;
 
-    public ArbitrateRemoteServiceImpl(){
+    public ArbitrateRemoteServiceImpl() {
         CommunicationRegistry.regist(ArbitrateEventType.nodeAlarm, this);
         CommunicationRegistry.regist(ArbitrateEventType.stopChannel, this);
         CommunicationRegistry.regist(ArbitrateEventType.stopNode, this);

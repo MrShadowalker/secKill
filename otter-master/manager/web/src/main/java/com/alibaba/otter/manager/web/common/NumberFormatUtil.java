@@ -33,17 +33,17 @@ import com.alibaba.otter.shared.common.utils.version.VersionInfo;
 
 /**
  * 格式化一下页面输出的数字内容
- * 
+ *
  * @author jianghang 2011-12-1 下午01:53:15
  * @version 4.0.0
  */
 public class NumberFormatUtil {
 
     private static final String PATTERN = "#,###.###";
-    private static final Long   KB_SIZE = 1024L;
-    private static final Long   MB_SIZE = 1024 * KB_SIZE;
-    private static final Long   GB_SIZE = 1024 * MB_SIZE;
-    private static final Long   TB_SIZE = 1024 * GB_SIZE;
+    private static final Long KB_SIZE = 1024L;
+    private static final Long MB_SIZE = 1024 * KB_SIZE;
+    private static final Long GB_SIZE = 1024 * MB_SIZE;
+    private static final Long TB_SIZE = 1024 * GB_SIZE;
 
     public static String format(Double data) {
         if (data == null) {

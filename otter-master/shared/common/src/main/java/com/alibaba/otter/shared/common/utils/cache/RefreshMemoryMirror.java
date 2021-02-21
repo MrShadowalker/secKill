@@ -29,25 +29,25 @@ import com.google.common.collect.MapMaker;
 
 /**
  * 简单内存镜像实现
- * 
+ *
  * <pre>
  * 1. 使用hashMap做为存储
  * 2. 支持过期时间
  * 3. 支持ComputeFunction，在get结果为null允许进行回调处理
- * 
+ *
  * 后期改进：优化下并行处理性能，目前比较暴力加了synchronized
  * </pre>
- * 
+ *
  * @author jianghang 2011-10-9 下午01:08:46
  * @version 4.0.0
  */
 public class RefreshMemoryMirror<KEY, VALUE> {
 
-    private final Long                              period;
+    private final Long period;
     private final Map<String, RefreshObject<VALUE>> store;
-    private final ComputeFunction<KEY, VALUE>       function;
+    private final ComputeFunction<KEY, VALUE> function;
 
-    public RefreshMemoryMirror(Long period, ComputeFunction<KEY, VALUE> function){
+    public RefreshMemoryMirror(Long period, ComputeFunction<KEY, VALUE> function) {
         this.period = period;
         this.function = function;
         store = new MapMaker().makeMap();
@@ -90,7 +90,7 @@ public class RefreshMemoryMirror<KEY, VALUE> {
 
     /**
      * 判断对象是否过期
-     * 
+     *
      * @param refreshObject
      * @return
      */
@@ -110,7 +110,7 @@ public class RefreshMemoryMirror<KEY, VALUE> {
 
     /**
      * 取得对应的key String
-     * 
+     *
      * @param key
      * @return
      */
@@ -139,10 +139,10 @@ public class RefreshMemoryMirror<KEY, VALUE> {
      */
     public static class RefreshObject<VALUE> {
 
-        private long  timestamp; // 记录数据存入时间戳
+        private long timestamp; // 记录数据存入时间戳
         private VALUE value;    // 记录具体的对象值
 
-        public RefreshObject(VALUE value){
+        public RefreshObject(VALUE value) {
             this.value = value;
             timestamp = new Date().getTime();
         }

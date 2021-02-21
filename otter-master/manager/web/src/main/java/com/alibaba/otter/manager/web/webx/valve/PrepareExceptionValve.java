@@ -33,10 +33,10 @@ import com.alibaba.otter.shared.arbitrate.exception.ArbitrateException;
  */
 public class PrepareExceptionValve extends AbstractValve {
 
-    private static Logger       log = LoggerFactory.getLogger(PrepareExceptionValve.class);
+    private static Logger log = LoggerFactory.getLogger(PrepareExceptionValve.class);
 
     @Autowired
-    private HttpServletRequest  request;
+    private HttpServletRequest request;
 
     @Autowired
     private HttpServletResponse response;

@@ -23,7 +23,7 @@ import com.alibaba.otter.shared.common.model.user.AuthorizeType;
 
 /**
  * 基于正则的URL匹配
- * 
+ *
  * @author jianghang 2011-11-11 下午12:24:38
  * @version 4.0.0
  */
@@ -53,12 +53,12 @@ public class RegExpURLAnalyze {
     public List<AuthorizeType> check(String action, String method) {
         List<AuthorizeType> result = new ArrayList<AuthorizeType>();
         if (anonymous != null && anonymous.getActionProtected() != null
-            && anonymous.getActionProtected().check(action, method)) {
+                && anonymous.getActionProtected().check(action, method)) {
             result.add(AuthorizeType.ANONYMOUS);
         }
 
         if (operator != null && operator.getActionProtected() != null
-            && operator.getActionProtected().check(action, method)) {
+                && operator.getActionProtected().check(action, method)) {
             result.add(AuthorizeType.OPERATOR);
         }
 

@@ -25,14 +25,14 @@ public class JsonResult implements Serializable {
 
     private static final long serialVersionUID = -1637537013205539672L;
 
-    private boolean           success;
-    private String            errMessage;
-    private Object            data;
+    private boolean success;
+    private String errMessage;
+    private Object data;
 
-    public JsonResult(){
+    public JsonResult() {
     }
 
-    public JsonResult(boolean success){
+    public JsonResult(boolean success) {
         this.success = success;
     }
 

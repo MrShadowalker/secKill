@@ -30,10 +30,10 @@ import com.alibaba.otter.shared.common.model.config.pipeline.Pipeline;
 
 public class PositionAction {
 
-    private static final Logger  logger = LoggerFactory.getLogger(PositionAction.class);
+    private static final Logger logger = LoggerFactory.getLogger(PositionAction.class);
 
     @Resource(name = "pipelineService")
-    private PipelineService      pipelineService;
+    private PipelineService pipelineService;
 
     @Resource(name = "arbitrateViewService")
     private ArbitrateViewService arbitrateViewService;

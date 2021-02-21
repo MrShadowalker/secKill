@@ -24,7 +24,7 @@ import com.alibaba.otter.shared.arbitrate.setl.BaseStageTest;
 
 /**
  * 提供mainStem信号的初始化
- * 
+ *
  * @author jianghang 2011-9-22 下午05:30:08
  * @version 4.0.0
  */

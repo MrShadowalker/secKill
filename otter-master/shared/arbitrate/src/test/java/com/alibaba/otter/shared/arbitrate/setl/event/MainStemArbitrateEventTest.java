@@ -40,20 +40,20 @@ import com.alibaba.otter.shared.common.model.config.pipeline.Pipeline;
 
 /**
  * 测试下mainstem信号
- * 
+ *
  * @author jianghang 2011-9-22 下午04:58:45
  * @version 4.0.0
  */
 public class MainStemArbitrateEventTest extends BaseEventTest {
 
     private MainStemArbitrateEvent mainStemEvent;
-    private ChannelArbitrateEvent  channelEvent;
+    private ChannelArbitrateEvent channelEvent;
     private PipelineArbitrateEvent pipelineEvent;
-    private final Node             local      = new Node();
-    private final Long             nid        = 1L;
-    private Long                   channelId  = 100L;
-    private Long                   pipelineId = 100L;
-    private NodeArbitrateEvent     nodeEvent;
+    private final Node local = new Node();
+    private final Long nid = 1L;
+    private Long channelId = 100L;
+    private Long pipelineId = 100L;
+    private NodeArbitrateEvent nodeEvent;
 
     @BeforeClass
     public void init() {

@@ -29,10 +29,10 @@ import com.alibaba.otter.manager.biz.config.channel.ChannelService;
 public class ChannelOp extends AbstractJsonScreen<String> {
 
     private final static String START = "start";
-    private final static String STOP  = "stop";
+    private final static String STOP = "stop";
 
     @Resource(name = "channelService")
-    private ChannelService      channelService;
+    private ChannelService channelService;
 
     public void execute(@Param("id") Long id, @Param("command") String command) {
 

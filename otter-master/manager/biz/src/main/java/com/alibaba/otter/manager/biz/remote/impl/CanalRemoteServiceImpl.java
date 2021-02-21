@@ -27,18 +27,18 @@ import com.alibaba.otter.shared.communication.model.canal.FindFilterEvent;
 
 /**
  * 获取对应的canal配置
- * 
+ *
  * @author jianghang 2012-8-1 下午04:44:40
  * @version 4.1.0
  */
 public class CanalRemoteServiceImpl implements CanalRemoteService {
 
     private CanalService canalService;
-    private String       tsdbJdbcUrl;
-    private String       tsdbJdbcUserName;
-    private String       tsdbJdbcPassword;
+    private String tsdbJdbcUrl;
+    private String tsdbJdbcUserName;
+    private String tsdbJdbcPassword;
 
-    public CanalRemoteServiceImpl(){
+    public CanalRemoteServiceImpl() {
         CommunicationRegistry.regist(CanalEventType.findCanal, this);
         CommunicationRegistry.regist(CanalEventType.findFilter, this);
     }

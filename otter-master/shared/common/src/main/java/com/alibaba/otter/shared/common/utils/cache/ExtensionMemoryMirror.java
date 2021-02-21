@@ -25,7 +25,7 @@ import com.google.common.collect.MapMaker;
 
 /**
  * 简单内存镜像实现
- * 
+ *
  * <pre>
  * 1. 使用hashMap做为存储
  * 2. 支持时间戳作为版本号
@@ -34,10 +34,10 @@ import com.google.common.collect.MapMaker;
  */
 public class ExtensionMemoryMirror<KEY, VALUE> {
 
-    private final Map<KEY, VALUE>             store;
+    private final Map<KEY, VALUE> store;
     private final ComputeFunction<KEY, VALUE> function;
 
-    public ExtensionMemoryMirror(ComputeFunction<KEY, VALUE> function){
+    public ExtensionMemoryMirror(ComputeFunction<KEY, VALUE> function) {
         this.function = function;
         store = new MapMaker().makeMap();
     }

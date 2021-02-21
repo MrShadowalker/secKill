@@ -35,7 +35,7 @@ import com.alibaba.otter.shared.communication.model.config.FindNodeEvent;
 
 /**
  * config client测试
- * 
+ *
  * @author jianghang 2011-10-21 上午10:33:51
  * @version 4.0.0
  */

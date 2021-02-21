@@ -48,14 +48,14 @@ import com.alibaba.otter.shared.common.utils.zookeeper.ZkClientx;
 
 public class MainStemMonitorTest extends BaseEventTest {
 
-    private ZkClientx              zookeeper  = null;
-    private ChannelArbitrateEvent  channelEvent;
+    private ZkClientx zookeeper = null;
+    private ChannelArbitrateEvent channelEvent;
     private PipelineArbitrateEvent pipelineEvent;
-    private NodeArbitrateEvent     nodeEvent;
-    private final Node             local      = new Node();
-    private final Long             nid        = 1L;
-    private Long                   channelId  = 100L;
-    private Long                   pipelineId = 100L;
+    private NodeArbitrateEvent nodeEvent;
+    private final Node local = new Node();
+    private final Long nid = 1L;
+    private Long channelId = 100L;
+    private Long pipelineId = 100L;
 
     @BeforeClass
     public void init() {

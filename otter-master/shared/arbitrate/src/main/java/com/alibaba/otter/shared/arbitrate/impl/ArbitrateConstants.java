@@ -18,7 +18,7 @@ package com.alibaba.otter.shared.arbitrate.impl;
 
 /**
  * 仲裁器相关常量定义
- * 
+ *
  * @author jianghang
  */
 public interface ArbitrateConstants {
@@ -26,92 +26,92 @@ public interface ArbitrateConstants {
     /**
      * otter的根节点
      */
-    public String NODE_OTTER_ROOT         = "/otter";
+    public String NODE_OTTER_ROOT = "/otter";
 
     /**
      * otter的node机器的根节点
      */
-    public String NODE_NID_ROOT           = NODE_OTTER_ROOT + "/node";
+    public String NODE_NID_ROOT = NODE_OTTER_ROOT + "/node";
 
     /**
      * otter中node节点的format格式,接受nid做为参数
      */
-    public String NODE_NID_FORMAT         = NODE_NID_ROOT + "/{0}";
+    public String NODE_NID_FORMAT = NODE_NID_ROOT + "/{0}";
 
     /**
      * otter的channel的根节点
      */
-    public String NODE_CHANNEL_ROOT       = NODE_OTTER_ROOT + "/channel";
+    public String NODE_CHANNEL_ROOT = NODE_OTTER_ROOT + "/channel";
 
     /**
      * otter中channel节点的format格式,接受channelId做为参数
      */
-    public String NODE_CHANNEL_FORMAT     = NODE_CHANNEL_ROOT + "/{0}";
+    public String NODE_CHANNEL_FORMAT = NODE_CHANNEL_ROOT + "/{0}";
 
     /**
      * otter中pipeline节点的format格式,接受channelId,pipelineId做为参数
      */
-    public String NODE_PIPELINE_FORMAT    = NODE_CHANNEL_FORMAT + "/{1}";
+    public String NODE_PIPELINE_FORMAT = NODE_CHANNEL_FORMAT + "/{1}";
 
     /**
      * otter的remedy的根节点
      */
-    public String NODE_REMEDY_ROOT        = NODE_PIPELINE_FORMAT + "/remedy";
+    public String NODE_REMEDY_ROOT = NODE_PIPELINE_FORMAT + "/remedy";
 
     /**
      * otter的process的根节点
      */
-    public String NODE_PROCESS_ROOT       = NODE_PIPELINE_FORMAT + "/process";
+    public String NODE_PROCESS_ROOT = NODE_PIPELINE_FORMAT + "/process";
 
     /**
      * otter中process节点的format格式,接受channelId,pipelineId,processId做为参数
      */
-    public String NODE_PROCESS_FORMAT     = NODE_PROCESS_ROOT + "/{2}";
+    public String NODE_PROCESS_FORMAT = NODE_PROCESS_ROOT + "/{2}";
 
     /**
      * otter的termin信号的根节点
      */
-    public String NODE_TERMIN_ROOT        = NODE_PIPELINE_FORMAT + "/termin";
+    public String NODE_TERMIN_ROOT = NODE_PIPELINE_FORMAT + "/termin";
 
     /**
      * otter中termin节点的format格式,接受channelId,pipelineId,processId做为参数
      */
-    public String NODE_TERMIN_FORMAT      = NODE_TERMIN_ROOT + "/{2}";
+    public String NODE_TERMIN_FORMAT = NODE_TERMIN_ROOT + "/{2}";
 
     /**
      * otter的lock根节点
      */
-    public String NODE_LOCK_ROOT          = NODE_PIPELINE_FORMAT + "/lock";
+    public String NODE_LOCK_ROOT = NODE_PIPELINE_FORMAT + "/lock";
 
     /**
      * otter的load的lock节点
      */
-    public String NODE_LOCK_LOAD          = "load";
+    public String NODE_LOCK_LOAD = "load";
 
     /**
      * 主导线程的状态节点,为pipeline的子节点
      */
-    public String NODE_MAINSTEM           = "mainstem";
+    public String NODE_MAINSTEM = "mainstem";
 
     /**
      * select完成状态的节点,为process的子节点
      */
-    public String NODE_SELECTED           = "selected";
+    public String NODE_SELECTED = "selected";
 
     /**
      * extract完成状态的节点,为process的子节点
      */
-    public String NODE_EXTRACTED          = "extracted";
+    public String NODE_EXTRACTED = "extracted";
 
     /**
      * transform完成状态的节点,为process的子节点
      */
-    public String NODE_TRANSFORMED        = "transformed";
+    public String NODE_TRANSFORMED = "transformed";
 
     /**
      * load完成状态的节点,为process的子节点
      */
-    public String NODE_LOADED             = "loaded";
+    public String NODE_LOADED = "loaded";
 
     /**
      * 在logback的配置文件中定义好的按照各个pipeline进行日志文件输出的键值.

@@ -32,19 +32,19 @@ public final class JavaFileObjectImpl extends SimpleJavaFileObject {
     private ByteArrayOutputStream byteCode = new ByteArrayOutputStream();
 
     // if kind == SOURCE, this contains the source text
-    private final CharSequence    source;
+    private final CharSequence source;
 
-    public JavaFileObjectImpl(final String baseName, final CharSequence source){
+    public JavaFileObjectImpl(final String baseName, final CharSequence source) {
         super(JdkCompileTask.toURI(baseName + JdkCompileTask.JAVA_EXTENSION), Kind.SOURCE);
         this.source = source;
     }
 
-    public JavaFileObjectImpl(final String name, final Kind kind){
+    public JavaFileObjectImpl(final String name, final Kind kind) {
         super(JdkCompileTask.toURI(name), kind);
         source = null;
     }
 
-    public JavaFileObjectImpl(URI uri, Kind kind){
+    public JavaFileObjectImpl(URI uri, Kind kind) {
         super(uri, kind);
         source = null;
     }

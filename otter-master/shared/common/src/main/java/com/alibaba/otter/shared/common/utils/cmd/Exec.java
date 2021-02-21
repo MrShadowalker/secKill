@@ -31,13 +31,13 @@ import org.slf4j.LoggerFactory;
 
 /**
  * 外部脚本调用工具
- * 
+ *
  * <pre>
  * example:
  *  Result result = Exec.executre("pwd");
  *  String dir = result.getStdout();
  * </pre>
- * 
+ *
  * @author jianghang 2011-9-27 上午10:19:19
  * @version 4.0.0
  */
@@ -82,9 +82,9 @@ public class Exec {
     }
 
     public static Result execute(Process process, String cmd, String outputLog, byte[] input, File workingDir)
-                                                                                                              throws Exception {
+            throws Exception {
         // 处理输入参数流
-        Thread inputThread = new InputPumper((input == null) ? new byte[] {} : input, process.getOutputStream());
+        Thread inputThread = new InputPumper((input == null) ? new byte[]{} : input, process.getOutputStream());
         StreamCollector stderr = null;
         StreamCollector stdout = null;
         FileOutputStream fileOutput = null;
@@ -143,10 +143,10 @@ public class Exec {
     // 参数输入处理
     private static class InputPumper extends Thread {
 
-        private final InputStream  input;
+        private final InputStream input;
         private final OutputStream output;
 
-        InputPumper(byte[] input, OutputStream output){
+        InputPumper(byte[] input, OutputStream output) {
             this.output = output;
             this.input = new ByteArrayInputStream(input);
             this.setName("Input Pumper");
@@ -167,11 +167,11 @@ public class Exec {
     public static class Result {
 
         private final String cmd;
-        private final int    exitCode;
+        private final int exitCode;
         private final String stderr;
         private final String stdout;
 
-        private Result(String cmd, String stdout, String stderr, int exitCode){
+        private Result(String cmd, String stdout, String stderr, int exitCode) {
             this.cmd = cmd;
             this.stdout = stdout;
             this.stderr = stderr;
@@ -192,9 +192,9 @@ public class Exec {
 
         public String toString() {
             return String.format("Command: %s%sexit code:%s%sstdout:%s%s%sstderr:%s%s%s", cmd,
-                                 SystemUtils.LINE_SEPARATOR, exitCode, SystemUtils.LINE_SEPARATOR,
-                                 SystemUtils.LINE_SEPARATOR, stdout, SystemUtils.LINE_SEPARATOR,
-                                 SystemUtils.LINE_SEPARATOR, stderr, SystemUtils.LINE_SEPARATOR);
+                    SystemUtils.LINE_SEPARATOR, exitCode, SystemUtils.LINE_SEPARATOR,
+                    SystemUtils.LINE_SEPARATOR, stdout, SystemUtils.LINE_SEPARATOR,
+                    SystemUtils.LINE_SEPARATOR, stderr, SystemUtils.LINE_SEPARATOR);
         }
     }
 }

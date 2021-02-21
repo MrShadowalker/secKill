@@ -26,20 +26,20 @@ import com.alibaba.otter.shared.communication.core.impl.AbstractCommunicationEnd
 
 /**
  * 基于rmi的endpoint的实现，包装了一个rmi remote对象
- * 
+ *
  * @author jianghang 2011-9-9 下午07:06:25
  */
 public class RmiCommunicationEndpoint extends AbstractCommunicationEndpoint {
 
-    private String             host;
-    private int                port                 = 1099;
+    private String host;
+    private int port = 1099;
     private RmiServiceExporter export;
-    private boolean            alwaysCreateRegistry = false;
+    private boolean alwaysCreateRegistry = false;
 
-    public RmiCommunicationEndpoint(){
+    public RmiCommunicationEndpoint() {
     }
 
-    public RmiCommunicationEndpoint(int port){
+    public RmiCommunicationEndpoint(int port) {
         this.port = port;
         initial();
     }

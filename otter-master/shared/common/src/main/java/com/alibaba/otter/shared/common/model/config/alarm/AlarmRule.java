@@ -30,19 +30,19 @@ public class AlarmRule implements Serializable {
 
     private static final long serialVersionUID = 7500180945297613382L;
 
-    private Long              id;
-    private Long              pipelineId;
-    private AlarmRuleStatus   status;
-    private MonitorName       monitorName;
-    private String            receiverKey;
-    private String            matchValue;
-    private Long              intervalTime;
-    private Date              pauseTime;                              // 标准
-    private Integer           recoveryThresold;                       // 自动恢复阀值
-    private Boolean           autoRecovery;                           // 是否需要自动恢复
-    private String            description;
-    private Date              gmtCreate;
-    private Date              gmtModified;
+    private Long id;
+    private Long pipelineId;
+    private AlarmRuleStatus status;
+    private MonitorName monitorName;
+    private String receiverKey;
+    private String matchValue;
+    private Long intervalTime;
+    private Date pauseTime;                              // 标准
+    private Integer recoveryThresold;                       // 自动恢复阀值
+    private Boolean autoRecovery;                           // 是否需要自动恢复
+    private String description;
+    private Date gmtCreate;
+    private Date gmtModified;
 
     public Long getId() {
         return id;

@@ -27,9 +27,9 @@ import com.alibaba.otter.shared.common.model.config.data.db.DbMediaSource;
 public class SeniorDataMediaSource extends DbMediaSource {
 
     private static final long serialVersionUID = 3876613625471584350L;
-    private boolean           used;
-    private String            storePath;
-    private List<DataMedia>   dataMedias;
+    private boolean used;
+    private String storePath;
+    private List<DataMedia> dataMedias;
 
     public boolean isUsed() {
         return used;

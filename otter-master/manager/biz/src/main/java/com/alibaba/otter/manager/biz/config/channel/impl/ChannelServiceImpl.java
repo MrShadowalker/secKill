@@ -48,19 +48,19 @@ import com.alibaba.otter.shared.common.utils.JsonUtils;
 
 /**
  * 主要提供增加、删除、修改、列表功能； 提供开启和停止channel方法，需要调用仲裁器方法
- * 
+ *
  * @author simon
  */
 public class ChannelServiceImpl implements ChannelService {
 
-    private static final Logger    logger = LoggerFactory.getLogger(ChannelServiceImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(ChannelServiceImpl.class);
 
     private SystemParameterService systemParameterService;
     private ArbitrateManageService arbitrateManageService;
-    private TransactionTemplate    transactionTemplate;
-    private ConfigRemoteService    configRemoteService;
-    private PipelineService        pipelineService;
-    private ChannelDAO             channelDao;
+    private TransactionTemplate transactionTemplate;
+    private ConfigRemoteService configRemoteService;
+    private PipelineService pipelineService;
+    private ChannelDAO channelDao;
 
     /**
      * 添加Channel
@@ -313,7 +313,7 @@ public class ChannelServiceImpl implements ChannelService {
      * pipelineService 根据NodeId找到对应已启动的Channel列表。
      */
     public List<Channel> listByNodeId(Long nodeId) {
-        return listByNodeId(nodeId, new ChannelStatus[] {});
+        return listByNodeId(nodeId, new ChannelStatus[]{});
     }
 
     /**
@@ -365,6 +365,7 @@ public class ChannelServiceImpl implements ChannelService {
     }
 
     /*----------------------Start/Stop Channel 短期优化：增加异常和条件判断--------------------------*/
+
     /**
      * <pre>
      * 切换Channel状态
@@ -467,13 +468,14 @@ public class ChannelServiceImpl implements ChannelService {
     }
 
     /*----------------------DO <-> MODEL 组装方法--------------------------*/
+
     /**
      * <pre>
      * 用于Model对象转化为DO对象
      * 优化：
      *      无SQL交互，只是简单进行字段组装，暂时无须优化
      * </pre>
-     * 
+     *
      * @param channel
      * @return ChannelDO
      */
@@ -504,7 +506,7 @@ public class ChannelServiceImpl implements ChannelService {
      * 长期优化：
      *      对SQL进行改造，尽量减小SQL调用次数
      * </pre>
-     * 
+     *
      * @param channelDO
      * @return Channel
      */
@@ -549,7 +551,7 @@ public class ChannelServiceImpl implements ChannelService {
      * 长期优化：
      *      对SQL进行改造，尽量减小SQL调用次数
      * </pre>
-     * 
+     *
      * @param channelDO
      * @return Channel
      */

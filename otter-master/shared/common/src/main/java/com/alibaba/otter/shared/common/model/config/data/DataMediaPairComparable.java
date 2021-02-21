@@ -20,7 +20,7 @@ import java.util.Comparator;
 
 /**
  * 按照源表的dataMeia的mode模式进行排序
- * 
+ *
  * @author jianghang 2013-9-13 下午2:10:52
  * @since 4.2.3
  */
@@ -28,10 +28,10 @@ public class DataMediaPairComparable implements Comparator<DataMediaPair> {
 
     public int compare(DataMediaPair o1, DataMediaPair o2) {
         int s1 = o1.getSource().getNamespaceMode().getMode().getValue()
-                 + o1.getSource().getNameMode().getMode().getValue();
+                + o1.getSource().getNameMode().getMode().getValue();
 
         int s2 = o2.getSource().getNamespaceMode().getMode().getValue()
-                 + o2.getSource().getNameMode().getMode().getValue();
+                + o2.getSource().getNameMode().getMode().getValue();
 
         if (s1 < s2) {
             return -1;

@@ -37,10 +37,10 @@ import com.alibaba.otter.shared.common.model.config.pipeline.Pipeline;
 public class ChannelList {
 
     @Resource(name = "channelService")
-    private ChannelService         channelService;
+    private ChannelService channelService;
 
     @Resource(name = "processStatService")
-    private ProcessStatService     processStatService;
+    private ProcessStatService processStatService;
 
     @Resource(name = "arbitrateManageService")
     private ArbitrateManageService arbitrateManageService;

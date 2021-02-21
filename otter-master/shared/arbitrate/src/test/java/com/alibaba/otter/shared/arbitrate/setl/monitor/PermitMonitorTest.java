@@ -45,20 +45,20 @@ import com.alibaba.otter.shared.common.utils.zookeeper.ZkClientx;
 
 /**
  * permit测试
- * 
+ *
  * @author jianghang 2011-9-19 下午02:57:14
  * @version 4.0.0
  */
 public class PermitMonitorTest extends BaseEventTest {
 
-    private ZkClientx              zookeeper          = null;
-    private ChannelArbitrateEvent  channelEvent;
+    private ZkClientx zookeeper = null;
+    private ChannelArbitrateEvent channelEvent;
     private PipelineArbitrateEvent pipelineEvent;
 
-    private Long                   channelId          = 100L;
-    private Long                   pipelineId         = 100L;
-    private Long                   oppositePipelineId = 101L;
-    private PermitMonitor          permitMonitor      = null;
+    private Long channelId = 100L;
+    private Long pipelineId = 100L;
+    private Long oppositePipelineId = 101L;
+    private PermitMonitor permitMonitor = null;
 
     @BeforeClass
     public void init() {

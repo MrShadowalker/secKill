@@ -18,15 +18,21 @@ package com.alibaba.otter.shared.common.model.config.channel;
 
 /**
  * channel的运行状态
- * 
+ *
  * @author jianghang
  */
 public enum ChannelStatus {
-    /** 运行中 */
+    /**
+     * 运行中
+     */
     START,
-    /** 暂停(临时停止) */
+    /**
+     * 暂停(临时停止)
+     */
     PAUSE,
-    /** 停止(长时停止) */
+    /**
+     * 停止(长时停止)
+     */
     STOP;
 
     public boolean isStart() {

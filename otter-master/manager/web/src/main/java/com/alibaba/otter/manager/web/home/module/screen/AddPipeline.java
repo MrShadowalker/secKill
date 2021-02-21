@@ -29,7 +29,7 @@ import com.alibaba.otter.manager.web.common.WebConstant;
 public class AddPipeline {
 
     @Resource(name = "nodeService")
-    private NodeService    nodeService;
+    private NodeService nodeService;
 
     @Resource(name = "channelService")
     private ChannelService channelService;

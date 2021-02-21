@@ -31,7 +31,7 @@ import com.alibaba.otter.shared.common.model.config.data.DataMedia;
 public class AddColumnPair {
 
     @Resource(name = "dataMediaService")
-    private DataMediaService      dataMediaService;
+    private DataMediaService dataMediaService;
 
     @Resource(name = "dataColumnPairService")
     private DataColumnPairService dataColumnPairService;

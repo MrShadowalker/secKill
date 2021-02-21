@@ -22,7 +22,7 @@ import com.alibaba.otter.shared.arbitrate.model.RemedyIndexEventData;
 
 /**
  * Remedy 排序，根据processId (process和startTime/endTime一定保持一致的排序性）
- * 
+ *
  * @author jianghang 2012-4-13 下午02:20:35
  * @version 4.0.2
  */

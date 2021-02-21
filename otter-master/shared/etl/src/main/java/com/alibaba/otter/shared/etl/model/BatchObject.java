@@ -28,7 +28,7 @@ import com.alibaba.otter.shared.common.utils.OtterToStringStyle;
 public abstract class BatchObject<T> implements Serializable {
 
     private static final long serialVersionUID = 3211077130963551303L;
-    private Identity          identity;
+    private Identity identity;
 
     public Identity getIdentity() {
         return identity;

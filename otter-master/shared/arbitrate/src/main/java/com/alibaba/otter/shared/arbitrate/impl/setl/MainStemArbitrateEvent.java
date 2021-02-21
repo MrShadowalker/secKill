@@ -28,7 +28,7 @@ import com.alibaba.otter.shared.common.model.config.channel.ChannelStatus;
 
 /**
  * 主导线程信号控制
- * 
+ *
  * @author jianghang 2011-8-9 下午05:16:16
  */
 public class MainStemArbitrateEvent implements ArbitrateEvent {
@@ -70,7 +70,7 @@ public class MainStemArbitrateEvent implements ArbitrateEvent {
             if (status.isStart()) {
                 return;
             } else {
-                logger.info("pipelineId【{}】 mainstem ignore by status【{}】", new Object[] { pipelineId, status });
+                logger.info("pipelineId【{}】 mainstem ignore by status【{}】", new Object[]{pipelineId, status});
                 await(pipelineId);// 重新进行check一次
             }
         }

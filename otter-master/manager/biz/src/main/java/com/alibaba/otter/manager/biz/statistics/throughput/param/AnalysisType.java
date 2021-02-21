@@ -28,7 +28,7 @@ public enum AnalysisType {
         return value;
     }
 
-    AnalysisType(int value){
+    AnalysisType(int value) {
         this.value = value;
     }
 }

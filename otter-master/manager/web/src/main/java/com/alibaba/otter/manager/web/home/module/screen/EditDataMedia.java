@@ -25,7 +25,7 @@ import com.alibaba.otter.manager.biz.config.datamedia.DataMediaService;
 
 /**
  * 类AddDataMedia.java的实现描述：TODO 类实现描述
- * 
+ *
  * @author simon 2011-10-25 上午10:00:32
  */
 public class EditDataMedia {

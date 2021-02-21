@@ -32,7 +32,7 @@ import com.alibaba.otter.shared.common.utils.TestUtils;
 
 /**
  * 性能测试基类,在原先PerformanceTesterExt基础上添加了warmup的功能，保证thread和JIT优化
- * 
+ *
  * <pre>
  * 使用方法:
  * BaseOtterPerformance tester = new BaseOtterPerformance(20, 1000, 1000);
@@ -48,7 +48,7 @@ import com.alibaba.otter.shared.common.utils.TestUtils;
  * } catch (Warn e) {
  *   //断言失败
  * }
- * 
+ *
  * @author jianghang 2011-10-10 上午11:15:40
  * @version 4.0.0
  */
@@ -57,13 +57,13 @@ public class BaseOtterPerformance {
     private static final Logger log = LoggerFactory.getLogger(BaseOtterPerformance.class);
 
     // 并发线程数
-    private int                 threads;
+    private int threads;
     // 单个线程循环次数
-    private int                 loop;
+    private int loop;
     // 性能阀值
-    private double              threshold;
+    private double threshold;
 
-    public BaseOtterPerformance(int threads, int loop, double threshold){
+    public BaseOtterPerformance(int threads, int loop, double threshold) {
         this.threads = threads;
         this.loop = loop;
         this.threshold = threshold;
@@ -137,10 +137,10 @@ public class BaseOtterPerformance {
     public class Runner implements Callable<Long> {
 
         private CountDownLatch latch;
-        private Job            job;
-        private int            loop;
+        private Job job;
+        private int loop;
 
-        public Runner(CountDownLatch latch, Job job, int loop){
+        public Runner(CountDownLatch latch, Job job, int loop) {
             this.latch = latch;
             this.job = job;
             this.loop = loop;
@@ -170,26 +170,30 @@ public class BaseOtterPerformance {
      */
     public static class Statistics {
 
-        /** 一个线程 平均响应时间 */
-        public static final String  AVERAGE_PER_THREAD  = "AVERAGE_PER_THREAD";
-        /** 单次请求 平均响应时间 */
-        public static final String  AVERAGE_PER_REQUEST = "AVERAGE_PER_REQUEST";
+        /**
+         * 一个线程 平均响应时间
+         */
+        public static final String AVERAGE_PER_THREAD = "AVERAGE_PER_THREAD";
+        /**
+         * 单次请求 平均响应时间
+         */
+        public static final String AVERAGE_PER_REQUEST = "AVERAGE_PER_REQUEST";
 
         // toString pattern
-        private static final String TO_STRING_PATTERN   = "Statistics [NAME:{0}; TPS:{1}; AVERAGE:{2}ms]";
+        private static final String TO_STRING_PATTERN = "Statistics [NAME:{0}; TPS:{1}; AVERAGE:{2}ms]";
 
         // 统计名称
-        private String              name;
+        private String name;
         // 线程数
-        private int                 threads;
+        private int threads;
         // 每个线程循环数
-        private int                 loop;
+        private int loop;
         // 总共耗时时间,单位毫秒
-        private long                total;
+        private long total;
         // 每个线程消耗时间,单位毫秒
-        private List<Long>          times;
+        private List<Long> times;
 
-        public Statistics(String name, int threads, int loop){
+        public Statistics(String name, int threads, int loop) {
             this.name = name;
             this.threads = threads;
             this.loop = loop;
@@ -198,7 +202,7 @@ public class BaseOtterPerformance {
 
         /**
          * 得到统计名称
-         * 
+         *
          * @return 统计名称
          */
         public String name() {
@@ -207,7 +211,7 @@ public class BaseOtterPerformance {
 
         /**
          * 添加线程消耗时间
-         * 
+         *
          * @param time 单个线程小时的时间,单位毫秒
          */
         public void addTime(long time) {
@@ -216,7 +220,7 @@ public class BaseOtterPerformance {
 
         /**
          * 设置总耗时时间
-         * 
+         *
          * @param total 总耗时,单位毫秒
          */
         public void setTotal(long total) {
@@ -225,8 +229,8 @@ public class BaseOtterPerformance {
 
         /**
          * 得到总耗时时间
-         * 
-         * @return 总耗时,单位毫秒
+         *
+         * @return 总耗时, 单位毫秒
          */
         public long total() {
             return total;
@@ -234,8 +238,8 @@ public class BaseOtterPerformance {
 
         /**
          * 得到平均响应时间
-         * 
-         * @return 平均响应时间,单位毫秒
+         *
+         * @return 平均响应时间, 单位毫秒
          */
         public double average() {
             return average(AVERAGE_PER_REQUEST);
@@ -243,7 +247,7 @@ public class BaseOtterPerformance {
 
         /**
          * 得到TPS
-         * 
+         *
          * @return TPS
          */
         public long tps() {
@@ -252,9 +256,9 @@ public class BaseOtterPerformance {
 
         /**
          * 不同类型下的平均响应时间
-         * 
+         *
          * @param type {AVERAGE,AVERAGE_PER_THREAD,AVERAGE_PER_REQUEST}
-         * @return 平均响应时间,单位毫秒
+         * @return 平均响应时间, 单位毫秒
          */
         public double average(String type) {
             if (AVERAGE_PER_THREAD.equals(type)) {
@@ -290,7 +294,7 @@ public class BaseOtterPerformance {
         // 测试名称
         private String name;
 
-        public Job(String name){
+        public Job(String name) {
             this.name = name;
         }
 
@@ -315,10 +319,10 @@ public class BaseOtterPerformance {
 
         private static final long serialVersionUID = -5790026554772900047L;
 
-        private double            expected;
-        private double            actual;
+        private double expected;
+        private double actual;
 
-        public Warn(double expected, double actual){
+        public Warn(double expected, double actual) {
             this.expected = expected;
             this.actual = actual;
         }

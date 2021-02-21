@@ -31,14 +31,14 @@ import com.google.common.collect.Maps;
 
 /**
  * load的示例代码
- * 
+ *
  * @author jianghang 2011-8-22 下午04:28:12
  */
 public class LoadServiceDemo implements PipelineLifeCycle {
 
     private ArbitrateEventService arbitrateEventService;
-    private ExecutorService       executor = Executors.newCachedThreadPool(new NamedThreadFactory("LoadService"));
-    private Map<Long, Future>     threads  = Maps.newConcurrentMap();
+    private ExecutorService executor = Executors.newCachedThreadPool(new NamedThreadFactory("LoadService"));
+    private Map<Long, Future> threads = Maps.newConcurrentMap();
 
     public void submit(Long pipelineId) {
         if (threads.containsKey(pipelineId)) {
@@ -61,9 +61,9 @@ public class LoadServiceDemo implements PipelineLifeCycle {
     private class LoadWorker implements Runnable {
 
         private ExecutorService executor = Executors.newFixedThreadPool(10, new NamedThreadFactory("LoadWorker"));
-        private Long            pipelineId;
+        private Long pipelineId;
 
-        public LoadWorker(Long pipelineId){
+        public LoadWorker(Long pipelineId) {
             this.pipelineId = pipelineId;
         }
 

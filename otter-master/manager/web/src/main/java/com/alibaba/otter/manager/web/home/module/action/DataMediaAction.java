@@ -38,24 +38,24 @@ import com.alibaba.otter.shared.common.model.config.data.mq.MqMediaSource;
 public class DataMediaAction extends AbstractAction {
 
     @Resource(name = "dataMediaService")
-    private DataMediaService       dataMediaService;
+    private DataMediaService dataMediaService;
 
     @Resource(name = "dataMediaPairService")
-    private DataMediaPairService   dataMediaPairService;
+    private DataMediaPairService dataMediaPairService;
 
     @Resource(name = "dataMediaSourceService")
     private DataMediaSourceService dataMediaSourceService;
 
     /**
      * 添加Channel
-     * 
+     *
      * @param channelInfo
      * @param channelParameterInfo
      * @throws Exception
      */
     public void doAdd(@FormGroup("dataMediaInfo") Group dataMediaInfo,
                       @FormField(name = "formDataMediaError", group = "dataMediaInfo") CustomErrors err, Navigator nav)
-                                                                                                                       throws Exception {
+            throws Exception {
 
         DataMedia dataMedia = new DataMedia();
         dataMediaInfo.setProperties(dataMedia);
@@ -91,7 +91,7 @@ public class DataMediaAction extends AbstractAction {
     public void doEdit(@FormGroup("dataMediaInfo") Group dataMediaInfo, @Param("pageIndex") int pageIndex,
                        @Param("searchKey") String searchKey,
                        @FormField(name = "formDataMediaError", group = "dataMediaInfo") CustomErrors err, Navigator nav)
-                                                                                                                        throws Exception {
+            throws Exception {
         DataMedia dataMedia = new DataMedia();
         dataMediaInfo.setProperties(dataMedia);
         DataMediaSource dataMediaSource = dataMediaSourceService.findById(dataMediaInfo.getField("sourceId").getLongValue());

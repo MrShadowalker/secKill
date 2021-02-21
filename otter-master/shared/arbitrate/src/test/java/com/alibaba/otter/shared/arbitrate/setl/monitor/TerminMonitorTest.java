@@ -45,14 +45,14 @@ import com.alibaba.otter.shared.common.utils.zookeeper.ZkClientx;
  */
 public class TerminMonitorTest extends BaseEventTest {
 
-    private ZkClientx              zookeeper  = null;
-    private ChannelArbitrateEvent  channelEvent;
+    private ZkClientx zookeeper = null;
+    private ChannelArbitrateEvent channelEvent;
     private PipelineArbitrateEvent pipelineEvent;
 
-    private Long                   channelId  = 100L;
-    private Long                   pipelineId = 100L;
+    private Long channelId = 100L;
+    private Long pipelineId = 100L;
 
-    private TerminMonitor          terminMonitor;
+    private TerminMonitor terminMonitor;
 
     @BeforeClass
     public void init() {

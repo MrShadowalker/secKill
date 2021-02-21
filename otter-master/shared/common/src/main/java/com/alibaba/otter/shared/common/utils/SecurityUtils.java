@@ -22,7 +22,7 @@ import java.security.NoSuchAlgorithmException;
 
 /**
  * 类SecurityUtils.java的实现描述：TODO 类实现描述
- * 
+ *
  * @author simon 2011-11-14 上午10:48:03
  */
 public class SecurityUtils {
@@ -51,7 +51,8 @@ public class SecurityUtils {
         StringBuffer md5StrBuff = new StringBuffer();
 
         for (int i = 0; i < byteArray.length; i++) {
-            if (Integer.toHexString(0xFF & byteArray[i]).length() == 1) md5StrBuff.append("0").append(Integer.toHexString(0xFF & byteArray[i]));
+            if (Integer.toHexString(0xFF & byteArray[i]).length() == 1)
+                md5StrBuff.append("0").append(Integer.toHexString(0xFF & byteArray[i]));
             else md5StrBuff.append(Integer.toHexString(0xFF & byteArray[i]));
         }
 

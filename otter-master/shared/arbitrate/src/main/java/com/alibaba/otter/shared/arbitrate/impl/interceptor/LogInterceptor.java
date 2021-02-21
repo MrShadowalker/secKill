@@ -37,14 +37,14 @@ import org.slf4j.LoggerFactory;
 
 /**
  * 通过拦截器记录一下调用event事件的相关参数和返回结果
- * 
+ *
  * @author jianghang 2011-9-28 下午07:13:40
  * @version 4.0.0
  */
 public class LogInterceptor implements MethodInterceptor {
 
     private static final String DATA_FORMAT = "yyyy-MM-dd HH:mm:ss.sss";
-    private static String       MESSAGE     = "\n=======================================\n[Class:{0} , Method:{1} , time:{2} , take:{3}ms]\n{4}Result\r\t{5}\n=======================================";
+    private static String MESSAGE = "\n=======================================\n[Class:{0} , Method:{1} , time:{2} , take:{3}ms]\n{4}Result\r\t{5}\n=======================================";
 
     public Object invoke(MethodInvocation methodInvocation) throws Throwable {
         long startTime = System.currentTimeMillis();
@@ -62,7 +62,7 @@ public class LogInterceptor implements MethodInterceptor {
 
     /**
      * 取得对应的logger
-     * 
+     *
      * @param obj
      */
     protected Logger getLogger(Class obj) {
@@ -71,7 +71,7 @@ public class LogInterceptor implements MethodInterceptor {
 
     /**
      * 记录请求信息
-     * 
+     *
      * @param methodInvocation
      * @param take
      */
@@ -87,14 +87,14 @@ public class LogInterceptor implements MethodInterceptor {
             String resultStr = getResultString(result);
 
             String now = new SimpleDateFormat(DATA_FORMAT).format(new Date());
-            log.info(MessageFormat.format(MESSAGE, new Object[] { className, methodName, now, take, buffer.toString(),
-                    resultStr }));
+            log.info(MessageFormat.format(MESSAGE, new Object[]{className, methodName, now, take, buffer.toString(),
+                    resultStr}));
         }
     }
 
     /**
      * 取得结果字符串
-     * 
+     *
      * @param result
      * @return
      */
@@ -118,7 +118,7 @@ public class LogInterceptor implements MethodInterceptor {
 
     /**
      * 取得map的string，自定义的主要目的：针对value中数组数据的toString处理, copy from {@link AbstractMap}
-     * 
+     *
      * @param result
      * @return
      */
@@ -129,7 +129,7 @@ public class LogInterceptor implements MethodInterceptor {
             return "{}";
         }
         sb.append('{');
-        for (;;) {
+        for (; ; ) {
             Entry e = i.next();
             Object key = e.getKey();
             Object value = e.getValue();
@@ -147,7 +147,7 @@ public class LogInterceptor implements MethodInterceptor {
 
     /**
      * 取得list的string，自定义的主要目的：针对value中数组数据的toString处理, copy from {@link AbstractCollection}
-     * 
+     *
      * @param result
      * @return
      */
@@ -158,7 +158,7 @@ public class LogInterceptor implements MethodInterceptor {
             return "[]";
         }
         sb.append('[');
-        for (;;) {
+        for (; ; ) {
             Object e = i.next();
             // 注意: 修改为getResultString(e)进行递归处理
             sb.append(e == this ? "(this Collection)" : getResultString(e));
@@ -171,7 +171,7 @@ public class LogInterceptor implements MethodInterceptor {
 
     /**
      * 取得array的string，自定义的主要目的：针对value中数组数据的toString处理
-     * 
+     *
      * @param result
      * @return
      */
@@ -181,7 +181,7 @@ public class LogInterceptor implements MethodInterceptor {
 
     /**
      * 取得参数字符串
-     * 
+     *
      * @param args
      * @return
      */

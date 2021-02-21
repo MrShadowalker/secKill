@@ -36,7 +36,7 @@ public class TopDelay extends AbstractJsonScreen<String> {
     private ThroughputStatService throughputStatService;
 
     @Resource(name = "delayStatService")
-    private DelayStatService      delayStatService;
+    private DelayStatService delayStatService;
 
     public void execute(@Param("searchKey") String searchKey, @Param("topN") int topN, @Param("statTime") int minute) {
         try {

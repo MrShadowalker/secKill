@@ -38,7 +38,7 @@ import com.alibaba.otter.shared.communication.model.arbitrate.NodeAlarmEvent;
 
 /**
  * 类LogRecordServiceImpl.java的实现描述：TODO 类实现描述
- * 
+ *
  * @author simon 2012-6-15 下午5:01:04
  * @version 4.1.0
  */
@@ -46,8 +46,8 @@ public class LogRecordServiceImpl implements LogRecordService {
 
     private static final Logger logger = LoggerFactory.getLogger(LogRecordServiceImpl.class);
 
-    private ChannelService      channelService;
-    private LogRecordDAO        logRecordDao;
+    private ChannelService channelService;
+    private LogRecordDAO logRecordDao;
 
     public void create(Event event) {
         LogRecord logRecord = new LogRecord();
@@ -109,7 +109,7 @@ public class LogRecordServiceImpl implements LogRecordService {
         List<LogRecordDO> logRecordDos = logRecordDao.listByCondition(condition);
         if (logRecordDos.isEmpty()) {
             logger.debug("DEBUG ## couldn't query any log record by the condition:"
-                         + JsonUtils.marshalToString(condition));
+                    + JsonUtils.marshalToString(condition));
             return new ArrayList<LogRecord>();
         }
         return doToModel(logRecordDos);
@@ -126,13 +126,14 @@ public class LogRecordServiceImpl implements LogRecordService {
     }
 
     /*----------------------DO <-> MODEL 组装方法--------------------------*/
+
     /**
      * <pre>
      * 用于Model对象转化为DO对象
      * 优化：
      *      无SQL交互，只是简单进行字段组装，暂时无须优化
      * </pre>
-     * 
+     *
      * @param channel
      * @return ChannelDO
      */
@@ -171,7 +172,7 @@ public class LogRecordServiceImpl implements LogRecordService {
      * <pre>
      * 用于DO对象转化为Model对象
      * </pre>
-     * 
+     *
      * @param channelDO
      * @return Channel
      */

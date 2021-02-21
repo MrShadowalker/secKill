@@ -29,7 +29,7 @@ public final class JdkCompilerClassLoader extends ClassLoader {
 
     private final Map<String, JavaFileObject> classes = new HashMap<String, JavaFileObject>();
 
-    public JdkCompilerClassLoader(ClassLoader parentClassLoader){
+    public JdkCompilerClassLoader(ClassLoader parentClassLoader) {
         super(parentClassLoader);
     }
 

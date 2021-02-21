@@ -28,14 +28,14 @@ import com.alibaba.otter.shared.communication.model.arbitrate.NodeAlarmEvent;
 
 /**
  * 发送报警信息给manager
- * 
+ *
  * @author jianghang 2011-9-26 下午10:30:16
  * @version 4.0.0
  */
 public class AlarmClientService {
 
-    private static final Logger           logger         = LoggerFactory.getLogger(AlarmClientService.class);
-    private static final String           MESSAGE_FORMAT = "{0}:{1}";
+    private static final Logger logger = LoggerFactory.getLogger(AlarmClientService.class);
+    private static final String MESSAGE_FORMAT = "{0}:{1}";
     private ArbitrateCommmunicationClient arbitrateCommmunicationClient;
 
     public void sendAlarm(Long currentNid, Long pipelineId, String title, String msg) {

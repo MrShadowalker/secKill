@@ -73,7 +73,7 @@ public class ActionProtectedEditor extends PropertyEditorSupport {
 
     /**
      * 把字符串转成Pattern和UrlType
-     * 
+     *
      * @param perl5RegExp
      * @return
      */

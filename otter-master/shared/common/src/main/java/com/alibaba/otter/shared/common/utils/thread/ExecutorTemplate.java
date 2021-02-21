@@ -34,20 +34,20 @@ import org.springframework.beans.factory.InitializingBean;
 
 /**
  * 多线程执行器模板代码，otter中好多地方都写多线程，比较多的都是重复的逻辑代码，抽象一下做个模板把
- * 
+ *
  * @author jianghang 2013-2-26 下午10:46:43
  * @version 4.1.7
  */
 public class ExecutorTemplate implements InitializingBean, DisposableBean {
 
-    private static final Logger                logger            = LoggerFactory.getLogger(ExecutorTemplate.class);
-    private String                             name              = "ExecutorTemplate";
-    private static final int                   DEFAULT_POOL_SIZE = 5;
-    private int                                poolSize          = DEFAULT_POOL_SIZE;
-    private ExecutorService                    executor;
+    private static final Logger logger = LoggerFactory.getLogger(ExecutorTemplate.class);
+    private String name = "ExecutorTemplate";
+    private static final int DEFAULT_POOL_SIZE = 5;
+    private int poolSize = DEFAULT_POOL_SIZE;
+    private ExecutorService executor;
 
     private volatile ExecutorCompletionService completionService = null;
-    private volatile List<Future>              futures           = null;
+    private volatile List<Future> futures = null;
 
     public void start() {
         completionService = new ExecutorCompletionService(executor);
@@ -134,8 +134,8 @@ public class ExecutorTemplate implements InitializingBean, DisposableBean {
 
     public void afterPropertiesSet() throws Exception {
         executor = new ThreadPoolExecutor(poolSize, poolSize, 0L, TimeUnit.MILLISECONDS,
-                                          new ArrayBlockingQueue(poolSize * 4), new NamedThreadFactory(name),
-                                          new ThreadPoolExecutor.CallerRunsPolicy());
+                new ArrayBlockingQueue(poolSize * 4), new NamedThreadFactory(name),
+                new ThreadPoolExecutor.CallerRunsPolicy());
     }
 
     public void destroy() throws Exception {

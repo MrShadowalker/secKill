@@ -37,10 +37,10 @@ public class DataMediaPairList {
     private DataMediaPairService dataMediaPairService;
 
     @Resource(name = "channelService")
-    private ChannelService       channelService;
+    private ChannelService channelService;
 
     @Resource(name = "tableStatService")
-    private TableStatService     tableStatService;
+    private TableStatService tableStatService;
 
     public void execute(@Param("pipelineId") Long pipelineId, Context context) throws Exception {
         // Pipeline pipeline = pipelineService.findById(pipelineId);

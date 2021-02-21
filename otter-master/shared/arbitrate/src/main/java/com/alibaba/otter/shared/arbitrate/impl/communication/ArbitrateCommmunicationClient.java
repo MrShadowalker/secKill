@@ -34,7 +34,7 @@ import com.alibaba.otter.shared.communication.core.model.Event;
 
 /**
  * 封装了基于communication通讯的工具
- * 
+ *
  * @author jianghang 2011-10-18 下午02:18:04
  * @version 4.0.0
  */
@@ -42,8 +42,8 @@ public class ArbitrateCommmunicationClient {
 
     private static final Logger logger = LoggerFactory.getLogger(ArbitrateCommmunicationClient.class);
     private CommunicationClient delegate;
-    private List<String>        managerAddress;
-    private volatile int        index  = 0;
+    private List<String> managerAddress;
+    private volatile int index = 0;
 
     /**
      * 指定对应的Node节点，进行event调用
@@ -54,7 +54,7 @@ public class ArbitrateCommmunicationClient {
 
     /**
      * 指定对应的Node节点，进行event调用
-     * 
+     *
      * <pre>
      * 注意：该方法为异步调用
      * </pre>
@@ -85,7 +85,7 @@ public class ArbitrateCommmunicationClient {
 
     /**
      * 指定manager，进行event调用
-     * 
+     *
      * <pre>
      * 注意：该方法为异步调用
      * </pre>

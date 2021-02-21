@@ -37,7 +37,7 @@ public class LogRecordTab {
     @Resource(name = "logRecordService")
     private LogRecordService logRecordService;
     @Resource(name = "channelService")
-    private ChannelService   channelService;
+    private ChannelService channelService;
 
     public void execute(@Param("pageIndex") int pageIndex, @Param("searchKey") String searchKey,
                         @Param("pipelineId") Long pipelineId, Context context) throws Exception {

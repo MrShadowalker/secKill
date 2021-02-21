@@ -24,7 +24,7 @@ import com.alibaba.otter.shared.common.utils.OtterToStringStyle;
 
 /**
  * 每条变更数据关联的文件信息.
- * 
+ *
  * @author xiaoqing.zhouxq 2011-8-9 下午04:52:10
  */
 public class FileData implements ObjectData, Serializable {
@@ -34,19 +34,19 @@ public class FileData implements ObjectData, Serializable {
     /**
      * Aranda use.
      */
-    private String            nameSpace;
+    private String nameSpace;
 
-    private String            path;
+    private String path;
 
-    private long              size;
+    private long size;
 
-    private long              lastModifiedTime;
+    private long lastModifiedTime;
 
-    private long              tableId;
+    private long tableId;
 
-    private long              pairId;
+    private long pairId;
 
-    private EventType         eventType;
+    private EventType eventType;
 
     public String getPath() {
         return path;

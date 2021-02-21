@@ -27,15 +27,15 @@ import org.slf4j.LoggerFactory;
 
 /**
  * 基于文件系统的classloader.
- * 
+ *
  * @author xiaoqing.zhouxq
  */
 public class FileSystemClassLoader extends ClassLoader {
 
     private static final Logger logger = LoggerFactory.getLogger(FileSystemClassLoader.class);
-    private String              rootDir;
+    private String rootDir;
 
-    public FileSystemClassLoader(String rootDir, ClassLoader parent){
+    public FileSystemClassLoader(String rootDir, ClassLoader parent) {
         super(parent);
         this.rootDir = rootDir;
     }

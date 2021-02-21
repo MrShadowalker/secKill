@@ -39,8 +39,8 @@ import com.alibaba.otter.shared.arbitrate.setl.event.BaseArbitrateEventTest;
  */
 public class TransformArbitrateEventTest extends BaseArbitrateEventTest {
 
-    private SelectZooKeeperArbitrateEvent    selectEvent;
-    private ExtractZooKeeperArbitrateEvent   extractEvent;
+    private SelectZooKeeperArbitrateEvent selectEvent;
+    private ExtractZooKeeperArbitrateEvent extractEvent;
     private TransformZooKeeperArbitrateEvent transformEvent;
 
     @Test

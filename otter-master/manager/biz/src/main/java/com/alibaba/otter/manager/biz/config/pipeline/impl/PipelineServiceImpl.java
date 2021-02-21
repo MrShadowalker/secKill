@@ -52,15 +52,15 @@ import com.alibaba.otter.shared.common.utils.JsonUtils;
  */
 public class PipelineServiceImpl implements PipelineService {
 
-    private static final Logger     logger = LoggerFactory.getLogger(PipelineServiceImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(PipelineServiceImpl.class);
 
-    private PipelineDAO             pipelineDao;
+    private PipelineDAO pipelineDao;
     private PipelineNodeRelationDAO pipelineNodeRelationDao;
-    private DataMediaPairService    dataMediaPairService;
-    private NodeService             nodeService;
-    private TransactionTemplate     transactionTemplate;
-    private ArbitrateManageService  arbitrateManageService;
-    private ArbitrateViewService    arbitrateViewService;
+    private DataMediaPairService dataMediaPairService;
+    private NodeService nodeService;
+    private TransactionTemplate transactionTemplate;
+    private ArbitrateManageService arbitrateManageService;
+    private ArbitrateViewService arbitrateViewService;
 
     /**
      * 添加
@@ -78,7 +78,7 @@ public class PipelineServiceImpl implements PipelineService {
 
                     if (!pipelineDao.checkUnique(pipelineDo)) {
                         String exceptionCause = "exist the same name pipeline under the channel("
-                                                + pipelineDo.getChannelId() + ") in the database.";
+                                + pipelineDo.getChannelId() + ") in the database.";
                         logger.warn("WARN ## " + exceptionCause);
                         throw new RepeatConfigureException(exceptionCause);
                     }
@@ -134,7 +134,7 @@ public class PipelineServiceImpl implements PipelineService {
 
             if (!pipelineDao.checkUnique(pipelineDo)) {
                 String exceptionCause = "exist the same name pipeline under the channel(" + pipelineDo.getChannelId()
-                                        + ") in the database.";
+                        + ") in the database.";
                 logger.warn("WARN ## " + exceptionCause);
                 throw new RepeatConfigureException(exceptionCause);
             }
@@ -213,6 +213,7 @@ public class PipelineServiceImpl implements PipelineService {
     }
 
     /*-------------------------------------查询方法----------------------------------------------*/
+
     /**
      * 根据pipelineId找到pipeline
      */
@@ -223,7 +224,7 @@ public class PipelineServiceImpl implements PipelineService {
 
         if (pipeline.size() != 1) {
             String exceptionCause = "query pipeline by pipelineId:" + pipelineId + " but return " + pipeline.size()
-                                    + " pipeline!";
+                    + " pipeline!";
             logger.error("ERROR ## " + exceptionCause);
             throw new ManagerException(exceptionCause);
         }
@@ -294,7 +295,7 @@ public class PipelineServiceImpl implements PipelineService {
             List<PipelineNodeRelationDO> relations = pipelineNodeRelationDao.listByNodeId(nodeId);
             if (relations.isEmpty()) {
                 logger.debug("DEBUG ## query the relation by nodeId:" + nodeId
-                             + " return null,maybe hasn't create any relations.");
+                        + " return null,maybe hasn't create any relations.");
                 return pipelines;
             }
 
@@ -324,7 +325,7 @@ public class PipelineServiceImpl implements PipelineService {
         List<PipelineDO> pipelineDos = pipelineDao.listByCondition(condition);
         if (pipelineDos.isEmpty()) {
             logger.debug("DEBUG ## couldn't query any pipelines by the condition:"
-                         + JsonUtils.marshalToString(condition));
+                    + JsonUtils.marshalToString(condition));
             return new ArrayList<Pipeline>();
         }
         return doToModel(pipelineDos);
@@ -393,7 +394,7 @@ public class PipelineServiceImpl implements PipelineService {
 
     /**
      * 用于DO对象转化为Model对象
-     * 
+     *
      * @param pipelineDO
      * @return Pipeline
      */
@@ -563,7 +564,7 @@ public class PipelineServiceImpl implements PipelineService {
 
     /**
      * 用于Model对象转化为DO对象
-     * 
+     *
      * @param pipeline
      * @return PipelineDO
      */

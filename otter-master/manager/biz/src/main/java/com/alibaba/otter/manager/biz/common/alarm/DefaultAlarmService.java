@@ -13,15 +13,15 @@ import com.alibaba.otter.shared.common.model.config.parameter.SystemParameter;
 
 /**
  * 发送邮件进行报警
- * 
+ *
  * @author jianghang 2013-9-6 上午11:42:04
  * @since 4.2.2
  */
 public class DefaultAlarmService extends AbstractAlarmService {
 
-    private static final String    TITLE = "alarm_from_otter";
-    private String                 username;
-    private JavaMailSender         mailSender;
+    private static final String TITLE = "alarm_from_otter";
+    private String username;
+    private JavaMailSender mailSender;
     private SystemParameterService systemParameterService;
 
     public void doSend(AlarmMessage data) throws Exception {
@@ -57,7 +57,7 @@ public class DefaultAlarmService extends AbstractAlarmService {
         if (mailSender instanceof JavaMailSenderImpl) {
             JavaMailSenderImpl mailSenderImpl = (JavaMailSenderImpl) mailSender;
             if (StringUtils.isNotEmpty(mailSenderImpl.getUsername())
-                && StringUtils.isNotEmpty(mailSenderImpl.getPassword())) {
+                    && StringUtils.isNotEmpty(mailSenderImpl.getPassword())) {
                 // 正确设置了账户/密码，才尝试发送邮件
                 mailSender.send(mail);
             }

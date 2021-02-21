@@ -27,13 +27,13 @@ import com.alibaba.otter.shared.common.BaseOtterTest;
 
 /**
  * 标准单元测试 示例1
- * 
+ *
  * @author jianghang 2010-6-2 上午11:45:07
  */
 public class JtesterxSampleTest extends BaseOtterTest {
 
     @SpringBeanByName
-    private TestService      testService;
+    private TestService testService;
 
     @SpringBeanByName
     private TestMockService1 testService1;

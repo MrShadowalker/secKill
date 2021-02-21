@@ -20,7 +20,7 @@ import org.springframework.beans.factory.InitializingBean;
 
 /**
  * 测试的Mock servie1
- * 
+ *
  * @author jianghang 2010-6-2 下午12:20:05
  */
 public class TestMockService1 implements InitializingBean {

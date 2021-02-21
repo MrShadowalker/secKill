@@ -27,7 +27,7 @@ import com.alibaba.otter.shared.arbitrate.impl.alarm.AlarmClientService;
 
 /**
  * 测试下仲裁器报警处理
- * 
+ *
  * @author jianghang 2011-11-29 上午09:52:18
  * @version 4.0.0
  */
@@ -37,7 +37,7 @@ public class ArbitrateRemoteServiceIntegration extends BaseOtterTest {
     private ConfigClientService configClientService;
 
     @SpringBeanByName
-    private AlarmClientService  alarmClientService;
+    private AlarmClientService alarmClientService;
 
     @BeforeClass
     public void initial() {

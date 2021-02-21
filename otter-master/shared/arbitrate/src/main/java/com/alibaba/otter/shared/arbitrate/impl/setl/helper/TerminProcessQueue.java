@@ -22,25 +22,25 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * 结束信号对应的queue模型, peek/ack组合
- * 
+ *
  * @author jianghang 2012-7-3 下午03:10:43
  * @version 4.1.0
  */
 public class TerminProcessQueue {
 
-    private PriorityQueue<Long>            queue    = new PriorityQueue<Long>();
-    private static final Object            PRESENT  = new Object();
+    private PriorityQueue<Long> queue = new PriorityQueue<Long>();
+    private static final Object PRESENT = new Object();
     private LRULinkedHashMap<Long, Object> history;                             // 记录一下最近分配出去的processId，容量必须>当前并行度
-    private ReentrantLock                  lock     = new ReentrantLock();
-    private Condition                      notEmpty = lock.newCondition();
+    private ReentrantLock lock = new ReentrantLock();
+    private Condition notEmpty = lock.newCondition();
 
-    public TerminProcessQueue(){
+    public TerminProcessQueue() {
         history = new LRULinkedHashMap<Long, Object>(100);
     }
 
     /**
      * 从queue中获取第一个数据节点，不移除，等待ack信号进行移除
-     * 
+     *
      * @return
      * @throws InterruptedException
      */
@@ -81,7 +81,7 @@ public class TerminProcessQueue {
 
     /**
      * 物理移除queue中第一个数据节点，不移除
-     * 
+     *
      * @return
      */
     public boolean ack() {

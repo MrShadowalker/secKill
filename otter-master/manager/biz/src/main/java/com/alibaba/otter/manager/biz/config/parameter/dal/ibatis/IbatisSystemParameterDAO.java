@@ -27,7 +27,7 @@ import com.alibaba.otter.manager.biz.config.parameter.dal.dataobject.SystemParam
 
 /**
  * SystemParameter的DAO层，ibatis的实现，主要是CRUD操作。
- * 
+ *
  * @author sarah.lij 2012-4-13 下午04:57:52
  */
 public class IbatisSystemParameterDAO extends SqlMapClientDaoSupport implements SystemParameterDAO {

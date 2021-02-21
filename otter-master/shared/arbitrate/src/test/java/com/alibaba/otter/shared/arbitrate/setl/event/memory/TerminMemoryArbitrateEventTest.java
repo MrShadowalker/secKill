@@ -44,11 +44,11 @@ import com.alibaba.otter.shared.arbitrate.setl.event.BaseArbitrateEventTest;
  */
 public class TerminMemoryArbitrateEventTest extends BaseArbitrateEventTest {
 
-    private SelectMemoryArbitrateEvent    selectEvent;
-    private ExtractMemoryArbitrateEvent   extractEvent;
+    private SelectMemoryArbitrateEvent selectEvent;
+    private ExtractMemoryArbitrateEvent extractEvent;
     private TransformMemoryArbitrateEvent transformEvent;
-    private LoadMemoryArbitrateEvent      loadEvent;
-    private TerminMemoryArbitrateEvent    terminEvent;
+    private LoadMemoryArbitrateEvent loadEvent;
+    private TerminMemoryArbitrateEvent terminEvent;
 
     @Test
     public void test_Rollback() {

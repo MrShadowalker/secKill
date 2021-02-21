@@ -24,7 +24,7 @@ import com.alibaba.otter.shared.etl.model.EventData;
 
 /**
  * 业务自定义处理过程
- * 
+ *
  * @author jianghang 2012-6-25 下午02:26:36
  * @version 4.1.0
  */

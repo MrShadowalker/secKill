@@ -42,23 +42,23 @@ import com.alibaba.otter.shared.common.model.statistics.throughput.ThroughputTyp
 
 /**
  * 类CheckQueueSize.java的实现描述：TODO 类实现描述
- * 
+ *
  * @author simon 2011-12-30 下午04:01:17
  */
 public class CheckDelayStat {
 
-    private static final Log      logger      = LogFactory.getLog(CheckDelayStat.class);
+    private static final Log logger = LogFactory.getLog(CheckDelayStat.class);
 
     @Resource(name = "delayStatService")
-    private DelayStatService      delayStatService;
+    private DelayStatService delayStatService;
 
     @Resource(name = "throughputStatService")
     private ThroughputStatService throughputStatService;
 
     @Resource(name = "channelService")
-    private ChannelService        channelService;
+    private ChannelService channelService;
 
-    private static final int      MAX_TIMEOUT = 30;                                     // 超时的最大时间，单位分钟
+    private static final int MAX_TIMEOUT = 30;                                     // 超时的最大时间，单位分钟
 
     private static Map<Long, Long> parseAlert(String alert) {
         if (alert == null) {
@@ -99,7 +99,7 @@ public class CheckDelayStat {
 
         if ((queueSizeMap != null) && (false == queueSizeMap.isEmpty())) {
             Set<Long> key = queueSizeMap.keySet();
-            for (Iterator it = key.iterator(); it.hasNext();) {
+            for (Iterator it = key.iterator(); it.hasNext(); ) {
                 Long pipelineId = (Long) it.next();
 
                 Channel channel = channelService.findByPipelineId(pipelineId);
@@ -110,7 +110,7 @@ public class CheckDelayStat {
                     logger.info("delayStat.getDelayNumber() == " + delayStat.getDelayNumber());
 
                     if (null != delayStat.getDelayNumber()
-                        && delayStat.getDelayNumber() >= queueSizeMap.get(pipelineId)) {
+                            && delayStat.getDelayNumber() >= queueSizeMap.get(pipelineId)) {
                         result = false;
                     }
                 }
@@ -118,7 +118,7 @@ public class CheckDelayStat {
         }
         if ((delayTimeMap != null) && (false == delayTimeMap.isEmpty())) {
             Set<Long> key = delayTimeMap.keySet();
-            for (Iterator it = key.iterator(); it.hasNext();) {
+            for (Iterator it = key.iterator(); it.hasNext(); ) {
                 Long pipelineId = (Long) it.next();
                 Channel channel = channelService.findByPipelineId(pipelineId);
                 // 判断channel状态，只有启动状态才进行判断超时时间
@@ -135,7 +135,7 @@ public class CheckDelayStat {
 
         if ((timeoutMap != null) && (false == timeoutMap.isEmpty())) {
             Set<Long> key = timeoutMap.keySet();
-            for (Iterator it = key.iterator(); it.hasNext();) {
+            for (Iterator it = key.iterator(); it.hasNext(); ) {
                 Long pipelineId = (Long) it.next();
                 Channel channel = channelService.findByPipelineId(pipelineId);
                 // 判断channel状态，只有启动状态才进行判断超时时间

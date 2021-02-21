@@ -39,11 +39,11 @@ public class DataMediaSourceAction extends AbstractAction {
     private DataMediaSourceService dataMediaSourceService;
 
     @Resource(name = "dataMediaService")
-    private DataMediaService       dataMediaService;
+    private DataMediaService dataMediaService;
 
     /**
      * 添加Channel
-     * 
+     *
      * @param channelInfo
      * @param channelParameterInfo
      * @throws Exception

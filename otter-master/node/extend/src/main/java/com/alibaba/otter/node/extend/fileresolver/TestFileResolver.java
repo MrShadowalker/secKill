@@ -33,7 +33,7 @@ public class TestFileResolver extends AbstractFileResolver {
         FileInfo fileInfo = null;
         if (StringUtils.isNotEmpty(path)) {
             fileInfo = new FileInfo(path);
-            return new FileInfo[] { fileInfo };
+            return new FileInfo[]{fileInfo};
         } else {
             return null;
         }

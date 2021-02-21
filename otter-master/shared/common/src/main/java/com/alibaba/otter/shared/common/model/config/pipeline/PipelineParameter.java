@@ -35,78 +35,78 @@ import com.alibaba.otter.shared.common.utils.OtterToStringStyle;
 
 /**
  * pipeline相关的参数类
- * 
+ *
  * @author jianghang 2011-9-2 上午10:42:27
  */
 public class PipelineParameter implements Serializable {
 
-    private static final long     serialVersionUID           = 8112362911827913152L;
-    private Long                  pipelineId;
-    private Long                  parallelism                = 3L;                          // 并行度
-    private LoadBanlanceAlgorithm lbAlgorithm                = LoadBanlanceAlgorithm.Random; // 负载均衡算法
-    private Boolean               home                       = false;                       // 是否为主站点
-    private SelectorMode          selectorMode               = SelectorMode.Canal;          // 数据获取方式
-    private String                destinationName;
-    private Short                 mainstemClientId;                                         // mainstem订阅id
-    private Integer               mainstemBatchsize          = 10000 * 10;                  // mainstem订阅批次大小
-    private Integer               extractPoolSize            = 5;                           // extract模块载入线程数，针对单个载入通道
-    private Integer               loadPoolSize               = 5;                           // load模块载入线程数，针对单个载入通道
-    private Integer               fileLoadPoolSize           = 5;                           // 文件同步线程数
+    private static final long serialVersionUID = 8112362911827913152L;
+    private Long pipelineId;
+    private Long parallelism = 3L;                          // 并行度
+    private LoadBanlanceAlgorithm lbAlgorithm = LoadBanlanceAlgorithm.Random; // 负载均衡算法
+    private Boolean home = false;                       // 是否为主站点
+    private SelectorMode selectorMode = SelectorMode.Canal;          // 数据获取方式
+    private String destinationName;
+    private Short mainstemClientId;                                         // mainstem订阅id
+    private Integer mainstemBatchsize = 10000 * 10;                  // mainstem订阅批次大小
+    private Integer extractPoolSize = 5;                           // extract模块载入线程数，针对单个载入通道
+    private Integer loadPoolSize = 5;                           // load模块载入线程数，针对单个载入通道
+    private Integer fileLoadPoolSize = 5;                           // 文件同步线程数
 
-    private Boolean               dumpEvent                  = true;                        // 是否需要dumpevent对象
-    private Boolean               dumpSelector               = true;                        // 是否需要dumpSelector信息
-    private Boolean               dumpSelectorDetail         = true;                        // 是否需要dumpSelector的详细信息
-    private PipeChooseMode        pipeChooseType             = PipeChooseMode.AUTOMATIC;    // pipe传输模式
-    private Boolean               useBatch                   = true;                        // 是否使用batch模式
-    private Boolean               skipSelectException        = false;                       // 是否跳过select时的执行异常
-    private Boolean               skipLoadException          = false;                       // 是否跳过load时的执行异常
-    private ArbitrateMode         arbitrateMode              = ArbitrateMode.ZOOKEEPER;     // 调度模式，默认进行自动选择
-    private Long                  batchTimeout               = -1L;                         // 获取批量数据的超时时间,-1代表不进行超时控制，0代表永久，>0则表示按照指定的时间进行控制(单位毫秒)
-    private Boolean               fileDetect                 = false;                       // 是否开启文件同步检测
-    private Boolean               skipFreedom                = false;                       // 是否跳过自由门数据
-    private Boolean               useLocalFileMutliThread    = false;                       // 是否启用对local
-                                                                                             // file同步启用多线程
-    private Boolean               useFileEncrypt             = false;                       // 是否针对文件进行加密处理
-    private Boolean               useExternalIp              = false;                       // 是否起用外部Ip
-    private Boolean               useTableTransform          = false;                       // 是否启用转化机制，比如类型不同，默认为true，兼容老逻辑
-    private Boolean               enableCompatibleMissColumn = true;                        // 是否启用兼容字段不匹配处理
-    private Boolean               skipNoRow                  = false;                       // 跳过反查没记录的情况
-    private String                channelInfo;                                              // 同步标记，设置该标记后会在retl_mark中记录，在messageParse时进行check，相同则忽略
-    private Boolean               dryRun                     = false;                       // 是否启用dry
-                                                                                             // run模型，只记录load日志，不同步数据
-    private Boolean               ddlSync                    = true;                        // 是否支持ddl同步
-    private Boolean               skipDdlException           = false;                       // 是否跳过ddl执行异常
+    private Boolean dumpEvent = true;                        // 是否需要dumpevent对象
+    private Boolean dumpSelector = true;                        // 是否需要dumpSelector信息
+    private Boolean dumpSelectorDetail = true;                        // 是否需要dumpSelector的详细信息
+    private PipeChooseMode pipeChooseType = PipeChooseMode.AUTOMATIC;    // pipe传输模式
+    private Boolean useBatch = true;                        // 是否使用batch模式
+    private Boolean skipSelectException = false;                       // 是否跳过select时的执行异常
+    private Boolean skipLoadException = false;                       // 是否跳过load时的执行异常
+    private ArbitrateMode arbitrateMode = ArbitrateMode.ZOOKEEPER;     // 调度模式，默认进行自动选择
+    private Long batchTimeout = -1L;                         // 获取批量数据的超时时间,-1代表不进行超时控制，0代表永久，>0则表示按照指定的时间进行控制(单位毫秒)
+    private Boolean fileDetect = false;                       // 是否开启文件同步检测
+    private Boolean skipFreedom = false;                       // 是否跳过自由门数据
+    private Boolean useLocalFileMutliThread = false;                       // 是否启用对local
+    // file同步启用多线程
+    private Boolean useFileEncrypt = false;                       // 是否针对文件进行加密处理
+    private Boolean useExternalIp = false;                       // 是否起用外部Ip
+    private Boolean useTableTransform = false;                       // 是否启用转化机制，比如类型不同，默认为true，兼容老逻辑
+    private Boolean enableCompatibleMissColumn = true;                        // 是否启用兼容字段不匹配处理
+    private Boolean skipNoRow = false;                       // 跳过反查没记录的情况
+    private String channelInfo;                                              // 同步标记，设置该标记后会在retl_mark中记录，在messageParse时进行check，相同则忽略
+    private Boolean dryRun = false;                       // 是否启用dry
+    // run模型，只记录load日志，不同步数据
+    private Boolean ddlSync = true;                        // 是否支持ddl同步
+    private Boolean skipDdlException = false;                       // 是否跳过ddl执行异常
 
     // ================================= channel parameter
     // ================================
 
     @Transient
-    private Boolean               enableRemedy;                                             // 是否启用冲突补救算法
+    private Boolean enableRemedy;                                             // 是否启用冲突补救算法
     @Transient
-    private RemedyAlgorithm       remedyAlgorithm;                                          // 冲突补救算法
+    private RemedyAlgorithm remedyAlgorithm;                                          // 冲突补救算法
     @Transient
-    private Integer               remedyDelayThresoldForMedia;                              // 针对回环补救，如果反查速度过快，容易查到旧版本的数据记录，导致中美不一致，所以设置一个阀值，低于这个阀值的延迟不进行反查
+    private Integer remedyDelayThresoldForMedia;                              // 针对回环补救，如果反查速度过快，容易查到旧版本的数据记录，导致中美不一致，所以设置一个阀值，低于这个阀值的延迟不进行反查
     @Transient
-    private SyncMode              syncMode;                                                 // 同步模式：字段/整条记录
+    private SyncMode syncMode;                                                 // 同步模式：字段/整条记录
     @Transient
-    private SyncConsistency       syncConsistency;                                          // 同步一致性要求
+    private SyncConsistency syncConsistency;                                          // 同步一致性要求
 
     // ================================= system parameter
     // ================================
     @Transient
-    private String                systemSchema;                                             // 默认为retl，不允许为空
+    private String systemSchema;                                             // 默认为retl，不允许为空
     @Transient
-    private String                systemMarkTable;                                          // 双向同步标记表
+    private String systemMarkTable;                                          // 双向同步标记表
     @Transient
-    private String                systemMarkTableColumn;                                    // 双向同步标记的列名
+    private String systemMarkTableColumn;                                    // 双向同步标记的列名
     @Transient
-    private String                systemMarkTableInfo;                                      // 双向同步标记的info信息，比如类似BI_SYNC
+    private String systemMarkTableInfo;                                      // 双向同步标记的info信息，比如类似BI_SYNC
     @Transient
-    private String                systemBufferTable;                                        // otter同步buffer表
+    private String systemBufferTable;                                        // otter同步buffer表
     @Transient
-    private String                systemDualTable;                                          // otter同步心跳表
+    private String systemDualTable;                                          // otter同步心跳表
     @Transient
-    private RetrieverType         retriever;                                                // 下载方式
+    private RetrieverType retriever;                                                // 下载方式
 
     /**
      * 合并pipeline参数设置
@@ -155,11 +155,17 @@ public class PipelineParameter implements Serializable {
     }
 
     public static enum LoadBanlanceAlgorithm {
-        /** 轮询 */
+        /**
+         * 轮询
+         */
         RoundRbin,
-        /** 随机 */
+        /**
+         * 随机
+         */
         Random,
-        /** Stick */
+        /**
+         * Stick
+         */
         Stick;
 
         public boolean isRoundRbin() {
@@ -176,13 +182,21 @@ public class PipelineParameter implements Serializable {
     }
 
     public static enum ArbitrateMode {
-        /** 内存调度 */
+        /**
+         * 内存调度
+         */
         MEMORY,
-        /** rpc调度 */
+        /**
+         * rpc调度
+         */
         RPC,
-        /** zk watcher调度 */
+        /**
+         * zk watcher调度
+         */
         ZOOKEEPER,
-        /** 自动选择 */
+        /**
+         * 自动选择
+         */
         AUTOMATIC;
 
         public boolean isMemory() {
@@ -203,11 +217,17 @@ public class PipelineParameter implements Serializable {
     }
 
     public static enum PipeChooseMode {
-        /** 自动选择 */
+        /**
+         * 自动选择
+         */
         AUTOMATIC,
-        /** RPC */
+        /**
+         * RPC
+         */
         RPC,
-        /** HTTP */
+        /**
+         * HTTP
+         */
         HTTP;
 
         public boolean isAutomatic() {

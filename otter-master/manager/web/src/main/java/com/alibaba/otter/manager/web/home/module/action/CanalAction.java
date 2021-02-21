@@ -44,7 +44,7 @@ import com.alibaba.otter.manager.web.common.WebConstant;
 public class CanalAction extends AbstractAction {
 
     @Resource(name = "canalService")
-    private CanalService    canalService;
+    private CanalService canalService;
 
     @Resource(name = "pipelineService")
     private PipelineService pipelineService;
@@ -194,7 +194,7 @@ public class CanalAction extends AbstractAction {
 
     /**
      * 删除canal
-     * 
+     *
      * @param canalId
      * @throws WebxException
      */

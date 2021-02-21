@@ -28,10 +28,10 @@ import org.slf4j.LoggerFactory;
 
 public class AddressUtils {
 
-    private static final Logger  logger       = LoggerFactory.getLogger(AddressUtils.class);
-    private static final String  LOCALHOST_IP = "127.0.0.1";
-    private static final String  EMPTY_IP     = "0.0.0.0";
-    private static final Pattern IP_PATTERN   = Pattern.compile("[0-9]{1,3}(\\.[0-9]{1,3}){3,}");
+    private static final Logger logger = LoggerFactory.getLogger(AddressUtils.class);
+    private static final String LOCALHOST_IP = "127.0.0.1";
+    private static final String EMPTY_IP = "0.0.0.0";
+    private static final Pattern IP_PATTERN = Pattern.compile("[0-9]{1,3}(\\.[0-9]{1,3}){3,}");
 
     public static boolean isAvailablePort(int port) {
         ServerSocket ss = null;
@@ -58,7 +58,7 @@ public class AddressUtils {
 
         String name = address.getHostAddress();
         return (name != null && !EMPTY_IP.equals(name) && !LOCALHOST_IP.equals(name) && IP_PATTERN.matcher(name)
-            .matches());
+                .matches());
     }
 
     public static String getHostIp() {
@@ -73,7 +73,7 @@ public class AddressUtils {
 
     /**
      * 判断该ip是否为本机ip，一台机器可能同时有多个IP
-     * 
+     *
      * @param ip
      * @return
      */
@@ -82,12 +82,12 @@ public class AddressUtils {
         try {
             localAddress = InetAddress.getLocalHost();
             if (localAddress.isLoopbackAddress() || isValidHostAddress(localAddress)
-                && (localAddress.getHostAddress().equals(ip) || localAddress.getHostName().equals(ip))) {
+                    && (localAddress.getHostAddress().equals(ip) || localAddress.getHostName().equals(ip))) {
                 return true;
             }
         } catch (Throwable e) {
             logger.warn("Failed to retriving local host ip address, try scan network card ip address. cause: "
-                        + e.getMessage());
+                    + e.getMessage());
         }
 
         try {
@@ -130,7 +130,7 @@ public class AddressUtils {
             }
         } catch (Throwable e) {
             logger.warn("Failed to retriving local host ip address, try scan network card ip address. cause: "
-                        + e.getMessage());
+                    + e.getMessage());
         }
         try {
             Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();

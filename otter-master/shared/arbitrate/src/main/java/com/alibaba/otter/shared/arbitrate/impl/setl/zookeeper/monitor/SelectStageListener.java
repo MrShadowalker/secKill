@@ -35,22 +35,22 @@ import com.alibaba.otter.shared.common.utils.JsonUtils;
 
 /**
  * 处理select模块节点的监控
- * 
+ *
  * <pre>
  * 监控内容：
  *  1. process节点变化后，判断是否小于并行度，创建新的process节点
  * </pre>
- * 
+ *
  * @author jianghang 2011-9-21 下午02:17:47
  * @version 4.0.0
  */
 public class SelectStageListener extends AbstractStageListener implements StageListener, PermitListener, MainstemListener {
 
     private volatile boolean isPermit = true;
-    private PermitMonitor    permitMonitor;
-    private MainstemMonitor  mainstemMonitor;
+    private PermitMonitor permitMonitor;
+    private MainstemMonitor mainstemMonitor;
 
-    public SelectStageListener(Long pipelineId){
+    public SelectStageListener(Long pipelineId) {
         super(pipelineId);
         permitMonitor = ArbitrateFactory.getInstance(pipelineId, PermitMonitor.class);
         mainstemMonitor = ArbitrateFactory.getInstance(pipelineId, MainstemMonitor.class);

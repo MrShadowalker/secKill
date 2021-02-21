@@ -33,17 +33,17 @@ import com.alibaba.otter.shared.common.utils.zookeeper.ZkClientx;
 
 /**
  * 测试下pipeline
- * 
+ *
  * @author jianghang 2011-9-19 下午01:04:15
  * @version 4.0.0
  */
 public class PipelineArbitrateEventTest extends BaseEventTest {
 
-    private ZkClientx              zookeeper  = null;
-    private ChannelArbitrateEvent  channelEvent;
+    private ZkClientx zookeeper = null;
+    private ChannelArbitrateEvent channelEvent;
     private PipelineArbitrateEvent pipelineEvent;
-    private Long                   channelId  = 100L;
-    private Long                   pipelineId = 100L;
+    private Long channelId = 100L;
+    private Long pipelineId = 100L;
 
     @BeforeClass
     public void init() {

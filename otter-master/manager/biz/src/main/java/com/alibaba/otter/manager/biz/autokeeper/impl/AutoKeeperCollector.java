@@ -45,7 +45,7 @@ import com.alibaba.otter.shared.common.utils.thread.NamedThreadFactory;
 
 /**
  * 对应的数据采集器
- * 
+ *
  * @author jianghang 2012-9-21 下午03:05:28
  * @version 4.1.0
  */
@@ -54,29 +54,29 @@ public class AutoKeeperCollector implements InitializingBean {
     @Resource(name = "autoKeeperClusterService")
     private AutoKeeperClusterService autoKeeperClusterService;
 
-    private static final String      MODE_FOLLOWER            = "Mode: follower";
-    private static final String      MODE_LEADERER            = "Mode: leader";
-    private static final String      MODE_OBSERVER            = "Mode: observer";
-    private static final String      MODE_STANDALONE          = "Mode: standalone";
-    private static final String      NODE_COUNT               = "Node count:";
-    private static final String      STRING_LATENCY           = "Latency min/avg/max:";
-    private static final String      STRING_SENT              = "Sent:";
-    private static final String      STRING_RECEIVED          = "Received:";
-    private static final String      STRING_OUTSTANDING       = "Outstanding:";
-    private static final String      COMMA                    = ",";
-    private static final String      BRACKETS                 = ")";
-    private static final String      COLON                    = ":";
-    private static final String      WRAP                     = "\n";
-    private static final String      CMD_STAT                 = "echo stat | nc %s %s";
-    private static final String      CMD_CONS                 = "echo cons | nc %s %s";
-    private static final String      CMD_DUMP                 = "echo dump | nc %s %s";
-    private static final String      CMD_WCHC                 = "echo wchc | nc %s %s";
-    private static final long        DEFAULT_COLLECT_INTERVAL = 300;
-    private long                     delay                    = 1;
-    private int                      singleSize               = 1;
-    private long                     collectInterval          = DEFAULT_COLLECT_INTERVAL;
+    private static final String MODE_FOLLOWER = "Mode: follower";
+    private static final String MODE_LEADERER = "Mode: leader";
+    private static final String MODE_OBSERVER = "Mode: observer";
+    private static final String MODE_STANDALONE = "Mode: standalone";
+    private static final String NODE_COUNT = "Node count:";
+    private static final String STRING_LATENCY = "Latency min/avg/max:";
+    private static final String STRING_SENT = "Sent:";
+    private static final String STRING_RECEIVED = "Received:";
+    private static final String STRING_OUTSTANDING = "Outstanding:";
+    private static final String COMMA = ",";
+    private static final String BRACKETS = ")";
+    private static final String COLON = ":";
+    private static final String WRAP = "\n";
+    private static final String CMD_STAT = "echo stat | nc %s %s";
+    private static final String CMD_CONS = "echo cons | nc %s %s";
+    private static final String CMD_DUMP = "echo dump | nc %s %s";
+    private static final String CMD_WCHC = "echo wchc | nc %s %s";
+    private static final long DEFAULT_COLLECT_INTERVAL = 300;
+    private long delay = 1;
+    private int singleSize = 1;
+    private long collectInterval = DEFAULT_COLLECT_INTERVAL;
 
-    private AutoKeeperData           autoKeeperData;
+    private AutoKeeperData autoKeeperData;
     private ScheduledExecutorService collectorExecutor;
 
     public void collectorConnectionStat(String address) {
@@ -86,7 +86,7 @@ public class AutoKeeperCollector implements InitializingBean {
         }
         String ip = netAddress.get(0);
         String port = netAddress.get(1);
-        String[] cmd = { "/bin/bash", "-c", String.format(CMD_CONS, ip, port) };
+        String[] cmd = {"/bin/bash", "-c", String.format(CMD_CONS, ip, port)};
         String cmdresult = collector(cmd);
         String[] result = cmdresult.split(WRAP);
         List<AutoKeeperConnectionStat> summary = new ArrayList<AutoKeeperConnectionStat>();
@@ -106,33 +106,33 @@ public class AutoKeeperCollector implements InitializingBean {
             autoKeeperConnectionStat.setOriginalContent(line);
             String clientIp = StringUtils.trimToEmpty(line.split(":")[0].replace("/", ""));
             String sessionId = StringUtils.trimToEmpty(RegexUtils.findFirst(line.split(":")[1], "sid=(?s).*?[,)]")).replace("sid=",
-                                                                                                                            StringUtils.EMPTY).replace(COMMA,
-                                                                                                                                                       StringUtils.EMPTY).replace(BRACKETS,
-                                                                                                                                                                                  StringUtils.EMPTY);
+                    StringUtils.EMPTY).replace(COMMA,
+                    StringUtils.EMPTY).replace(BRACKETS,
+                    StringUtils.EMPTY);
             String queued = StringUtils.trimToEmpty(RegexUtils.findFirst(line.split(":")[1], "queued=(?s).*?[,)]")).replace("queued=",
-                                                                                                                            StringUtils.EMPTY).replace(COMMA,
-                                                                                                                                                       StringUtils.EMPTY).replace(BRACKETS,
-                                                                                                                                                                                  StringUtils.EMPTY);
+                    StringUtils.EMPTY).replace(COMMA,
+                    StringUtils.EMPTY).replace(BRACKETS,
+                    StringUtils.EMPTY);
             String receive = StringUtils.trimToEmpty(RegexUtils.findFirst(line.split(":")[1], "recved=(?s).*?[,)]")).replace("recved=",
-                                                                                                                             StringUtils.EMPTY).replace(COMMA,
-                                                                                                                                                        StringUtils.EMPTY).replace(BRACKETS,
-                                                                                                                                                                                   StringUtils.EMPTY);
+                    StringUtils.EMPTY).replace(COMMA,
+                    StringUtils.EMPTY).replace(BRACKETS,
+                    StringUtils.EMPTY);
             String sent = StringUtils.trimToEmpty(RegexUtils.findFirst(line.split(":")[1], "sent=(?s).*?[,)]")).replace("sent=",
-                                                                                                                        StringUtils.EMPTY).replace(COMMA,
-                                                                                                                                                   StringUtils.EMPTY).replace(BRACKETS,
-                                                                                                                                                                              StringUtils.EMPTY);
+                    StringUtils.EMPTY).replace(COMMA,
+                    StringUtils.EMPTY).replace(BRACKETS,
+                    StringUtils.EMPTY);
             String minlat = StringUtils.trimToEmpty(RegexUtils.findFirst(line.split(":")[1], "minlat=(?s).*?[,)]")).replace("minlat=",
-                                                                                                                            StringUtils.EMPTY).replace(COMMA,
-                                                                                                                                                       StringUtils.EMPTY).replace(BRACKETS,
-                                                                                                                                                                                  StringUtils.EMPTY);
+                    StringUtils.EMPTY).replace(COMMA,
+                    StringUtils.EMPTY).replace(BRACKETS,
+                    StringUtils.EMPTY);
             String avglat = StringUtils.trimToEmpty(RegexUtils.findFirst(line.split(":")[1], "avglat=(?s).*?[,)]")).replace("avglat=",
-                                                                                                                            StringUtils.EMPTY).replace(COMMA,
-                                                                                                                                                       StringUtils.EMPTY).replace(BRACKETS,
-                                                                                                                                                                                  StringUtils.EMPTY);
+                    StringUtils.EMPTY).replace(COMMA,
+                    StringUtils.EMPTY).replace(BRACKETS,
+                    StringUtils.EMPTY);
             String maxlat = StringUtils.trimToEmpty(RegexUtils.findFirst(line.split(":")[1], "maxlat=(?s).*?[,)]")).replace("maxlat=",
-                                                                                                                            StringUtils.EMPTY).replace(COMMA,
-                                                                                                                                                       StringUtils.EMPTY).replace(BRACKETS,
-                                                                                                                                                                                  StringUtils.EMPTY);
+                    StringUtils.EMPTY).replace(COMMA,
+                    StringUtils.EMPTY).replace(BRACKETS,
+                    StringUtils.EMPTY);
             autoKeeperConnectionStat.setServerAddress(ip);
             autoKeeperConnectionStat.setClientAddress(clientIp);
             autoKeeperConnectionStat.setSessionId(sessionId);
@@ -167,7 +167,7 @@ public class AutoKeeperCollector implements InitializingBean {
         }
         String ip = netAddress.get(0);
         String port = netAddress.get(1);
-        String[] cmd = { "/bin/bash", "-c", String.format(CMD_STAT, ip, port) };
+        String[] cmd = {"/bin/bash", "-c", String.format(CMD_STAT, ip, port)};
         String cmdresult = collector(cmd);
         String[] result = cmdresult.split(WRAP);
         AutoKeeperServerStat summary = new AutoKeeperServerStat();
@@ -184,20 +184,20 @@ public class AutoKeeperCollector implements InitializingBean {
                 summary.setQuorumType(AutoKeeperQuorumType.OBSERVER);
             } else if (line.contains(STRING_LATENCY)) {
                 List<String> latency = Arrays.asList(StringUtils.trimToEmpty(line.replace(STRING_LATENCY,
-                                                                                          StringUtils.EMPTY)).split("/"));
+                        StringUtils.EMPTY)).split("/"));
                 summary.setMinLatency(Long.parseLong(latency.get(0)));
                 summary.setAvgLatency(Long.parseLong(latency.get(1)));
                 summary.setMaxLatency(Long.parseLong(latency.get(2)));
             } else if (line.contains(STRING_OUTSTANDING)) {
                 summary.setQueued(Long.parseLong(StringUtils.trimToEmpty(line.replace(STRING_OUTSTANDING,
-                                                                                      StringUtils.EMPTY))));
+                        StringUtils.EMPTY))));
             } else if (line.contains(NODE_COUNT)) {
                 summary.setNodeCount(Long.parseLong(StringUtils.trimToEmpty(line.replace(NODE_COUNT, StringUtils.EMPTY))));
             } else if (line.contains(STRING_SENT)) {
                 summary.setSent(Long.parseLong(StringUtils.trimToEmpty(line.replace(STRING_SENT, StringUtils.EMPTY))));
             } else if (line.contains(STRING_RECEIVED)) {
                 summary.setRecved(Long.parseLong(StringUtils.trimToEmpty(line.replace(STRING_RECEIVED,
-                                                                                      StringUtils.EMPTY))));
+                        StringUtils.EMPTY))));
             }
         }
 
@@ -211,7 +211,7 @@ public class AutoKeeperCollector implements InitializingBean {
         }
         String ip = netAddress.get(0);
         String port = netAddress.get(1);
-        String[] cmd = { "/bin/bash", "-c", String.format(CMD_DUMP, ip, port) };
+        String[] cmd = {"/bin/bash", "-c", String.format(CMD_DUMP, ip, port)};
         String cmdresult = collector(cmd);
 
         Map<String, List<String>> pathMap = groupSessionPath(cmdresult);
@@ -235,7 +235,7 @@ public class AutoKeeperCollector implements InitializingBean {
         }
         String ip = netAddress.get(0);
         String port = netAddress.get(1);
-        String[] cmd = { "/bin/bash", "-c", String.format(CMD_WCHC, ip, port) };
+        String[] cmd = {"/bin/bash", "-c", String.format(CMD_WCHC, ip, port)};
         String cmdresult = collector(cmd);
 
         Map<String, List<String>> pathMap = groupSessionPath(cmdresult);
@@ -304,7 +304,7 @@ public class AutoKeeperCollector implements InitializingBean {
     @Override
     public void afterPropertiesSet() throws Exception {
         collectorExecutor = Executors.newScheduledThreadPool(singleSize, new NamedThreadFactory("collector-thread",
-                                                                                                true));
+                true));
         startCollect();
     }
 

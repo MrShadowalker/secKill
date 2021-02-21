@@ -36,17 +36,17 @@ import com.alibaba.otter.shared.common.utils.JsonUtils;
 
 /**
  * 监听process的变化，发现节点数<并行度，则添加一个可调度的process
- * 
+ *
  * @author jianghang 2012-9-28 下午10:00:22
  * @version 4.1.0
  */
 public class SelectProcessListener extends AbstractProcessListener implements ProcessListener, PermitListener, MainstemListener {
 
     private volatile boolean isPermit = true;
-    private PermitMonitor    permitMonitor;
-    private MainstemMonitor  mainstemMonitor;
+    private PermitMonitor permitMonitor;
+    private MainstemMonitor mainstemMonitor;
 
-    public SelectProcessListener(Long pipelineId){
+    public SelectProcessListener(Long pipelineId) {
         super(pipelineId);
         permitMonitor = ArbitrateFactory.getInstance(pipelineId, PermitMonitor.class);
         mainstemMonitor = ArbitrateFactory.getInstance(pipelineId, MainstemMonitor.class);

@@ -22,9 +22,9 @@ public class FindMediaEvent extends Event {
 
     private static final long serialVersionUID = 476657754177940448L;
 
-    private String            dataId;
+    private String dataId;
 
-    public FindMediaEvent(){
+    public FindMediaEvent() {
         super(ConfigEventType.findMedia);
     }
 

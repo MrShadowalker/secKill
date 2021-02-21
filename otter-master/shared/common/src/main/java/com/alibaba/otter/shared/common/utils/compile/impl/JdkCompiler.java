@@ -32,7 +32,7 @@ public class JdkCompiler implements JavaSourceCompiler {
 
     private List<String> options;
 
-    public JdkCompiler(){
+    public JdkCompiler() {
         options = new ArrayList<String>();
         // options.add("-target");
         // options.add("1.6");
@@ -48,14 +48,14 @@ public class JdkCompiler implements JavaSourceCompiler {
 
             final DiagnosticCollector<JavaFileObject> errs = new DiagnosticCollector<JavaFileObject>();
             JdkCompileTask compileTask = new JdkCompileTask(new JdkCompilerClassLoader(this.getClass().getClassLoader()),
-                options);
+                    options);
             String fullName = javaSource.getPackageName() + "." + javaSource.getClassName();
             Class newClass = compileTask.compile(fullName, javaSource.getSource(), errs);
             return newClass;
         } catch (JdkCompileException ex) {
             DiagnosticCollector<JavaFileObject> diagnostics = ex.getDiagnostics();
             throw new CompileExprException("compile error, source : \n" + javaSource + ", "
-                                           + diagnostics.getDiagnostics(), ex);
+                    + diagnostics.getDiagnostics(), ex);
         } catch (Exception ex) {
             throw new CompileExprException("compile error, source : \n" + javaSource, ex);
         }

@@ -24,7 +24,7 @@ import com.alibaba.otter.shared.arbitrate.impl.ArbitrateConstants;
 
 /**
  * 对应zookeeper path构建的helper类
- * 
+ *
  * @author jianghang
  */
 public class ManagePathUtils {
@@ -72,8 +72,8 @@ public class ManagePathUtils {
     public static String getPipeline(Long channelId, Long pipelineId) {
         // 根据channelId , pipelineId 构造path
         return MessageFormat.format(ArbitrateConstants.NODE_PIPELINE_FORMAT,
-            String.valueOf(channelId),
-            String.valueOf(pipelineId));
+                String.valueOf(channelId),
+                String.valueOf(pipelineId));
     }
 
     /**
@@ -82,8 +82,8 @@ public class ManagePathUtils {
     public static String getRemedyRoot(Long channelId, Long pipelineId) {
         // 根据channelId , pipelineId构造path
         return MessageFormat.format(ArbitrateConstants.NODE_REMEDY_ROOT,
-            String.valueOf(channelId),
-            String.valueOf(pipelineId));
+                String.valueOf(channelId),
+                String.valueOf(pipelineId));
     }
 
     /**
@@ -92,8 +92,8 @@ public class ManagePathUtils {
     public static String getProcessRoot(Long channelId, Long pipelineId) {
         // 根据channelId , pipelineId 构造path
         return MessageFormat.format(ArbitrateConstants.NODE_PROCESS_ROOT,
-            String.valueOf(channelId),
-            String.valueOf(pipelineId));
+                String.valueOf(channelId),
+                String.valueOf(pipelineId));
     }
 
     /**
@@ -101,9 +101,9 @@ public class ManagePathUtils {
      */
     public static String getMainStem(Long channelId, Long pipelineId) {
         return MessageFormat.format(ArbitrateConstants.NODE_PIPELINE_FORMAT,
-            String.valueOf(channelId),
-            String.valueOf(pipelineId))
-               + "/" + ArbitrateConstants.NODE_MAINSTEM;
+                String.valueOf(channelId),
+                String.valueOf(pipelineId))
+                + "/" + ArbitrateConstants.NODE_MAINSTEM;
     }
 
     /**
@@ -112,8 +112,8 @@ public class ManagePathUtils {
     public static String getTerminRoot(Long channelId, Long pipelineId) {
         // 根据channelId , pipelineId构造path
         return MessageFormat.format(ArbitrateConstants.NODE_TERMIN_ROOT,
-            String.valueOf(channelId),
-            String.valueOf(pipelineId));
+                String.valueOf(channelId),
+                String.valueOf(pipelineId));
     }
 
     /**
@@ -122,9 +122,9 @@ public class ManagePathUtils {
     public static String getProcess(Long channelId, Long pipelineId, Long processId) {
         // 根据channelId , pipelineId构造path
         return MessageFormat.format(ArbitrateConstants.NODE_PROCESS_FORMAT,
-            String.valueOf(channelId),
-            String.valueOf(pipelineId),
-            getProcessNode(processId));
+                String.valueOf(channelId),
+                String.valueOf(pipelineId),
+                getProcessNode(processId));
     }
 
     /**
@@ -133,9 +133,9 @@ public class ManagePathUtils {
     public static String getProcess(Long channelId, Long pipelineId, String processNode) {
         // 根据channelId , pipelineId构造path
         return MessageFormat.format(ArbitrateConstants.NODE_PROCESS_FORMAT,
-            String.valueOf(channelId),
-            String.valueOf(pipelineId),
-            processNode);
+                String.valueOf(channelId),
+                String.valueOf(pipelineId),
+                processNode);
     }
 
     /**
@@ -144,9 +144,9 @@ public class ManagePathUtils {
     public static String getTermin(Long channelId, Long pipelineId, Long processId) {
         // 根据channelId , pipelineId构造path
         return MessageFormat.format(ArbitrateConstants.NODE_TERMIN_FORMAT,
-            String.valueOf(channelId),
-            String.valueOf(pipelineId),
-            getProcessNode(processId));
+                String.valueOf(channelId),
+                String.valueOf(pipelineId),
+                getProcessNode(processId));
     }
 
     /**
@@ -155,8 +155,8 @@ public class ManagePathUtils {
     public static String getLockRoot(Long channelId, Long pipelineId) {
         // 根据channelId , pipelineId构造path
         return MessageFormat.format(ArbitrateConstants.NODE_LOCK_ROOT,
-            String.valueOf(channelId),
-            String.valueOf(pipelineId));
+                String.valueOf(channelId),
+                String.valueOf(pipelineId));
     }
 
     // ======================== hleper method============================

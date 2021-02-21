@@ -71,7 +71,7 @@ public class IbatisThroughputDAO extends SqlMapClientDaoSupport implements Throu
     public List<ThroughputStatDO> listThroughputStatByPipelineId(Long pipelineId) {
 
         return (List<ThroughputStatDO>) getSqlMapClientTemplate().queryForList("listThroughputStatByPipelineId",
-                                                                               pipelineId);
+                pipelineId);
     }
 
     @Override
@@ -85,6 +85,6 @@ public class IbatisThroughputDAO extends SqlMapClientDaoSupport implements Throu
         param.put("pipelineIds", pipelineIds);
         param.put("minute", minute);
         return (List<ThroughputStatDO>) getSqlMapClientTemplate().queryForList("listRealtimeThroughputStatByPipelineIds",
-                                                                               param);
+                param);
     }
 }

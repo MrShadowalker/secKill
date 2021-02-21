@@ -21,14 +21,14 @@ import java.util.Set;
 
 /**
  * zk服务对应统计信息
- * 
+ *
  * <pre>
  * 命令：echo stat | nc 127.0.0.1 2181
  * Zookeeper version: 3.3.6-1366786, built on 07/29/2012 06:22 GMT
  * Clients:
  *  /127.0.0.1:34480[0](queued=0,recved=1,sent=0)
  *  /127.0.0.1:60731[1](queued=0,recved=1853744,sent=2466780)
- * 
+ *
  * Latency min/avg/max: 0/0/99
  * Received: 1857451
  * Sent: 2470863
@@ -37,18 +37,18 @@ import java.util.Set;
  * Mode: follower
  * Node count: 1758
  * </pre>
- * 
+ *
  * @author jianghang 2012-9-21 下午02:13:40
  * @version 4.1.0
  */
 public class AutoKeeperServerStat extends AutoKeeperStateStat {
 
-    private static final long             serialVersionUID = 617926406886982808L;
-    private String                        address;
-    private String                        version;
-    private AutoKeeperQuorumType          quorumType;                                                // 运行类型，leader/follower/observer
-    private long                          nodeCount;                                                 // 总的节点数
-    private Set<AutoKeeperConnectionStat> connectionStats  = new HashSet<AutoKeeperConnectionStat>(); // 客户端链接状态
+    private static final long serialVersionUID = 617926406886982808L;
+    private String address;
+    private String version;
+    private AutoKeeperQuorumType quorumType;                                                // 运行类型，leader/follower/observer
+    private long nodeCount;                                                 // 总的节点数
+    private Set<AutoKeeperConnectionStat> connectionStats = new HashSet<AutoKeeperConnectionStat>(); // 客户端链接状态
 
     public String getAddress() {
         return address;

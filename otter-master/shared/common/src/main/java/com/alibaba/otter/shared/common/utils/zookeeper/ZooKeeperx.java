@@ -40,31 +40,31 @@ import org.springframework.util.ReflectionUtils;
 
 /**
  * 封装了ZooKeeper，使其支持节点的优先顺序，比如美国机房的节点会优先加载美国对应的zk集群列表，都失败后才会选择加载杭州的zk集群列表 *
- * 
+ *
  * @author jianghang 2012-7-10 下午02:31:42
  * @version 4.1.0
  */
 public class ZooKeeperx extends ZkConnection {
 
-    private static final String SERVER_COMMA            = ";";
-    private static final Logger logger                  = LoggerFactory.getLogger(ZooKeeperx.class);
-    private static final Field  clientCnxnField         = ReflectionUtils.findField(ZooKeeper.class, "cnxn");
-    private static final Field  hostProviderField       = ReflectionUtils.findField(ClientCnxn.class, "hostProvider");
-    private static final Field  serverAddressesField    = ReflectionUtils.findField(StaticHostProvider.class,
-                                                            "serverAddresses");
-    private static final Field  zookeeperLockField      = ReflectionUtils.findField(ZkConnection.class,
-                                                            "_zookeeperLock");
-    private static final Field  zookeeperFiled          = ReflectionUtils.findField(ZkConnection.class, "_zk");
-    private static final int    DEFAULT_SESSION_TIMEOUT = 90000;
+    private static final String SERVER_COMMA = ";";
+    private static final Logger logger = LoggerFactory.getLogger(ZooKeeperx.class);
+    private static final Field clientCnxnField = ReflectionUtils.findField(ZooKeeper.class, "cnxn");
+    private static final Field hostProviderField = ReflectionUtils.findField(ClientCnxn.class, "hostProvider");
+    private static final Field serverAddressesField = ReflectionUtils.findField(StaticHostProvider.class,
+            "serverAddresses");
+    private static final Field zookeeperLockField = ReflectionUtils.findField(ZkConnection.class,
+            "_zookeeperLock");
+    private static final Field zookeeperFiled = ReflectionUtils.findField(ZkConnection.class, "_zk");
+    private static final int DEFAULT_SESSION_TIMEOUT = 90000;
 
-    private final List<String>  _serversList;
-    private final int           _sessionTimeOut;
+    private final List<String> _serversList;
+    private final int _sessionTimeOut;
 
-    public ZooKeeperx(String zkServers){
+    public ZooKeeperx(String zkServers) {
         this(zkServers, DEFAULT_SESSION_TIMEOUT);
     }
 
-    public ZooKeeperx(String zkServers, int sessionTimeOut){
+    public ZooKeeperx(String zkServers, int sessionTimeOut) {
         super(zkServers, sessionTimeOut);
         _serversList = Arrays.asList(StringUtils.split(this.getServers(), SERVER_COMMA));
         _sessionTimeOut = sessionTimeOut;
@@ -118,7 +118,7 @@ public class ZooKeeperx extends ZkConnection {
                     ClientCnxn cnxn = (ClientCnxn) ReflectionUtils.getField(clientCnxnField, zk);
                     HostProvider hostProvider = (HostProvider) ReflectionUtils.getField(hostProviderField, cnxn);
                     List<InetSocketAddress> serverAddrs = (List<InetSocketAddress>) ReflectionUtils.getField(serverAddressesField,
-                        hostProvider);
+                            hostProvider);
                     // 添加第二组集群列表
                     serverAddrs.addAll(new ConnectStringParser(cluster).getServerAddresses());
                 }

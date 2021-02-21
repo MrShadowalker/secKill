@@ -26,7 +26,7 @@ import com.alibaba.otter.manager.biz.config.autokeeper.dal.dataobject.AutoKeeper
 
 /**
  * 类IbatisAutoKeeperClusterDAO.java的实现描述：TODO 类实现描述
- * 
+ *
  * @author simon 2012-9-24 下午5:17:17
  * @version 4.1.0
  */

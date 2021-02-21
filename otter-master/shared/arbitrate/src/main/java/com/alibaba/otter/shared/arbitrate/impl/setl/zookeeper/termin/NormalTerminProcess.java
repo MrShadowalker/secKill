@@ -40,18 +40,18 @@ import com.alibaba.otter.shared.common.utils.zookeeper.ZkClientx;
 
 /**
  * 正常的结束信号处理
- * 
+ *
  * <pre>
  * 特殊说明： 告知以后所有维护此代码的人，多看看写的一些注释，这个类并发问题太多了，踩了好多坑.
  * 1. normal和shutdown/rollback操作存在并发性，shutdown/rollback有互斥锁，所以不会有并发。 (normal加互斥锁代价高，不合算)
  * 2. 执行shutdown/rollback操作时，虽然是先修改channel状态，但是normal可能还会多跑一个stage，这时执行process删除时，normal又会创建一个stage，导致删除失败，需要重试
  * 3. 需要先创建termin，再删除process (以前遇到并发，删除了一个process，在创建termin的过程，另一个process流程提前完成了这一系列动作，导致termin顺序不对)
- * 4. normal和shutdown/rollback的并发操作，会导致重复创建termin. (两个操作都发现要创建termin，一个先完成create，并且被消费者消费了termin并删除了，另一个再create时也能成功了，导致出现重复) 
- * 
- * 大致想到了这么几点，没事就别改这个类了，啥并发问题都有，(建议多用用新版的canal，对termin信号顺序/无重复没有这么强要求，客户端多retry几次有点重复数据，事情也就不会那么复杂) 
+ * 4. normal和shutdown/rollback的并发操作，会导致重复创建termin. (两个操作都发现要创建termin，一个先完成create，并且被消费者消费了termin并删除了，另一个再create时也能成功了，导致出现重复)
+ *
+ * 大致想到了这么几点，没事就别改这个类了，啥并发问题都有，(建议多用用新版的canal，对termin信号顺序/无重复没有这么强要求，客户端多retry几次有点重复数据，事情也就不会那么复杂)
  * write at 2012-09-06 by jianghang.loujh
  * </pre>
- * 
+ *
  * @author jianghang 2011-9-26 下午01:52:53
  * @version 4.0.0
  */

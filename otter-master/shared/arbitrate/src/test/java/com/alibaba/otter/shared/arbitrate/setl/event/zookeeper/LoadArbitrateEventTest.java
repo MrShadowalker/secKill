@@ -42,11 +42,11 @@ import com.alibaba.otter.shared.arbitrate.setl.event.BaseArbitrateEventTest;
  */
 public class LoadArbitrateEventTest extends BaseArbitrateEventTest {
 
-    private SelectZooKeeperArbitrateEvent    selectEvent;
-    private ExtractZooKeeperArbitrateEvent   extractEvent;
+    private SelectZooKeeperArbitrateEvent selectEvent;
+    private ExtractZooKeeperArbitrateEvent extractEvent;
     private TransformZooKeeperArbitrateEvent transformEvent;
-    private LoadZooKeeperArbitrateEvent      loadEvent;
-    private TerminZooKeeperArbitrateEvent    terminEvent;
+    private LoadZooKeeperArbitrateEvent loadEvent;
+    private TerminZooKeeperArbitrateEvent terminEvent;
 
     @Test
     public void test_load() {
@@ -94,7 +94,7 @@ public class LoadArbitrateEventTest extends BaseArbitrateEventTest {
             transformEvent.single(tdata2);
 
             SelectStageListener selectStageListener = ArbitrateFactory.getInstance(pipelineId,
-                                                                                   SelectStageListener.class);
+                    SelectStageListener.class);
             selectStageListener.destory();
             // load stage
             EtlEventData ldata1 = loadEvent.await(pipelineId);

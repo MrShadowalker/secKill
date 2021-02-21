@@ -22,7 +22,7 @@ import com.alibaba.otter.shared.communication.model.statistics.ThroughputStatEve
 
 /**
  * 统计相关远程接口定义
- * 
+ *
  * @author jianghang
  */
 public interface StatsRemoteService {

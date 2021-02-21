@@ -22,7 +22,7 @@ import com.alibaba.otter.shared.common.model.config.node.Node;
 
 public class TransformStickLoadBalance extends StickLoadBalance {
 
-    public TransformStickLoadBalance(Long pipelineId){
+    public TransformStickLoadBalance(Long pipelineId) {
         super(pipelineId);
     }
 

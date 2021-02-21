@@ -26,16 +26,16 @@ import com.alibaba.otter.shared.common.model.config.node.Node;
 
 /**
  * Round-Robin的负载均衡实现 <br/>
- * 
+ *
  * @author jianghang 2011-8-19 上午10:25:36
  */
 public abstract class RoundRobinLoadBalance extends AbstractLoadBalance {
 
-    private static final int MAX_ROUND    = 1000 * 1000;
-    private AtomicInteger    round        = new AtomicInteger(0);
-    private int              localPercent = 90;                  //local优先返回的权重，百分比
+    private static final int MAX_ROUND = 1000 * 1000;
+    private AtomicInteger round = new AtomicInteger(0);
+    private int localPercent = 90;                  //local优先返回的权重，百分比
 
-    public RoundRobinLoadBalance(Long pipelineId){
+    public RoundRobinLoadBalance(Long pipelineId) {
         super(pipelineId);
     }
 

@@ -27,10 +27,10 @@ import com.alibaba.otter.shared.common.model.config.parameter.SystemParameter;
 public class SystemParameterDO implements Serializable {
 
     private static final long serialVersionUID = 9148286590254926037L;
-    private Long              id;                                     // 唯一标示id
-    private SystemParameter   value;                                  // 系统参数值
-    private Date              gmtCreate;                              // 创建时间
-    private Date              gmtModified;                            // 修改时间
+    private Long id;                                     // 唯一标示id
+    private SystemParameter value;                                  // 系统参数值
+    private Date gmtCreate;                              // 创建时间
+    private Date gmtModified;                            // 修改时间
 
     public Long getId() {
         return id;

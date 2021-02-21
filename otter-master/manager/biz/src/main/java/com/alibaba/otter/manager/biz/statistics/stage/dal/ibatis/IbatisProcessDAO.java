@@ -25,7 +25,7 @@ import com.alibaba.otter.manager.biz.statistics.stage.dal.dataobject.ProcessStat
 
 /**
  * TODO Comment of IbatisProcessStatDAO
- * 
+ *
  * @author danping.yudp
  */
 public class IbatisProcessDAO extends SqlMapClientDaoSupport implements ProcessDAO {

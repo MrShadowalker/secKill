@@ -22,7 +22,7 @@ public class NotifyMediaEvent extends Event {
 
     private static final long serialVersionUID = -8472088519060045661L;
 
-    public NotifyMediaEvent(){
+    public NotifyMediaEvent() {
         super(ConfigEventType.notifyMedia);
     }
 

@@ -31,15 +31,15 @@ import com.alibaba.otter.shared.common.utils.OtterToStringStyle;
 public class ThroughputStatDO implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private Long              id;
-    private Long              pipelineId;
-    private Date              startTime;
-    private Date              endTime;
-    private ThroughputType    type;
-    private Long              number;
-    private Long              size;
-    private Date              gmtCreate;
-    private Date              gmtModified;
+    private Long id;
+    private Long pipelineId;
+    private Date startTime;
+    private Date endTime;
+    private ThroughputType type;
+    private Long number;
+    private Long size;
+    private Date gmtCreate;
+    private Date gmtModified;
 
     public Long getId() {
         return id;

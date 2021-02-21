@@ -32,35 +32,35 @@ import com.alibaba.otter.shared.common.utils.thread.NamedThreadFactory;
 
 /**
  * copy from zkclient中的{@linkplain ZkEventThread}，解决串行执行问题
- * 
+ *
  * @author jianghang 2012-9-27 下午05:48:41
  * @version 4.1.0
  */
 public class ZkEventThread extends Thread {
 
-    private static final Logger    LOG                  = LoggerFactory.getLogger(ZkEventThread.class);
-    private static AtomicInteger   _eventId             = new AtomicInteger(0);
-    private static final int       DEFAULT_POOL_SIZE    = 30;
-    private static final int       DEFAULT_ACCEPT_COUNT = 60;
+    private static final Logger LOG = LoggerFactory.getLogger(ZkEventThread.class);
+    private static AtomicInteger _eventId = new AtomicInteger(0);
+    private static final int DEFAULT_POOL_SIZE = 30;
+    private static final int DEFAULT_ACCEPT_COUNT = 60;
 
-    private static ExecutorService executor             = new ThreadPoolExecutor(
-                                                                                 DEFAULT_POOL_SIZE,
-                                                                                 DEFAULT_POOL_SIZE,
-                                                                                 0L,
-                                                                                 TimeUnit.MILLISECONDS,
-                                                                                 new ArrayBlockingQueue(
-                                                                                                        DEFAULT_ACCEPT_COUNT),
-                                                                                 new NamedThreadFactory(
-                                                                                                        "Arbitrate-Async-Watcher"),
-                                                                                 new ThreadPoolExecutor.CallerRunsPolicy());
+    private static ExecutorService executor = new ThreadPoolExecutor(
+            DEFAULT_POOL_SIZE,
+            DEFAULT_POOL_SIZE,
+            0L,
+            TimeUnit.MILLISECONDS,
+            new ArrayBlockingQueue(
+                    DEFAULT_ACCEPT_COUNT),
+            new NamedThreadFactory(
+                    "Arbitrate-Async-Watcher"),
+            new ThreadPoolExecutor.CallerRunsPolicy());
 
-    private BlockingQueue<ZkEvent> _events              = new LinkedBlockingQueue<ZkEvent>();
+    private BlockingQueue<ZkEvent> _events = new LinkedBlockingQueue<ZkEvent>();
 
     public static abstract class ZkEvent {
 
         private String _description;
 
-        public ZkEvent(String description){
+        public ZkEvent(String description) {
             _description = description;
         }
 
@@ -72,7 +72,7 @@ public class ZkEventThread extends Thread {
         }
     }
 
-    ZkEventThread(String name){
+    ZkEventThread(String name) {
         setDaemon(true);
         setName("ZkClient-EventThread-" + getId() + "-" + name);
     }

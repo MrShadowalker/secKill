@@ -27,7 +27,7 @@ import com.alibaba.otter.shared.common.model.autokeeper.AutoKeeperWatchStat;
 
 /**
  * 提供autokeeper相关的数据查询接口
- * 
+ *
  * @author simon 2012-9-28 上午11:00:07
  * @version 4.1.0
  */

@@ -42,7 +42,7 @@ public class DataMediaSourceServiceImpl implements DataMediaSourceService {
 
     private static final Logger logger = LoggerFactory.getLogger(DataMediaSourceServiceImpl.class);
 
-    private DataMediaSourceDAO  dataMediaSourceDao;
+    private DataMediaSourceDAO dataMediaSourceDao;
 
     /**
      * 添加
@@ -122,7 +122,7 @@ public class DataMediaSourceServiceImpl implements DataMediaSourceService {
             List<DataMediaSourceDO> dataMediaSourceDos = dataMediaSourceDao.listByCondition(condition);
             if (dataMediaSourceDos.isEmpty()) {
                 logger.debug("DEBUG ## couldn't query any DataMediaSources by the condition:"
-                             + JsonUtils.marshalToString(condition));
+                        + JsonUtils.marshalToString(condition));
                 return dataMediaSources;
             }
             dataMediaSources = doToModel(dataMediaSourceDos);
@@ -147,7 +147,7 @@ public class DataMediaSourceServiceImpl implements DataMediaSourceService {
             dataMediaSourceDos = dataMediaSourceDao.listByMultiId(identities);
             if (dataMediaSourceDos.isEmpty()) {
                 String exceptionCause = "couldn't query any dataMediaSource by dataMediaSourceIds:"
-                                        + Arrays.toString(identities);
+                        + Arrays.toString(identities);
                 logger.error("ERROR ## " + exceptionCause);
                 throw new ManagerException(exceptionCause);
             }
@@ -164,7 +164,7 @@ public class DataMediaSourceServiceImpl implements DataMediaSourceService {
         List<DataMediaSource> dataMediaSources = listByIds(dataMediaSourceId);
         if (dataMediaSources.size() != 1) {
             String exceptionCause = "query dataMediaSourceId:" + dataMediaSourceId + " but return "
-                                    + dataMediaSources.size() + " dataMediaSource.";
+                    + dataMediaSources.size() + " dataMediaSource.";
             logger.error("ERROR ## " + exceptionCause);
             throw new ManagerException(exceptionCause);
         }
@@ -182,7 +182,7 @@ public class DataMediaSourceServiceImpl implements DataMediaSourceService {
 
     /**
      * 类型：数据库类型 Mysql和Oracle 用于Model对象转化为DO对象
-     * 
+     *
      * @param dataMediaSource
      * @return DataMediaSourceDO
      */
@@ -210,7 +210,7 @@ public class DataMediaSourceServiceImpl implements DataMediaSourceService {
 
     /**
      * 类型：数据库类型 Mysql和Oracle 用于DO对象转化为Model对象
-     * 
+     *
      * @param dataMediaSourceDo
      * @return DataMediaSource
      */

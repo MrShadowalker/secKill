@@ -21,14 +21,14 @@ import com.alibaba.otter.shared.common.model.config.channel.Channel;
 
 /**
  * config变更通知的事件
- * 
+ *
  * @author jianghang
  */
 public class NotifyChannelEvent extends Event {
 
     private static final long serialVersionUID = -8472088519060045661L;
 
-    public NotifyChannelEvent(){
+    public NotifyChannelEvent() {
         super(ConfigEventType.notifyChannel);
     }
 

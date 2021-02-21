@@ -18,19 +18,19 @@ package com.alibaba.otter.shared.common.model.autokeeper;
 
 /**
  * 基本统计信息
- * 
+ *
  * @author jianghang 2012-9-21 下午02:12:03
  * @version 4.1.0
  */
 public class AutoKeeperStateStat extends AutoKeeperStat {
 
     private static final long serialVersionUID = 250466030211280762L;
-    private long              minLatency;
-    private long              maxLatency;
-    private long              avgLatency;
-    private long              queued;                                // 等待队列
-    private long              recved;                                // 接受队列
-    private long              sent;                                  // 发送队列
+    private long minLatency;
+    private long maxLatency;
+    private long avgLatency;
+    private long queued;                                // 等待队列
+    private long recved;                                // 接受队列
+    private long sent;                                  // 发送队列
 
     public long getMinLatency() {
         return minLatency;

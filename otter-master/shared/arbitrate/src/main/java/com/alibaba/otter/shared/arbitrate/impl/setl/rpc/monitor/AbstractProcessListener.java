@@ -33,19 +33,19 @@ import com.alibaba.otter.shared.common.utils.zookeeper.ZkClientx;
 
 /**
  * 抽取stage处理中一些共性的内容
- * 
+ *
  * @author jianghang 2011-9-21 下午02:16:17
  * @version 4.0.0
  */
 public abstract class AbstractProcessListener extends ArbitrateLifeCycle implements ProcessListener {
 
-    protected static final Logger logger    = LoggerFactory.getLogger(AbstractProcessListener.class);
-    protected ZkClientx           zookeeper = ZooKeeperClient.getInstance();
-    protected ReplyProcessQueue   replyProcessIds;                                                   // 有响应的processId列表
-    protected ReentrantLock       lock      = new ReentrantLock();
-    protected ProcessMonitor      processMonitor;
+    protected static final Logger logger = LoggerFactory.getLogger(AbstractProcessListener.class);
+    protected ZkClientx zookeeper = ZooKeeperClient.getInstance();
+    protected ReplyProcessQueue replyProcessIds;                                                   // 有响应的processId列表
+    protected ReentrantLock lock = new ReentrantLock();
+    protected ProcessMonitor processMonitor;
 
-    public AbstractProcessListener(Long pipelineId){
+    public AbstractProcessListener(Long pipelineId) {
         super(pipelineId);
         // 设置容量，必须大于并行度，这里设置为并行度的10倍，避免因并行度的运行时变化引起问题
         int size = ArbitrateConfigUtils.getParallelism(pipelineId) * 10;
@@ -98,7 +98,7 @@ public abstract class AbstractProcessListener extends ArbitrateLifeCycle impleme
                     Long processId = processIds.get(0);
                     if (processId > (Long) replyId) { // 如果当前最小的processId都大于replyId, processId都是递增创建的
                         logger.info("## {} remove reply id 【{}】", ClassUtils.getShortClassName(this.getClass()),
-                                    (Long) replyId);
+                                (Long) replyId);
                         replyProcessIds.remove((Long) replyId);
                     }
                 }
@@ -109,7 +109,7 @@ public abstract class AbstractProcessListener extends ArbitrateLifeCycle impleme
     public void destory() {
         super.destory();
         logger.info("## destory pipeline【{}】 , Listener【{}】", getPipelineId(),
-                    ClassUtils.getShortClassName(this.getClass()));
+                ClassUtils.getShortClassName(this.getClass()));
 
         processMonitor.removeListener(this);
         replyProcessIds.clear();

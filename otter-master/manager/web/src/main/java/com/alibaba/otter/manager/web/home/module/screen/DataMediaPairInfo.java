@@ -34,7 +34,7 @@ import com.alibaba.otter.shared.common.model.config.data.DataMediaPair;
 public class DataMediaPairInfo {
 
     @Resource(name = "channelService")
-    private ChannelService       channelService;
+    private ChannelService channelService;
 
     @Resource(name = "dataMediaPairService")
     private DataMediaPairService dataMediaPairService;

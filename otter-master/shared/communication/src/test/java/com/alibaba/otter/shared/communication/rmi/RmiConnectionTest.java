@@ -37,7 +37,7 @@ import com.alibaba.otter.shared.communication.core.model.heart.HeartEvent;
 
 /**
  * 测试下rmi的连接池
- * 
+ *
  * @author jianghang
  */
 public class RmiConnectionTest extends org.jtester.testng.JTester {
@@ -130,7 +130,7 @@ public class RmiConnectionTest extends org.jtester.testng.JTester {
 
         private static final long serialVersionUID = -7387998054696636166L;
 
-        public PoolEvent(PoolEventType event){
+        public PoolEvent(PoolEventType event) {
             super(event);
         }
 

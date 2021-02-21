@@ -36,11 +36,11 @@ choice:
                 // pi * r^2 = 1/2 * s^2 * sin (pi / 3)  =>  s = r * sqrt(2 * pi / sin(pi / 3))
                 var size = radius * Math.sqrt(2 * Math.PI / Math.sin(Math.PI / 3));
                 var height = size * Math.sin(Math.PI / 3);
-                ctx.moveTo(x - size/2, y + height/2);
-                ctx.lineTo(x + size/2, y + height/2);
+                ctx.moveTo(x - size / 2, y + height / 2);
+                ctx.lineTo(x + size / 2, y + height / 2);
                 if (!shadow) {
-                    ctx.lineTo(x, y - height/2);
-                    ctx.lineTo(x - size/2, y + height/2);
+                    ctx.lineTo(x, y - height / 2);
+                    ctx.lineTo(x - size / 2, y + height / 2);
                 }
             },
             cross: function (ctx, x, y, radius, shadow) {
@@ -57,11 +57,11 @@ choice:
         if (handlers[s])
             series.points.symbol = handlers[s];
     }
-    
+
     function init(plot) {
         plot.hooks.processDatapoints.push(processRawData);
     }
-    
+
     $.plot.plugins.push({
         init: init,
         name: 'symbols',

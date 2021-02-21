@@ -18,7 +18,7 @@ package com.alibaba.otter.shared.common.model.config.enums;
 
 /**
  * S.E.T.L的阶段类型
- * 
+ *
  * @author jianghang 2011-9-8 下午12:40:29
  */
 public enum StageType {

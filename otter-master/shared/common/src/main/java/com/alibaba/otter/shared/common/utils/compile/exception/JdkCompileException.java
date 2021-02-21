@@ -25,19 +25,19 @@ import javax.tools.DiagnosticCollector;
 import javax.tools.JavaFileObject;
 
 /**
- * @author wenshao<szujobs@hotmail.com>
+ * @author wenshao<szujobs @ hotmail.com>
  */
 public class JdkCompileException extends Exception {
 
-    private static final long                             serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-    private Set<String>                                   classNames;
+    private Set<String> classNames;
     private transient DiagnosticCollector<JavaFileObject> diagnostics;
 
-    private String                                        source;
+    private String source;
 
     public JdkCompileException(String message, Set<String> qualifiedClassNames, Throwable cause,
-                               DiagnosticCollector<JavaFileObject> diagnostics){
+                               DiagnosticCollector<JavaFileObject> diagnostics) {
         super(message, cause);
         setClassNames(qualifiedClassNames);
         setDiagnostics(diagnostics);
@@ -52,14 +52,14 @@ public class JdkCompileException extends Exception {
     }
 
     public JdkCompileException(String message, Set<String> qualifiedClassNames,
-                               DiagnosticCollector<JavaFileObject> diagnostics){
+                               DiagnosticCollector<JavaFileObject> diagnostics) {
         super(message);
         setClassNames(qualifiedClassNames);
         setDiagnostics(diagnostics);
     }
 
     public JdkCompileException(Set<String> qualifiedClassNames, Throwable cause,
-                               DiagnosticCollector<JavaFileObject> diagnostics){
+                               DiagnosticCollector<JavaFileObject> diagnostics) {
         super(cause);
         setClassNames(qualifiedClassNames);
         setDiagnostics(diagnostics);
@@ -78,7 +78,7 @@ public class JdkCompileException extends Exception {
 
     /**
      * Gets the diagnostics collected by this exception.
-     * 
+     *
      * @return this exception's diagnostics
      */
     public DiagnosticCollector<JavaFileObject> getDiagnostics() {

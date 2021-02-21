@@ -43,7 +43,7 @@ public class ExceptionRuleMonitorTest extends BaseOtterTest {
 
     @SpringBeanFrom
     @Mocked
-    private AlarmRuleService     alarmRuleService;
+    private AlarmRuleService alarmRuleService;
 
     @Test
     public void testSerialProcess() {

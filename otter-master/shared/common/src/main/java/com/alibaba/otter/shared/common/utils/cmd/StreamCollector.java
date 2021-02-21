@@ -24,7 +24,7 @@ import java.io.InputStream;
  */
 public class StreamCollector extends StreamCopier {
 
-    public StreamCollector(InputStream stream){
+    public StreamCollector(InputStream stream) {
         // 使用alibaba common io，避免byte多次拷贝
         super(stream, new ByteArrayOutputStream());
     }

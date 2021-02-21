@@ -25,7 +25,7 @@ import org.apache.commons.lang.exception.NestableRuntimeException;
 
 /**
  * 提供一些便利的byte处理工具
- * 
+ *
  * @author jianghang 2011-10-9 下午06:22:13
  * @version 4.0.0
  */

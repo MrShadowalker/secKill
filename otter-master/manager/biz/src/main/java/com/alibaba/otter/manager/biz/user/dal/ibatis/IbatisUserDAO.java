@@ -27,7 +27,7 @@ import com.alibaba.otter.manager.biz.user.dal.dataobject.UserDO;
 
 /**
  * TODO Comment of IbatisUserDAO
- * 
+ *
  * @author simon
  */
 public class IbatisUserDAO extends SqlMapClientDaoSupport implements UserDAO {

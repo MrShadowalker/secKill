@@ -33,19 +33,19 @@ import com.alibaba.otter.shared.common.utils.zookeeper.ZkClientx;
 
 /**
  * 抽取stage处理中一些共性的内容
- * 
+ *
  * @author jianghang 2011-9-21 下午02:16:17
  * @version 4.0.0
  */
 public abstract class AbstractStageListener extends ArbitrateLifeCycle implements StageListener {
 
-    protected static final Logger logger    = LoggerFactory.getLogger(AbstractStageListener.class);
-    protected ZkClientx           zookeeper = ZooKeeperClient.getInstance();
-    protected ReplyProcessQueue   replyProcessIds;                                                 // 有响应的processId列表
-    protected ReentrantLock       lock      = new ReentrantLock();
-    protected StageMonitor        stageMonitor;
+    protected static final Logger logger = LoggerFactory.getLogger(AbstractStageListener.class);
+    protected ZkClientx zookeeper = ZooKeeperClient.getInstance();
+    protected ReplyProcessQueue replyProcessIds;                                                 // 有响应的processId列表
+    protected ReentrantLock lock = new ReentrantLock();
+    protected StageMonitor stageMonitor;
 
-    public AbstractStageListener(Long pipelineId){
+    public AbstractStageListener(Long pipelineId) {
         super(pipelineId);
         // 设置容量，必须大于并行度，这里设置为并行度的10倍，避免因并行度的运行时变化引起问题
         int size = ArbitrateConfigUtils.getParallelism(pipelineId) * 10;
@@ -117,7 +117,7 @@ public abstract class AbstractStageListener extends ArbitrateLifeCycle implement
     public void destory() {
         super.destory();
         logger.info("## destory pipeline【{}】 , Listener【{}】", getPipelineId(),
-                    ClassUtils.getShortClassName(this.getClass()));
+                ClassUtils.getShortClassName(this.getClass()));
 
         replyProcessIds.clear();
         stageMonitor.removeListener(this);

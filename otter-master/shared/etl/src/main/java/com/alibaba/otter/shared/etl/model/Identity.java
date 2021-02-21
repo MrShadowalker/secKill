@@ -24,24 +24,24 @@ import com.alibaba.otter.shared.common.utils.OtterToStringStyle;
 
 /**
  * process标识，用于区分每个process.
- * 
+ *
  * @author xiaoqing.zhouxq 2011-8-9 上午10:49:14
  */
 public class Identity implements Serializable {
 
     private static final long serialVersionUID = -4551215214079451994L;
 
-    private long              channelId;
+    private long channelId;
 
-    private long              pipelineId;
+    private long pipelineId;
 
-    private long              processId;
+    private long processId;
 
-    public Identity(){
+    public Identity() {
 
     }
 
-    public Identity(Long channelId, Long pipelineId, Long processId){
+    public Identity(Long channelId, Long pipelineId, Long processId) {
         this.channelId = channelId;
         this.pipelineId = pipelineId;
         this.processId = processId;

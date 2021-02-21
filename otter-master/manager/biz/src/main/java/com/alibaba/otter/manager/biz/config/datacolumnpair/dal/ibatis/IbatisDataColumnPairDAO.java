@@ -30,7 +30,7 @@ import com.alibaba.otter.manager.biz.config.datacolumnpair.dal.dataobject.DataCo
 
 /**
  * 类IbatisDataColumnPairDAO.java的实现描述：TODO 类实现描述
- * 
+ *
  * @author simon 2012-4-20 下午4:10:48
  */
 public class IbatisDataColumnPairDAO extends SqlMapClientDaoSupport implements DataColumnPairDAO {
@@ -107,13 +107,13 @@ public class IbatisDataColumnPairDAO extends SqlMapClientDaoSupport implements D
 
     public List<DataColumnPairDO> listByDataMediaPairId(Long dataMediaPairId) {
         List<DataColumnPairDO> dataColumnPairDos = getSqlMapClientTemplate().queryForList("listDataColumnPairByDataMediaPairId",
-                                                                                          dataMediaPairId);
+                dataMediaPairId);
         return dataColumnPairDos;
     }
 
     public List<DataColumnPairDO> listByDataMediaPairIds(Long... dataMediaPairIds) {
         List<DataColumnPairDO> dataColumnPairDos = getSqlMapClientTemplate().queryForList("listDataColumnPairByDataMediaPairIds",
-                                                                                          dataMediaPairIds);
+                dataMediaPairIds);
         return dataColumnPairDos;
     }
 

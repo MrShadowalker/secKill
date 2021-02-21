@@ -25,29 +25,29 @@ import com.alibaba.otter.shared.common.utils.OtterToStringStyle;
 
 /**
  * 字段同步对，描述同步映射时左右两边的字段
- * 
+ *
  * @author simon 2012-3-31 下午03:50:38
  */
 public class ColumnPair implements Serializable {
 
     private static final long serialVersionUID = -7751579969781886333L;
-    private Long              id;
-    private Column            sourceColumn;
-    private Column            targetColumn;
-    private Long              dataMediaPairId;
-    private Date              gmtCreate;
-    private Date              gmtModified;
+    private Long id;
+    private Column sourceColumn;
+    private Column targetColumn;
+    private Long dataMediaPairId;
+    private Date gmtCreate;
+    private Date gmtModified;
 
-    public ColumnPair(){
+    public ColumnPair() {
 
     }
 
-    public ColumnPair(Column sourceColumn, Column targetColumn){
+    public ColumnPair(Column sourceColumn, Column targetColumn) {
         this.sourceColumn = sourceColumn;
         this.targetColumn = targetColumn;
     }
 
-    public ColumnPair(String sourceColumn, String targetColumn){
+    public ColumnPair(String sourceColumn, String targetColumn) {
         this.sourceColumn = new Column(sourceColumn);
         this.targetColumn = new Column(targetColumn);
     }

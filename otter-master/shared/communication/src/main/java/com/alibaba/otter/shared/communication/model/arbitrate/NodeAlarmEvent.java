@@ -22,12 +22,12 @@ public class NodeAlarmEvent extends Event {
 
     private static final long serialVersionUID = 476657754177940448L;
 
-    private Long              nid;                                   // 发送报警的node机器id
-    private Long              pipelineId;                            // 对应出错的pipelineId
-    private String            title;
-    private String            message;
+    private Long nid;                                   // 发送报警的node机器id
+    private Long pipelineId;                            // 对应出错的pipelineId
+    private String title;
+    private String message;
 
-    public NodeAlarmEvent(){
+    public NodeAlarmEvent() {
         super(ArbitrateEventType.nodeAlarm);
     }
 

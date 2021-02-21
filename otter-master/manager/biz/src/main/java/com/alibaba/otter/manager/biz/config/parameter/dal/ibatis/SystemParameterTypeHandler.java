@@ -26,7 +26,7 @@ import com.ibatis.sqlmap.client.extensions.TypeHandlerCallback;
 
 /**
  * 用于SystemParameter的解析
- * 
+ *
  * @author simon
  */
 public class SystemParameterTypeHandler implements TypeHandlerCallback {

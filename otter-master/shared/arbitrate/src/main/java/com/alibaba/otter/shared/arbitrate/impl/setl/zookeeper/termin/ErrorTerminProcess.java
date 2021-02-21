@@ -35,16 +35,16 @@ import com.alibaba.otter.shared.common.utils.zookeeper.ZkClientx;
 
 /**
  * 抽取异常信号的公共处理，termin的chain处理
- * 
+ *
  * @author jianghang 2011-9-27 下午04:58:06
  * @version 4.0.0
  */
 public class ErrorTerminProcess implements TerminProcess {
 
-    protected static final Logger    logger    = LoggerFactory.getLogger(ErrorTerminProcess.class);
-    protected ZkClientx              zookeeper = ZooKeeperClient.getInstance();
+    protected static final Logger logger = LoggerFactory.getLogger(ErrorTerminProcess.class);
+    protected ZkClientx zookeeper = ZooKeeperClient.getInstance();
     protected ArbitrateManageService arbitrateManageService;
-    protected NormalTerminProcess    normalTerminProcess;
+    protected NormalTerminProcess normalTerminProcess;
 
     public boolean process(TerminEventData data) {
         DistributedLock lock = new DistributedLock(StagePathUtils.getLoadLock(data.getPipelineId()));

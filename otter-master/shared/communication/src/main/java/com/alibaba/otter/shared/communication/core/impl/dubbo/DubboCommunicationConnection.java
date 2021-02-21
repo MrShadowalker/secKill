@@ -29,9 +29,9 @@ import com.alibaba.otter.shared.communication.core.model.Event;
 public class DubboCommunicationConnection implements CommunicationConnection {
 
     private CommunicationEndpoint endpoint;
-    private CommunicationParam    params;
+    private CommunicationParam params;
 
-    public DubboCommunicationConnection(CommunicationParam params, CommunicationEndpoint endpoint){
+    public DubboCommunicationConnection(CommunicationParam params, CommunicationEndpoint endpoint) {
         this.params = params;
         this.endpoint = endpoint;
     }

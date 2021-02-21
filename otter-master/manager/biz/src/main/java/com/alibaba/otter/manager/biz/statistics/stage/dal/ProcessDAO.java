@@ -22,7 +22,7 @@ import com.alibaba.otter.manager.biz.statistics.stage.dal.dataobject.ProcessStat
 
 /**
  * TODO Comment of ProcessDAO
- * 
+ *
  * @author danping.yudp
  */
 public interface ProcessDAO {

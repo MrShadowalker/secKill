@@ -35,7 +35,7 @@ public class AbstractJsonScreen<DATA> {
     protected static final Logger log = LoggerFactory.getLogger(AbstractJsonScreen.class);
 
     @Autowired
-    private HttpServletResponse   response;
+    private HttpServletResponse response;
 
     protected void returnError(String errMessage) {
         JsonResult result = new JsonResult(false);

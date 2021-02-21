@@ -41,14 +41,14 @@ import com.alibaba.otter.shared.common.model.config.data.DataMediaSource;
 public class DataMatrixList {
 
     @Resource(name = "dataMatrixService")
-    private DataMatrixService      dataMatrixService;
+    private DataMatrixService dataMatrixService;
 
     @Resource(name = "dataMediaSourceService")
     private DataMediaSourceService dataMediaSourceService;
 
     public void execute(@Param("pageIndex") int pageIndex, @Param("matrixId") Long matrixId,
                         @Param("groupKey") String groupKey, @Param("searchKey") String searchKey, Context context)
-                                                                                                                  throws Exception {
+            throws Exception {
         Map<String, Object> condition = new HashMap<String, Object>();
         if ("请输入关键字(目前支持Node的ID、名字搜索)".equals(searchKey)) {
             searchKey = "";

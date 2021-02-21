@@ -23,7 +23,7 @@ import org.apache.commons.lang.SystemUtils;
  */
 public class VersionInfo {
 
-    private static Package                myPackage;
+    private static Package myPackage;
     private static OtterVersionAnnotation version;
 
     static {
@@ -33,7 +33,7 @@ public class VersionInfo {
 
     /**
      * Get the meta-data for the Otter package.
-     * 
+     *
      * @return
      */
     static Package getPackage() {
@@ -42,7 +42,7 @@ public class VersionInfo {
 
     /**
      * Get the Otter version.
-     * 
+     *
      * @return the Otter version string, eg. "3.0.5-r"
      */
     public static String getVersion() {
@@ -51,7 +51,7 @@ public class VersionInfo {
 
     /**
      * Get the subversion revision number for the root directory
-     * 
+     *
      * @return the revision number, eg. "168168"
      */
     public static String getRevision() {
@@ -60,7 +60,7 @@ public class VersionInfo {
 
     /**
      * Get the branch on which this originated.
-     * 
+     *
      * @return The branch name, e.g. "trunk" or "branches/branch-3.0.5"
      */
     public static String getBranch() {
@@ -69,7 +69,7 @@ public class VersionInfo {
 
     /**
      * The date that Otter was compiled.
-     * 
+     *
      * @return the compilation date in unix date format
      */
     public static String getDate() {
@@ -78,7 +78,7 @@ public class VersionInfo {
 
     /**
      * The user that compiled Otter.
-     * 
+     *
      * @return the username of the user
      */
     public static String getUser() {

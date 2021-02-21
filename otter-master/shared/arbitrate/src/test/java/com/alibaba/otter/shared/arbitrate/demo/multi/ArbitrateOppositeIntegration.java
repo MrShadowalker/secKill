@@ -54,33 +54,33 @@ import com.alibaba.otter.shared.communication.core.model.Event;
 
 /**
  * demo的启动入口
- * 
+ *
  * @author jianghang 2011-9-22 下午03:58:53
  * @version 4.0.0
  */
 public class ArbitrateOppositeIntegration extends BaseEventTest {
 
-    private MainStemServiceDemo    mainStem;
-    private SelectServiceDemo      select;
-    private ExtractServiceDemo     extract;
-    private TransformServiceDemo   transform;
-    private LoadServiceDemo        load;
-    private ProcessViewDemo        view;
-    private TerminProcessDemo      termin;
+    private MainStemServiceDemo mainStem;
+    private SelectServiceDemo select;
+    private ExtractServiceDemo extract;
+    private TransformServiceDemo transform;
+    private LoadServiceDemo load;
+    private ProcessViewDemo view;
+    private TerminProcessDemo termin;
 
     // 环境数据准备对象
-    private NodeArbitrateEvent     nodeEvent;
-    private ChannelArbitrateEvent  channelEvent;
+    private NodeArbitrateEvent nodeEvent;
+    private ChannelArbitrateEvent channelEvent;
     private PipelineArbitrateEvent pipelineEvent;
-    private ArbitrateEventService  arbitrateEventService;
-    private final Node             one                = new Node();
-    private final Node             two                = new Node();
-    private final Long             oneNid             = 2L;
-    private final Long             twoNid             = 1L;        // 第一台机器
-    private Long                   channelId          = 100L;
-    private Long                   pipelineId         = 101L;      // 注意是101L，反方向的同步
-    private Long                   oppositePipelineId = 100L;
-    private ZkClientx              zookeeper;
+    private ArbitrateEventService arbitrateEventService;
+    private final Node one = new Node();
+    private final Node two = new Node();
+    private final Long oneNid = 2L;
+    private final Long twoNid = 1L;        // 第一台机器
+    private Long channelId = 100L;
+    private Long pipelineId = 101L;      // 注意是101L，反方向的同步
+    private Long oppositePipelineId = 100L;
+    private ZkClientx zookeeper;
 
     @BeforeMethod
     public void setUp() {

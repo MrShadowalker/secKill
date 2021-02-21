@@ -49,26 +49,26 @@ import com.alibaba.otter.shared.common.utils.thread.NamedThreadFactory;
 /**
  * 监控机制实现，不会自动触发，需要外部配置定时任务。 <br/>
  * 调用http://xxxx/monitor/monitor_trigger.htm?token=otter来进行触发，主要考虑otter集群，只需要有一个监控运行即可，如果jvm自运行，会同时并行监控
- * 
+ *
  * @author zebin.xuzb @ 2012-8-23
  * @version 4.1.0
  */
 public class GlobalMonitor implements Monitor, InitializingBean, DisposableBean {
 
-    protected static final Logger  log             = LoggerFactory.getLogger("monitorInfo");
-    private static final int       DEFAULT_THREADS = 5;
+    protected static final Logger log = LoggerFactory.getLogger("monitorInfo");
+    private static final int DEFAULT_THREADS = 5;
 
-    private int                    nThreads;
-    private boolean                needConcurrent  = true;
-    private boolean                recoveryPaused  = true;
-    private ExecutorService        executor;
+    private int nThreads;
+    private boolean needConcurrent = true;
+    private boolean recoveryPaused = true;
+    private ExecutorService executor;
 
-    private AlarmRuleService       alarmRuleService;
-    private Monitor                pipelineMonitor;
+    private AlarmRuleService alarmRuleService;
+    private Monitor pipelineMonitor;
 
-    private ChannelService         channelService;
+    private ChannelService channelService;
     private ArbitrateManageService arbitrateManageService;
-    private AlarmRecovery          restartAlarmRecovery;
+    private AlarmRecovery restartAlarmRecovery;
 
     @Override
     public void explore() {
@@ -198,9 +198,9 @@ public class GlobalMonitor implements Monitor, InitializingBean, DisposableBean 
     public void afterPropertiesSet() throws Exception {
         nThreads = nThreads <= 0 ? DEFAULT_THREADS : nThreads;
         executor = new ThreadPoolExecutor(nThreads, nThreads, 0, TimeUnit.MILLISECONDS,
-                                          new LinkedBlockingQueue<Runnable>(nThreads * 2),
-                                          new NamedThreadFactory("global monitor", false),
-                                          new ThreadPoolExecutor.CallerRunsPolicy());
+                new LinkedBlockingQueue<Runnable>(nThreads * 2),
+                new NamedThreadFactory("global monitor", false),
+                new ThreadPoolExecutor.CallerRunsPolicy());
 
     }
 

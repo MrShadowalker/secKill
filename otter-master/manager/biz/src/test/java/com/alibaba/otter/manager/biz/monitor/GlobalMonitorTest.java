@@ -40,29 +40,29 @@ import com.alibaba.otter.shared.common.model.config.alarm.AlarmRuleStatus;
  */
 public class GlobalMonitorTest extends BaseOtterTest {
 
-    private Monitor          normalPipelineMonitor    = new AbstractRuleMonitor() {
+    private Monitor normalPipelineMonitor = new AbstractRuleMonitor() {
 
-                                                          @Override
-                                                          public void explore(List<AlarmRule> rules) {
-                                                              System.out.println(" normal monitor executed");
-                                                          }
-                                                      };
+        @Override
+        public void explore(List<AlarmRule> rules) {
+            System.out.println(" normal monitor executed");
+        }
+    };
 
-    private Monitor          exceptionPipelineMonitor = new AbstractRuleMonitor() {
+    private Monitor exceptionPipelineMonitor = new AbstractRuleMonitor() {
 
-                                                          @Override
-                                                          public void explore(List<AlarmRule> rules) {
-                                                              throw new RuntimeException(
-                                                                                         " exception happens in monitor executed");
-                                                          }
-                                                      };
+        @Override
+        public void explore(List<AlarmRule> rules) {
+            throw new RuntimeException(
+                    " exception happens in monitor executed");
+        }
+    };
 
     @SpringBeanFrom
     @Mocked
     private AlarmRuleService alarmRuleService;
 
     @SpringBeanByName
-    private GlobalMonitor    globalMonitor;
+    private GlobalMonitor globalMonitor;
 
     @Test
     public void testSerialProcess() {

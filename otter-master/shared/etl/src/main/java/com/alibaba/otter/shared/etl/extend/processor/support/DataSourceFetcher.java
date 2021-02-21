@@ -20,7 +20,7 @@ import javax.sql.DataSource;
 
 /**
  * 获取数据库
- * 
+ *
  * @author jianghang 2014-6-11 下午3:15:57
  * @since 4.2.10
  */

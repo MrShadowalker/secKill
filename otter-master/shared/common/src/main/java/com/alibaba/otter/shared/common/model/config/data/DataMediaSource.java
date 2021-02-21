@@ -25,18 +25,18 @@ import com.alibaba.otter.shared.common.utils.OtterToStringStyle;
 
 /**
  * 数据介质源信息描述
- * 
+ *
  * @author jianghang 2011-9-2 上午11:28:21
  */
 public class DataMediaSource implements Serializable {
 
     private static final long serialVersionUID = -7653632703273608373L;
-    private Long              id;
-    private String            name;
-    private DataMediaType     type;
-    private String            encode;
-    private Date              gmtCreate;
-    private Date              gmtModified;
+    private Long id;
+    private String name;
+    private DataMediaType type;
+    private String encode;
+    private Date gmtCreate;
+    private Date gmtModified;
 
     public Long getId() {
         return id;

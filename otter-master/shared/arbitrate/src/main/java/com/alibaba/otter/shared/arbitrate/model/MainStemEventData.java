@@ -18,7 +18,7 @@ package com.alibaba.otter.shared.arbitrate.model;
 
 /**
  * 主道控制信号
- * 
+ *
  * @author jianghang 2011-8-16 下午08:29:48
  */
 public class MainStemEventData extends PipelineEventData {
@@ -26,9 +26,13 @@ public class MainStemEventData extends PipelineEventData {
     private static final long serialVersionUID = 2694861930354206657L;
 
     public enum Status {
-        /** 已追上 */
+        /**
+         * 已追上
+         */
         OVERTAKE,
-        /** 追赶中 */
+        /**
+         * 追赶中
+         */
         TAKEING;
 
         public boolean isOverTake() {
@@ -40,8 +44,8 @@ public class MainStemEventData extends PipelineEventData {
         }
     }
 
-    private Long    nid;
-    private Status  status;       // 主道控制信号的状态，已追上或者未追上
+    private Long nid;
+    private Status status;       // 主道控制信号的状态，已追上或者未追上
     private boolean active = true;
 
     public Status getStatus() {

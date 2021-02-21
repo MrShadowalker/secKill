@@ -29,32 +29,32 @@ import com.alibaba.otter.shared.common.utils.OtterToStringStyle;
 
 /**
  * 同步数据存储介质
- * 
+ *
  * @author jianghang 2011-9-2 上午11:25:37
  */
 public class DataMedia<Source extends DataMediaSource> implements Serializable {
 
-    private static final long   serialVersionUID = -7161158767271516776L;
-    private Long                id;
-    private String              namespace;
-    private String              name;                                    // 介质名称
-    private Source              source;                                  // 介质源地址信息
-    private String              encode;                                  // 编码
-    private Date                gmtCreate;
-    private Date                gmtModified;
+    private static final long serialVersionUID = -7161158767271516776L;
+    private Long id;
+    private String namespace;
+    private String name;                                    // 介质名称
+    private Source source;                                  // 介质源地址信息
+    private String encode;                                  // 编码
+    private Date gmtCreate;
+    private Date gmtModified;
     // 运行时计算出来的属性，避免每次通过ConfigHelper进行正则解析
     private transient ModeValue nameMode;
     private transient ModeValue namespaceMode;
 
     @Deprecated
-    private Mode                mode;                                    // 使用ModeValue进行替代
+    private Mode mode;                                    // 使用ModeValue进行替代
 
     public static enum Mode {
         SINGLE(0), MULTI(1), WILDCARD(3);
 
         private int value; // datamedia pair定义排序用
 
-        Mode(int value){
+        Mode(int value) {
             this.value = value;
         }
 
@@ -80,10 +80,10 @@ public class DataMedia<Source extends DataMediaSource> implements Serializable {
     public static class ModeValue implements Serializable {
 
         private static final long serialVersionUID = 54902778821522113L;
-        private Mode              mode;
-        private List<String>      values           = new ArrayList<String>();
+        private Mode mode;
+        private List<String> values = new ArrayList<String>();
 
-        public ModeValue(Mode mode, List<String> values){
+        public ModeValue(Mode mode, List<String> values) {
             this.mode = mode;
             this.values = values;
         }

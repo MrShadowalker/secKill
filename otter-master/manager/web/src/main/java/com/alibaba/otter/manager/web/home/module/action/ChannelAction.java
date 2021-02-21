@@ -37,20 +37,20 @@ import com.alibaba.otter.shared.common.model.config.channel.ChannelStatus;
 
 /**
  * 类ChannelAction.java的实现描述：用于Channel管理界面的Action
- * 
+ *
  * @author simon 2011-10-21 下午02:49:18
  */
 public class ChannelAction extends AbstractAction {
 
     @Resource(name = "channelService")
-    private ChannelService  channelService;
+    private ChannelService channelService;
 
     @Resource(name = "pipelineService")
     private PipelineService pipelineService;
 
     /**
      * 添加Channel
-     * 
+     *
      * @param channelInfo
      * @param channelParameterInfo
      * @throws Exception
@@ -58,7 +58,7 @@ public class ChannelAction extends AbstractAction {
     public void doAdd(@FormGroup("channelInfo") Group channelInfo,
                       @FormGroup("channelParameterInfo") Group channelParameterInfo,
                       @FormField(name = "formChannelError", group = "channelInfo") CustomErrors err, Navigator nav)
-                                                                                                                   throws Exception {
+            throws Exception {
         Channel channel = new Channel();
         ChannelParameter parameter = new ChannelParameter();
         channelInfo.setProperties(channel);
@@ -77,7 +77,7 @@ public class ChannelAction extends AbstractAction {
 
     /**
      * 修改Channel
-     * 
+     *
      * @param channelInfo
      * @param channelParameterInfo
      * @throws Exception
@@ -86,7 +86,7 @@ public class ChannelAction extends AbstractAction {
                        @Param("searchKey") String searchKey,
                        @FormGroup("channelParameterInfo") Group channelParameterInfo,
                        @FormField(name = "formChannelError", group = "channelInfo") CustomErrors err, Navigator nav)
-                                                                                                                    throws Exception {
+            throws Exception {
         Channel channel = new Channel();
         ChannelParameter parameter = new ChannelParameter();
         channelInfo.setProperties(channel);
@@ -106,7 +106,7 @@ public class ChannelAction extends AbstractAction {
 
     /**
      * 删除Channel
-     * 
+     *
      * @param channelId
      * @throws WebxException
      */
@@ -127,14 +127,14 @@ public class ChannelAction extends AbstractAction {
 
     /**
      * 用于Channel运行状态的更新操作
-     * 
+     *
      * @param channelId
      * @param status
      * @throws WebxException
      */
     public void doStatus(@Param("pageIndex") int pageIndex, @Param("searchKey") String searchKey,
                          @Param("channelId") Long channelId, @Param("status") String status, Navigator nav)
-                                                                                                           throws WebxException {
+            throws WebxException {
         String errorType = null;
         if (status.equals("start")) {
             try {
@@ -153,7 +153,7 @@ public class ChannelAction extends AbstractAction {
 
         if (errorType != null) {
             nav.redirectToLocation("channelList.htm?pageIndex=" + pageIndex + "&searchKey=" + urlEncode(searchKey)
-                                   + "&errorType=" + errorType);
+                    + "&errorType=" + errorType);
         } else {
             nav.redirectToLocation("channelList.htm?pageIndex=" + pageIndex + "&searchKey=" + urlEncode(searchKey));
         }
@@ -161,14 +161,14 @@ public class ChannelAction extends AbstractAction {
 
     /**
      * 用于Channel的配置强制推送
-     * 
+     *
      * @param channelId
      * @param status
      * @throws WebxException
      */
     public void doNotify(@Param("pageIndex") int pageIndex, @Param("searchKey") String searchKey,
                          @Param("channelId") Long channelId, @Param("status") String status, Navigator nav)
-                                                                                                           throws WebxException {
+            throws WebxException {
 
         channelService.notifyChannel(channelId);
         nav.redirectToLocation("channelList.htm?pageIndex=" + pageIndex + "&searchKey=" + urlEncode(searchKey));

@@ -31,15 +31,15 @@ import com.alibaba.citrus.util.StringUtil;
 
 public class ActionProtectedImpl implements ActionProtected {
 
-    private static final Logger      logger = LoggerFactory.getLogger(ActionProtectedImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(ActionProtectedImpl.class);
     public List<ActionPatternHolder> actionPatternList;
-    private String                   actionParam;
+    private String actionParam;
 
-    public ActionProtectedImpl(){
+    public ActionProtectedImpl() {
 
     }
 
-    public ActionProtectedImpl(List<ActionPatternHolder> actionPatternList){
+    public ActionProtectedImpl(List<ActionPatternHolder> actionPatternList) {
         this.actionPatternList = actionPatternList;
     }
 
@@ -61,10 +61,10 @@ public class ActionProtectedImpl implements ActionProtected {
             while (iter.hasNext()) {
                 ActionPatternHolder holder = (ActionPatternHolder) iter.next();
                 if (StringUtils.isNotEmpty(action) && matcher.matches(action, holder.getActionPattern())
-                    && StringUtils.isNotEmpty(method) && matcher.matches(method, holder.getMethodPattern())) {
+                        && StringUtils.isNotEmpty(method) && matcher.matches(method, holder.getMethodPattern())) {
                     if (logger.isDebugEnabled()) {
                         logger.debug("Candidate is: '" + action + "|" + method + "'; pattern is "
-                                     + holder.getActionName() + "|" + holder.getMethodName() + "; matched=true");
+                                + holder.getActionName() + "|" + holder.getMethodName() + "; matched=true");
                     }
                     return true;
                 }

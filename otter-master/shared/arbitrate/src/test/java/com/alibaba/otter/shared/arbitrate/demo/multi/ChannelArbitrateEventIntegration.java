@@ -37,7 +37,7 @@ import com.alibaba.otter.shared.common.utils.zookeeper.ZkClientx;
 
 /**
  * 集成测试
- * 
+ *
  * @author jianghang 2011-10-8 下午06:25:52
  * @version 4.0.0
  */
@@ -46,10 +46,10 @@ public class ChannelArbitrateEventIntegration extends BaseEventTest {
     @SpringBeanByName
     private ChannelArbitrateEvent channelEvent;
 
-    private ZkClientx             zookeeper          = null;
-    private Long                  channelId          = 100L;
-    private Long                  pipelineId         = 100L;
-    private Long                  oppositePipelineId = 101L;
+    private ZkClientx zookeeper = null;
+    private Long channelId = 100L;
+    private Long pipelineId = 100L;
+    private Long oppositePipelineId = 101L;
 
     @BeforeClass
     public void init() {

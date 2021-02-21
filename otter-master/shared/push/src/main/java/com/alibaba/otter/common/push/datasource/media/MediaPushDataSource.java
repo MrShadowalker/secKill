@@ -40,45 +40,45 @@ import com.alibaba.otter.shared.common.model.config.data.DataMediaType;
 
 /**
  * media datasource support
- * 
+ *
  * @author jianghang 2013-4-18 下午03:45:44
  * @version 4.1.8
  */
 public class MediaPushDataSource implements DataSource {
 
-    private static final Logger logger                        = LoggerFactory.getLogger(MediaPushDataSource.class);
+    private static final Logger logger = LoggerFactory.getLogger(MediaPushDataSource.class);
 
     private volatile DataSource delegate;
-    private String              dbGroupKey;
-    private DatasourceSupplier  dataSourceSupplier;
+    private String dbGroupKey;
+    private DatasourceSupplier dataSourceSupplier;
 
-    private int                 maxWait                       = 60 * 1000;
+    private int maxWait = 60 * 1000;
 
-    private int                 minIdle                       = 0;
+    private int minIdle = 0;
 
-    private int                 initialSize                   = 0;
+    private int initialSize = 0;
 
-    private int                 maxActive                     = 32;
+    private int maxActive = 32;
 
-    private int                 maxIdle                       = 32;
+    private int maxIdle = 32;
 
-    private int                 numTestsPerEvictionRun        = -1;
+    private int numTestsPerEvictionRun = -1;
 
-    private int                 timeBetweenEvictionRunsMillis = 60 * 1000;
+    private int timeBetweenEvictionRunsMillis = 60 * 1000;
 
-    private int                 removeAbandonedTimeout        = 5 * 60;
+    private int removeAbandonedTimeout = 5 * 60;
 
-    private int                 minEvictableIdleTimeMillis    = 5 * 60 * 1000;
+    private int minEvictableIdleTimeMillis = 5 * 60 * 1000;
 
-    private String              originalUrl;
-    private String              userName;
-    private String              password;
-    private String              driverClassName;
-    private DataMediaType       dataMediaType;
-    private String              encoding;
+    private String originalUrl;
+    private String userName;
+    private String password;
+    private String driverClassName;
+    private DataMediaType dataMediaType;
+    private String encoding;
 
     public MediaPushDataSource(String originalUrl, String userName, String password, String driverClassName,
-                               DataMediaType dataMediaType, String encoding){
+                               DataMediaType dataMediaType, String encoding) {
         this.originalUrl = originalUrl;
         this.userName = userName;
         this.password = password;
@@ -102,7 +102,7 @@ public class MediaPushDataSource implements DataSource {
 
                 public void masterChanged(DatasourceInfo newMaster) {
                     String newUrl = buildMysqlUrl(newMaster.getAddress().getAddress().getHostAddress(),
-                                                  newMaster.getAddress().getPort());
+                            newMaster.getAddress().getPort());
                     try {
                         ((BasicDataSource) delegate).close();
                         DataSource newDelegate = doCreateDataSource(newUrl);
@@ -117,7 +117,7 @@ public class MediaPushDataSource implements DataSource {
 
         DatasourceInfo datasourceInfo = dataSourceSupplier.fetchMaster();
         String url = buildMysqlUrl(datasourceInfo.getAddress().getAddress().getHostAddress(),
-                                   datasourceInfo.getAddress().getPort());
+                datasourceInfo.getAddress().getPort());
 
         delegate = doCreateDataSource(url);
     }

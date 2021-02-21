@@ -20,7 +20,7 @@ import java.util.List;
 
 /**
  * 查询node节点的一些运行信息
- * 
+ *
  * @author jianghang 2012-7-30 上午10:36:14
  */
 public interface NodeRemoteService {

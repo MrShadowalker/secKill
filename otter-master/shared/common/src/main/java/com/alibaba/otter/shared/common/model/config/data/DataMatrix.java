@@ -25,20 +25,20 @@ import com.alibaba.otter.shared.common.utils.OtterToStringStyle;
 
 /**
  * media主备配置
- * 
+ *
  * @author jianghang 2013-4-18 下午12:22:42
  * @version 4.1.8
  */
 public class DataMatrix implements Serializable {
 
     private static final long serialVersionUID = 4577662145949358550L;
-    private Long              id;                                     // 唯一标示id
-    private String            groupKey;                               // groupKey
-    private String            master;
-    private String            slave;
-    private String            description;                            // 描述
-    private Date              gmtCreate;                              // 创建时间
-    private Date              gmtModified;                            // 修改时间
+    private Long id;                                     // 唯一标示id
+    private String groupKey;                               // groupKey
+    private String master;
+    private String slave;
+    private String description;                            // 描述
+    private Date gmtCreate;                              // 创建时间
+    private Date gmtModified;                            // 修改时间
 
     public Long getId() {
         return id;

@@ -34,16 +34,16 @@ import com.alibaba.otter.shared.communication.model.arbitrate.StopChannelEvent;
 
 /**
  * 基于内存版本的termin信号处理
- * 
+ *
  * @author jianghang 2012-9-27 下午11:30:13
  * @version 4.1.0
  */
 public class TerminMemoryArbitrateEvent implements TerminArbitrateEvent {
 
-    private static final Logger           logger = LoggerFactory.getLogger(TerminMemoryArbitrateEvent.class);
+    private static final Logger logger = LoggerFactory.getLogger(TerminMemoryArbitrateEvent.class);
     private ArbitrateCommmunicationClient arbitrateCommmunicationClient;
-    private WarningTerminProcess          warningTerminProcess;
-    private ChannelArbitrateEvent         channelEvent;
+    private WarningTerminProcess warningTerminProcess;
+    private ChannelArbitrateEvent channelEvent;
 
     public TerminEventData await(Long pipelineId) throws InterruptedException {
         Assert.notNull(pipelineId);
@@ -74,7 +74,7 @@ public class TerminMemoryArbitrateEvent implements TerminArbitrateEvent {
         // 正向处理
         final TerminType type = data.getType();
         MemoryStageController stageController = ArbitrateFactory.getInstance(data.getPipelineId(),
-                                                                             MemoryStageController.class);
+                MemoryStageController.class);
         if (type.isNormal()) {
             Assert.notNull(data.getProcessId());
             stageController.offerTermin(data);
@@ -113,7 +113,7 @@ public class TerminMemoryArbitrateEvent implements TerminArbitrateEvent {
 
     public void ack(TerminEventData data) {
         MemoryStageController stageController = ArbitrateFactory.getInstance(data.getPipelineId(),
-                                                                             MemoryStageController.class);
+                MemoryStageController.class);
         stageController.ackTermin(data);
     }
 

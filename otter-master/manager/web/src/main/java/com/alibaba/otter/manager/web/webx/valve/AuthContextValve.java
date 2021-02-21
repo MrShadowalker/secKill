@@ -44,32 +44,32 @@ import com.alibaba.otter.shared.common.model.user.User;
 
 /**
  * 权限控制
- * 
+ *
  * @author jianghang 2011-11-11 上午11:46:11
  * @version 4.0.0
  */
 public class AuthContextValve extends AbstractValve {
 
     private static final String DEFAULT_ACTION_PARAM_NAME = "action";
-    private static final String DEFAULT_EVENT_PATTERN     = "event_submit_do_";
-    private static final String IMAGE_BUTTON_SUFFIX_1     = ".x";
-    private static final String IMAGE_BUTTON_SUFFIX_2     = ".y";
-    private static final String IMAGE_BUTTON_SUFFIX_3     = ".X";
-    private static final String IMAGE_BUTTON_SUFFIX_4     = ".Y";
+    private static final String DEFAULT_EVENT_PATTERN = "event_submit_do_";
+    private static final String IMAGE_BUTTON_SUFFIX_1 = ".x";
+    private static final String IMAGE_BUTTON_SUFFIX_2 = ".y";
+    private static final String IMAGE_BUTTON_SUFFIX_3 = ".X";
+    private static final String IMAGE_BUTTON_SUFFIX_4 = ".Y";
 
     @Autowired
-    private HttpServletRequest  request;
+    private HttpServletRequest request;
     @Autowired
-    private URIBrokerService    uriBrokerService;
+    private URIBrokerService uriBrokerService;
     @Autowired
-    private RegExpURLAnalyze    urlAnalyze;
+    private RegExpURLAnalyze urlAnalyze;
     @Autowired
-    private ApiAuthService      apiAuthService;
+    private ApiAuthService apiAuthService;
 
-    private String              loginLink                 = WebConstant.OTTER_LOGIN_LINK;
-    private String              forbiddenLink             = WebConstant.ERROR_FORBIDDEN_Link;
-    private String              redirectParmeter          = "Done";
-    private String              actionParam;
+    private String loginLink = WebConstant.OTTER_LOGIN_LINK;
+    private String forbiddenLink = WebConstant.ERROR_FORBIDDEN_Link;
+    private String redirectParmeter = "Done";
+    private String actionParam;
 
     protected void init() throws Exception {
         if (actionParam == null) {
@@ -160,7 +160,7 @@ public class AuthContextValve extends AbstractValve {
 
     private void redirect(PipelineContext pipelineContext, TurbineRunData rundata, String uriBroker) {
         URIBroker urlBroker = assertNotNull(uriBrokerService.getURIBroker(uriBroker),
-                                            "uriBroker get from loginLink should not be null");
+                "uriBroker get from loginLink should not be null");
         urlBroker.addQueryData(redirectParmeter, getRequestUrlWithQueryString());
         rundata.setRedirectLocation(urlBroker.render());
         pipelineContext.breakPipeline(Pipeline.TOP_LABEL);

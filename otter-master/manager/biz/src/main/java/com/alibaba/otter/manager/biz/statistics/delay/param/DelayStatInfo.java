@@ -24,7 +24,7 @@ import com.alibaba.otter.shared.common.model.statistics.delay.DelayStat;
 public class DelayStatInfo implements Serializable {
 
     private static final long serialVersionUID = -6145961871313642767L;
-    private List<DelayStat>   items;
+    private List<DelayStat> items;
 
     /**
      * 一段时间内堆积量的平均值统计

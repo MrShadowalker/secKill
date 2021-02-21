@@ -22,7 +22,7 @@ import com.alibaba.otter.shared.communication.model.canal.FindFilterEvent;
 
 /**
  * canal远程服务接口
- * 
+ *
  * @author jianghang 2012-8-1 下午04:12:41
  * @version 4.1.0
  */

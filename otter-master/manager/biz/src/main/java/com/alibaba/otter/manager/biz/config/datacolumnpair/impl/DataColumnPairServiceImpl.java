@@ -35,14 +35,14 @@ import com.alibaba.otter.shared.common.model.config.data.ColumnPair;
 
 /**
  * 类DataColumnPairServiceImpl.java的实现描述：TODO 类实现描述
- * 
+ *
  * @author simon 2012-4-20 下午4:11:42
  */
 public class DataColumnPairServiceImpl implements DataColumnPairService {
 
     private static final Logger logger = LoggerFactory.getLogger(DataColumnPairServiceImpl.class);
 
-    private DataColumnPairDAO   dataColumnPairDao;
+    private DataColumnPairDAO dataColumnPairDao;
 
     public void create(ColumnPair entityObj) {
         Assert.assertNotNull(entityObj);
@@ -192,15 +192,16 @@ public class DataColumnPairServiceImpl implements DataColumnPairService {
     }
 
     /*-------------------------------------------------------------*/
+
     /**
      * 用于DO对象转化为Model对象
      */
     private ColumnPair doToModel(DataColumnPairDO dataColumnPairDo) {
 
         Column sourceColumn = dataColumnPairDo.getSourceColumnName() == null ? null : new Column(
-                                                                                                 dataColumnPairDo.getSourceColumnName());
+                dataColumnPairDo.getSourceColumnName());
         Column targetColumn = dataColumnPairDo.getTargetColumnName() == null ? null : new Column(
-                                                                                                 dataColumnPairDo.getTargetColumnName());
+                dataColumnPairDo.getTargetColumnName());
         ColumnPair columnPair = new ColumnPair(sourceColumn, targetColumn);
         columnPair.setId(dataColumnPairDo.getId());
         columnPair.setDataMediaPairId(dataColumnPairDo.getDataMediaPairId());
@@ -222,7 +223,7 @@ public class DataColumnPairServiceImpl implements DataColumnPairService {
 
     /**
      * 用于Model对象转化为DO对象
-     * 
+     *
      * @param dataColumnPair
      * @return DataMediaPairDO
      */

@@ -25,7 +25,7 @@ import com.alibaba.otter.shared.common.model.statistics.throughput.ThroughputSta
  */
 public class ThroughputInfo {
 
-    private Long                 seconds = 60L;
+    private Long seconds = 60L;
     private List<ThroughputStat> items;
 
     /**

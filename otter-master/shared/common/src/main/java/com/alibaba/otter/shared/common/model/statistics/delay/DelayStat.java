@@ -25,18 +25,18 @@ import com.alibaba.otter.shared.common.utils.OtterToStringStyle;
 
 /**
  * 延迟状态
- * 
+ *
  * @author jianghang 2011-9-8 下午12:32:10
  */
 public class DelayStat implements Serializable {
 
     private static final long serialVersionUID = -1350200637109107904L;
-    private Long              id;
-    private Long              pipelineId;
-    private Long              delayNumber;                             // 延迟数量
-    private Long              delayTime;                               // 延迟时间
-    private Date              gmtCreate;
-    private Date              gmtModified;
+    private Long id;
+    private Long pipelineId;
+    private Long delayNumber;                             // 延迟数量
+    private Long delayTime;                               // 延迟时间
+    private Date gmtCreate;
+    private Date gmtModified;
 
     public Long getId() {
         return id;

@@ -29,11 +29,11 @@ import org.apache.commons.io.IOUtils;
 
 public class StreamAppender {
 
-    private Thread      errWriter;
-    private Thread      outWriter;
+    private Thread errWriter;
+    private Thread outWriter;
     private PrintWriter output;
 
-    public StreamAppender(OutputStream output){
+    public StreamAppender(OutputStream output) {
         this.output = new PrintWriter(new BufferedWriter(new OutputStreamWriter(output)));
     }
 

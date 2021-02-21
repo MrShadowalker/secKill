@@ -28,15 +28,15 @@ import com.alibaba.otter.shared.common.model.config.node.NodeStatus;
 public class NodeDO implements Serializable {
 
     private static final long serialVersionUID = 9148286590254926037L;
-    private Long              id;                                     // 唯一标示id
-    private String            name;                                   // 机器名字
-    private String            ip;                                     // 机器ip
-    private Long              port;                                   // 和manager对应的通讯端口
-    private NodeStatus        status;                                 // 对应状态
-    private String            description;                            // 详细描述
-    private NodeParameter     parameters;                             // node对应参数信息
-    private Date              gmtCreate;                              // 创建时间
-    private Date              gmtModified;                            // 修改时间
+    private Long id;                                     // 唯一标示id
+    private String name;                                   // 机器名字
+    private String ip;                                     // 机器ip
+    private Long port;                                   // 和manager对应的通讯端口
+    private NodeStatus status;                                 // 对应状态
+    private String description;                            // 详细描述
+    private NodeParameter parameters;                             // node对应参数信息
+    private Date gmtCreate;                              // 创建时间
+    private Date gmtModified;                            // 修改时间
 
     public Long getId() {
         return id;
