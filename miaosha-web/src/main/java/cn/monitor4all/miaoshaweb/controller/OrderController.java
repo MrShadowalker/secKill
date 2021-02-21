@@ -94,6 +94,14 @@ public class OrderController {
 
     /**
      * 下单接口：悲观锁更新库存 事务for update更新库存
+     * 在MySQL的InnoDB中，预设的Tansaction isolation level 为REPEATABLE READ（可重读）
+     * 在SELECT 的读取锁定主要分为两种方式：
+     * -- SELECT ... LOCK IN SHARE MODE
+     * -- SELECT ... FOR UPDATE
+     *
+     * 这两种方式在事务(Transaction) 进行当中 SELECT 到同一个数据表时，都必须等待其它事务数据被提交(Commit)后才会执行。
+     * 而主要的不同在于 LOCK IN SHARE MODE 在有一方事务要 Update 同一个表单时很容易造成死锁。
+     * 简单地说，如果 SELECT 后面若要 UPDATE 同一个表单，最好使用 SELECT ... UPDATE。
      *
      * @param sid
      * @return

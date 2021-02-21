@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Slf4j
 @Service
 public class OrderServiceImpl implements OrderService {
-    
+
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
