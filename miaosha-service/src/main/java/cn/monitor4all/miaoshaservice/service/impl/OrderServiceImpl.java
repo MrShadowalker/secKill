@@ -71,17 +71,17 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public int createVerifiedOrder(Integer sid, Integer userId, String verifyHash) throws Exception {
 
-        // 验证是否在抢购时间内
+        // TODO 验证是否在抢购时间内
         log.info("请自行验证是否在抢购时间内，假设此处验证成功");
 
-        // 验证hash值合法性
+        // 验证 hash 值合法性
         String hashKey = CacheKey.HASH_KEY.getKey() + "_" + sid + "_" + userId;
         log.info("hashKey:{}", hashKey);
         String verifyHashInRedis = stringRedisTemplate.opsForValue().get(hashKey);
         if (!verifyHash.equals(verifyHashInRedis)) {
-            throw new Exception("hash值与Redis中不符合");
+            throw new Exception("hash 值与 Redis 中不符合");
         }
-        log.info("验证hash值合法性成功");
+        log.info("验证 hash 值合法性成功");
 
         // 检查用户合法性
         User user = userMapper.selectByPrimaryKey(userId.longValue());
