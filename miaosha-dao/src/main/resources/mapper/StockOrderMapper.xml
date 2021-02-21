@@ -26,7 +26,9 @@
     </delete>
     <insert id="insert" parameterType="cn.monitor4all.miaoshadao.dao.StockOrder">
         INSERT into stock_order (id, sid, name, user_id, create_time)
-        VALUES (#{id,jdbcType=INTEGER}, #{sid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},
+        VALUES (#{id,jdbcType=INTEGER},
+                #{sid,jdbcType=INTEGER},
+                #{name,jdbcType=VARCHAR},
                 #{createTime,jdbcType=TIMESTAMP})
     </insert>
     <insert id="insertSelective" parameterType="cn.monitor4all.miaoshadao.dao.StockOrder">

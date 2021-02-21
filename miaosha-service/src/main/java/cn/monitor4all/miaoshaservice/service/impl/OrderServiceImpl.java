@@ -72,11 +72,11 @@ public class OrderServiceImpl implements OrderService {
     public int createVerifiedOrder(Integer sid, Integer userId, String verifyHash) throws Exception {
 
         // 验证是否在抢购时间内
-        log.info("请自行验证是否在抢购时间内,假设此处验证成功");
+        log.info("请自行验证是否在抢购时间内，假设此处验证成功");
 
         // 验证hash值合法性
         String hashKey = CacheKey.HASH_KEY.getKey() + "_" + sid + "_" + userId;
-        System.out.println(hashKey);
+        log.info("hashKey:{}", hashKey);
         String verifyHashInRedis = stringRedisTemplate.opsForValue().get(hashKey);
         if (!verifyHash.equals(verifyHashInRedis)) {
             throw new Exception("hash值与Redis中不符合");
