@@ -1,5 +1,6 @@
 package cn.monitor4all.miaoshaweb.controller;
 
+import cn.monitor4all.miaoshadao.mapper.UserMapper;
 import cn.monitor4all.miaoshaservice.service.StockService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,9 @@ public class StockController {
 
     @Autowired
     private StockService stockService;
+
+    @Autowired
+    private UserMapper userMapper;
 
     /**
      * 查询库存：通过数据库查询库存

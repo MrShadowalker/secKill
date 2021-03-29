@@ -25,7 +25,7 @@ public class OrderMqReceiver {
         log.info("OrderMqReceiver收到消息开始用户下单流程: " + message);
         JSONObject jsonObject = JSONObject.parseObject(message);
         try {
-            orderService.createOrderByMq(jsonObject.getInteger("sid"),jsonObject.getInteger("userId"));
+            orderService.createOrderByMq(jsonObject.getInteger("sid"), jsonObject.getInteger("userId"));
         } catch (Exception e) {
             log.error("消息处理异常：", e);
         }

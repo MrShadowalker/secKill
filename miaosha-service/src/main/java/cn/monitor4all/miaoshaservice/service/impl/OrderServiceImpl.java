@@ -72,7 +72,7 @@ public class OrderServiceImpl implements OrderService {
     public int createVerifiedOrder(Integer sid, Integer userId, String verifyHash) throws Exception {
 
         // TODO 验证是否在抢购时间内
-        log.info("请自行验证是否在抢购时间内，假设此处验证成功");
+        log.info("请自行验证是否在抢购时间内，假设此处验证成功。");
 
         // 验证 hash 值合法性
         String hashKey = CacheKey.HASH_KEY.getKey() + "_" + sid + "_" + userId;
@@ -142,7 +142,6 @@ public class OrderServiceImpl implements OrderService {
         log.info("写入订单至缓存供查询");
         createOrderWithUserInfoInCache(stock, userId);
         log.info("下单完成");
-
     }
 
     @Override
