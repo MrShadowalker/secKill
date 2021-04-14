@@ -16,6 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * 库存 Controller
+ *
+ * @author Shadowalker
+ */
 @Slf4j
 @RestController
 public class StockController {
