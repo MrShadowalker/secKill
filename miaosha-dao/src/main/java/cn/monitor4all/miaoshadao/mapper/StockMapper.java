@@ -3,6 +3,9 @@ package cn.monitor4all.miaoshadao.mapper;
 import cn.monitor4all.miaoshadao.dao.Stock;
 import org.apache.ibatis.annotations.Mapper;
 
+/**
+ * @author Shadowalker
+ */
 @Mapper
 public interface StockMapper {
 

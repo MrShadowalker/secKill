@@ -419,5 +419,4 @@ public class OrderController {
         log.info("这就去通知消息队列开始下单:【{}】", message);
         this.rabbitTemplate.convertAndSend("orderQueue", message);
     }
-
 }

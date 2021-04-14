@@ -1,7 +1,17 @@
 package cn.monitor4all.miaoshadao.utils;
 
+/**
+ * Redis 缓存 Key 值
+ *
+ * @author Shadowalker
+ */
 public enum CacheKey {
 
+    // 测试编码
+    STOCK("stock"),
+
+
+    // 正式编码
     HASH_KEY("seckill_v1_user_hash"),
     LIMIT_KEY("seckill_v1_user_limit"),
     STOCK_COUNT("seckill_v1_stock_count"),
