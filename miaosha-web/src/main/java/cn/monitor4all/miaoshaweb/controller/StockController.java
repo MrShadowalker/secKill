@@ -148,6 +148,12 @@ public class StockController {
         return "end";
     }
 
+    /**
+     * 正经人没人用 redlock，牺牲性能
+     * 还不如 zk，至少没 bug
+     *
+     * @return
+     */
     @RequestMapping("/redlock")
     public String redlock() {
         String lockKey = "product_001";
