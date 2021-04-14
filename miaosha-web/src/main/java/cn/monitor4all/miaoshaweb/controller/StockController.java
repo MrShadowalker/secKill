@@ -99,7 +99,7 @@ public class StockController {
 
             // V4 如果下面业务代码执行时间超过锁过期时间，会把第二个线程的锁释放掉，第三个线程加锁。同理，第二个线程继续执行，会把第三个线程锁释放……
             // 高并发场景下，可能锁会一直失效。
-            // 自己家的锁要自己释放。
+            // 自己加的锁要自己释放。
             // Boolean result = stringRedisTemplate.opsForValue().setIfAbsent(lockKey, clientId, 10, TimeUnit.SECONDS);
 
             // V5 如果执行时间过长，锁过期。可以开启异步线程实时监测任务执行情况，如果没有执行完，则把锁续期。但一般不要自己写，很容易出 bug。
