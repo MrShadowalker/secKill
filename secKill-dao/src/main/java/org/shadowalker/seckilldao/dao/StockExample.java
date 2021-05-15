@@ -7,6 +7,7 @@ import java.util.List;
 
 @Data
 public class StockExample {
+
     protected String orderByClause;
 
     protected boolean distinct;

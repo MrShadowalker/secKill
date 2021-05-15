@@ -16,23 +16,23 @@
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         SELECT
         <include refid="Base_Column_List"/>
-        FROM stock_order
+        FROM seckill_stock_order
         WHERE id = #{id,jdbcType=INTEGER}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
         DELETE
-        FROM stock_order
+        FROM seckill_stock_order
         WHERE id = #{id,jdbcType=INTEGER}
     </delete>
     <insert id="insert" parameterType="org.shadowalker.seckilldao.dao.StockOrder">
-        INSERT into stock_order (id, sid, name, user_id, create_time)
+        INSERT into seckill_stock_order (id, sid, name, user_id, create_time)
         VALUES (#{id,jdbcType=INTEGER},
                 #{sid,jdbcType=INTEGER},
                 #{name,jdbcType=VARCHAR},
                 #{createTime,jdbcType=TIMESTAMP})
     </insert>
     <insert id="insertSelective" parameterType="org.shadowalker.seckilldao.dao.StockOrder">
-        INSERT INTO stock_order
+        INSERT INTO seckill_stock_order
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
                 id,
@@ -69,7 +69,7 @@
         </trim>
     </insert>
     <update id="updateByPrimaryKeySelective" parameterType="org.shadowalker.seckilldao.dao.StockOrder">
-        UPDATE stock_order
+        UPDATE seckill_stock_order
         <set>
             <if test="sid != null">
                 sid = #{sid,jdbcType=INTEGER},
@@ -87,7 +87,7 @@
         WHERE id = #{id,jdbcType=INTEGER}
     </update>
     <update id="updateByPrimaryKey" parameterType="org.shadowalker.seckilldao.dao.StockOrder">
-        UPDATE stock_order
+        UPDATE seckill_stock_order
         set sid         = #{sid,jdbcType=INTEGER},
             name        = #{name,jdbcType=VARCHAR},
             user_id     = #{userId,jdbcType=INTEGER},

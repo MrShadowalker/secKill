@@ -2,6 +2,9 @@ package org.shadowalker.seckillservice.service;
 
 import org.shadowalker.seckilldao.dao.Stock;
 
+/**
+ * @author Shadowalker
+ */
 public interface StockService {
 
     /**

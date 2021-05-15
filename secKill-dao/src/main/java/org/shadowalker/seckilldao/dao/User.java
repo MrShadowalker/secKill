@@ -12,7 +12,9 @@ public class User {
 
     private Long id;
 
-    // 用户姓名
+    /**
+     * 用户姓名
+     */
     private String userName;
 
     public User(Long id, String userName) {

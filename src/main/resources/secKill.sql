@@ -1,8 +1,8 @@
 -- ----------------------------
 -- Table structure for stock
 -- ----------------------------
-DROP TABLE IF EXISTS `stock`;
-CREATE TABLE `stock`
+DROP TABLE IF EXISTS `seckill_stock`;
+CREATE TABLE `seckill_stock`
 (
     `id`      int(11) unsigned NOT NULL AUTO_INCREMENT,
     `name`    varchar(50)      NOT NULL DEFAULT '' COMMENT '名称',
@@ -17,16 +17,18 @@ CREATE TABLE `stock`
 -- ----------------------------
 -- Records of stock
 -- ----------------------------
-INSERT INTO `stock`
-VALUES ('1', 'iphone', '50', '0', '0');
-INSERT INTO `stock`
-VALUES ('2', 'mac', '10', '0', '0');
+INSERT INTO `seckill_stock` (id, name, count, sale, version)
+VALUES (1, 'iPhone X', 10, 0, 0);
+INSERT INTO `seckill_stock` (id, name, count, sale, version)
+VALUES (2, 'Mac', 200, 0, 0);
+INSERT INTO `seckill_stock` (id, name, count, sale, version)
+VALUES (3, 'iPad', 300, 0, 0);
 
 -- ----------------------------
 -- Table structure for stock_order
 -- ----------------------------
-DROP TABLE IF EXISTS `stock_order`;
-CREATE TABLE `stock_order`
+DROP TABLE IF EXISTS `seckill_stock_order`;
+CREATE TABLE `seckill_stock_order`
 (
     `id`          int(11) unsigned NOT NULL AUTO_INCREMENT,
     `sid`         int(11)          NOT NULL COMMENT '库存ID',
@@ -44,8 +46,8 @@ CREATE TABLE `stock_order`
 -- ----------------------------
 -- Table structure for user
 -- ----------------------------
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE `user`
+DROP TABLE IF EXISTS `seckill_user`;
+CREATE TABLE `seckill_user`
 (
     `id`        bigint(20)   NOT NULL AUTO_INCREMENT,
     `user_name` varchar(255) NOT NULL DEFAULT '',
@@ -57,5 +59,13 @@ CREATE TABLE `user`
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user`
-VALUES ('1', '张三');
+INSERT INTO `seckill_user` (id, user_name)
+VALUES (1, '李昇懋');
+INSERT INTO `seckill_user` (id, user_name)
+VALUES (2, '陈子豪');
+INSERT INTO `seckill_user` (id, user_name)
+VALUES (3, '张三');
+INSERT INTO `seckill_user` (id, user_name)
+VALUES (4, '牛慧升');
+INSERT INTO `seckill_user` (id, user_name)
+VALUES (5, '金林');

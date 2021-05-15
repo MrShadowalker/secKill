@@ -10,7 +10,6 @@ public enum CacheKey {
     // 测试编码
     STOCK("stock"),
 
-
     // 正式编码
     HASH_KEY("seckill_v1_user_hash"),
     LIMIT_KEY("seckill_v1_user_limit"),

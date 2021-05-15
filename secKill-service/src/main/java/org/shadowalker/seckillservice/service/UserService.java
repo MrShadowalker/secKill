@@ -1,5 +1,8 @@
 package org.shadowalker.seckillservice.service;
 
+/**
+ * @author Shadowalker
+ */
 public interface UserService {
 
     /**

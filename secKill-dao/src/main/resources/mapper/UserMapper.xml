@@ -13,20 +13,20 @@
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
         SELECT
         <include refid="Base_Column_List"/>
-        FROM user
+        FROM seckill_user
         WHERE id = #{id,jdbcType=BIGINT}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         DELETE
-        FROM user
+        FROM seckill_user
         WHERE id = #{id,jdbcType=BIGINT}
     </delete>
     <insert id="insert" parameterType="org.shadowalker.seckilldao.dao.User">
-        INSERT INTO user (id, user_name)
+        INSERT INTO seckill_user (id, user_name)
         VALUES (#{id,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR})
     </insert>
     <insert id="insertSelective" parameterType="org.shadowalker.seckilldao.dao.User">
-        INSERT INTO user
+        INSERT INTO seckill_user
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
                 id,
@@ -45,7 +45,7 @@
         </trim>
     </insert>
     <update id="updateByPrimaryKeySelective" parameterType="org.shadowalker.seckilldao.dao.User">
-        UPDATE user
+        UPDATE seckill_user
         <set>
             <if test="userName != null">
                 user_name = #{userName,jdbcType=VARCHAR},
@@ -54,7 +54,7 @@
         WHERE id = #{id,jdbcType=BIGINT}
     </update>
     <update id="updateByPrimaryKey" parameterType="org.shadowalker.seckilldao.dao.User">
-        UPDATE user
+        UPDATE seckill_user
         SET user_name = #{userName,jdbcType=VARCHAR}
         WHERE id = #{id,jdbcType=BIGINT}
     </update>

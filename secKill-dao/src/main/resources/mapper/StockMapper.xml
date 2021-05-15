@@ -16,29 +16,29 @@
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         SELECT
         <include refid="Base_Column_List"/>
-        FROM stock
+        FROM seckill_stock
         WHERE id = #{id,jdbcType=INTEGER}
     </select>
     <select id="selectByPrimaryKeyForUpdate" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         SELECT
         <include refid="Base_Column_List"/>
-        FROM stock
+        FROM seckill_stock
         WHERE id = #{id,jdbcType=INTEGER}
         FOR UPDATE
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
         DELETE
-        FROM stock
+        FROM seckill_stock
         WHERE id = #{id,jdbcType=INTEGER}
     </delete>
     <insert id="insert" parameterType="org.shadowalker.seckilldao.dao.Stock">
-        INSERT INTO stock (id, name, count,
-                           sale, version)
+        INSERT INTO seckill_stock (id, name, count,
+                                   sale, version)
         VALUES (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{count,jdbcType=INTEGER},
                 #{sale,jdbcType=INTEGER}, #{version,jdbcType=INTEGER})
     </insert>
     <insert id="insertSelective" parameterType="org.shadowalker.seckilldao.dao.Stock">
-        INSERT INTO stock
+        INSERT INTO seckill_stock
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
                 id,
@@ -75,7 +75,7 @@
         </trim>
     </insert>
     <update id="updateByPrimaryKeySelective" parameterType="org.shadowalker.seckilldao.dao.Stock">
-        UPDATE stock
+        UPDATE seckill_stock
         <set>
             <if test="name != null">
                 name = #{name,jdbcType=VARCHAR},
@@ -93,7 +93,7 @@
         WHERE id = #{id,jdbcType=INTEGER}
     </update>
     <update id="updateByPrimaryKey" parameterType="org.shadowalker.seckilldao.dao.Stock">
-        UPDATE stock
+        UPDATE seckill_stock
         SET name    = #{name,jdbcType=VARCHAR},
             count   = #{count,jdbcType=INTEGER},
             sale    = #{sale,jdbcType=INTEGER},
@@ -102,7 +102,7 @@
     </update>
 
     <update id="updateByOptimistic" parameterType="org.shadowalker.seckilldao.dao.Stock">
-        UPDATE stock
+        UPDATE seckill_stock
         <set>
             sale = sale + 1,
         </set>
@@ -111,7 +111,7 @@
     </update>
 
     <update id="updateSaleAndVersionByOptimistic" parameterType="org.shadowalker.seckilldao.dao.Stock">
-        UPDATE stock
+        UPDATE seckill_stock
         <set>
             sale = sale + 1,
             version = version + 1,

@@ -11,15 +11,23 @@ import lombok.Data;
 public class Stock {
     private Integer id;
 
-    // 名称
+    /**
+     * 名称
+     */
     private String name;
 
-    // 库存
+    /**
+     * 库存
+     */
     private Integer count;
 
-    // 已售
+    /**
+     * 已售已售
+     */
     private Integer sale;
 
-    // 版本号
+    /**
+     * 版本号
+     */
     private Integer version;
 }
