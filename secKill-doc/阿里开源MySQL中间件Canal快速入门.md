@@ -269,9 +269,9 @@ sh bin/startup.sh
 
 ![img](%E9%98%BF%E9%87%8C%E5%BC%80%E6%BA%90MySQL%E4%B8%AD%E9%97%B4%E4%BB%B6Canal%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8.assets/640-20210221150225272.png)
 
-### log客户端代码
+### log 客户端代码
 
-我在秒杀系统系列文章的代码仓库里（seckill-job）编写了如下客户端代码
+我在秒杀系统系列文章的代码仓库里（secKill-job）编写了如下客户端代码
 
 仓库源码地址：https://github.com/qqxx6661/seckill
 

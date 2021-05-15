@@ -91,10 +91,10 @@
 
 项目是 SpringBoot 工程，并且是父子工程，直接导入 IDEA 即可使用。
 
-1. 导入 seckill.sql 文件到 MySQL 数据库
+1. 导入 secKill.sql 文件到 MySQL 数据库
 2. 配置 application.properties 文件，修改为数据库连接地址
 3. mvn clean install 最外层的父工程 pom.xml，有些包如果在公司无法导入，可能是网络原因，后期会尽量改成公司内部可以使用的包。
-4. 运行 seckill-web，在 POSTMAN 或者浏览器直接访问请求链接即可
+4. 运行 secKill-web，在 POSTMAN 或者浏览器直接访问请求链接即可
 
 ### 项目规划
 
