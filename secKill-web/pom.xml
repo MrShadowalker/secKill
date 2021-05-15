@@ -81,7 +81,7 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>RELEASE</version>
+            <version>6.10</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
