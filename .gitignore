@@ -33,3 +33,7 @@ build/
 ### VS Code ###
 .vscode/
 /seckill-dao/target/
+
+### Mac ###
+.DS_Store
+*.DS_Store
