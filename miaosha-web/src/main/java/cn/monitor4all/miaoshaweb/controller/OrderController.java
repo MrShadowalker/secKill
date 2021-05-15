@@ -16,6 +16,11 @@ import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * 订单 Controller
+ *
+ * @author Shadowalker
+ */
 @Slf4j
 @Controller
 public class OrderController {
@@ -70,12 +75,12 @@ public class OrderController {
     @ResponseBody
     public String createOptimisticOrder(@PathVariable int sid) {
         // 1. 阻塞式获取令牌
-        log.info("等待时间" + rateLimiter.acquire());
+        // log.info("等待时间" + rateLimiter.acquire());
         // 2. 非阻塞式获取令牌
-        // if (!rateLimiter.tryAcquire(1000, TimeUnit.MILLISECONDS)) {
-        //    log.warn("你被限流了，真不幸，直接返回失败");
-        //    return "你被限流了，真不幸，直接返回失败";
-        // }
+        if (!rateLimiter.tryAcquire(1000, TimeUnit.MILLISECONDS)) {
+            log.warn("你被限流了，真不幸，直接返回失败");
+            return "你被限流了，真不幸，直接返回失败";
+        }
         int id;
         try {
             id = orderService.createOptimisticOrder(sid);
