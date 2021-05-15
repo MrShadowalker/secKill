@@ -10,17 +10,17 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>cn.monitor4all</groupId>
-    <artifactId>miaosha</artifactId>
+    <groupId>org.shadowalker</groupId>
+    <artifactId>secKill</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>miaosha</name>
+    <name>secKill</name>
     <packaging>pom</packaging>
 
     <modules>
-        <module>miaosha-dao</module>
-        <module>miaosha-job</module>
-        <module>miaosha-service</module>
-        <module>miaosha-web</module>
+        <module>secKill-dao</module>
+        <module>secKill-job</module>
+        <module>secKill-service</module>
+        <module>secKill-web</module>
     </modules>
 
 </project>

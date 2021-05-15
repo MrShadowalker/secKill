@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.shadowalker.seckilldao.mapper.StockMapper">
+    <resultMap id="BaseResultMap" type="org.shadowalker.seckilldao.dao.Stock">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="count" property="count" jdbcType="INTEGER"/>
+        <result column="sale" property="sale" jdbcType="INTEGER"/>
+        <result column="version" property="version" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, name, count, sale, version
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM stock
+        WHERE id = #{id,jdbcType=INTEGER}
+    </select>
+    <select id="selectByPrimaryKeyForUpdate" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM stock
+        WHERE id = #{id,jdbcType=INTEGER}
+        FOR UPDATE
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        DELETE
+        FROM stock
+        WHERE id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="org.shadowalker.seckilldao.dao.Stock">
+        INSERT INTO stock (id, name, count,
+                           sale, version)
+        VALUES (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{count,jdbcType=INTEGER},
+                #{sale,jdbcType=INTEGER}, #{version,jdbcType=INTEGER})
+    </insert>
+    <insert id="insertSelective" parameterType="org.shadowalker.seckilldao.dao.Stock">
+        INSERT INTO stock
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="count != null">
+                count,
+            </if>
+            <if test="sale != null">
+                sale,
+            </if>
+            <if test="version != null">
+                version,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="count != null">
+                #{count,jdbcType=INTEGER},
+            </if>
+            <if test="sale != null">
+                #{sale,jdbcType=INTEGER},
+            </if>
+            <if test="version != null">
+                #{version,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="org.shadowalker.seckilldao.dao.Stock">
+        UPDATE stock
+        <set>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="count != null">
+                count = #{count,jdbcType=INTEGER},
+            </if>
+            <if test="sale != null">
+                sale = #{sale,jdbcType=INTEGER},
+            </if>
+            <if test="version != null">
+                version = #{version,jdbcType=INTEGER},
+            </if>
+        </set>
+        WHERE id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="org.shadowalker.seckilldao.dao.Stock">
+        UPDATE stock
+        SET name    = #{name,jdbcType=VARCHAR},
+            count   = #{count,jdbcType=INTEGER},
+            sale    = #{sale,jdbcType=INTEGER},
+            version = #{version,jdbcType=INTEGER}
+        WHERE id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateByOptimistic" parameterType="org.shadowalker.seckilldao.dao.Stock">
+        UPDATE stock
+        <set>
+            sale = sale + 1,
+        </set>
+        WHERE id = #{id,jdbcType=INTEGER}
+        AND sale = #{sale,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateSaleAndVersionByOptimistic" parameterType="org.shadowalker.seckilldao.dao.Stock">
+        UPDATE stock
+        <set>
+            sale = sale + 1,
+            version = version + 1,
+        </set>
+        WHERE id = #{id,jdbcType=INTEGER}
+        AND version = #{version,jdbcType=INTEGER}
+    </update>
+</mapper>
