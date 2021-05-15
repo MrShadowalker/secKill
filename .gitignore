@@ -32,7 +32,7 @@ build/
 
 ### VS Code ###
 .vscode/
-/seckill-dao/target/
+/secKill-dao/target/
 
 ### Mac ###
 .DS_Store
