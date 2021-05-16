@@ -81,6 +81,7 @@ public class StockController {
 
     @RequestMapping("/deduct_stock")
     public String deductStock() {
+        // 这个值不用在 Redis 中设置，Redisson 内部会自动初始化一个值。
         String lockKey = CacheKey.PRODUCT.getKey();
         // String clientId = UUID.randomUUID().toString();
         // log.info(clientId);
@@ -130,6 +131,7 @@ public class StockController {
             // 分段锁思想，集群分片
 
             // 业务代码
+            // 需要在 Redis 中初始化 CacheKey.STOCK 的值。
             int stock = Integer.parseInt(Objects.requireNonNull(stringRedisTemplate.opsForValue().get(CacheKey.STOCK.getKey())));
             log.info("stock:{}", stock);
             if (stock > 0) {
