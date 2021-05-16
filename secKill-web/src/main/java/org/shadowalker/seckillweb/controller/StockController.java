@@ -50,7 +50,9 @@ public class StockController {
 
     /**
      * 查询库存：通过缓存查询库存
+     *
      * 缓存命中：返回库存
+     *
      * 缓存未命中：查询数据库写入缓存并返回
      *
      * @param sid
@@ -70,8 +72,7 @@ public class StockController {
         return String.format("商品Id: %d 剩余库存为：%d", sid, count);
     }
 
-
-    /********************************************* Redisson *********************************************/
+    /********************************************* Redisson 分布式锁方案 *********************************************/
 
     @Autowired
     private Redisson redisson;
@@ -160,13 +161,14 @@ public class StockController {
 
     /**
      * 正经人没人用 redlock，牺牲性能
+     *
      * 还不如 zk，至少没 bug
      *
      * @return
      */
     @RequestMapping("/redlock")
     public String redlock() {
-        String lockKey = "product_001";
+        String lockKey = CacheKey.PRODUCT.getKey();
 
         // 这里需要自己实例化不同 Redis 实例的 Redisson 客户端连接，这里只是伪代码用一个 Redisson 客户端简化了。
         RLock lock1 = redisson.getLock(lockKey);
@@ -189,7 +191,7 @@ public class StockController {
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
-            throw new RuntimeException("lock fail");
+            throw new RuntimeException("redlock fail");
         } finally {
             // 无论如何，最后都要解锁。
             redLock.unlock();

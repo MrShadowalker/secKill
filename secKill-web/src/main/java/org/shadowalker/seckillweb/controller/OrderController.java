@@ -41,7 +41,7 @@ public class OrderController {
     RateLimiter rateLimiter = RateLimiter.create(1000);
 
     // 延时时间：预估读数据库数据业务逻辑的耗时，用来做缓存再删除
-    private static final int DELAY_MILLSECONDS = 1000;
+    private static final int DELAY_MILLISECONDS = 1000;
 
     // 延时双删线程池
     private static ExecutorService cachedThreadPool = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60L, TimeUnit.SECONDS, new SynchronousQueue<Runnable>());
@@ -81,22 +81,26 @@ public class OrderController {
             log.warn("你被限流了，真不幸，直接返回失败");
             return "你被限流了，真不幸，直接返回失败";
         }
-        int id;
+        int stock;
         try {
-            id = orderService.createOptimisticOrder(sid);
-            log.info("购买成功，剩余库存为:【{}】", id);
+            stock = orderService.createOptimisticOrder(sid);
+            log.info("购买成功，剩余库存为:【{}】", stock);
         } catch (Exception e) {
             log.error("购买失败:【{}】", e.getMessage());
             return "购买失败，库存不足";
         }
-        return String.format("购买成功，剩余库存为:【{}】", id);
+        return String.format("购买成功，剩余库存为：" + stock + "");
     }
 
     /**
      * 下单接口：悲观锁更新库存 事务for update更新库存
+     * <p>
      * 在 MySQL 的 InnoDB 中，预设的 Tansaction isolation level 为 REPEATABLE READ（可重读）
+     * <p>
      * 在 SELECT 的读取锁定主要分为两种方式：
+     * <p>
      * -- SELECT ... LOCK IN SHARE MODE
+     * <p>
      * -- SELECT ... FOR UPDATE
      * <p>
      * 这两种方式在事务(Transaction) 进行当中 SELECT 到同一个数据表时，都必须等待其它事务数据被提交(Commit)后才会执行。
@@ -109,15 +113,15 @@ public class OrderController {
     @RequestMapping("/createPessimisticOrder/{sid}")
     @ResponseBody
     public String createPessimisticOrder(@PathVariable int sid) {
-        int id;
+        int stock;
         try {
-            id = orderService.createPessimisticOrder(sid);
-            log.info("购买成功，剩余库存为:【{}】", id);
+            stock = orderService.createPessimisticOrder(sid);
+            log.info("购买成功，剩余库存为:【{}】", stock);
         } catch (Exception e) {
             log.error("购买失败:【{}】", e.getMessage());
             return "购买失败，库存不足";
         }
-        return String.format("购买成功，剩余库存为：%d", id);
+        return String.format("购买成功，剩余库存为：%d", stock);
     }
 
     /**
@@ -395,8 +399,8 @@ public class OrderController {
         @Override
         public void run() {
             try {
-                log.info("异步执行缓存再删除，商品id:【{}】， 首先休眠:【{}】 毫秒", sid, DELAY_MILLSECONDS);
-                Thread.sleep(DELAY_MILLSECONDS);
+                log.info("异步执行缓存再删除，商品id:【{}】， 首先休眠:【{}】 毫秒", sid, DELAY_MILLISECONDS);
+                Thread.sleep(DELAY_MILLISECONDS);
                 stockService.delStockCountCache(sid);
                 log.info("再次删除商品id:【{}】 缓存", sid);
             } catch (Exception e) {
