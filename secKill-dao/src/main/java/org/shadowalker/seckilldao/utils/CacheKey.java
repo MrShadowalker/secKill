@@ -8,7 +8,8 @@ package org.shadowalker.seckilldao.utils;
 public enum CacheKey {
 
     // 测试编码
-    STOCK("stock"),
+    STOCK("stock_test"),
+    PRODUCT("product_test"),
 
     // 正式编码
     HASH_KEY("seckill_v1_user_hash"),

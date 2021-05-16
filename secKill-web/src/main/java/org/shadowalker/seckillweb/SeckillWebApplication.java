@@ -22,7 +22,7 @@ public class SeckillWebApplication {
     public Redisson redisson() {
         // 单机模式
         Config config = new Config();
-        config.useSingleServer().setAddress("redis://localhost:6379").setDatabase(0);
+        config.useSingleServer().setAddress("redis-server://localhost:6379").setDatabase(0);
         return (Redisson) Redisson.create(config);
     }
 
