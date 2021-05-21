@@ -38,8 +38,7 @@ public class OrderServiceImpl implements OrderService {
         // 扣库存
         saleStock(stock);
         // 创建订单
-        int id = createOrder(stock);
-        return id;
+        return createOrder(stock);
     }
 
     @Override

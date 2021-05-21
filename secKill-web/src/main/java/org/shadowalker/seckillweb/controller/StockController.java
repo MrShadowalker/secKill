@@ -120,7 +120,9 @@ public class StockController {
 
             // V6 Redisson lock
             // 底层方法 tryLockInnerAsync() 底层 Lua 脚本保证原子操作
+            log.info("加锁……");
             redissonLock.lock(15, TimeUnit.SECONDS);
+            log.info("加锁成功！");
 
             // V7 目前初始化的 Redisson 是单机模式，如果是主从模式呢？
             // 主节点上锁了，还没有同步给从节点，主节点挂了，从变为主，于是又会上一把锁。
@@ -140,8 +142,10 @@ public class StockController {
                 log.info("realStock:{}", realStock);
                 stringRedisTemplate.opsForValue().set(CacheKey.STOCK.getKey(), realStock + "");
                 System.out.println("扣减库存成功，剩余库存：" + realStock + "");
+                log.info("扣减库存成功，剩余库存：{}", realStock);
             } else {
                 System.out.println("库存不足，扣减库存失败。");
+                log.info("库存不足，扣减库存失败。");
             }
 
             // }
@@ -154,8 +158,10 @@ public class StockController {
 
         } finally {
             // V6 Redisson unlock
+            log.info("解锁。");
             redissonLock.unlock();
         }
+        log.info("秒杀结束，剩余库存：{}", realStock);
         return "秒杀结束，剩余库存：" + realStock + "";
     }
 

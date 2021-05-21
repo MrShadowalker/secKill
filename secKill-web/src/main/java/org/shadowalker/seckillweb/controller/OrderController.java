@@ -385,7 +385,6 @@ public class OrderController {
         return "很抱歉，你的订单尚未生成，继续排队。";
     }
 
-
     /**
      * 缓存再删除线程
      */
