@@ -37,7 +37,7 @@ public class OrderController {
     @Autowired
     private AmqpTemplate rabbitTemplate;
 
-    // Guava 令牌桶：每秒放行 1000 个请求
+    // Guava 令牌桶：每秒放行 1000 个请求，仅限单机使用，无法保证分布式限流，所以应用层面存在局限性。
     RateLimiter rateLimiter = RateLimiter.create(1000);
 
     // 延时时间：预估读数据库数据业务逻辑的耗时，用来做缓存再删除
@@ -95,7 +95,7 @@ public class OrderController {
     /**
      * 下单接口：悲观锁更新库存 事务for update更新库存
      * <p>
-     * 在 MySQL 的 InnoDB 中，预设的 Tansaction isolation level 为 REPEATABLE READ（可重读）
+     * 在 MySQL 的 InnoDB 中，预设的 Transaction isolation level 为 REPEATABLE READ（可重读）
      * <p>
      * 在 SELECT 的读取锁定主要分为两种方式：
      * <p>
@@ -104,8 +104,8 @@ public class OrderController {
      * -- SELECT ... FOR UPDATE
      * <p>
      * 这两种方式在事务(Transaction) 进行当中 SELECT 到同一个数据表时，都必须等待其它事务数据被提交(Commit)后才会执行。
-     * 而主要的不同在于 LOCK IN SHARE MODE 在有一方事务要 Update 同一个表单时很容易造成死锁。
-     * 简单地说，如果 SELECT 后面若要 UPDATE 同一个表单，最好使用 SELECT ... UPDATE。
+     * 而主要的不同在于 LOCK IN SHARE MODE 在有一方事务要 UPDATE 同一个表单时很容易造成死锁。
+     * 简单地说，如果 SELECT 后面若要 UPDATE 同一个表单，最好使用 SELECT ... FOR UPDATE
      *
      * @param sid
      * @return
@@ -137,8 +137,8 @@ public class OrderController {
         try {
             hash = userService.getVerifyHash(sid, userId);
         } catch (Exception e) {
-            log.error("获取验证hash失败，原因:【{}】", e.getMessage());
-            return "获取验证hash失败";
+            log.error("获取验证 hash 失败，原因:【{}】", e.getMessage());
+            return "获取验证 hash 失败";
         }
         return String.format("请求抢购验证hash值为：%s", hash);
     }
@@ -311,7 +311,7 @@ public class OrderController {
                 return "秒杀请求失败，库存不足.....";
             }
 
-            // 有库存，则将用户id和商品id封装为消息体传给消息队列处理
+            // 有库存，则将用户 id 和商品 id 封装为消息体传给消息队列处理
             // 注意这里的有库存和已经下单都是缓存中的结论，存在不可靠性，在消息队列中会查表再次验证
             log.info("有库存:【{}】", count);
             JSONObject jsonObject = new JSONObject();

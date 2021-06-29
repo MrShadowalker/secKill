@@ -50,9 +50,9 @@ public class StockController {
 
     /**
      * 查询库存：通过缓存查询库存
-     *
+     * <p>
      * 缓存命中：返回库存
-     *
+     * <p>
      * 缓存未命中：查询数据库写入缓存并返回
      *
      * @param sid
@@ -167,7 +167,7 @@ public class StockController {
 
     /**
      * 正经人没人用 redlock，牺牲性能
-     *
+     * <p>
      * 还不如 zk，至少没 bug
      *
      * @return

@@ -50,14 +50,14 @@ public class UserServiceImpl implements UserService {
         }
         log.info("商品信息:【{}】", stock.toString());
 
-        // 生成hash
+        // 生成 hash
         String verify = SALT + sid + userId;
         String verifyHash = DigestUtils.md5DigestAsHex(verify.getBytes());
 
-        // 将hash和用户商品信息存入redis
+        // 将 hash 和用户商品信息存入 Redis
         String hashKey = CacheKey.HASH_KEY.getKey() + "_" + sid + "_" + userId;
         stringRedisTemplate.opsForValue().set(hashKey, verifyHash, 3600, TimeUnit.SECONDS);
-        log.info("Redis写入:【{}】 【{}】", hashKey, verifyHash);
+        log.info("Redis 写入:【{}】 【{}】", hashKey, verifyHash);
         return verifyHash;
     }
 
